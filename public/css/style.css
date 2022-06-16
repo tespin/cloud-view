@@ -1,0 +1,15 @@
+body, html {
+    font-family: Helvetica, sans-serif;
+}
+
+#stview {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
