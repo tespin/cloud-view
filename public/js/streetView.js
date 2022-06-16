@@ -5,7 +5,7 @@ let size = "size=400x400";
 let fov = "&fov=40";
 let heading = "&heading=";
 let pitch = "&pitch=90";
-let apiKey = "&key=";
+let apiKey = process.env.API_KEY;
 
 let img;
 let locations = [];
