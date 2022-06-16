@@ -5,7 +5,7 @@ let size = "size=400x400";
 let fov = "&fov=40";
 let heading = "&heading=";
 let pitch = "&pitch=90";
-let apiKey = process.env.API_KEY;
+let apiKey = "";
 
 let img;
 let locations = [];
@@ -21,8 +21,6 @@ document.getElementById('geolocate').addEventListener('click', event => {
             document.getElementById('latitude').textContent = lat;
             document.getElementById('longitude').textContent = lon;
             // console.log(position);
-            img = document.getElementById('img');
-            img.src = getUrl();
             const data = {lat, lon};
             const options = {
                 method: 'POST', headers: {
@@ -35,6 +33,10 @@ document.getElementById('geolocate').addEventListener('click', event => {
             // });
             const response = await fetch('api', options);
             const json = await response.json();
+            let key = json.api;
+            apiKey = `&key=${key}`;
+            img = document.getElementById('img');
+            img.src = getUrl();
             console.log(json);
         });
     } else {
