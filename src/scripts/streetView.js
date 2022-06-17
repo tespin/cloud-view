@@ -18,8 +18,8 @@ document.getElementById('geolocate').addEventListener('click', event => {
         navigator.geolocation.getCurrentPosition( async position => {
             lat = position.coords.latitude;
             lon = position.coords.longitude;
-            document.getElementById('latitude').textContent = lat;
-            document.getElementById('longitude').textContent = lon;
+            // document.getElementById('latitude').textContent = lat;
+            // document.getElementById('longitude').textContent = lon;
             // console.log(position);
             const data = {lat, lon};
             const options = {
@@ -37,9 +37,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
             apiKey = `&key=${key}`;
             img = document.getElementById('img');
             img.src = getUrl();
-            img.onload = () => {
-                console.log('image loaded');
-            };
+            img.onload = () => console.log('loaded');
             console.log(json);
         });
     } else {
