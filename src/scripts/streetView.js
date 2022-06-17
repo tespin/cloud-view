@@ -40,8 +40,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
             // await showImage();
             img.onload = () => {
                 console.log("loaded");
-                let imgContainer = document.getElementById("imgContainer");
-
+                let imgContainer = document.getElementsByClassName("imgContainer")[0];
                 imgContainer.style.display = "block";
                 // let div = document.getElementById("imageContainer");
                 // div.display = "flex";
