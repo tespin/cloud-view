@@ -45,7 +45,6 @@ document.getElementById('geolocate').addEventListener('click', event => {
                 // img.style.border = "2px solid #000";
                 // img.style.borderRadius = "25px";
             }
-            console.log(json);
         });
     } else {
         console.log('geolocation not available');
