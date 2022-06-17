@@ -35,11 +35,11 @@ document.getElementById('geolocate').addEventListener('click', event => {
             const json = await response.json();
             let key = json.api;
             apiKey = `&key=${key}`;
-            img = document.getElementById('img');
+            img = document.getElementById("img");
             img.src = getUrl();
             // await showImage();
             img.onload = () => {
-                console.log('loaded');
+                console.log("loaded");
                 img.style.border = "2px solid #000";
                 img.style.borderRadius = "25px";
             }
