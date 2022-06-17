@@ -7,7 +7,7 @@ let heading = "&heading=";
 let pitch = "&pitch=90";
 let apiKey = "";
 
-let img;
+// let img;
 let locations = [];
 let moods = ["safer", "calmer", "less anxious", "happier", "acknowledged", "affirmed", 
             "carefree", "easier", "less troubled", "undisturbed", "supported"];
@@ -35,7 +35,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
             const json = await response.json();
             let key = json.api;
             apiKey = `&key=${key}`;
-            img = document.getElementById("img");
+            let img = document.getElementById("img");
             img.src = getUrl();
             // await showImage();
             img.onload = () => {
