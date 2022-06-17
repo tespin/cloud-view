@@ -38,7 +38,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
             img = document.getElementById('img');
             img.src = getUrl();
             // await showImage();
-            // img.onload = () => console.log('loaded');
+            img.onload = () => console.log('loaded');
             console.log(json);
         });
     } else {
