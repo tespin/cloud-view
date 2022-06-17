@@ -11,10 +11,10 @@ body, html {
     flex-wrap: wrap;
 }
 
-#imageContainer {
+/* #imageContainer {
     display: flex;
     justify-content: center;
-}
+} */
 
 .img {
     /* border: 2px solid #000; */
@@ -30,6 +30,11 @@ body, html {
     width: calc(300px + 5vw);
 
     text-align: center;
+}
+
+.container #imageContainer {
+    display: flex;
+    justify-content: center;
 }
 
 .break {
