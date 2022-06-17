@@ -12,7 +12,7 @@ let locations = [];
 let moods = ["safer", "calmer", "less anxious", "happier", "acknowledged", "affirmed", 
             "carefree", "easier", "less troubled", "undisturbed", "supported"];
 
-let imgDiv = document.getElementsbyClass[1];
+let imgDiv = document.getElementsByClassName[1];
 imgDiv.style.display = "none";
 
 document.getElementById('geolocate').addEventListener('click', event => {
