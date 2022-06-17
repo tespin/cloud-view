@@ -40,6 +40,8 @@ document.getElementById('geolocate').addEventListener('click', event => {
             // await showImage();
             img.onload = () => {
                 console.log("loaded");
+                let parentDiv = document.getElementById("container");
+                img.style.width = parentDiv.offsetWidth;
                 // img.style.border = "2px solid #000";
                 // img.style.borderRadius = "25px";
             }
