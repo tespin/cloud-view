@@ -1,7 +1,6 @@
 
 let lat, lon;
 let api = "https://maps.googleapis.com/maps/api/streetview?";
-let size = "size=";
 let fov = "&fov=40";
 let heading = "&heading=";
 let pitch = "&pitch=90";
@@ -56,9 +55,8 @@ document.getElementById('geolocate').addEventListener('click', event => {
 });
 
 function getUrl() {
-    // let parentDiv = document.getElementById("imageContainer");
     let parentDiv = document.getElementsByClassName("container")[0];
-    size += `${parentDiv.offsetWidth}x${parentDiv.offsetWidth}`;
+    let size = `size=${parentDiv.offsetWidth}x${parentDiv.offsetWidth}`;
     let loc = `&location=${lat},${lon}`;
     let url = api + size + loc + fov + heading + pitch + apiKey;
     return url;
