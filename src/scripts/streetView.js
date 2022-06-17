@@ -36,7 +36,8 @@ document.getElementById('geolocate').addEventListener('click', event => {
             let key = json.api;
             apiKey = `&key=${key}`;
             img = document.getElementById('img');
-            img.src = getUrl();
+            // img.src = getUrl();
+            await showImage();
             img.onload = () => console.log('loaded');
             console.log(json);
         });
@@ -49,4 +50,8 @@ function getUrl() {
     let loc = `&location=${lat},${lon}`;
     let url = api + size + loc + fov + heading + pitch + apiKey;
     return url;
+}
+
+async function showImage() {
+    img.src = getUrl();
 }
