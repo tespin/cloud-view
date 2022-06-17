@@ -12,9 +12,6 @@ let locations = [];
 let moods = ["safer", "calmer", "less anxious", "happier", "acknowledged", "affirmed", 
             "carefree", "easier", "less troubled", "undisturbed", "supported"];
 
-let imgDiv = document.getElementsByClassName[1];
-imgDiv.style.display = "none";
-
 document.getElementById('geolocate').addEventListener('click', event => {
     if ('geolocation'in navigator) {
         console.log('geolocation available');
@@ -43,7 +40,9 @@ document.getElementById('geolocate').addEventListener('click', event => {
             // await showImage();
             img.onload = () => {
                 console.log("loaded");
-                imgDiv.display = "flex";
+                let imgContainer = document.getElementById("imgContainer");
+
+                imgDiv.display = "block";
                 // let div = document.getElementById("imageContainer");
                 // div.display = "flex";
                 // let parentDiv = document.getElementsByClassName("container")[0];
