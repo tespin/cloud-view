@@ -13,7 +13,7 @@ body, html {
 
 #imageContainer {
     display: flex;
-    justify-content: center;;
+    justify-content: center;
 }
 
 .img {
