@@ -48,6 +48,5 @@ document.getElementById('geolocate').addEventListener('click', event => {
 function getUrl() {
     let loc = `&location=${lat},${lon}`;
     let url = api + size + loc + fov + heading + pitch + apiKey;
-    console.log(url);
     return url;
 }
