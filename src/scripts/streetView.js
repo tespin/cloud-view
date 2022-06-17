@@ -6,20 +6,12 @@ let heading = "&heading=";
 let pitch = "&pitch=90";
 let apiKey = "";
 
-// let img;
-let locations = [];
-let moods = ["safer", "calmer", "less anxious", "happier", "acknowledged", "affirmed", 
-            "carefree", "easier", "less troubled", "undisturbed", "supported"];
-
 document.getElementById('geolocate').addEventListener('click', event => {
     if ('geolocation'in navigator) {
         console.log('geolocation available');
         navigator.geolocation.getCurrentPosition( async position => {
             lat = position.coords.latitude;
             lon = position.coords.longitude;
-            // document.getElementById('latitude').textContent = lat;
-            // document.getElementById('longitude').textContent = lon;
-            // console.log(position);
             const data = {lat, lon};
             const options = {
                 method: 'POST', headers: {
@@ -36,17 +28,10 @@ document.getElementById('geolocate').addEventListener('click', event => {
             apiKey = `&key=${key}`;
             let img = document.getElementById("img");
             img.src = getUrl();
-            // await showImage();
             img.onload = () => {
                 console.log("loaded");
                 let imgContainer = document.getElementsByClassName("imgContainer")[0];
                 imgContainer.style.display = "block";
-                // let div = document.getElementById("imageContainer");
-                // div.display = "flex";
-                // let parentDiv = document.getElementsByClassName("container")[0];
-                // img.style.width = parentDiv.offsetWidth;
-                // img.style.border = "2px solid #000";
-                // img.style.borderRadius = "25px";
             }
         });
     } else {
@@ -60,8 +45,4 @@ function getUrl() {
     let loc = `&location=${lat},${lon}`;
     let url = api + size + loc + fov + heading + pitch + apiKey;
     return url;
-}
-
-async function showImage() {
-    img.src = getUrl();
 }
