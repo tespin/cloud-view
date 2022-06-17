@@ -41,9 +41,9 @@ document.getElementById('geolocate').addEventListener('click', event => {
             img.onload = () => {
                 console.log("loaded");
                 let parentDiv = document.getElementsByClassName("container")[0];
-                img.style.width = parentDiv.offsetWidth;
-                // img.style.border = "2px solid #000";
-                // img.style.borderRadius = "25px";
+                // img.style.width = parentDiv.offsetWidth;
+                img.style.border = "2px solid #000";
+                img.style.borderRadius = "25px";
             }
         });
     } else {
