@@ -38,16 +38,25 @@
     </script> -->
     <main>
         <div id="stview">
-            <h1>Google Cloud View</h1>
-            <div class="break"></div>
+            <div class="container">
+                <h1>Google Cloud View</h1>
+            </div>
+            <!-- <div class="break"></div>
             <p>
                 latitude: <span id="latitude"></span>&deg;<br />
                 longitude: <span id="longitude"></span>&deg;
-            </p>
+            </p> -->
             <div class="break"></div>
-            <img src="" alt="" id="img">
             <div class="break"></div>
-            <button id="geolocate">Submit location</button>
+            <div class="container">
+                <h2>ABOUT</h2>
+                <p>Google Cloud View is a project that displays a Google Street View image of the clouds above your current location. </p>
+                <p>Visitors can request a Cloud View image by clicking the 'Submit' button. This prompts the browser for permission to use your current latitude and longitude, sending it to the Google Street View API and returning an image.</p>
+                <div class="img">
+                    <img src="" alt="">
+                </div>
+                <button id="geolocate">Submit location</button>
+            </div>
         </div>
     </main>
   </body>

@@ -2,13 +2,29 @@ body, html {
     font-family: Helvetica, sans-serif;
     background-color: #FFF;
     /* background-color: #000000; */
-    /* background-image: url('../images/clouds.png'); */
+    background-image: url('../images/clouds.png');
 }
 
 #stview {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.img {
+    border: 2px solid #000;
+    padding: 0px 0px;
+}
+
+.container {
+    background: #FFF;
+    border: 2px solid #000;
+    border-radius: 25px;
+    padding: 10px 25px;
+    margin: 10px 0px;
+    width: calc(300px + 5vw);
+
+    text-align: center;
 }
 
 .break {
