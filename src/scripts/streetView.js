@@ -26,12 +26,12 @@ document.getElementById('geolocate').addEventListener('click', event => {
             const json = await response.json();
             let key = json.api;
             apiKey = `&key=${key}`;
-            let img = document.getElementById("img");
+            let img = document.getElementById("result");
             img.src = getUrl();
             img.onload = () => {
                 img.alt = "Street view image of the sky above current location";
                 console.log("loaded");
-                let imgContainer = document.getElementsByClassName("imgContainer")[0];
+                let imgContainer = document.getElementsByClassName("resultDiv")[0];
                 imgContainer.style.display = "block";
             }
         });
