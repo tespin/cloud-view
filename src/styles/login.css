@@ -1,0 +1,18 @@
+button {
+    padding: 4px;
+    margin: 8px auto;
+    font-size: 14px;
+}
+
+form section {
+    display: flex;
+    justify-content: center;
+    margin: 14px 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 6px;
+}
