@@ -26,11 +26,11 @@ body, html {
     height: 0;
 }
 
-#resultDiv {
-    margin: 10px 0;
+#response .container{
+    display: none;
 }
 
-#resultDiv img {
+#response img {
     width: 100%;
     height: auto;
 }

@@ -31,7 +31,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
             img.onload = () => {
                 img.alt = "Street view image of the sky above current location";
                 console.log("loaded");
-                let imgContainer = document.getElementsByClassName("resultDiv")[0];
+                let imgContainer = document.getElementsByClassName("response")[0];
                 imgContainer.style.display = "block";
             }
         });
