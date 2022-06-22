@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 //     // console.log('not found');
 //     // res.sendFile('/views/first.html');
 // });
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname, '/public'));
 
 // app.set('views', path.join(__dirname, 'views'));
 app.use(express.json({limit: '1mb'}));
