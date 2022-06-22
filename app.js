@@ -8,7 +8,7 @@ app.use(express.static(__dirname + '/public'));
 // app.set('views', path.join(__dirname, 'views'));
 app.use(express.json({limit: '1mb'}));
 app.route('/').get((req, res) => {
-    res.render('/views/first.html');
+    res.render('views/first.html');
 });
 app.post('/api', (request, response) => {
     const data = request.body;
