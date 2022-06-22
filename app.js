@@ -6,7 +6,7 @@ app.listen(port, () => console.log(`listening at port ${port}`));
 app.use(express.static('public'));
 app.use(express.static('views'));
 app.get('/', (req, res) => {
-    res.sendFile('/first.html');
+    res.sendFile('first.html');
     // res.sendFile('/public/views/first.html');    
 });
 // app.route('/').get((req, res) => {
