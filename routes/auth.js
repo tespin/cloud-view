@@ -4,8 +4,9 @@ const LocalStrategy = require('passport-local');
 let crypto = require('crypto');
 const router = express.Router();
 
-router.get('/signup.html', (req, res) => {
-    console.log('on sign up page');
+router.get('./signup.html', (req, res) => {
+    res.send('on sign up page');
+    // console.log('on sign up page');
     // res.sendFile('./signup.html');
 });
 
