@@ -5,7 +5,8 @@ let crypto = require('crypto');
 const router = express.Router();
 
 router.get('/signup.html', (req, res) => {
-    res.send('on sign up page');
+    console.log('on login page');
+    // res.send('on sign up page');
     // console.log('on sign up page');
     // res.sendFile('./signup.html');
 });
