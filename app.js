@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const passport = require('passport');
 const session = require('express-session');
-
+const authRouter = require('./routes/auth');
 const app = express();
 const port = process.env.PORT || 80;
 app.listen(port, () => console.log(`listening at port ${port}`));
@@ -16,7 +16,7 @@ app.use(express.static('public'));
 // app.route('/').get((req, res) => {
 //     res.sendFile(path.join(__dirname + '/views/first.html'));
 //     // console.log('not found');
-//     // res.sendFile('/views/first.html');
+//     // res.sendFile('/views/firs t.html');
 // });
 // app.use(express.static(__dirname, '/public'));
 
