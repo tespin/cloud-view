@@ -1,5 +1,8 @@
-const path = require('path');
 const express = require('express');
+const path = require('path');
+const passport = require('passport');
+const session = require('express-session');
+
 const app = express();
 const port = process.env.PORT || 80;
 app.listen(port, () => console.log(`listening at port ${port}`));
@@ -32,3 +35,5 @@ app.post('/api', (request, response) => {
         api: process.env.API_KEY
     });
 });
+
+module.exports = app;
