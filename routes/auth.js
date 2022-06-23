@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.get('/signup.html', (req, res, next) => {
     console.log('on signup page');
+    next();
 });
 
 module.exports = router;
