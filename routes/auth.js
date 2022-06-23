@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.get('/signup.html', (req, res) => {
     console.log('on sign up page');
+    res.sendFile('/signup.html');
 });
 
 module.exports = router;
