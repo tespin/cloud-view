@@ -7,6 +7,7 @@ const app = express();
 const port = process.env.PORT || 80;
 app.listen(port, () => console.log(`listening at port ${port}`));
 app.use(express.static('public'));
+app.use(express.json({limit: '1mb'}));
 app.use('/', authRouter);
 // app.use(express.static('views'));
 // app.get('/', (req, res) => {
@@ -22,7 +23,6 @@ app.use('/', authRouter);
 // app.use(express.static(__dirname, '/public'));
 
 // app.set('views', path.join(__dirname, 'views'));
-app.use(express.json({limit: '1mb'}));
 // app.route('/').get((req, res) => {
 //     console.log(path.join(__dirname + '/views/index.html'));
 //     res.sendFile(path.join(__dirname + '/views/index.html'));
