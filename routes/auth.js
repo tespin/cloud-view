@@ -4,9 +4,8 @@ const LocalStrategy = require('passport-local');
 let crypto = require('crypto');
 const router = express.Router();
 
-router.get('/index.html', (req, res, next) => {
+router.get('/index.html', (req, res) => {
     console.log('on home page');
-    next();
 });
 
 module.exports = router;
