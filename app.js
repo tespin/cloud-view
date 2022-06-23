@@ -3,8 +3,8 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 80;
 app.listen(port, () => console.log(`listening at port ${port}`));
-app.use(express.static('public'));
-app.use(express.static('views'));
+// app.use(express.static('public'));
+// app.use(express.static('views'));
 app.get('/', (req, res) => {
     res.render('./views/first.html');
     // res.sendFile('first.html');
