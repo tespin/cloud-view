@@ -1,3 +1,20 @@
+const { MongoClient } = require('mongodb');
+
+async function database(cb) {
+    const URI = process.env.MONGO_URI;
+
+    const client = new MongoClient(URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true });
+
+    try {
+        await client.connect();
+        await cb(client);
+    } catch (e) {
+        console.error(e);
+        throw new Error('Unable to connect to database');
+    }
+}
 // const sqlite3 = require('sqlite3');
 // const mkdirp = require('mkdirp');
 // const crypto = require('crypto');
@@ -40,4 +57,4 @@
 //     ]);
 // });
 
-// module.exports = db;
+module.exports = db;

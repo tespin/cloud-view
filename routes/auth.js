@@ -1,9 +1,68 @@
 const express = require('express');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-let crypto = require('crypto');
+const bcrypt = require('bcrypt');
+// let crypto = require('crypto');
 let db = require('../db');
+const app = require('../app');
+const objectID = require('mongodb').ObjectId;
 const router = express.Router();
+
+myDB(async client => {
+    const myDataBase = await client.db('database').collection('users');
+    app.get('/', (req, res) => {
+        myDataBase.insertOne({
+            username: 'test',
+            password: 'password'
+        })
+    })
+
+    function ensureAuthenticated(req, res, next) {
+        if (req.isAuthenticated()) {
+            return next();
+        }
+        res.redirect('/');
+    };
+
+    passport.serializeUser( (user, cb) => {
+        cb(null, user.id);
+    })
+
+    passport.deserializeUser( (id, cb) => {
+        myDataBase.findOne({ _id: new ObjectID(id)}, (err, doc) => {
+            cb(null, doc);
+        });
+    });
+
+    passport.use(new LocalStrategy( (username, password, cb) => {
+        myDataBase.findOne( {username: username}, (err, user) => {
+            console.log(`User ${username} attempted to log in.`);
+            if (err) { return cb(err); }
+            if (!user) { return cb(null, false, { message: 'Incorrect username or password'}); }
+
+            if (!bcrypt.compareSync(password, user.password)) {
+                return cb(null, false, { message: 'Incorrect username or password'});
+            }
+        });
+    }));
+
+    router.post('/login/password', passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/login.html'
+    }));
+    
+    // passport.serializeUser((user, cb) => {
+//     process.nextTick( () => {
+//         cb(null, { id: user.id, username: user.username });
+//     });
+// });
+
+// passport.deserializeUser( (user, cb) => {
+//     process.nextTick( () => {
+//         return cb(null, user);
+//     });
+// });
+})
 
 // passport.use(new LocalStrategy(function verify(username, password, cb) {
 //     db.get('SELECT * FROM users WHERE username = ?', [ username ], function(err, row) {
@@ -59,10 +118,10 @@ const router = express.Router();
 // });
 
 
-router.post('/login/password', passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login.html'
-}));
+// router.post('/login/password', passport.authenticate('local', {
+//     successRedirect: '/',
+//     failureRedirect: '/login.html'
+// }));
 // router.get('/signup.html', (req, res) => {
 //     console.log('on login page');
 //     // res.sendFile('/signup.html');

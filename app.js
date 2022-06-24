@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
-// const passport = require('passport');
-// // const session = require('express-session');
+const passport = require('passport');
+const session = require('express-session');
 // // const SQLiteStore = require('connect-sqlite3')(session);
 // // const authRouter = require('./routes/auth');
 const app = express();
@@ -10,13 +10,13 @@ const port = process.env.PORT || 80;
 
 app.listen(port, () => console.log(`listening at port ${port}`));
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(session({
-//     secret: 'keyboard cat',
-//     resave: false,
-//     saveUninitialized: false,
-//     store: new SQLiteStore({ db: 'sessions.db', dir: './var/db'})
-// }));
-// app.use(passport.authenticate('session'));
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+    store: new SQLiteStore({ db: 'sessions.db', dir: './var/db'})
+}));
+app.use(passport.authenticate('session'));
 app.use('/', authRouter);
 
 app.post('/api', (request, response) => {
