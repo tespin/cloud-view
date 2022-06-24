@@ -14,6 +14,7 @@ router.get('/signup.html', (req, res) => {
 
 router.get('/test', (req, res) => {
     console.log('test log');
+    res.send('on test page');
 })
 
 module.exports = router;
