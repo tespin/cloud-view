@@ -12,4 +12,8 @@ router.get('/signup.html', (req, res) => {
     // res.sendFile('./signup.html');
 });
 
+router.get('/test', (req, res) => {
+    console.log('test log');
+})
+
 module.exports = router;
