@@ -1,5 +1,5 @@
 const sqlite3 = require('better-sqlite3');
-const mkdirp = require('mkdir');
+const mkdirp = require('mkdirp');
 const crypto = require('crypto');
 
 mkdirp.sync('./var/db');
