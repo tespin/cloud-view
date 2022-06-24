@@ -17,7 +17,7 @@ db.serialize( () => {
         email_verified INTEGER \ )"
     ).run();
     
-    const federated = db.prepare("CREATE TABLE IF NOT EXISTS federated_credentials ( \
+    db.prepare("CREATE TABLE IF NOT EXISTS federated_credentials ( \
         id INTEGER PRIMARY KEY, \
         user_id INTEGER NOT NULL, \
         provider TEXT NOT NULL, \
@@ -25,7 +25,7 @@ db.serialize( () => {
         UNIQUE (provider, subject) \ )"
     ).run();
     
-    const saved = db.prepare("CREATE TABLE IF NOT EXISTS saved ( \
+    db.prepare("CREATE TABLE IF NOT EXISTS saved ( \
         id INTEGER PRIMARY KEY, \
         owner_id INTEGER NOT NULL, \
         date TEXT NOT NULL, \
