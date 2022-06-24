@@ -7,7 +7,6 @@ const authRouter = require('./routes/auth');
 const app = express();
 const port = process.env.PORT || 80;
 app.listen(port, () => console.log(`listening at port ${port}`));
-app.use('/', authRouter);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: 'keyboard cat',
@@ -16,6 +15,7 @@ app.use(session({
     store: new SQLiteStore({ db: 'sessions.db', dir: './var/db'})
 }));
 app.use(passport.authenticate('session'));
+app.use('/', authRouter);
 app.use(express.json({limit: '1mb'}));
 
 app.post('/api', (request, response) => {
