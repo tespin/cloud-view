@@ -5,6 +5,7 @@ const session = require('express-session');
 const SQLiteStore = require('connect-sqlite3')(session);
 const authRouter = require('./routes/auth');
 const app = express();
+app.use(express.json({limit: '1mb'}));
 const port = process.env.PORT || 80;
 app.listen(port, () => console.log(`listening at port ${port}`));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -16,7 +17,6 @@ app.use(session({
 }));
 app.use(passport.authenticate('session'));
 app.use('/', authRouter);
-app.use(express.json({limit: '1mb'}));
 
 app.post('/api', (request, response) => {
     const data = request.body;
