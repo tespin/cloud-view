@@ -38,6 +38,8 @@ db.serialize( () => {
         crypto.pbkdf2Sync('password', salt, 310000, 32, 'sha256'),
         salt
     ]);
+
+    db.close();
 });
 
 module.exports = db;
