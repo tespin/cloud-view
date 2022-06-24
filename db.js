@@ -34,7 +34,7 @@ db.serialize( () => {
 
     let salt = crypto.randomBytes(16);
     db.run("INSERT OR IGNORE INTO users (username, hashed_password, salt) VALUES (?, ?, ?)", [
-        'testAccount',
+        'test',
         crypto.pbkdf2Sync('password', salt, 310000, 32, 'sha256'),
         salt
     ]);

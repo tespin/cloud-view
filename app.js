@@ -7,6 +7,7 @@ const authRouter = require('./routes/auth');
 const app = express();
 app.use(express.json({limit: '1mb'}));
 const port = process.env.PORT || 80;
+
 app.listen(port, () => console.log(`listening at port ${port}`));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
