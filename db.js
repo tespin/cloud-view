@@ -37,9 +37,7 @@ db.serialize( () => {
         'testAccount',
         crypto.pbkdf2Sync('password', salt, 310000, 32, 'sha256'),
         salt
-    ]);
-
-    db.close();
+    ]).run();
 });
 
 module.exports = db;
