@@ -18,18 +18,18 @@ db(async client => {
         res.redirect('/');
     };
 
-    passport.serializeUser( (user, cb) => {
+    passport.serializeUser( function(user, cb) {
         cb(null, user.id);
     })
 
-    passport.deserializeUser( (id, cb) => {
-        myDataBase.findOne({ _id: new ObjectID(id)}, (err, doc) => {
+    passport.deserializeUser( function(id, cb) {
+        myDataBase.findOne({ _id: new ObjectID(id)}, function(err, doc) {
             cb(null, doc);
         });
     });
 
-    passport.use(new LocalStrategy( (username, password, cb) => {
-        myDataBase.findOne( {username: username}, (err, user) => {
+    passport.use(new LocalStrategy( function(username, password, cb) {
+        myDataBase.findOne( {username: username}, function(err, user) {
             console.log(`User ${username} attempted to log in.`);
             if (err) { return cb(err); }
             if (!user) { return cb(null, false, { message: 'Incorrect username or password'}); }
@@ -40,9 +40,9 @@ db(async client => {
         });
     }));
 
-    router.post('/signup', (req, res, next) => {
+    router.post('/signup', function(req, res, next) {
         console.log(`attempting signup ${req.body}`);
-        myDataBase.findOne({ username: req.body.username}, (err, user) => {
+        myDataBase.findOne({ username: req.body.username}, function(err, user) {
             if (err) { next(err); }
             else if (user) { res.redirect('/'); }
             else {
@@ -50,7 +50,7 @@ db(async client => {
                 myDataBase.insertOne ({
                     username: req.body.username,
                     password: hash
-                }, (err, doc) => {
+                }, function(err, doc) {
                         if (err) { res.redirect('/signup.html'); }
                         else { next(null, doc.ops[0]); }
                     }
@@ -58,7 +58,7 @@ db(async client => {
             }
         })
     },  passport.authenticate('local', { failureRedirect: '/'}),
-            (req, res, next) => {
+            function(req, res, next) {
                 res.redirect('/');
             }
 ) 
