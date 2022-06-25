@@ -8,7 +8,7 @@ const app = require('../app');
 const objectID = require('mongodb').ObjectId;
 const router = express.Router();
 
-myDB(async client => {
+db(async client => {
     const myDataBase = await client.db('database').collection('users');
     app.get('/', (req, res) => {
         myDataBase.insertOne({
