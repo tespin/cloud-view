@@ -3,7 +3,7 @@ const path = require('path');
 const passport = require('passport');
 const session = require('express-session');
 // // const SQLiteStore = require('connect-sqlite3')(session);
-// // const authRouter = require('./routes/auth');
+const authRouter = require('./routes/auth');
 const app = express();
 app.use(express.json({limit: '1mb'}));
 const port = process.env.PORT || 80;
