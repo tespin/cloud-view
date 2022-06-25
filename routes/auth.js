@@ -51,8 +51,8 @@ db(async client => {
                     username: req.body.username,
                     password: hash
                 }, function(err, doc) {
-                        if (err) { res.redirect('/signup.html'); }
-                        else { next(null, doc.ops[0]); }
+                        if (err) { return next(err); }
+                        else { res.redirect('/'); }
                     }
                 )
             }
