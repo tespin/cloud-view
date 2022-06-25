@@ -19,7 +19,7 @@ db(async client => {
     };
 
     passport.serializeUser( function(user, cb) {
-        cb(null, user.id);
+        cb(null, user._id);
     })
 
     passport.deserializeUser( function(id, cb) {
