@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 
-async function database(cb) {
+async function main(cb) {
     const URI = process.env.MONGO_URI;
 
     const client = new MongoClient(URI, {
@@ -57,4 +57,4 @@ async function database(cb) {
 //     ]);
 // });
 
-module.exports = db;
+module.exports = main;
