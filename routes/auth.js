@@ -10,7 +10,7 @@ const router = express.Router();
 
 db(async client => {
     const myDataBase = await client.db('database').collection('users');
-    app.get('/', (req, res) => {
+    router.get('/', (req, res) => {
         myDataBase.insertOne({
             username: 'test',
             password: 'password'
