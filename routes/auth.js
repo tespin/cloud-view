@@ -10,12 +10,6 @@ const router = express.Router();
 
 db(async client => {
     const myDataBase = await client.db('database').collection('users');
-    router.get('/', (req, res) => {
-        myDataBase.insertOne({
-            username: 'test',
-            password: 'password'
-        })
-    })
 
     function ensureAuthenticated(req, res, next) {
         if (req.isAuthenticated()) {
@@ -45,6 +39,28 @@ db(async client => {
             }
         });
     }));
+
+    router.post('/signup', (req, res, next) => {
+        myDataBase.findOne({ username: req.body.username}, (err, user) => {
+            if (err) { next(err); }
+            else if (user) { res.redirect('/'); }
+            else {
+                const hash = bcrypt.hashSync(req.body.password, 12);
+                myDataBase.insertOne ({
+                    username: req.body.username,
+                    password: hash
+                }, (err, doc) => {
+                        if (err) { res.redirect('/signup.html'); }
+                        else { next(null, doc.ops[0]); }
+                    }
+                )
+            }
+        })
+    },  passport.authenticate('local', { failureRedirect: '/'}),
+            (req, res, next) => {
+                res.redirect('/');
+            }
+) 
 
     router.post('/login/password', passport.authenticate('local', {
         successRedirect: '/',
