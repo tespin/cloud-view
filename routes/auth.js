@@ -23,7 +23,7 @@ db(async client => {
     })
 
     passport.deserializeUser( function(id, cb) {
-        myDataBase.findOne({ _id: new ObjectID(id)}, function(err, doc) {
+        myDataBase.findOne({ _id: new ObjectId(id)}, function(err, doc) {
             cb(null, doc);
         });
     });
