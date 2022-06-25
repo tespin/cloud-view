@@ -57,16 +57,22 @@ db(async client => {
                 )
             }
         })
-    },  passport.authenticate('local', { failureRedirect: '/'}),
+    },  passport.authenticate('local', { failureRedirect: '/signup.html'}),
             function(req, res, next) {
                 res.redirect('/');
             }
-) 
-
+    );
+    
     router.post('/login/password', passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/login.html'
     }));
+}); 
+
+    // router.post('/login/password', passport.authenticate('local', {
+    //     successRedirect: '/',
+    //     failureRedirect: '/login.html'
+    // }));
     
     // passport.serializeUser((user, cb) => {
 //     process.nextTick( () => {
