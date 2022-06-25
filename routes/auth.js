@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 // let crypto = require('crypto');
 let db = require('../db');
 const app = require('../app');
-const objectID = require('mongodb').ObjectId;
+const ObjectID = require('mongodb').ObjectId;
 const router = express.Router();
 
 db(async client => {
@@ -23,7 +23,7 @@ db(async client => {
     })
 
     passport.deserializeUser( function(id, cb) {
-        myDataBase.findOne({ _id: new ObjectId(id)}, function(err, doc) {
+        myDataBase.findOne({ _id: new ObjectID(id)}, function(err, doc) {
             cb(null, doc);
         });
     });
