@@ -72,11 +72,17 @@ db(async client => {
             res.redirect('/profile.html');
         }
     );
-
-    router.post('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
+    
+    router.get('/logout', function(req, res, next) {
+        req.logout(function(err) {
+            if (err) { return next(err); }
+            res.redirect('/');
+        });
     })
+    // router.post('/logout', function(req, res) {
+    //     req.logout();
+    //     res.redirect('/index.html');
+    // })
 }); 
 
     // router.post('/login/password', passport.authenticate('local', {
