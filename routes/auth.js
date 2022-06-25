@@ -41,7 +41,7 @@ db(async client => {
     }));
 
     router.post('/signup', (req, res, next) => {
-        console.log(req.body);
+        console.log(`attempting signup ${req.body}`);
         myDataBase.findOne({ username: req.body.username}, (err, user) => {
             if (err) { next(err); }
             else if (user) { res.redirect('/'); }
