@@ -37,6 +37,8 @@ db(async client => {
             if (!bcrypt.compareSync(password, user.password)) {
                 return cb(null, false, { message: 'Incorrect username or password'});
             }
+
+            return cb(null, user);
         });
     }));
 
