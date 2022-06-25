@@ -66,7 +66,10 @@ db(async client => {
     router.post('/login/password', passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/login.html'
-    }));
+    }), function(req, res, next) {
+            res.redirect('/');
+        }
+    );
 }); 
 
     // router.post('/login/password', passport.authenticate('local', {
