@@ -32,8 +32,8 @@ document.getElementById('geolocate').addEventListener('click', event => {
                 img.alt = "Street view image of the sky above current location";
                 console.log("loaded");
                 // let imgContainer = document.getElementsByClassName("response")[0];
-                let imgContainer = document.getElementById("response");
-                imgContainer.style.display = "block";
+                // let imgContainer = document.getElementById("response");
+                // imgContainer.style.display = "block";
             }
         });
     } else {

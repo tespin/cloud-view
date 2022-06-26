@@ -31,7 +31,7 @@ body, html {
 }
 
 #response {
-    display: none;
+    /* display: none; */
 }
 
 #response img {
