@@ -35,10 +35,10 @@ function getBase64Image(img, cb) {
     cb(dataURL);
   }
   
-async function postBase64(dateUrl) {
+async function postBase64(base64) {
     // console.log('posting:');
     // console.log(dateUrl);
-    const data = { dateUrl };
+    const data = { base64 };
     const options = {
         method: 'POST', headers: {
             'Content-Type': 'application/json'
