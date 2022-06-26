@@ -13,6 +13,7 @@ db(async client => {
 
     function ensureAuthenticated(req, res, next) {
         if (req.isAuthenticated()) {
+            console.log('authenticated');
             return next();
         }
         res.redirect('/login.html');
