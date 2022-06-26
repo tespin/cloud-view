@@ -9,7 +9,7 @@
 
 #gallery .entry {
     width: 30%;
-    height: auto;
+    aspect-ratio: 1/1;
 }
 
 #gallery img {
