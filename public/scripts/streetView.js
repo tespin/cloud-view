@@ -34,8 +34,6 @@ document.getElementById('geolocate').addEventListener('click', event => {
                 console.log("loaded");
                 let responseContainer = document.getElementById("response");
                 responseContainer.style.display = "block";
-                base64 = getBase64Image(img);
-                console.log(base64);
                 // let canvas = document.createElement("canvas");
                 // canvas.width = img.width;
                 // canvas.height = img.height;
@@ -51,27 +49,6 @@ document.getElementById('geolocate').addEventListener('click', event => {
     }
 });
 
-document.getElementById('save').addEventListener('click', event => {
-    // if image is not undefined
-
-    let img = document.getElementById("result");
-    console.log(img.src);
-    // let base64 = getBase64Image(async img => {
-    //     const data = { base64 };
-
-    //     const options = {
-    //         method: 'POST', headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(data)
-    //     };
-
-    //     const response = await fetch('save', options);
-    //     const json = await response.json();
-    //     console.log(json.base64);
-    // });
-});
-
 function getUrl() {
     let parentDiv = document.getElementsByClassName("container")[0];
     let size = `size=${parentDiv.offsetWidth}x${parentDiv.offsetWidth}`;
@@ -79,15 +56,3 @@ function getUrl() {
     let url = api + size + loc + fov + heading + pitch + apiKey;
     return url;
 }
-
-function getBase64Image(img) {
-    let canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-    let ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
-    let dataURL = canvas.toDataURL("image/png");
-    // return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-    return dataURL;
-  }
-  
