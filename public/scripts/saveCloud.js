@@ -41,7 +41,7 @@ async function postBase64(dateUrl) {
     const data = { dateUrl };
     const options = {
         method: 'POST', headers: {
-            'Content0Type': 'application/json'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
     };
