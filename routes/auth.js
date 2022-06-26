@@ -15,7 +15,7 @@ db(async client => {
         if (req.isAuthenticated()) {
             return next();
         }
-        res.redirect('/');
+        res.redirect('/login.html');
     };
 
     passport.serializeUser( function(user, cb) {
