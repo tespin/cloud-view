@@ -82,6 +82,7 @@ db(async client => {
     });
 
     router.get('/profile.html', ensureAuthenticated, function(req, res) {
+        console.log(req.isAuthenticated);
         res.render('/profile.html');
     });
 
