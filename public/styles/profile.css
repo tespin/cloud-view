@@ -16,7 +16,7 @@
     border-radius: 10px;
 }
 
-#gallery .entry {
+#gallery p {
     width: 30%;
     height: auto;
 }
