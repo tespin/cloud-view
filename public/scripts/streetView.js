@@ -49,20 +49,24 @@ document.getElementById('geolocate').addEventListener('click', event => {
     }
 });
 
-// document.getElementById('save').addEventListener('click', event => {
-//     // if image is not undefined
+document.getElementById('save').addEventListener('click', event => {
+    // if image is not undefined
 
-//     let img = document.getElementById("result");
-//     let base64 = getBase64Image(img);
-//     const data = { base64 };
+    let img = document.getElementById("result");
+    let base64 = getBase64Image(img);
+    const data = { base64 };
 
-//     const options = {
-//         method: 'POST', headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(data)
-//     };
-// });
+    const options = {
+        method: 'POST', headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
+
+    const response = await fetch('api', options);
+    const json = await response.json();
+    console.log(json.base64);
+});
 
 function getUrl() {
     let parentDiv = document.getElementsByClassName("container")[0];

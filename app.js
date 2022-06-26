@@ -30,4 +30,12 @@ app.post('/api', (request, response) => {
     });
 });
 
+app.post('/save', (request, response) => {
+    const data = request.body;
+    response.json({
+        status: 'success',
+        base64: data.base64
+    });
+});
+
 module.exports = app;
