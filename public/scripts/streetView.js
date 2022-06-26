@@ -33,6 +33,12 @@ document.getElementById('geolocate').addEventListener('click', event => {
                 console.log("loaded");
                 let responseContainer = document.getElementById("response");
                 responseContainer.style.display = "block";
+
+                // let canvas = document.createElement("canvas");
+                // canvas.width = img.width;
+                // canvas.height = img.height;
+                // let context = canvas.getContext("2d");
+                // context.drawImage(img, 0, 0);
                 // let imgContainer = document.getElementsByClassName("response")[0];
                 // let imgContainer = document.getElementById("response");
                 // imgContainer.style.display = "block";
@@ -43,6 +49,14 @@ document.getElementById('geolocate').addEventListener('click', event => {
     }
 });
 
+document.getElementById('save').addEventListener('click', event => {
+    // if image is not undefined
+
+    let img = document.getElementById("result");
+    let base64 = getBase64Image(img);
+    const data = { base64 };
+});
+
 function getUrl() {
     let parentDiv = document.getElementsByClassName("container")[0];
     let size = `size=${parentDiv.offsetWidth}x${parentDiv.offsetWidth}`;
@@ -50,3 +64,15 @@ function getUrl() {
     let url = api + size + loc + fov + heading + pitch + apiKey;
     return url;
 }
+
+function getBase64Image(img) {
+    let canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    let ctx = canvas.getContext("2d");
+    let.drawImage(img, 0, 0);
+    let dataURL = canvas.toDataURL("image/png");
+    // return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    return dataURL;
+  }
+  

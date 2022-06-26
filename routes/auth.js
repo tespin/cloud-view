@@ -79,6 +79,11 @@ db(async client => {
             res.redirect('/');
         });
     })
+
+    router.post('/save', (req, res, next) {
+        if (err) { next(err) };
+        console.log('attemped to save image');
+    })
     // router.post('/logout', function(req, res) {
     //     req.logout();
     //     res.redirect('/index.html');
