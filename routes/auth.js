@@ -82,6 +82,10 @@ db(async client => {
 
     router.post('/save', function(req, res) {
         console.log('attemped to save image');
+        // buttons are stacked because i added a form around one button
+        // tomorrow todo: 1) figure out how to use button to save image
+        // 2) by save image i mean convert img to base64, send to server to find user's account,
+        // 3) then have personal image gallery populates
     });
     // router.post('/logout', function(req, res) {
     //     req.logout();
