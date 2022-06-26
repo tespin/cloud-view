@@ -18,16 +18,6 @@ db(async client => {
         res.redirect('/login.html');
     };
 
-    passport.serializeUser( function(user, cb) {
-        cb(null, user._id);
-    })
-
-    passport.deserializeUser( function(id, cb) {
-        myDataBase.findOne({ _id: new ObjectID(id)}, function(err, doc) {
-            cb(null, doc);
-        });
-    });
-
     passport.use(new LocalStrategy( function(username, password, cb) {
         myDataBase.findOne( {username: username}, function(err, user) {
             console.log(`User ${username} attempted to log in.`);
@@ -41,6 +31,16 @@ db(async client => {
             return cb(null, user);
         });
     }));
+
+    passport.serializeUser( function(user, cb) {
+        cb(null, user._id);
+    })
+
+    passport.deserializeUser( function(id, cb) {
+        myDataBase.findOne({ _id: new ObjectID(id)}, function(err, doc) {
+            cb(null, doc);
+        });
+    });
 
     router.post('/signup', function(req, res, next) {
         // console.log(`attempting signup ${req.body.username}`);
