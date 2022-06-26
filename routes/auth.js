@@ -85,7 +85,7 @@ db(async client => {
         successRedirect: '/profile.html',
         failureRedirect: '/login.html'
     }), function(req, res, next) {
-            res.redirect('/profile.html');
+            console.log(req.body);
         }
     );
     // router.get('/profile.html', ensureAuthenticated, function(req, res) {
