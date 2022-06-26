@@ -82,7 +82,7 @@ db(async client => {
     });
 
     router.get('/profile.html', passport.authenticate('local', {
-        successRedirect: '/profile.html',
+        successRedirect: '/',
         failureRedirect: '/login.html'
     }), function(req, res, next) {
             console.log(req.body);
