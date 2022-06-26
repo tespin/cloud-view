@@ -2,8 +2,11 @@ document.getElementById('save').addEventListener('click', event => {
     // if image is not undefined
 
     let img = document.getElementById("result");
-    console.log(img.src);
-    console.log(getBase64Image(img));
+    // console.log(img.src);
+    // console.log(getBase64Image(img));
+    let base64 = getBase64Image(async img => {
+        console.log('retrieving');)
+    })
     // let base64 = getBase64Image(async img => {
     //     const data = { base64 };
 
