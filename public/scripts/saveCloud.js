@@ -2,7 +2,7 @@ document.getElementById('save').addEventListener('click', event => {
     // if image is not undefined
 
     let img = document.getElementById("result");
-    let base64 = getBase64Image(img, postBase64);
+    let base64 = getBase64Image(img, postBase64(base64));
     // console.log(img.src);
     // console.log(getBase64Image(img));
     // let base64 = getBase64Image(async img => {
@@ -37,5 +37,5 @@ function getBase64Image(img, cb) {
   
 function postBase64(dateUrl) {
     console.log('posting:');
-    console.log('dateUrl');
+    console.log(dateUrl);
 }
