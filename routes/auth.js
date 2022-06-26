@@ -78,12 +78,12 @@ db(async client => {
             if (err) { return next(err); }
             res.redirect('/');
         });
-    })
+    });
 
-    router.post('/save', (req, res, next) {
-        if (err) { next(err) };
+    router.post('/save', function(req, res, next) {
+        if (err) { return next(err) };
         console.log('attemped to save image');
-    })
+    });
     // router.post('/logout', function(req, res) {
     //     req.logout();
     //     res.redirect('/index.html');
