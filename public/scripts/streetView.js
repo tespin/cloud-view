@@ -32,7 +32,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
                 img.alt = "Street view image of the sky above current location";
                 console.log("loaded");
                 let responseContainer = document.getElementById("response");
-                responseContainer.style.displsay = "block";
+                responseContainer.style.display = "block";
                 // let imgContainer = document.getElementsByClassName("response")[0];
                 // let imgContainer = document.getElementById("response");
                 // imgContainer.style.display = "block";
