@@ -9,7 +9,7 @@
 
 #gallery .entry {
     width: 30%;
-    padding: 0 6px;
+    padding: 0.25em;
 
 }
 
@@ -21,7 +21,6 @@
     border-radius: 10px; 
 }
 
-/* #gallery p {
-    width: 30%;
-    height: auto;
-} */
+#gallery p {
+    margin: 4px auto;
+}
