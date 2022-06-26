@@ -81,13 +81,17 @@ db(async client => {
         });
     });
 
-    router.get('/profile.html', passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: '/login.html'
-    }), function(req, res, next) {
-            console.log(req.body);
-        }
-    );
+    router.get('/profile.html', function(req, res) {
+        console.log('profile');
+    })
+
+    // router.get('/profile.html', passport.authenticate('local', {
+    //     successRedirect: '/',
+    //     failureRedirect: '/login.html'
+    // }), function(req, res, next) {
+    //         console.log(req.body);
+    //     }
+    // );
     // router.get('/profile.html', ensureAuthenticated, function(req, res) {
     //     console.log(req.isAuthenticated);
     //     res.render('/profile.html');
