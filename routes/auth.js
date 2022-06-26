@@ -80,8 +80,7 @@ db(async client => {
         });
     });
 
-    router.post('/save', function(req, res, next) {
-        if (err) { return next(err) };
+    router.post('/save', function(req, res) {
         console.log('attemped to save image');
     });
     // router.post('/logout', function(req, res) {
