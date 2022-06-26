@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const passport = require('passport');
 const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
 // // const SQLiteStore = require('connect-sqlite3')(session);
 const authRouter = require('./routes/auth');
 const app = express();
@@ -15,7 +16,11 @@ app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true } 
+    store: new MongoDBStore({
+        uri: process.env.MONGO_URI,
+        collection: 'sessions'
+    })
+    // cookie: { secure: true } 
 }));
 app.use(passport.authenticate('session'));
 app.use('/', authRouter);
