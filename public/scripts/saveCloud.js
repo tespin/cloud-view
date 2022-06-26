@@ -3,6 +3,7 @@ document.getElementById('save').addEventListener('click', event => {
 
     let img = document.getElementById("result");
     console.log(img.src);
+    console.log(getBase64Image(img));
     // let base64 = getBase64Image(async img => {
     //     const data = { base64 };
 
