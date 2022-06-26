@@ -53,7 +53,7 @@ document.getElementById('save').addEventListener('click', event => {
     // if image is not undefined
 
     let img = document.getElementById("result");
-    let base64 = getBase64Image(img, () => {
+    let base64 = getBase64Image(async img => {
         const data = { base64 };
 
         const options = {
@@ -63,7 +63,7 @@ document.getElementById('save').addEventListener('click', event => {
             body: JSON.stringify(data)
         };
 
-        const response = await fetch('api', options);
+        const response = await fetch('save', options);
         const json = await response.json();
         console.log(json.base64);
     });
@@ -77,7 +77,7 @@ function getUrl() {
     return url;
 }
 
-async function getBase64Image(img, cb) {
+function getBase64Image(img) {
     let canvas = document.createElement("canvas");
     canvas.width = img.width;
     canvas.height = img.height;
