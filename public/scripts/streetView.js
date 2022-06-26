@@ -28,6 +28,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
             let key = json.api;
             apiKey = `&key=${key}`;
             let img = document.getElementById("result");
+            img.crossOrigin = "Anonymous";
             img.src = getUrl();
             img.onload = () => {
                 img.alt = "Street view image of the sky above current location";

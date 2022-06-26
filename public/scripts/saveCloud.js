@@ -2,7 +2,6 @@ document.getElementById('save').addEventListener('click', event => {
     // if image is not undefined
 
     let img = document.getElementById("result");
-    img.crossOrigin = "Anonymous";
     console.log(img.src);
     console.log(getBase64Image(img));
     // let base64 = getBase64Image(async img => {
