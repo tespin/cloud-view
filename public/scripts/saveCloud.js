@@ -35,7 +35,7 @@ function getBase64Image(img, cb) {
     cb(dataURL);
   }
   
-function postBase64(dateUrl) {
+async function postBase64(dateUrl) {
     // console.log('posting:');
     // console.log(dateUrl);
     const data = { dateUrl };
