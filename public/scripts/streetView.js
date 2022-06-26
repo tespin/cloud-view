@@ -54,7 +54,8 @@ document.getElementById('geolocate').addEventListener('click', event => {
 document.getElementById('save').addEventListener('click', event => {
     // if image is not undefined
 
-    // let img = document.getElementById("result");
+    let img = document.getElementById("result");
+    console.log(img.src);
     // let base64 = getBase64Image(async img => {
     //     const data = { base64 };
 
