@@ -80,7 +80,7 @@ db(async client => {
         });
     });
 
-    router.get('/profile', ensureAuthenticated, function(req, res) {
+    router.get('/profile.html', ensureAuthenticated, function(req, res) {
         res.render('/profile.html');
     });
 
