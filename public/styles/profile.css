@@ -15,3 +15,8 @@
     border: 1px solid #FFF;
     border-radius: 10px;
 }
+
+#gallery .entry {
+    width: 30%;
+    height: auto;
+}
