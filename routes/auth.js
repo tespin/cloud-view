@@ -80,6 +80,10 @@ db(async client => {
         });
     });
 
+    router.get('/profile', ensureAuthenticated, function(req, res, next) {
+        res.render('/profile.html');
+    });
+
     // router.post('/save', function(req, res) {
     //     console.log('attemped to save image');
     //     // buttons are stacked because i added a form around one button
