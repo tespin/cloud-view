@@ -76,14 +76,14 @@ function getUrl() {
     return url;
 }
 
-// function getBase64Image(img) {
-//     let canvas = document.createElement("canvas");
-//     canvas.width = img.width;
-//     canvas.height = img.height;
-//     let ctx = canvas.getContext("2d");
-//     let.drawImage(img, 0, 0);
-//     let dataURL = canvas.toDataURL("image/png");
-//     // return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-//     return dataURL;
-//   }
+function getBase64Image(img) {
+    let canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    let ctx = canvas.getContext("2d");
+    let.drawImage(img, 0, 0);
+    let dataURL = canvas.toDataURL("image/png");
+    // return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    return dataURL;
+  }
   
