@@ -19,6 +19,10 @@ db(async client => {
         res.redirect('/login.html');
     };
 
+    router.get('/profile.html', function(req, res) {
+        res.send('test');
+    })
+
     passport.use(new LocalStrategy( function(username, password, cb) {
         myDataBase.findOne( {username: username}, function(err, user) {
             console.log(`User ${username} attempted to log in.`);
@@ -80,10 +84,6 @@ db(async client => {
             res.redirect('/');
         });
     });
-
-    router.post('/profile.html', function(req, res) {
-        res.send('test');
-    })
 
     // router.get('/profile.html', passport.authenticate('local', {
     //     successRedirect: '/',
