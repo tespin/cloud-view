@@ -24,6 +24,14 @@ router.post('/signup', function(req, res, next) {
             return next(err);
         }
 
+        const authenticate = User.authenticate();
+        authenticate('username', 'password', function(err, result) {
+            if (err) {
+                console.log(`There was an error authenticating: ${err}`);
+                return next(err);
+            }
+        });
+
         console.log('registration successful');
         res.redirect('/profile.html');
 
