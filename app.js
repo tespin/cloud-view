@@ -12,7 +12,6 @@ const port = process.env.PORT || 80;
 
 app.listen(port, () => console.log(`listening at port ${port}`));
 app.use('/', authRouter);
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
@@ -24,6 +23,7 @@ app.use(session({
     // cookie: { secure: true } 
 }));
 app.use(passport.authenticate('session'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/api', (request, response) => {
     const data = request.body;
