@@ -3,214 +3,262 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const bcrypt = require('bcrypt');
 // let crypto = require('crypto');
-let db = require('../db');
+// let db = require('../db');
+let User = require('../db');
 const app = require('../app');
 const ObjectID = require('mongodb').ObjectId;
 const router = express.Router();
 
-db(async client => {
-    const myDataBase = await client.db('database').collection('users');
+passport.use(User.createStrategy());
 
-    function ensureAuthenticated(req, res, next) {
-        if (req.isAuthenticated()) {
-            console.log('authenticated');
-            return next();
-        }
-        console.log('not authenticated');
-        res.redirect('/login.html');
-    };
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
-    router.use('/profile.html', ensureAuthenticated);
+router.use('/profile.html', ensureAuthenticated);
 
-    // router.get('/profile.html', ensureAuthenticated, function(req, res) {
-    //     // res.sendFile('/profile.html');
-    //     // res.render('/profile.html');
-    //     res.redirect('/profile.html');
-    // })
-    // router.get('/profile.html', function(req, res) {
-    //     res.send('test');
-    // })
-
-    router.post('/login/password', passport.authenticate('local', {
-        successRedirect: '/profile.html',
-        failureRedirect: '/login.html'
-    }), function(req, res, next) {
-            res.redirect('/profile.html');
-        }
-    );
-    passport.use(new LocalStrategy( function(username, password, cb) {
-        myDataBase.findOne( {username: username}, function(err, user) {
-            console.log(`User ${username} attempted to log in.`);
-            if (err) { return cb(err); }
-            if (!user) { return cb(null, false, { message: 'Incorrect username or password'}); }
-
-            if (!bcrypt.compareSync(password, user.password)) {
-                return cb(null, false, { message: 'Incorrect username or password'});
+router.post('/signup', function(req, res, next) {
+    console.log(`attempting to register user: ${req.body.username}`);
+    UserModel.register(new User({ username: req.body.username}), req.body.password, function(err, user) {
+            if (err) { 
+                console.log(err);
+                return next(err);
+                // res.redirect('/signup.html');
             }
+            passport.authenticate('local', { failureRedirect: '/signup.html'}),
+                function(req, res, next) {
+                    res.redirect('/profile.html');
+                }
+        } 
+    )
+});
 
-            return cb(null, user);
-        });
-    }));
+router.post('/login/password', passport.authenticate('local', {
+    successRedirect: '/profile.html',
+    failureRedirect: '/login.html'
+}), function(req, res, next) {
+        res.redirect('/profile.html');
+    }
+);
 
-    passport.serializeUser( function(user, cb) {
-        cb(null, user._id);
-    })
-
-    passport.deserializeUser( function(id, cb) {
-        myDataBase.findOne({ _id: new ObjectID(id)}, function(err, user) {
-            cb(null, user);
-        });
+router.post('/logout', function(req, res, next) {
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        res.redirect('/');
     });
+});
 
-    router.post('/signup', function(req, res, next) {
-        // console.log(`attempting signup ${req.body.username}`);
-        myDataBase.findOne({ username: req.body.username}, function(err, user) {
-            if (err) { next(err); }
-            else if (user) { res.redirect('/profile.html'); }
-            else {
-                const hash = bcrypt.hashSync(req.body.password, 12);
-                myDataBase.insertOne ({
-                    username: req.body.username,
-                    password: hash
-                }, function(err, doc) {
-                        if (err) { return next(err); }
-                        else { res.redirect('/profile.html'); }
-                    }
-                )
-            }
-        })
-    },  passport.authenticate('local', { failureRedirect: '/signup.html'}),
-            function(req, res, next) {
-                res.redirect('/profile.html');
-            }
-    );
-    
-    router.post('/login/password', passport.authenticate('local', {
-        successRedirect: '/profile.html',
-        failureRedirect: '/login.html'
-    }), function(req, res, next) {
-            res.redirect('/profile.html');
-        }
-    );
-    
-    router.post('/logout', function(req, res, next) {
-        req.logout(function(err) {
-            if (err) { return next(err); }
-            res.redirect('/');
-        });
-    });
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        console.log('authenticated');
+        return next();
+    }
+    console.log('not authenticated');
+    res.redirect('/login.html');
+};
 
-    // router.get('/profile.html', passport.authenticate('local', {
-    //     successRedirect: '/',
-    //     failureRedirect: '/login.html'
-    // }), function(req, res, next) {
-    //         console.log(req.body);
-    //     }
-    // );
-    // router.get('/profile.html', ensureAuthenticated, function(req, res) {
-    //     console.log(req.isAuthenticated);
-    //     res.render('/profile.html');
-    // });
+// db(async client => {
+//     // const myDataBase = await client.db('database').collection('users');
 
-    // router.post('/save', function(req, res) {
-    //     console.log('attemped to save image');
-    //     // buttons are stacked because i added a form around one button
-    //     // tomorrow todo: 1) figure out how to use button to save image
-    //     // 2) by save image i mean convert img to base64, send to server to find user's account,
-    //     // 3) then have personal image gallery populates
-    // });
-    // router.post('/logout', function(req, res) {
-    //     req.logout();
-    //     res.redirect('/index.html');
-    // })
-}); 
+//     function ensureAuthenticated(req, res, next) {
+//         if (req.isAuthenticated()) {
+//             console.log('authenticated');
+//             return next();
+//         }
+//         console.log('not authenticated');
+//         res.redirect('/login.html');
+//     };
 
-    // router.post('/login/password', passport.authenticate('local', {
-    //     successRedirect: '/',
-    //     failureRedirect: '/login.html'
-    // }));
-    
-    // passport.serializeUser((user, cb) => {
-//     process.nextTick( () => {
-//         cb(null, { id: user.id, username: user.username });
-//     });
-// });
+//     router.use('/profile.html', ensureAuthenticated);
 
-// passport.deserializeUser( (user, cb) => {
-//     process.nextTick( () => {
-//         return cb(null, user);
-//     });
-// });
+//     // router.get('/profile.html', ensureAuthenticated, function(req, res) {
+//     //     // res.sendFile('/profile.html');
+//     //     // res.render('/profile.html');
+//     //     res.redirect('/profile.html');
+//     // })
+//     // router.get('/profile.html', function(req, res) {
+//     //     res.send('test');
+//     // })
 
-// passport.use(new LocalStrategy(function verify(username, password, cb) {
-//     db.get('SELECT * FROM users WHERE username = ?', [ username ], function(err, row) {
-//         if (err) { return cb(err); }
-//         if (!row) { return cb(null, false, { message: 'Incorrect username or password.'}); }
-
-//         crypto.pbkdf2(password, row.salt, 310000, 32, 'sha256', function(err, hashedPassword) {
+//     router.post('/login/password', passport.authenticate('local', {
+//         successRedirect: '/profile.html',
+//         failureRedirect: '/login.html'
+//     }), function(req, res, next) {
+//             res.redirect('/profile.html');
+//         }
+//     );
+//     passport.use(new LocalStrategy( function(username, password, cb) {
+//         myDataBase.findOne( {username: username}, function(err, user) {
+//             console.log(`User ${username} attempted to log in.`);
 //             if (err) { return cb(err); }
-//             if (!crypto.timingSafeEqual(row.hashedPassword, hashedPassword)) {
+//             if (!user) { return cb(null, false, { message: 'Incorrect username or password'}); }
+
+//             if (!bcrypt.compareSync(password, user.password)) {
 //                 return cb(null, false, { message: 'Incorrect username or password'});
 //             }
 
-//             return cb(null, row);
+//             return cb(null, user);
+//         });
+//     }));
+
+//     passport.serializeUser( function(user, cb) {
+//         cb(null, user._id);
+//     })
+
+//     passport.deserializeUser( function(id, cb) {
+//         myDataBase.findOne({ _id: new ObjectID(id)}, function(err, user) {
+//             cb(null, user);
 //         });
 //     });
-// }));
 
-// passport.use(new LocalStrategy(function verify(username, password, cb) {
-//     db.prepare('SELECT * FROM users WHERE username = ?').get([username]), (err, row) => {
-//         if (err) { return cb(err); }
-//         if (!row) { return cb(null, false, { message: 'Incorrect username or password.'}); }
-        
-//         crypto.pbkdf2(password, row.salt, 310000, 32, 'sha256', (err, hashedPassword) => {
-//             if (err) { return cb(err); }
-//             if (!crypto.timingSafeEqual(row.hashed_password, hashedPassword)) {
-//                 return cb(null, false, { message: 'Incorrect username or password.'});
+//     router.post('/signup', function(req, res, next) {
+//         // console.log(`attempting signup ${req.body.username}`);
+//         myDataBase.findOne({ username: req.body.username}, function(err, user) {
+//             if (err) { next(err); }
+//             else if (user) { res.redirect('/profile.html'); }
+//             else {
+//                 const hash = bcrypt.hashSync(req.body.password, 12);
+//                 myDataBase.insertOne ({
+//                     username: req.body.username,
+//                     password: hash
+//                 }, function(err, doc) {
+//                         if (err) { return next(err); }
+//                         else { res.redirect('/profile.html'); }
+//                     }
+//                 )
 //             }
-
-//             return cb(null, row);
+//         })
+//     },  passport.authenticate('local', { failureRedirect: '/signup.html'}),
+//             function(req, res, next) {
+//                 res.redirect('/profile.html');
+//             }
+//     );
+    
+//     router.post('/login/password', passport.authenticate('local', {
+//         successRedirect: '/profile.html',
+//         failureRedirect: '/login.html'
+//     }), function(req, res, next) {
+//             res.redirect('/profile.html');
+//         }
+//     );
+    
+//     router.post('/logout', function(req, res, next) {
+//         req.logout(function(err) {
+//             if (err) { return next(err); }
+//             res.redirect('/');
 //         });
-//     };
-// }));
-    // }));
-
-    //     crypto.pbkdf2(password, row.salt, 310000, 32, 'sha256', (err, hashedPassword {
-    //         if (err) { return cb(err); }
-    //         if (!crypto.timingSafeEqual(row.hashed_password, hashedPassword)) {
-    //             return cb(null, false, {message: 'Incorrect username or password.'});
-    //         });
-    //     });
-    // }));
-
-// passport.serializeUser((user, cb) => {
-//     process.nextTick( () => {
-//         cb(null, { id: user.id, username: user.username });
 //     });
-// });
 
-// passport.deserializeUser( (user, cb) => {
-//     process.nextTick( () => {
-//         return cb(null, user);
-//     });
-// });
+//     // router.get('/profile.html', passport.authenticate('local', {
+//     //     successRedirect: '/',
+//     //     failureRedirect: '/login.html'
+//     // }), function(req, res, next) {
+//     //         console.log(req.body);
+//     //     }
+//     // );
+//     // router.get('/profile.html', ensureAuthenticated, function(req, res) {
+//     //     console.log(req.isAuthenticated);
+//     //     res.render('/profile.html');
+//     // });
+
+//     // router.post('/save', function(req, res) {
+//     //     console.log('attemped to save image');
+//     //     // buttons are stacked because i added a form around one button
+//     //     // tomorrow todo: 1) figure out how to use button to save image
+//     //     // 2) by save image i mean convert img to base64, send to server to find user's account,
+//     //     // 3) then have personal image gallery populates
+//     // });
+//     // router.post('/logout', function(req, res) {
+//     //     req.logout();
+//     //     res.redirect('/index.html');
+//     // })
+// }); 
+
+//     // router.post('/login/password', passport.authenticate('local', {
+//     //     successRedirect: '/',
+//     //     failureRedirect: '/login.html'
+//     // }));
+    
+//     // passport.serializeUser((user, cb) => {
+// //     process.nextTick( () => {
+// //         cb(null, { id: user.id, username: user.username });
+// //     });
+// // });
+
+// // passport.deserializeUser( (user, cb) => {
+// //     process.nextTick( () => {
+// //         return cb(null, user);
+// //     });
+// // });
+
+// // passport.use(new LocalStrategy(function verify(username, password, cb) {
+// //     db.get('SELECT * FROM users WHERE username = ?', [ username ], function(err, row) {
+// //         if (err) { return cb(err); }
+// //         if (!row) { return cb(null, false, { message: 'Incorrect username or password.'}); }
+
+// //         crypto.pbkdf2(password, row.salt, 310000, 32, 'sha256', function(err, hashedPassword) {
+// //             if (err) { return cb(err); }
+// //             if (!crypto.timingSafeEqual(row.hashedPassword, hashedPassword)) {
+// //                 return cb(null, false, { message: 'Incorrect username or password'});
+// //             }
+
+// //             return cb(null, row);
+// //         });
+// //     });
+// // }));
+
+// // passport.use(new LocalStrategy(function verify(username, password, cb) {
+// //     db.prepare('SELECT * FROM users WHERE username = ?').get([username]), (err, row) => {
+// //         if (err) { return cb(err); }
+// //         if (!row) { return cb(null, false, { message: 'Incorrect username or password.'}); }
+        
+// //         crypto.pbkdf2(password, row.salt, 310000, 32, 'sha256', (err, hashedPassword) => {
+// //             if (err) { return cb(err); }
+// //             if (!crypto.timingSafeEqual(row.hashed_password, hashedPassword)) {
+// //                 return cb(null, false, { message: 'Incorrect username or password.'});
+// //             }
+
+// //             return cb(null, row);
+// //         });
+// //     };
+// // }));
+//     // }));
+
+//     //     crypto.pbkdf2(password, row.salt, 310000, 32, 'sha256', (err, hashedPassword {
+//     //         if (err) { return cb(err); }
+//     //         if (!crypto.timingSafeEqual(row.hashed_password, hashedPassword)) {
+//     //             return cb(null, false, {message: 'Incorrect username or password.'});
+//     //         });
+//     //     });
+//     // }));
+
+// // passport.serializeUser((user, cb) => {
+// //     process.nextTick( () => {
+// //         cb(null, { id: user.id, username: user.username });
+// //     });
+// // });
+
+// // passport.deserializeUser( (user, cb) => {
+// //     process.nextTick( () => {
+// //         return cb(null, user);
+// //     });
+// // });
 
 
-// router.post('/login/password', passport.authenticate('local', {
-//     successRedirect: '/',
-//     failureRedirect: '/login.html'
-// }));
-// router.get('/signup.html', (req, res) => {
-//     console.log('on login page');
-//     // res.sendFile('/signup.html');
-//     // res.send('on sign up page');
-//     // console.log('on sign up page');
-//     // res.sendFile('./signup.html');
-// });
+// // router.post('/login/password', passport.authenticate('local', {
+// //     successRedirect: '/',
+// //     failureRedirect: '/login.html'
+// // }));
+// // router.get('/signup.html', (req, res) => {
+// //     console.log('on login page');
+// //     // res.sendFile('/signup.html');
+// //     // res.send('on sign up page');
+// //     // console.log('on sign up page');
+// //     // res.sendFile('./signup.html');
+// // });
 
-// router.get('/test', (req, res) => {
-//     console.log('test log');
-//     res.send('on test page');
-// })
+// // router.get('/test', (req, res) => {
+// //     console.log('test log');
+// //     res.send('on test page');
+// // })
 
 module.exports = router;

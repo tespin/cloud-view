@@ -1,27 +1,53 @@
 const { MongoClient } = require('mongodb');
 const mongoose = require('mongoose');
+const passportLocalMongoose = require('passport-local-mongoose');
 
-async function main(cb) {
-    const URI = process.env.MONGO_URI;
+const URI = process.env.MONGO_URI;
 
-    try {
-        await mongoose.connect(process.env.MONGO_URI, {
-            useNewURLParser: true,
-            useUnifiedTopology: true
-        });
-    } catch (error) {
-        console.error(error);
-    }
+mongoose.connect(process.env.MONGO_URI, { 
+    useNewURLParser: true,
+    useUnifiedTopology: true
+}).catch(
+    error => console.log(error)
+);
 
-    const Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
+const userSchema = new Schema({
+    username: { type: String, required: true, unique: true},
+    // password: { type: String, required: true },
+    saved: [String]
+});
 
-    const userSchema = new Schema({
-        username: { type: String, required: true, unique: true},
-        password: { type: String, required: true },
-        saved: [String]
-    });
+userSchema.plugin(passportLocalMongoose);
 
-    const User = mongoose.model("User", userSchema);
+module.exports = mongoose.model("User", userSchema);
+// async function main(cb) {
+//     const URI = process.env.MONGO_URI;
+
+//     try {
+//         await mongoose.connect(process.env.MONGO_URI, {
+//             useNewURLParser: true,
+//             useUnifiedTopology: true
+//         });
+//     } catch (error) {
+//         console.error(error);
+//     }
+
+//     const Schema = mongoose.Schema;
+
+//     const userSchema = new Schema({
+//         username: { type: String, required: true, unique: true},
+//         password: { type: String, required: true },
+//         saved: [String]
+//     });
+
+//     userSchema.plugin(passportLocalMongoose);
+    
+//     const User = mongoose.model("userData", userSchema);
+// }
+// module.exports = main;
+// module.exports = main.User;
+
     // mongoose.connect(`mongodb://${server}/${database}`)
     // .then(() => {
     //   console.log('Database connection successful')
@@ -41,7 +67,7 @@ async function main(cb) {
     //     console.error(e);
     //     throw new Error('Unable to connect to database');
     // }
-}
+// }
 // const sqlite3 = require('sqlite3');
 // const mkdirp = require('mkdirp');
 // const crypto = require('crypto');
@@ -84,4 +110,4 @@ async function main(cb) {
 //     ]);
 // });
 
-module.exports = main;
+// module.exports = main.User;
