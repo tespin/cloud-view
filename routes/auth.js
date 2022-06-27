@@ -16,12 +16,16 @@ db(async client => {
             console.log('authenticated');
             return next();
         }
+        console.log('not authenticated');
         res.redirect('/login.html');
     };
 
-    router.get('/profile.html', function(req, res) {
+    router.get('/profile.html', ensureAuthenticated, function(req, res) {
         res.send('test');
     })
+    // router.get('/profile.html', function(req, res) {
+    //     res.send('test');
+    // })
 
     passport.use(new LocalStrategy( function(username, password, cb) {
         myDataBase.findOne( {username: username}, function(err, user) {
