@@ -14,7 +14,6 @@ db(async client => {
     function ensureAuthenticated(req, res, next) {
         if (req.isAuthenticated()) {
             console.log('authenticated');
-            res.redirect('/profile.html');
             return next();
         }
         console.log('not authenticated');
@@ -22,7 +21,7 @@ db(async client => {
     };
 
     router.get('/profile.html', ensureAuthenticated, function(req, res) {
-        res.send('test');
+        res.sendFile('/profile.html');
     })
     // router.get('/profile.html', function(req, res) {
     //     res.send('test');
