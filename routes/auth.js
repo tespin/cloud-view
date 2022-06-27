@@ -81,7 +81,7 @@ db(async client => {
         });
     });
 
-    router.get('./private/profile.html', function(req, res) {
+    router.get('/profile.html', function(req, res) {
         res.send('test');
     })
 
