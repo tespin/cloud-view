@@ -1,19 +1,37 @@
 const { MongoClient } = require('mongodb');
+const mongoose = require('mongoose');
 
 async function main(cb) {
     const URI = process.env.MONGO_URI;
 
-    const client = new MongoClient(URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true });
-
     try {
-        await client.connect();
-        await cb(client);
-    } catch (e) {
-        console.error(e);
-        throw new Error('Unable to connect to database');
+        await mongoose.connect(process.env.MONGO_URI, {
+            useNewURLParser: true,
+            useUnifiedTopology: true
+        });
+    } catch (error) {
+        console.error(error);
     }
+
+    // mongoose.connect(`mongodb://${server}/${database}`)
+    // .then(() => {
+    //   console.log('Database connection successful')
+    // })
+    // .catch(err => {
+    //   console.error('Database connection error')
+    // })
+
+    // const client = new MongoClient(URI, {
+    //     useNewUrlParser: true,
+    //     useUnifiedTopology: true });
+
+    // try {
+    //     await client.connect();
+    //     await cb(client);
+    // } catch (e) {
+    //     console.error(e);
+    //     throw new Error('Unable to connect to database');
+    // }
 }
 // const sqlite3 = require('sqlite3');
 // const mkdirp = require('mkdirp');
