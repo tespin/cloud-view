@@ -14,6 +14,7 @@ db(async client => {
     function ensureAuthenticated(req, res, next) {
         if (req.isAuthenticated()) {
             console.log('authenticated');
+            res.redirect('/profile.html');
             return next();
         }
         console.log('not authenticated');
@@ -27,6 +28,13 @@ db(async client => {
     //     res.send('test');
     // })
 
+    router.post('/login/password', passport.authenticate('local', {
+        successRedirect: '/profile.html',
+        failureRedirect: '/login.html'
+    }), function(req, res, next) {
+            res.redirect('/profile.html');
+        }
+    );
     passport.use(new LocalStrategy( function(username, password, cb) {
         myDataBase.findOne( {username: username}, function(err, user) {
             console.log(`User ${username} attempted to log in.`);
