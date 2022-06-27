@@ -12,7 +12,6 @@ const port = process.env.PORT || 80;
 
 app.listen(port, () => console.log(`listening at port ${port}`));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'private')));
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
