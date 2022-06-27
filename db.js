@@ -13,6 +13,15 @@ async function main(cb) {
         console.error(error);
     }
 
+    const Schema = mongoose.Schema;
+
+    const userSchema = new Schema({
+        username: { type: String, required: true, unique: true},
+        password: { type: String, required: true },
+        saved: [String]
+    });
+
+    const User = mongoose.model("User", userSchema);
     // mongoose.connect(`mongodb://${server}/${database}`)
     // .then(() => {
     //   console.log('Database connection successful')
