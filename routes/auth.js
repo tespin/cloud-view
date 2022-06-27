@@ -23,6 +23,7 @@ db(async client => {
     router.get('/profile.html', ensureAuthenticated, function(req, res) {
         // res.sendFile('/profile.html');
         // res.render('/profile.html');
+        res.redirect('/profile.html');
     })
     // router.get('/profile.html', function(req, res) {
     //     res.send('test');
