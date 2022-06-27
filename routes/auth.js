@@ -29,7 +29,7 @@ router.post('/signup', function(req, res, next) {
                     res.redirect('/profile.html');
                 }
         } 
-    )
+    );
 });
 
 router.post('/login/password', passport.authenticate('local', {
