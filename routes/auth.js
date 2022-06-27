@@ -18,7 +18,7 @@ router.use('/profile.html', ensureAuthenticated);
 
 router.post('/signup', function(req, res, next) {
     console.log(`attempting to register user: ${req.body.username}`);
-    UserModel.register(new User({ username: req.body.username}), req.body.password, function(err, user) {
+    User.register(new User({ username: req.body.username}), req.body.password, function(err, user) {
             if (err) { 
                 console.log(err);
                 return next(err);
