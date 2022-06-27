@@ -81,8 +81,9 @@ db(async client => {
         });
     });
 
-    router.get('/profile.html', function(req, res) {
+    router.get('/profile.html', function(req, res, next) {
         res.send('test');
+        next();
     })
 
     // router.get('/profile.html', passport.authenticate('local', {
