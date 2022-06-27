@@ -18,18 +18,18 @@ router.use('/profile.html', ensureAuthenticated);
 
 router.post('/signup', function(req, res, next) {
     console.log(`attempting to register user: ${req.body.username}`);
-    User.register(new User({ username: req.body.username}), req.body.password, function(err, user) {
-            if (err) { 
-                console.log(err);
-                return next(err);
-                // res.redirect('/signup.html');
+    User.register(new User({ username: req.body.username }), req.body.password, function (err, user) {
+        if (err) {
+            console.log(`There was an error signing up: ${err}`);
+            return next(err);
+        }
+
+        passport.authenticate('local', { failureRedirect: '/signup.html'}),
+            function(req, res, next) {
+                console.log('registration successful');
+                res.redirect('/profile.html');
             }
-            passport.authenticate('local', { failureRedirect: '/signup.html'}),
-                function(req, res, next) {
-                    res.redirect('/profile.html');
-                }
-        } 
-    );
+    });
 });
 
 router.post('/login/password', passport.authenticate('local', {
