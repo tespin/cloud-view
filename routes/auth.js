@@ -5,24 +5,10 @@ const bcrypt = require('bcrypt');
 // let crypto = require('crypto');
 // let db = require('../db');
 let User = require('../db');
-// const app = require('../app');
 const ObjectID = require('mongodb').ObjectId;
 const router = express.Router();
 
-// passport.use(User.createStrategy());
 passport.use(new LocalStrategy(User.authenticate()));
-// passport.use(new LocalStrategy(), function (username, password, done) {
-//     User.findOne({
-//         username: username
-//     }, function(err, user) {
-//         if (err) { return done(err); }
-//         if (!user) { return done(null, false, { message: 'Invalid username or password'}); }
-
-//         if (!user.authenticate(password)) { return done(null, false, { message: 'Invalid username or password'}); }
-
-//         return done(null, user);
-//     });
-// });
 
 passport.serializeUser(User.serializeUser(() => { console.log('serialized'); }));
 passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'); }));
@@ -54,20 +40,10 @@ router.post('/signup', function(req, res) {
         passport.authenticate('local') (req, res, function() {
             res.redirect('/profile.html');
         });
-        // console.log('beginning authentication');
-        // req.session.save(() => {
-        //     res.redirect('/profile.html');
-        // })
     });
 });
 
-
-
 router.use('/profile.html', ensureAuthenticated);
-// router.get('/profile.html', ensureAuthenticated, function(req, res) {
-//     // res.sendFile('/profile.html')
-//     res.render('/profile.html');
-// });
 
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
@@ -282,48 +258,3 @@ function ensureAuthenticated(req, res, next) {
 // // })
 
 module.exports = router;
-
-       // console.log('authenticating');
-        // passport.authenticate('local', function(req, res, next) {
-        //     res.redirect('/profile.html'); 
-        // });
-
-        // const authenticate = User.authenticate();
-        // authenticate('username', 'password', function(err, result) {
-        //     if (err) {
-        //         console.log('could not authenticate');
-        //         res.redirect('/signup.html');
-        //     }
-        // console.log('attempting authentication');
-        // passport.authenticate('local', function(req, res) {
-        //     console.log('authentication successful');
-        //     res.redirect('/profile.html');
-        // });
-        // });
-        // console.log('authenticating');
-        // passport.authenticate('local', function(req, res, next) {
-        //     res.redirect('/profile.html'); 
-        // });
-        // console.log('registration successful');
-        // res.redirect('/profile.html');
-    // });
-// }, 
-
-// });
-
-        // const authenticate = User.authenticate();
-        // authenticate('username', 'password', function(err, result) {
-        //     if (err) {
-        //         console.log(`There was an error authenticating: ${err}`);
-        //         return next(err);
-        //     }
-        // });
-
-        // console.log('registration successful');
-        // res.redirect('/profile.html');
-
-        // passport.authenticate('local', { failureRedirect: '/signup.html'}),
-        //     function(req, res, next) {
-        //         console.log('registration successful');
-        //         res.redirect('/profile.html');
-        //     }

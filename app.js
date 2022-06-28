@@ -1,10 +1,9 @@
 const path = require('path');
 const express = require('express');
-const app = express();
 const session = require('express-session');
 const passport = require('passport');
 let MongoDBStore = require('connect-mongodb-session')(session);
-// // const SQLiteStore = require('connect-sqlite3')(session);
+
 let store = new MongoDBStore({  
     uri: process.env.MONGO_URI,
     databaseName: 'database',
@@ -18,6 +17,7 @@ store.on('error', function(error) {
 })
 
 const authRouter = require('./routes/auth')
+const app = express();
 app.use(express.json({limit: '1mb'}));
 app.use(express.urlencoded({ extended: true }));
 
@@ -29,11 +29,6 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: store
-    // store: new MongoDBStore({
-    //     uri: process.env.MONGO_URI,
-    //     collection: 'sessions'
-    // })
-    // cookie: { secure: true } 
 }));
 app.use(passport.authenticate('session'));
 app.use('/', authRouter);
