@@ -15,12 +15,12 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-router.post('/signup', function(req, res, next) {
+router.post('/signup', function(req, res) {
     console.log(`attempting to register user: ${req.body.username}`);
     User.register(new User({ username: req.body.username }), req.body.password, function (err, user) {
         if (err) {
             console.log(`There was an error signing up: ${err}`);
-            return next(err);
+            res.redirect('/signup.html');
         }
         
         console.log('authenticating');
