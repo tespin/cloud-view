@@ -22,17 +22,22 @@ router.post('/signup', function(req, res, next) {
             console.log(`There was an error signing up: ${err}`);
             return next(err);
         }
-
-        const authenticate = User.authenticate();
-        authenticate('username', 'password', function(err, result) {
-            if (err) {
-                console.log('could not authenticate');
-                res.redirect('/signup.html');
-            }
-
-            console.log('authentication successful');
-            res.redirect('/profile.html');
+        
+        console.log('authenticating');
+        passport.authenticate('local', function(req, res, next) {
+            res.redirect('/profile.html'); 
         });
+
+        // const authenticate = User.authenticate();
+        // authenticate('username', 'password', function(err, result) {
+        //     if (err) {
+        //         console.log('could not authenticate');
+        //         res.redirect('/signup.html');
+        //     }
+
+        //     console.log('authentication successful');
+        //     res.redirect('/profile.html');
+        // });
         // console.log('authenticating');
         // passport.authenticate('local', function(req, res, next) {
         //     res.redirect('/profile.html'); 
