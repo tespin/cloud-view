@@ -35,8 +35,8 @@ router.post('/signup', function(req, res) {
         //         res.redirect('/signup.html');
         //     }
 
-        //     console.log('authentication successful');
-        //     res.redirect('/profile.html');
+        console.log('authentication successful');
+        res.redirect('/profile.html');
         // });
         // console.log('authenticating');
         // passport.authenticate('local', function(req, res, next) {
