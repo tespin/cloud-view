@@ -71,6 +71,10 @@ router.post('/save', (req, res, done) => {
 
 router.use('/profile.html', ensureAuthenticated);
 
+router.get('/profile.html', function(req, res) {
+    console.log(req.body.username);
+})
+
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         console.log('authenticated');
@@ -80,11 +84,7 @@ function ensureAuthenticated(req, res, next) {
     res.redirect('/login.html');
 };
 
-function printUser(req, res, next) {
-    console.log(req.body.username);
-} 
 
-printUser();
 
 // db(async client => {
 //     // const myDataBase = await client.db('database').collection('users');
