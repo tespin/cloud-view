@@ -25,57 +25,10 @@ router.post('/signup', function(req, res) {
             return res.redirect('/signup.html');
         }
         passport.authenticate('local', function(req, res, next) {
-            res.redirect('/profile.html');
+            return res.redirect('/profile.html');
         });
     });
 });
-        // console.log('authenticating');
-        // passport.authenticate('local', function(req, res, next) {
-        //     res.redirect('/profile.html'); 
-        // });
-
-        // const authenticate = User.authenticate();
-        // authenticate('username', 'password', function(err, result) {
-        //     if (err) {
-        //         console.log('could not authenticate');
-        //         res.redirect('/signup.html');
-        //     }
-        // console.log('attempting authentication');
-        // passport.authenticate('local', function(req, res) {
-        //     console.log('authentication successful');
-        //     res.redirect('/profile.html');
-        // });
-        // });
-        // console.log('authenticating');
-        // passport.authenticate('local', function(req, res, next) {
-        //     res.redirect('/profile.html'); 
-        // });
-        // console.log('registration successful');
-        // res.redirect('/profile.html');
-    // });
-// }, passport.authenticate('local', { failureRedirect: '/signup.html'}),
-//         function(req, res, next) {
-//             console.log('registration successful');
-//             res.redirect('/profile.html');
-//         }
-// });
-
-        // const authenticate = User.authenticate();
-        // authenticate('username', 'password', function(err, result) {
-        //     if (err) {
-        //         console.log(`There was an error authenticating: ${err}`);
-        //         return next(err);
-        //     }
-        // });
-
-        // console.log('registration successful');
-        // res.redirect('/profile.html');
-
-        // passport.authenticate('local', { failureRedirect: '/signup.html'}),
-        //     function(req, res, next) {
-        //         console.log('registration successful');
-        //         res.redirect('/profile.html');
-        //     }
 
 router.post('/login/password', passport.authenticate('local', {
     successRedirect: '/profile.html',
@@ -311,3 +264,51 @@ function ensureAuthenticated(req, res, next) {
 // // })
 
 module.exports = router;
+
+       // console.log('authenticating');
+        // passport.authenticate('local', function(req, res, next) {
+        //     res.redirect('/profile.html'); 
+        // });
+
+        // const authenticate = User.authenticate();
+        // authenticate('username', 'password', function(err, result) {
+        //     if (err) {
+        //         console.log('could not authenticate');
+        //         res.redirect('/signup.html');
+        //     }
+        // console.log('attempting authentication');
+        // passport.authenticate('local', function(req, res) {
+        //     console.log('authentication successful');
+        //     res.redirect('/profile.html');
+        // });
+        // });
+        // console.log('authenticating');
+        // passport.authenticate('local', function(req, res, next) {
+        //     res.redirect('/profile.html'); 
+        // });
+        // console.log('registration successful');
+        // res.redirect('/profile.html');
+    // });
+// }, passport.authenticate('local', { failureRedirect: '/signup.html'}),
+//         function(req, res, next) {
+//             console.log('registration successful');
+//             res.redirect('/profile.html');
+//         }
+// });
+
+        // const authenticate = User.authenticate();
+        // authenticate('username', 'password', function(err, result) {
+        //     if (err) {
+        //         console.log(`There was an error authenticating: ${err}`);
+        //         return next(err);
+        //     }
+        // });
+
+        // console.log('registration successful');
+        // res.redirect('/profile.html');
+
+        // passport.authenticate('local', { failureRedirect: '/signup.html'}),
+        //     function(req, res, next) {
+        //         console.log('registration successful');
+        //         res.redirect('/profile.html');
+        //     }
