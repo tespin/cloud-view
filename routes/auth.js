@@ -24,9 +24,12 @@ router.post('/signup', function(req, res) {
             console.log(`There was an error signing up: ${err}`);
             return res.redirect('/signup.html');
         }
+        console.log('beginning authentication');
         passport.authenticate('local', function(req, res, next) {
+            console.log('authenticating');
             res.redirect('/profile.html');
         });
+        console.log('authentication successful');
     });
 });
 
