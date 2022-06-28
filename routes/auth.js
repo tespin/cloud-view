@@ -40,9 +40,7 @@ router.post('/signup', function(req, res) {
             return res.redirect('/signup.html');
         }
         console.log('beginning authentication');
-        req.session.save(()=> {
-            res.redirect('/profile.html');
-        });
+        res.redirect('/profile.html');
     });
 });
 
