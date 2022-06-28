@@ -64,7 +64,7 @@ router.post('/logout', function(req, res, next) {
     });
 });
 
-router.use('/profile.html', ensureAuthenticated);
+// router.use('/profile.html', ensureAuthenticated);
 
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
