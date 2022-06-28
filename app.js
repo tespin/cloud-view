@@ -18,6 +18,8 @@ app.use(session({
     store: new MongoDBStore({
         uri: process.env.MONGO_URI,
         collection: 'sessions'
+    }, function(error) {
+        console.log(`error with store: ${error}`)
     })
     // cookie: { secure: true } 
 }));
