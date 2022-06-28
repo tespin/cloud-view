@@ -2,7 +2,7 @@ const { MongoClient } = require('mongodb');
 const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
 
-const URI = process.env.MONGO_URI;
+// const URI = process.env.MONGO_URI;
 
 mongoose.connect(process.env.MONGO_URI, { 
     useNewURLParser: true,

@@ -1,6 +1,7 @@
-const express = require('express');
-const session = require('express-session');
 const path = require('path');
+const express = require('express');
+const app = express();
+const session = require('express-session');
 const passport = require('passport');
 let MongoDBStore = require('connect-mongodb-session')(session);
 // // const SQLiteStore = require('connect-sqlite3')(session);
@@ -17,7 +18,6 @@ store.on('error', function(error) {
 })
 
 const authRouter = require('./routes/auth')
-const app = express();
 app.use(express.json({limit: '1mb'}));
 app.use(express.urlencoded({ extended: true }));
 

@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 // let crypto = require('crypto');
 // let db = require('../db');
 let User = require('../db');
-const app = require('../app');
+// const app = require('../app');
 const ObjectID = require('mongodb').ObjectId;
 const router = express.Router();
 
@@ -24,13 +24,14 @@ passport.use(User.createStrategy());
 //     });
 // });
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(User.serializeUser(), () => { console.log('serialized'); });
+passport.deserializeUser(User.deserializeUser(), () => { console.log('deserialized'); });
 
 router.post('/login/password', passport.authenticate('local', {
     successRedirect: '/profile.html',
     failureRedirect: '/login.html'
 }), function(req, res, next) {
+        console.log(req.isAuthenticated());
         res.redirect('/profile.html');
     }
 );
@@ -49,7 +50,7 @@ router.post('/signup', function(req, res) {
             console.log(`There was an error signing up: ${err}`);
             return res.redirect('/signup.html');
         }
-        
+        console.log(req.isAuthenticated());
         res.redirect('/profile.html');
         // console.log('beginning authentication');
         // req.session.save(() => {
