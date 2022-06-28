@@ -15,6 +15,7 @@ passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'
 
 router.post('/save', (request, response) => {
     const data = request.body;
+    console.log(`request made by ${request.body.username}`);
     response.json({
         status: 'success',
         base64: data.base64
