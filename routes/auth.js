@@ -34,7 +34,7 @@ router.post('/signup', function(req, res) {
             console.log('authentication successful ...?');
             process.nextTick(function() {
                 res.redirect('/profile.html');
-            })
+            });
         });
         // passport.authenticate('local', function(req, res, next) {
         //     console.log('authenticating');
