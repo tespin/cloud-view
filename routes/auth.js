@@ -9,8 +9,8 @@ const app = require('../app');
 const ObjectID = require('mongodb').ObjectId;
 const router = express.Router();
 
-// passport.use(User.createStrategy());
-passport.use(new LocalStrategy(User.authenticate()));
+passport.use(User.createStrategy());
+// passport.use(new LocalStrategy(User.authenticate()));
 // passport.use(new LocalStrategy(), function (username, password, done) {
 //     User.findOne({
 //         username: username
@@ -58,11 +58,11 @@ router.post('/signup', function(req, res) {
     });
 });
 
-// router.use('/profile.html', ensureAuthenticated);
-router.get('/profile.html', ensureAuthenticated, function(req, res) {
-    // res.sendFile('/profile.html')
-    res.render('/profile.html');
-});
+router.use('/profile.html', ensureAuthenticated);
+// router.get('/profile.html', ensureAuthenticated, function(req, res) {
+//     // res.sendFile('/profile.html')
+//     res.render('/profile.html');
+// });
 
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
