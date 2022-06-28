@@ -15,8 +15,6 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-router.use('/profile.html', ensureAuthenticated);
-
 router.post('/signup', function(req, res) {
     console.log(`attempting to register user: ${req.body.username}`);
     User.register(new User({ username: req.body.username }), req.body.password, function (err, user) {
@@ -40,7 +38,6 @@ router.post('/signup', function(req, res) {
         //     console.log('authenticating');
         //     res.redirect('/profile.html');
         // });
-        console.log('authentication successful');
     });
 });
 
@@ -60,7 +57,7 @@ router.post('/logout', function(req, res, next) {
 });
 
 
-// router.use('/profile.html', ensureAuthenticated);
+router.use('/profile.html', ensureAuthenticated);
 // router.get('/profile.html', ensureAuthenticated, function(req, res) {
 //     // res.sendFile('/profile.')
 // });
