@@ -15,8 +15,6 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// router.use('/profile.html', ensureAuthenticated);
-
 router.post('/login/password', passport.authenticate('local', {
     successRedirect: '/profile.html',
     failureRedirect: '/login.html'
@@ -39,10 +37,11 @@ router.post('/signup', function(req, res) {
             console.log(`There was an error signing up: ${err}`);
             return res.redirect('/signup.html');
         }
-        console.log('beginning authentication');
-        req.session.save(() => {
-            res.redirect('/profile.html');
-        })
+        console.log(req.isAuthenticated());
+        // console.log('beginning authentication');
+        // req.session.save(() => {
+        //     res.redirect('/profile.html');
+        // })
     });
 });
 
