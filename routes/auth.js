@@ -9,8 +9,8 @@ const app = require('../app');
 const ObjectID = require('mongodb').ObjectId;
 const router = express.Router();
 
-// passport.use(User.createStrategy());
-passport.use(new LocalStrategy(User.authenticate()));
+passport.use(User.createStrategy());
+// passport.use(new LocalStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -22,7 +22,11 @@ router.post('/signup', function(req, res) {
             console.log(`There was an error signing up: ${err}`);
             return res.redirect('/signup.html');
         }
-        
+        passport.authenticate('local', function(req, res, next) {
+            res.redirect('/profile.html');
+        });
+    });
+});
         // console.log('authenticating');
         // passport.authenticate('local', function(req, res, next) {
         //     res.redirect('/profile.html'); 
@@ -34,11 +38,11 @@ router.post('/signup', function(req, res) {
         //         console.log('could not authenticate');
         //         res.redirect('/signup.html');
         //     }
-        console.log('attempting authentication');
-        passport.authenticate('local', function(req, res) {
-            console.log('authentication successful');
-            res.redirect('/profile.html');
-        });
+        // console.log('attempting authentication');
+        // passport.authenticate('local', function(req, res) {
+        //     console.log('authentication successful');
+        //     res.redirect('/profile.html');
+        // });
         // });
         // console.log('authenticating');
         // passport.authenticate('local', function(req, res, next) {
