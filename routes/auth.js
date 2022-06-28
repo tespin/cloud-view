@@ -9,7 +9,8 @@ const app = require('../app');
 const ObjectID = require('mongodb').ObjectId;
 const router = express.Router();
 
-passport.use(User.createStrategy());
+// passport.use(User.createStrategy());
+passport.use(new LocalStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -80,6 +81,8 @@ router.post('/logout', function(req, res, next) {
 
 // router.use('/profile.html', ensureAuthenticated);
 
+router.use('/profile.html', ensureAuthenticated);
+
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         console.log('authenticated');
@@ -100,8 +103,6 @@ function ensureAuthenticated(req, res, next) {
 //         console.log('not authenticated');
 //         res.redirect('/login.html');
 //     };
-
-    router.use('/profile.html', ensureAuthenticated);
 
 //     // router.get('/profile.html', ensureAuthenticated, function(req, res) {
 //     //     // res.sendFile('/profile.html');
