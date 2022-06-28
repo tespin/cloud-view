@@ -58,10 +58,10 @@ router.post('/signup', function(req, res) {
     });
 });
 
-router.use('/profile.html', ensureAuthenticated);
-// router.get('/profile.html', ensureAuthenticated, function(req, res) {
-//     // res.sendFile('/profile.')
-// });
+// router.use('/profile.html', ensureAuthenticated);
+router.get('/profile.html', ensureAuthenticated, function(req, res) {
+    res.sendFile('/profile.html')
+});
 
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
