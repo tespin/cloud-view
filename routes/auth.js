@@ -15,7 +15,7 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-router.use('/profile.html', ensureAuthenticated);
+// router.use('/profile.html', ensureAuthenticated);
 
 router.post('/signup', function(req, res) {
     console.log(`attempting to register user: ${req.body.username}`);
@@ -25,7 +25,7 @@ router.post('/signup', function(req, res) {
             return res.redirect('/signup.html');
         }
         passport.authenticate('local', function(req, res, next) {
-            return res.redirect('/profile.html');
+            res.redirect('/profile.html');
         });
     });
 });
