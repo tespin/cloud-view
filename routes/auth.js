@@ -52,7 +52,7 @@ router.post('/signup', function(req, res) {
     });
 });
 
-app.post('/save', (request, response) => {
+router.post('/save', (request, response) => {
     const data = request.body;
     console.log(`request made by ${request.user.username}`);
     personalbar
