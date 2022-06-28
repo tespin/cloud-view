@@ -22,6 +22,12 @@ passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'
 //     });
 // });
 
+printUser();
+
+function printUser(req, res) {
+    console.log(req.user.username);
+} 
+
 router.post('/login/password', passport.authenticate('local', {
     successRedirect: '/profile.html',
     failureRedirect: '/login.html'
