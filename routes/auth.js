@@ -15,7 +15,7 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-router.use('/profile.html', ensureAuthenticated);
+// router.use('/profile.html', ensureAuthenticated);
 
 router.post('/login/password', passport.authenticate('local', {
     successRedirect: '/profile.html',
