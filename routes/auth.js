@@ -9,8 +9,8 @@ let User = require('../db');
 const ObjectID = require('mongodb').ObjectId;
 const router = express.Router();
 
-passport.use(User.createStrategy());
-// passport.use(new LocalStrategy(User.authenticate()));
+// passport.use(User.createStrategy());
+passport.use(new LocalStrategy(User.authenticate()));
 // passport.use(new LocalStrategy(), function (username, password, done) {
 //     User.findOne({
 //         username: username
@@ -50,14 +50,18 @@ router.post('/signup', function(req, res) {
             console.log(`There was an error signing up: ${err}`);
             return res.redirect('/signup.html');
         }
-        console.log(req.isAuthenticated);
-        res.redirect('/profile.html');
+        
+        passport.authenticate('local') (req, res, function() {
+            res.redirect('/profile.html');
+        });
         // console.log('beginning authentication');
         // req.session.save(() => {
         //     res.redirect('/profile.html');
         // })
     });
 });
+
+
 
 router.use('/profile.html', ensureAuthenticated);
 // router.get('/profile.html', ensureAuthenticated, function(req, res) {
@@ -303,11 +307,8 @@ module.exports = router;
         // console.log('registration successful');
         // res.redirect('/profile.html');
     // });
-// }, passport.authenticate('local', { failureRedirect: '/signup.html'}),
-//         function(req, res, next) {
-//             console.log('registration successful');
-//             res.redirect('/profile.html');
-//         }
+// }, 
+
 // });
 
         // const authenticate = User.authenticate();
