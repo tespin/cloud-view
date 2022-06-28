@@ -63,7 +63,7 @@ router.use('/profile.html', ensureAuthenticated);
 // });
 
 function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated) {
+    if (req.isAuthenticated()) {
         console.log('authenticated');
         return next();
     }
