@@ -22,8 +22,12 @@ router.post('/signup', function(req, res, next) {
             return next(err);
         }
 
-        console.log('registration successful');
-        res.redirect('/profile.html');
+        console.log('authenticating');
+        passport.authenticate('local', function(req, res, next) {
+            res.redirect('/profile.html'); 
+        });
+        // console.log('registration successful');
+        // res.redirect('/profile.html');
     });
 // }, passport.authenticate('local', { failureRedirect: '/signup.html'}),
 //         function(req, res, next) {
