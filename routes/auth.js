@@ -10,19 +10,19 @@ const ObjectID = require('mongodb').ObjectId;
 const router = express.Router();
 
 // passport.use(User.createStrategy());
-// passport.use(new LocalStrategy(User.authenticate()));
-passport.use(new LocalStrategy(), function (username, password, done) {
-    User.findOne({
-        username: username
-    }, function(err, user) {
-        if (err) { return done(err); }
-        if (!user) { return done(null, false, { message: 'Invalid username or password'}); }
+passport.use(new LocalStrategy(User.authenticate()));
+// passport.use(new LocalStrategy(), function (username, password, done) {
+//     User.findOne({
+//         username: username
+//     }, function(err, user) {
+//         if (err) { return done(err); }
+//         if (!user) { return done(null, false, { message: 'Invalid username or password'}); }
 
-        if (!user.authenticate(password)) { return done(null, false, { message: 'Invalid username or password'}); }
+//         if (!user.authenticate(password)) { return done(null, false, { message: 'Invalid username or password'}); }
 
-        return done(null, user);
-    });
-});
+//         return done(null, user);
+//     });
+// });
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
