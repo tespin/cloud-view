@@ -24,11 +24,6 @@ router.post('/signup', function(req, res) {
             console.log(`There was an error signing up: ${err}`);
             return res.redirect('/signup.html');
         }
-        console.log('beginning authentication');
-        passport.authenticate('local', {
-            successRedirect: '/profile.html',
-            failureRedirect: '/login.html'
-        });
         // const authenticate = User.authenticate();
         // authenticate('username', 'password', function(err, result) {
         //     if (err) {
@@ -44,6 +39,9 @@ router.post('/signup', function(req, res) {
         //     res.redirect('/profile.html');
         // });
     });
+}), passport.authenticate('local', {
+        successRedirect: '/profile.html',
+        failureRedirect: '/login.html'
 });
 
 router.post('/login/password', passport.authenticate('local', {
