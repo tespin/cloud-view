@@ -72,7 +72,7 @@ router.post('/save', (req, res, done) => {
 router.use('/profile.html', ensureAuthenticated);
 
 router.get('/profile.html', function(req, res, next) {
-    console.log(req.query.username);
+    console.log(req.params.username);
     next();
 })
 
