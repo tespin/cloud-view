@@ -23,19 +23,19 @@ router.post('/signup', function(req, res) {
             return res.redirect('/signup.html');
         }
         console.log('beginning authentication');
+        res.redirect('/profile.html');
+        // const authenticate = User.authenticate();
+        // authenticate('username', 'password', function(err, result) {
+        //     if (err) {
+        //         console.log(`There was an error authenticating: ${err}`);
+        //         return next(err);
+        //     }
 
-        const authenticate = User.authenticate();
-        authenticate('username', 'password', function(err, result) {
-            if (err) {
-                console.log(`There was an error authenticating: ${err}`);
-                return next(err);
-            }
-
-            console.log('authentication successful ...?');
-            process.nextTick(function() {
-                res.redirect('/profile.html');
-            });
-        });
+        //     console.log('authentication successful ...?');
+        //     process.nextTick(function() {
+        //         res.redirect('/profile.html');
+        //     });
+        // });
         // passport.authenticate('local', function(req, res, next) {
         //     console.log('authenticating');
         //     res.redirect('/profile.html');
