@@ -52,10 +52,18 @@ router.post('/signup', function(req, res) {
     });
 });
 
-router.post('/save', (request, response) => {
-    const data = request.body;
-    console.log(`request made by ${request.user.username}`);
-    response.json({
+router.post('/save', (req, res, done) => {
+    const data = req.body;
+    console.log(`request made by ${req.user.username}`);
+    User.findOneAndUpdate({ username: req.user.username},
+        { $push: { saved: data.base64 }},
+        { new: true },
+        (err, result) => {
+            if (err) return console.log(err);
+            console.log('pushing to array');
+            done(null, result);
+        });
+    res.json({
         status: 'success',
         base64: data.base64
     });
