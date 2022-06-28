@@ -13,7 +13,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser(() => { console.log('serialized'); }));
 passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'); }));
 
-function printUser(req, res) {
+function printUser(req, res, next) {
     console.log(req.body.username);
 } 
 
