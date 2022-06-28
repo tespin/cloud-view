@@ -37,7 +37,8 @@ router.post('/signup', function(req, res) {
             console.log(`There was an error signing up: ${err}`);
             return res.redirect('/signup.html');
         }
-        console.log(req.isAuthenticated());
+        
+        res.redirect('/profile.html');
         // console.log('beginning authentication');
         // req.session.save(() => {
         //     res.redirect('/profile.html');
