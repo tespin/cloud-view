@@ -22,12 +22,12 @@ router.post('/signup', function(req, res, next) {
             return next(err);
         }
     });
-}, passport.authenticate('local', { failureRedirect: '/signup.html'}),
-        function(req, res, next) {
-            console.log('registration successful');
-            res.redirect('/profile.html');
-        }
-);
+// }, passport.authenticate('local', { failureRedirect: '/signup.html'}),
+//         function(req, res, next) {
+//             console.log('registration successful');
+//             res.redirect('/profile.html');
+//         }
+});
 
         // const authenticate = User.authenticate();
         // authenticate('username', 'password', function(err, result) {
