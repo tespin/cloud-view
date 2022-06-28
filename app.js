@@ -19,7 +19,7 @@ store.on('error', function(error) {
 const authRouter = require('./routes/auth')
 const app = express();
 app.use(express.json({limit: '1mb'}));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 const port = process.env.PORT || 80;
 app.listen(port, () => console.log(`listening at port ${port}`));
