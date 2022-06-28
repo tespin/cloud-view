@@ -44,14 +44,13 @@ app.post('/api', (request, response) => {
     });
 });
 
-app.post('/save', (request, response) => {
-    const data = request.body;
-    console.log(`request made by ${request.user.username}`);
-    personalbar
-    response.json({
-        status: 'success',
-        base64: data.base64
-    });
-});
+// app.post('/save', (request, response) => {
+//     const data = request.body;
+//     console.log(`request made by ${request.user.username}`);
+//     response.json({
+//         status: 'success',
+//         base64: data.base64
+//     });
+// });
 
 module.exports = app;
