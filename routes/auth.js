@@ -22,10 +22,20 @@ router.post('/signup', function(req, res, next) {
             return next(err);
         }
 
-        console.log('authenticating');
-        passport.authenticate('local', function(req, res, next) {
-            res.redirect('/profile.html'); 
+        const authenticate = User.authenticate();
+        authenticate('username', 'password', function(err, result) {
+            if (err) {
+                console.log('could not authenticate');
+                res.redirect('/signup.html');
+            }
+
+            console.log('authentication successful');
+            res.redirect('/profile.html');
         });
+        // console.log('authenticating');
+        // passport.authenticate('local', function(req, res, next) {
+        //     res.redirect('/profile.html'); 
+        // });
         // console.log('registration successful');
         // res.redirect('/profile.html');
     });
@@ -91,7 +101,7 @@ function ensureAuthenticated(req, res, next) {
 //         res.redirect('/login.html');
 //     };
 
-//     router.use('/profile.html', ensureAuthenticated);
+    router.use('/profile.html', ensureAuthenticated);
 
 //     // router.get('/profile.html', ensureAuthenticated, function(req, res) {
 //     //     // res.sendFile('/profile.html');
