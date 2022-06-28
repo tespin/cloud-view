@@ -1,11 +1,10 @@
 const express = require('express');
+const session = require('express-session');
 const path = require('path');
 const passport = require('passport');
-const session = require('express-session');
 let MongoDBStore = require('connect-mongodb-session')(session);
 // // const SQLiteStore = require('connect-sqlite3')(session);
-const authRouter = require('./routes/auth');
-let store = new MongoDBStore({
+let store = new MongoDBStore({  
     uri: process.env.MONGO_URI,
     databaseName: 'database',
     collection: 'sessions'
@@ -16,6 +15,8 @@ let store = new MongoDBStore({
 store.on('error', function(error) {
     console.log(`store on error: ${error}`);
 })
+
+const authRouter = require('./routes/auth');
 
 const app = express();
 app.use(express.json({limit: '1mb'}));
