@@ -28,12 +28,11 @@ app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: false,
-    store: new MongoDBStore({
-        uri: process.env.MONGO_URI,
-        collection: 'sessions'
-    }, function(error) {
-        console.log(`error with store: ${error}`)
-    })
+    store: store
+    // store: new MongoDBStore({
+    //     uri: process.env.MONGO_URI,
+    //     collection: 'sessions'
+    // })
     // cookie: { secure: true } 
 }));
 app.use(passport.authenticate('session'));
