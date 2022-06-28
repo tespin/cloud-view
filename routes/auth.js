@@ -39,10 +39,35 @@ router.post('/signup', function(req, res) {
         //     res.redirect('/profile.html');
         // });
     });
-}), passport.authenticate('local', {
-        successRedirect: '/profile.html',
-        failureRedirect: '/login.html'
-});
+}, passport.authenticate('local', { failureRedirect: '/signup.html'}),
+    function(req, res, next) {
+        res.redirect('/profile.html');
+    } 
+);
+
+
+    router.post('/signup', function(req, res, next) {
+        // console.log(`attempting signup ${req.body.username}`);
+        myDataBase.findOne({ username: req.body.username}, function(err, user) {
+            if (err) { next(err); }
+            else if (user) { res.redirect('/profile.html'); }
+            else {
+                const hash = bcrypt.hashSync(req.body.password, 12);
+                myDataBase.insertOne ({
+                    username: req.body.username,
+                    password: hash
+                }, function(err, doc) {
+                        if (err) { return next(err); }
+                        else { res.redirect('/profile.html'); }
+                    }
+                )
+            }
+        })
+    },  passport.authenticate('local', { failureRedirect: '/signup.html'}),
+            function(req, res, next) {
+                res.redirect('/profile.html');
+            }
+    );
 
 router.post('/login/password', passport.authenticate('local', {
     successRedirect: '/profile.html',
