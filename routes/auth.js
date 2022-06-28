@@ -24,8 +24,8 @@ passport.use(User.createStrategy());
 //     });
 // });
 
-passport.serializeUser(User.serializeUser(), () => { console.log('serialized'); });
-passport.deserializeUser(User.deserializeUser(), () => { console.log('deserialized'); });
+passport.serializeUser(User.serializeUser(() => { console.log('serialized'); }));
+passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'); }));
 
 router.post('/login/password', passport.authenticate('local', {
     successRedirect: '/profile.html',
