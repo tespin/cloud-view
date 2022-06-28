@@ -23,10 +23,10 @@ router.post('/signup', function(req, res) {
             return res.redirect('/signup.html');
         }
         
-        console.log('authenticating');
-        passport.authenticate('local', function(req, res, next) {
-            res.redirect('/profile.html'); 
-        });
+        // console.log('authenticating');
+        // passport.authenticate('local', function(req, res, next) {
+        //     res.redirect('/profile.html'); 
+        // });
 
         // const authenticate = User.authenticate();
         // authenticate('username', 'password', function(err, result) {
