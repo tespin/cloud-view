@@ -71,8 +71,9 @@ router.post('/save', (req, res, done) => {
 
 router.use('/profile.html', ensureAuthenticated);
 
-router.get('/profile.html', function(req, res) {
+router.get('/profile.html', function(req, res, next) {
     console.log(req.body.username);
+    next();
 })
 
 function ensureAuthenticated(req, res, next) {
