@@ -13,12 +13,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser(() => { console.log('serialized'); }));
 passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'); }));
 
-function printUser(req, res, next) {
-    console.log(req.body.username);
-} 
-
-printUser();
-
 // router.post('/save', (request, response) => {
 //     const data = request.user;
 //     console.log(`request made by ${request.body.username}`);
@@ -85,6 +79,12 @@ function ensureAuthenticated(req, res, next) {
     console.log('not authenticated');
     res.redirect('/login.html');
 };
+
+function printUser(req, res, next) {
+    console.log(req.body.username);
+} 
+
+printUser();
 
 // db(async client => {
 //     // const myDataBase = await client.db('database').collection('users');
