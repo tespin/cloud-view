@@ -50,22 +50,30 @@ async function postBase64(base64) {
     const json = await response.json();
     console.log(json.user);
 
-    let savedImages = json.user.saved;
-    
-    
-
     let gallery = document.getElementById('gallery');
 
-    savedImages.forEach(element => {
-        let entryDiv = document.createElement('div');
-        entryDiv.className = 'entry';
+    let entryDiv = document.getElementById('div');
+    entryDiv.className = 'entry';
 
-        let img = new Image();
-        img.src = element;
+    let img = new Image();
+    img.src = element;
 
-        entryDiv.append(img);
-        gallery.append(entryDiv);
-    });
-
+    entryDiv.append(img);
+    gallery.append(entryDiv);
+    // let savedImages = json.user.saved;
     
+    
+
+    // let gallery = document.getElementById('gallery');
+
+    // savedImages.forEach(element => {
+    //     let entryDiv = document.createElement('div');
+    //     entryDiv.className = 'entry';
+
+    //     let img = new Image();
+    //     img.src = element;
+
+    //     entryDiv.append(img);
+    //     gallery.append(entryDiv);
+    // });
 }

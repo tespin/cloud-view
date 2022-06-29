@@ -61,36 +61,39 @@ router.post('/save', (req, res, done) => {
         (err, result) => {
             if (err) return console.log(err);
             console.log('pushing to array');
-            // done(null, result);
-            res.json({
-                status: 'success',
-                user: req.user
-            });
+            done(null, result);
         });
-    // res.json({
-    //     status: 'success',
-    //     base64: data.base64
-    // });
+});
+
+router.post('/clouds', (req, res, done) => {
+    const data = req.body;
+    User.findOne({ username: req.user.username}, function (err, user) {
+        if (err) return console.log(err);
+        res.json({
+            status: 'success',
+            user: req.user
+        });
+    });
 });
 
 router.use('/profile.html', ensureAuthenticated);
 
-router.get('/profile.html', ensureAuthenticated, function(req, res, next) {
-    // let saved = User.findOne({ username: req.user.username});
-    // console.log(typeof(saved));
-    let saved;
-    User.findOne({ username: req.user.username }, function (err, user) {
-        if (err) return console.log(err);
-        // saved = user.saved;
-        // console.log(user.saved[0]);
-        // console.log(typeof(user.saved));
-        user.saved.forEach((element) => {
+// router.get('/profile.html', ensureAuthenticated, function(req, res, next) {
+//     // let saved = User.findOne({ username: req.user.username});
+//     // console.log(typeof(saved));
+//     let saved;
+//     User.findOne({ username: req.user.username }, function (err, user) {
+//         if (err) return console.log(err);
+//         // saved = user.saved;
+//         // console.log(user.saved[0]);
+//         // console.log(typeof(user.saved));
+//         user.saved.forEach((element) => {
             
-        });
-    });
-    // console.log(typeof(saved));
-    next();
-});
+//         });
+//     });
+//     // console.log(typeof(saved));
+//     next();
+// });
 
 // app.post('/api', (request, response) => {
 //     const data = request.body;
