@@ -26,5 +26,6 @@
 }
 
 .container #errorBox {
+    display: none;
     margin: 14px 0 6px 0;
 }
