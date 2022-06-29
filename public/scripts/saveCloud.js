@@ -7,7 +7,7 @@ document.getElementById('save').addEventListener('click', event => {
 
     if (img.getAttribute('src') === '') {
         let errorBox = document.getElementById('errorBox');
-        errorBox.style.display = 'block';
+        // errorBox.style.display = 'block';
         errorBox.innerText = "Please obtain a valid image before saving.";
 
         return console.log("Please obtain a valid image before saving.");
