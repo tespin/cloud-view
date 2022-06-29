@@ -63,7 +63,7 @@ router.post('/save', (req, res, done) => {
             console.log('pushing to array');
             res.json({
                 status: 'success',
-                user: req.user
+                user: result
             });
             // done(null, result);
         });
