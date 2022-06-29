@@ -73,7 +73,13 @@ router.use('/profile.html', ensureAuthenticated);
 
 router.get('/profile.html', ensureAuthenticated, function(req, res, next) {
     console.log(req.user);
-    let saved = User.findOne({ username: req.user.username});
+    // let saved = User.findOne({ username: req.user.username});
+    // console.log(typeof(saved));
+    let saved;
+    User.findOne({ username: req.user.username }, function (err, user) {
+        if (err) return console.log(err);
+        saved = user.saved;
+    });
     console.log(typeof(saved));
     next();
 });
