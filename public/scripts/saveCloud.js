@@ -63,8 +63,8 @@ async function postBase64(base64) {
         let img = new Image();
         img.src = element;
 
-        img.append(entryDiv);
-        entryDiv.append(gallery);
+        entryDiv.append(img);
+        gallery.append(entryDiv);
     });
 
     
