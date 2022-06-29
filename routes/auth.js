@@ -80,10 +80,14 @@ router.get('/profile.html', ensureAuthenticated, function(req, res, next) {
         // saved = user.saved;
         console.log(user.saved[0]);
         console.log(typeof(user.saved));
+        let gallery = document.getElementById('gallery');
 
         user.saved.forEach((element) => {
             // console.log(element);
-            console.log(element.slice(0, 22));
+            // console.log(element.slice(0, 22));
+            let img = new Image();
+            img.src = element;
+            gallery.append(img);
         });
     });
     // console.log(typeof(saved));
