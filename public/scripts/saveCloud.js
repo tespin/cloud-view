@@ -52,7 +52,7 @@ async function postBase64(base64) {
 
     let gallery = document.getElementById('gallery');
 
-    let entryDiv = document.getElementById('div');
+    let entryDiv = document.createElement('div');
     entryDiv.className = 'entry';
 
     let img = new Image();
