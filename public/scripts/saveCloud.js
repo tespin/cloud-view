@@ -39,7 +39,7 @@ document.getElementById('save').addEventListener('click', event => {
 
 function getBase64Image(img, cb) {
     let errorBox = document.getElementById('errorBox');
-    errorBox.style.display = 'none';
+    errorBox.style.display = "none";
 
     let canvas = document.createElement("canvas");
     canvas.width = img.width;
