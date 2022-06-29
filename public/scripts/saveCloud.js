@@ -50,16 +50,16 @@ async function postBase64(base64) {
     const json = await response.json();
     let images = json.user.saved;
     console.log(images.at(-1));
-    // let gallery = document.getElementById('gallery');
+    let gallery = document.getElementById('gallery');
 
-    // let entryDiv = document.createElement('div');
-    // entryDiv.className = 'entry';
+    let entryDiv = document.createElement('div');
+    entryDiv.className = 'entry';
 
-    // let img = new Image();
-    // img.src = images.at(-1);
+    let img = new Image();
+    img.src = images.at(-1);
 
-    // entryDiv.append(img);
-    // gallery.append(entryDiv);
+    entryDiv.append(img);
+    gallery.append(entryDiv);
     // let savedImages = json.user.saved;
     
     
