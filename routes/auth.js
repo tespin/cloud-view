@@ -61,7 +61,7 @@ router.post('/save', (req, res, done) => {
         (err, result) => {
             if (err) return console.log(err);
             console.log('pushing to array');
-            done(null, result);
+            // done(null, result);
         });
     res.json({
         status: 'success',
@@ -78,24 +78,25 @@ router.get('/profile.html', ensureAuthenticated, function(req, res, next) {
     User.findOne({ username: req.user.username }, function (err, user) {
         if (err) return console.log(err);
         // saved = user.saved;
-        console.log(user.saved[0]);
-        console.log(typeof(user.saved));
-        let gallery = document.getElementById('gallery');
-
+        // console.log(user.saved[0]);
+        // console.log(typeof(user.saved));
         user.saved.forEach((element) => {
-            // console.log(element);
-            // console.log(element.slice(0, 22));
-            let entryDiv = document.createElement('div');
-            entryDiv.className = "entry";
-            let img = new Image();
-            img.src = element;
-            entryDiv.append(img);
-            gallery.append(entryDiv);
+            
         });
     });
     // console.log(typeof(saved));
     next();
 });
+
+// app.post('/api', (request, response) => {
+//     const data = request.body;
+//     response.json({
+//         status: 'success',
+//         latitude: data.lat,
+//         longitude: data.lon,
+//         api: process.env.API_KEY
+//     });
+// });
 
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
