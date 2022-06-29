@@ -85,9 +85,12 @@ router.get('/profile.html', ensureAuthenticated, function(req, res, next) {
         user.saved.forEach((element) => {
             // console.log(element);
             // console.log(element.slice(0, 22));
+            let entryDiv = document.createElement('div');
+            entryDiv.className = "entry";
             let img = new Image();
             img.src = element;
-            gallery.append(img);
+            entryDiv.append(img);
+            gallery.append(entryDiv);
         });
     });
     // console.log(typeof(saved));
