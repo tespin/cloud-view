@@ -6,6 +6,7 @@ document.getElementById('save').addEventListener('click', event => {
     let img = document.getElementById("result");
 
     if (img.getAttribute('src') === '') {
+        let resDiv = document.getElementById('response');
         let p = document.createElement('p');
         p.innerText = "Please obtain a valid image before saving.";
         resDiv.append(p);
