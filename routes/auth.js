@@ -82,7 +82,7 @@ router.get('/profile.html', ensureAuthenticated, function(req, res, next) {
         console.log(typeof(user.saved));
     });
     // console.log(typeof(saved));
-    // next();
+    next();
 });
 
 function ensureAuthenticated(req, res, next) {
