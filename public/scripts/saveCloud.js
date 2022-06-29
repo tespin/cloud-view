@@ -3,9 +3,19 @@
 document.getElementById('save').addEventListener('click', event => {
     // if image is not undefined
 
-    // let img = document.getElementById("result");
+    let img = document.getElementById("result");
+
+    if (img.getAttribute('src') === '') {
+        let p = document.createElement('p');
+        p.innerText = "Please obtain a valid image before saving.";
+        resDiv.append(p);
+
+        return console.log("Please obtain a valid image before saving.");
+    }
+    
+    getBase64Image(img, postBase64);
+
     // let base64 = getBase64Image(img, postBase64);
-    let base64 = getBase64Image(img, postBase64);
     // console.log(img.src);
     // console.log(getBase64Image(img));
     // let base64 = getBase64Image(async img => {
@@ -28,18 +38,6 @@ document.getElementById('save').addEventListener('click', event => {
 });
 
 function getBase64Image(img, cb) {
-    let resDiv = document.getElementById('response');
-    if (!img) {
-        let p = document.createElement('p');
-        p.innerText = "Please obtain a valid image before saving.";
-        resDiv.append(p);
-
-        return console.log("Please obtain a valid image before saving.");
-    }
-    let img = new Image();
-    img.id = "result";
-    resDiv.append(img);
-
     let canvas = document.createElement("canvas");
     canvas.width = img.width;
     canvas.height = img.height;
