@@ -49,9 +49,23 @@ async function postBase64(base64) {
     const response = await fetch('save', options);
     const json = await response.json();
     console.log(json.user);
-    
-    // let entryDiv = document.createElement('div');
-    // entryDiv.className = 'entry';
 
-    // let gallery = document.getElementById('gallery');
+    let savedImages = json.user.saved;
+    
+    
+
+    let gallery = document.getElementById('gallery');
+
+    savedImages.forEach(element => {
+        let entryDiv = document.createElement('div');
+        entryDiv.className = 'entry';
+
+        let img = new Image();
+        img.src = element;
+
+        img.append(entryDiv);
+        entryDiv.append(gallery);
+    });
+
+    
 }
