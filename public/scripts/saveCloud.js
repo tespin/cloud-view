@@ -1,4 +1,4 @@
-const { response } = require("../../app");
+// const { response } = require("../../app");
 
 document.getElementById('save').addEventListener('click', event => {
     // if image is not undefined
