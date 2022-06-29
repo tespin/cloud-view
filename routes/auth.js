@@ -83,7 +83,7 @@ router.get('/profile.html', ensureAuthenticated, function(req, res, next) {
 
         user.saved.forEach((element) => {
             // console.log(element);
-            console.log(element.slice(0, 10));
+            console.log(element.slice(0, 22));
         });
     });
     // console.log(typeof(saved));
