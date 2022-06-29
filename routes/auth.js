@@ -62,11 +62,15 @@ router.post('/save', (req, res, done) => {
             if (err) return console.log(err);
             console.log('pushing to array');
             // done(null, result);
+            res.json({
+                status: 'success',
+                user: req.user
+            });
         });
-    res.json({
-        status: 'success',
-        base64: data.base64
-    });
+    // res.json({
+    //     status: 'success',
+    //     base64: data.base64
+    // });
 });
 
 router.use('/profile.html', ensureAuthenticated);

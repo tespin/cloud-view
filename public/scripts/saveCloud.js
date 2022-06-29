@@ -48,5 +48,10 @@ async function postBase64(base64) {
 
     const response = await fetch('save', options);
     const json = await response.json();
-    console.log(json.base64);
+    console.log(json.user);
+    
+    // let entryDiv = document.createElement('div');
+    // entryDiv.className = 'entry';
+
+    // let gallery = document.getElementById('gallery');
 }
