@@ -80,6 +80,10 @@ router.get('/profile.html', ensureAuthenticated, function(req, res, next) {
         // saved = user.saved;
         console.log(user.saved[0]);
         console.log(typeof(user.saved));
+
+        user.saved.forEach((element) => {
+            console.log(element);
+        });
     });
     // console.log(typeof(saved));
     next();
