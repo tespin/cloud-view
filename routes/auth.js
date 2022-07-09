@@ -71,7 +71,6 @@ router.post('/deleteAll', (req, res, done) => {
         (err, result) => {
             if (err) return console.log(err);
             res.redirect('/profile.html');
-            // done(result);
         });
 });
 
