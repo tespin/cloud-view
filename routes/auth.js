@@ -13,15 +13,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser(() => { console.log('serialized'); }));
 passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'); }));
 
-// router.post('/save', (request, response) => {
-//     const data = request.user;
-//     console.log(`request made by ${request.body.username}`);
-//     response.json({
-//         status: 'success',
-//         base64: data.base64
-//     });
-// });
-
 router.post('/login/password', passport.authenticate('local', {
     successRedirect: '/profile.html',
     failureRedirect: '/login.html'
@@ -79,7 +70,8 @@ router.post('/deleteAll', (req, res, done) => {
         { new: true},
         (err, result) => {
             if (err) return console.log(err);
-            done(result);
+            res.redirect('/profile.html');
+            // done(result);
         });
 });
 
