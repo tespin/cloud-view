@@ -70,7 +70,7 @@ router.post('/deleteAll', (req, res, done) => {
         { new: true},
         (err, result) => {
             if (err) return console.log(err);
-            res.redirect('/profile.html');
+            return;
             // done(result);
         });
 });
