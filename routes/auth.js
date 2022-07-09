@@ -79,10 +79,7 @@ router.post('/deleteAll', (req, res, done) => {
         { new: true},
         (err, result) => {
             if (err) return console.log(err);
-            res.json({
-                status: 'success',
-                user: result
-            });
+            done(result);
         });
 });
 
