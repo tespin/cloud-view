@@ -1,9 +1,15 @@
 window.addEventListener('load', (event) => {
-    fetchImages()
-    .then(console.log("gallery loaded"));
+    fetchImages().then( () => {
+         // console.log("gallery loaded");
+        let imgs = document.querySelectorAll("div#gallery img");
+        imgs.forEach(img => {
+            // img.remove();
+            img.addEventListener('click', event => {
+                console.log("image clicked");
+            });
+        });
+    });
 })
-
-// fetchImages();
 
 async function fetchImages() {
     // console.log('posting:');
