@@ -8,6 +8,6 @@
 //     });
 // });
 
-document.querySelector("div#gallery img").addEventListener('click', event => {
+document.querySelectorAll("div#gallery img").addEventListener('click', event => {
     console.log("image clicked");
-})
+});
