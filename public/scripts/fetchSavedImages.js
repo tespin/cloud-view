@@ -6,7 +6,7 @@ window.addEventListener('load', (event) => {
             // img.remove();
             img.addEventListener('click', event => {
                 let selected = this;
-                this.style.border = "2px solid red";
+                selected.style.border = "2px solid red";
             });
         });
     });
