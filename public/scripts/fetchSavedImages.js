@@ -4,7 +4,7 @@ window.addEventListener('load', (event) => {
         let imgs = document.querySelectorAll("div#gallery img");
         imgs.forEach(img => {
             // img.remove();
-            let showBorder = false;
+            let showBorder;
             img.addEventListener('click', event => {
                 showBorder != showBorder;
                 console.log(showBorder);
