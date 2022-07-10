@@ -1,5 +1,6 @@
 window.addEventListener('load', (event) => {
-    fetchImages();
+    fetchImages()
+    .then(console.log("gallery loaded"));
 })
 
 // fetchImages();
