@@ -1,5 +1,5 @@
 window.addEventListener('load', (event) => {
-    fetchImages().then( () => {
+    fetchImages().then( (res) => {
          // console.log("gallery loaded");
         let imgs = document.querySelectorAll("div#gallery img");
         imgs.forEach(img => {
@@ -8,7 +8,8 @@ window.addEventListener('load', (event) => {
             img.addEventListener('click', event => {
                 // showBorder != showBorder;
                 // console.log(showBorder);
-                console.log(savedImages.length);
+                // console.log(savedImages.length);
+                console.log(res.savedImages.length);
                 let selected = event.target;
                 if (selected.style.border == "") {
                     selected.style.border = "3px solid #005180";
