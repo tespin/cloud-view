@@ -1,5 +1,7 @@
 window.addEventListener('load', (event) => {
-    fetchImages().then( (res) => {
+    let savedSize;
+    fetchImages().then( () => {
+        savedSize = savedImages.length;
          // console.log("gallery loaded");
         let imgs = document.querySelectorAll("div#gallery img");
         imgs.forEach(img => {
