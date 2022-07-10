@@ -1,5 +1,3 @@
-// const { response } = require("../../app");
-
 document.getElementById('save').addEventListener('click', event => {
     // if image is not undefined
 
@@ -65,7 +63,8 @@ async function postBase64(base64) {
     const response = await fetch('save', options);
     const json = await response.json();
     let images = json.user.saved;
-    console.log(images.at(-1));
+    let size = images.length;
+    console.log(size);
     let gallery = document.getElementById('gallery');
 
     let entryDiv = document.createElement('div');
