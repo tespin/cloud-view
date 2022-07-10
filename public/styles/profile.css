@@ -23,7 +23,8 @@
 }
 
 #gallery img:hover {
-    border: 2px solid #00A2FF;
+    /* border: 2px solid #00A2FF; */
+    border: 2px solid #0079BF;
     cursor: pointer;
 }
 
