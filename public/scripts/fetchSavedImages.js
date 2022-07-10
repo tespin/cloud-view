@@ -1,8 +1,7 @@
 window.addEventListener('load', (event) => {
-    let savedSize;
-    fetchImages().then( () => {
-        savedSize = savedImages.length;
+    fetchImages().then( (res) => {
          // console.log("gallery loaded");
+         console.log(savedImages.length);
         let imgs = document.querySelectorAll("div#gallery img");
         imgs.forEach(img => {
             // img.remove();
@@ -11,7 +10,6 @@ window.addEventListener('load', (event) => {
                 // showBorder != showBorder;
                 // console.log(showBorder);
                 // console.log(savedImages.length);
-                console.log(res.savedImages.length);
                 let selected = event.target;
                 if (selected.style.border == "") {
                     selected.style.border = "3px solid #005180";
@@ -36,7 +34,7 @@ async function fetchImages() {
     const json = await response.json();
     // console.log(json.user);
 
-    let savedImages = json.user.saved;
+    var savedImages = json.user.saved;
     let gallery = document.getElementById('gallery');
 
     savedImages.forEach(element => {
