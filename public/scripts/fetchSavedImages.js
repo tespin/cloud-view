@@ -8,6 +8,7 @@ window.addEventListener('load', (event) => {
             img.addEventListener('click', event => {
                 // showBorder != showBorder;
                 // console.log(showBorder);
+                console.log(savedImages.length);
                 let selected = event.target;
                 if (selected.style.border == "") {
                     selected.style.border = "3px solid #005180";
