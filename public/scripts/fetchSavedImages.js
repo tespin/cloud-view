@@ -4,12 +4,12 @@ window.addEventListener('load', (event) => {
         let imgs = document.querySelectorAll("div#gallery img");
         imgs.forEach(img => {
             // img.remove();
-            let showBorder;
+            // let showBorder = false;
             img.addEventListener('click', event => {
-                showBorder != showBorder;
-                console.log(showBorder);
+                // showBorder != showBorder;
+                // console.log(showBorder);
                 let selected = event.target;
-                if (showBorder) {
+                if (selected.style.border == "") {
                     selected.style.border = "2px solid red";
                 } else {
                     selected.style.border = "";
