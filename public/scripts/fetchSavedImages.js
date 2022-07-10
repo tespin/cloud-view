@@ -7,6 +7,7 @@ window.addEventListener('load', (event) => {
             let showBorder = false;
             img.addEventListener('click', event => {
                 showBorder != showBorder;
+                console.log(showBorder);
                 let selected = event.target;
                 if (showBorder) {
                     selected.style.border = "2px solid red";
