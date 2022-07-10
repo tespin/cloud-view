@@ -18,12 +18,13 @@
     width: 100%;
     height: auto;
     object-fit: cover;
-    border: 1px solid #FFF;
+    border: 2px solid transparent;
     border-radius: 10px; 
 }
 
 #gallery img:hover {
     border: 2px solid #00A2FF;
+    cursor: pointer;
 }
 
 #gallery p {
