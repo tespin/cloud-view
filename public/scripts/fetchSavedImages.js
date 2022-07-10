@@ -5,7 +5,8 @@ window.addEventListener('load', (event) => {
         imgs.forEach(img => {
             // img.remove();
             img.addEventListener('click', event => {
-                console.log("image clicked");
+                let selected = this;
+                this.style.border = "2px solid red";
             });
         });
     });
