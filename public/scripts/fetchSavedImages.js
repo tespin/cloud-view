@@ -10,7 +10,7 @@ window.addEventListener('load', (event) => {
                 // console.log(showBorder);
                 let selected = event.target;
                 if (selected.style.border == "") {
-                    selected.style.border = "3px solid #0079BF";
+                    selected.style.border = "3px solid #005180";
                 } else {
                     selected.style.border = "";
                 }
