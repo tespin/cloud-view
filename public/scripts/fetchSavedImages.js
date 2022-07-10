@@ -11,6 +11,7 @@ window.addEventListener('load', (event) => {
                 // console.log(showBorder);
                 // console.log(savedImages.length);
                 let selected = event.target;
+                console.log(`Image ${img.dataset.index} selected`)
                 if (selected.style.border == "") {
                     selected.style.border = "3px solid #005180";
                 } else {
@@ -34,7 +35,7 @@ async function fetchImages() {
     const json = await response.json();
     // console.log(json.user);
 
-    var savedImages = json.user.saved;
+    let savedImages = json.user.saved;
     let gallery = document.getElementById('gallery');
 
     savedImages.forEach(element => {
@@ -43,7 +44,7 @@ async function fetchImages() {
 
         let img = new Image();
         img.src = element;
-
+        img.dataset.index = savedImages.length - 1;
         entryDiv.append(img);
         gallery.append(entryDiv);
     });
