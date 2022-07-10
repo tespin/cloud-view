@@ -63,8 +63,8 @@ async function postBase64(base64) {
     const response = await fetch('save', options);
     const json = await response.json();
     let images = json.user.saved;
-    let size = images.length;
-    console.log(size);
+    // let size = images.length;
+    // console.log(size);
     let gallery = document.getElementById('gallery');
 
     let entryDiv = document.createElement('div');
