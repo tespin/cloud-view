@@ -4,9 +4,15 @@ window.addEventListener('load', (event) => {
         let imgs = document.querySelectorAll("div#gallery img");
         imgs.forEach(img => {
             // img.remove();
+            let showBorder = false;
             img.addEventListener('click', event => {
+                showBorder != showBorder;
                 let selected = event.target;
-                selected.style.border = "2px solid red";
+                if (showBorder) {
+                    selected.style.border = "2px solid red";
+                } else {
+                    selected.style.border = "";
+                }
             });
         });
     });
