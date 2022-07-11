@@ -73,7 +73,7 @@ function selectImages() {
             } else {
                 selected.style.border = "";
                 let idx = toBeDeleted.indexOf(selected.dataset.index);
-                if (idx > -1) { toBeDeleted.splice(selected.dataset.index, 1); }
+                if (idx > -1) { toBeDeleted.splice(idx, 1); }
                 console.log(`Image ${selected.dataset.index} deselected`)
                 console.log(`Images to be deleted: ${toBeDeleted}`);
             }
