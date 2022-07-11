@@ -120,8 +120,14 @@ async function saveImage(image) {
 
     const response = await fetch('save', options);
     const json = await response.json();
-    console.log(json);
+
+    let b64 = json.b64;
+    let oid = json.oid;
+
+    console.log(b64, oid);
+    // console.log({json.b64, json.oid});
     return [base64];
+    // return [{json.b64, }]
 }
 
 function addImages(imgs, obj) {

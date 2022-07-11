@@ -57,7 +57,8 @@ router.post('/save', (req, res, done) => {
             if (err) return console.log(err);
             res.json({
                 status: 'success',
-                user: result,
+                b64: base64,
+                oid: id
             });
             // done(null, result);
         });
