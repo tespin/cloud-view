@@ -38,14 +38,16 @@ async function fetchImages() {
     let savedImages = json.user.saved;
     let gallery = document.getElementById('gallery');
 
+    let index;
     savedImages.forEach(element => {
         let entryDiv = document.createElement('div');
         entryDiv.className = 'entry';
 
         let img = new Image();
         img.src = element;
-        img.dataset.index = savedImages.indexOf(element);
+        img.dataset.index = index;
         entryDiv.append(img);
         gallery.append(entryDiv);
+        index++;
     });
 }
