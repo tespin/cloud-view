@@ -51,7 +51,7 @@ router.post('/save', (req, res, done) => {
     const id = ObjectID();
     // console.log(`request made by ${req.user.username}`);
     User.findOneAndUpdate({ username: req.user.username},
-        { $push: { saved: {base64, id} }},
+        { $push: { saved: {url: base64, id: id} }},
         { new: true },
         (err, result) => {
             if (err) return console.log(err);
