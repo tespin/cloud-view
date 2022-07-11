@@ -49,6 +49,9 @@ document.getElementById('delete').addEventListener('click', async (event) => {
         body: JSON.stringify(data)
     };
     const response = await fetch('delete', options);
+    const json = await response.json();
+
+    window.location = json.redirect;
     // const json = await response.json();
 
     // let deletedImages = json.user.saved;
