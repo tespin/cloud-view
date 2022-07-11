@@ -75,13 +75,12 @@ document.getElementById('deleteAll').addEventListener('click', async (event) => 
     // // }
 
     // const data = {selected};
-    // const options = {
-    //     method: 'POST', headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(data)
-    // };
-    const response = await fetch('delete');
+    const options = {
+        method: 'POST', headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    const response = await fetch('delete', options);
     const json = await response.json();
 
     window.location = json.redirect;
