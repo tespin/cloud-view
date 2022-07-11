@@ -105,7 +105,7 @@ function addImages(imgs, obj) {
             } else {
                 current.style.border = "";
                 let idx = selected.indexOf(current.dataset.index);
-                if (idx > -1) { current.splice(idx, 1); }
+                if (idx > -1) { selected.splice(idx, 1); }
                 console.log(`Image ${current.dataset.index} deselected`)
                 console.log(`Images to be deleted: ${selected}`);
             }
