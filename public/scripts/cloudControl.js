@@ -47,7 +47,7 @@ document.getElementById('delete').addEventListener('click', async (event) => {
         },
         body: JSON.stringify(data)
     };
-    const response = await fetch('delete', options);
+    await fetch('delete', options);
     // const json = await response.json();
 
     // console.log(json.user);
