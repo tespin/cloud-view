@@ -72,7 +72,7 @@ router.post('/delete', (req, res, done) => {
         (err, result) => {
             if (err) return console.log(err);
             res.redirect('/profile.html');
-        })
+        });
     // res.json({
     //     status: 'success',
     //     user: req.user.username,
