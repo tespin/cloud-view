@@ -122,11 +122,11 @@ async function saveImage(image) {
     const json = await response.json();
 
     let url = json.b64;
-    let oid = json.oid;
+    let _id = json.oid;
 
-    console.log(url, oid);
+    console.log(url, _id);
     // console.log({json.b64, json.oid});
-    return [{url, oid}];
+    return [{url, _id}];
     // return [{json.b64, }]
 }
 
@@ -137,6 +137,7 @@ function addImages(imgs, obj) {
         entryDiv.className = 'entry';
         // console.log(element.url);
         let img = new Image();
+        let imgId = element._id;
         img.src = element.url;
         img.dataset.index = obj.index;
 
@@ -144,14 +145,15 @@ function addImages(imgs, obj) {
             let current = event.target;
             if (current.style.border == "") {
                 current.style.border = "3px solid #005180";
-                selected.push(current.dataset.index);
-                console.log(`Image ${current.dataset.index} selected`)
+                selected.push(imgId);
+                // console.log(`Image ${current.dataset.index} selected`)
+                console.log(`Image ${imgId} selected`)
                 console.log(`Images to be deleted: ${selected}`);
             } else {
                 current.style.border = "";
-                let idx = selected.indexOf(current.dataset.index);
+                let idx = selected.indexOf(imgId);
                 if (idx > -1) { selected.splice(idx, 1); }
-                console.log(`Image ${current.dataset.index} deselected`)
+                console.log(`Image ${imgId} deselected`)
                 console.log(`Images to be deleted: ${selected}`);
             }
         })
