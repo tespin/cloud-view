@@ -71,7 +71,8 @@ router.post('/delete', (req, res, done) => {
         { new: true },
         (err, result) => {
             if (err) return console.log(err);
-            res.redirect('/profile.html');
+            // res.redirect('/profile.html');
+            res.sendFile('/profile.html');
         });
     // res.json({
     //     status: 'success',
@@ -79,16 +80,6 @@ router.post('/delete', (req, res, done) => {
     //     selected: data.selected
     // });
 });
-
-// app.post('/api', (request, response) => {
-//     const data = request.body;
-//     response.json({
-//         status: 'success',
-//         latitude: data.lat,
-//         longitude: data.lon,
-//         api: process.env.API_KEY
-//     });
-// });
 
 router.post('/deleteAll', (req, res, done) => {
     const data = req.body;
