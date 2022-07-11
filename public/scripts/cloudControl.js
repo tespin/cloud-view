@@ -130,7 +130,7 @@ function addImages(imgs, obj) {
         entryDiv.className = 'entry';
 
         let img = new Image();
-        img.src = element;
+        img.src = element.url;
         img.dataset.index = obj.index;
 
         img.addEventListener('click', event => {
