@@ -129,9 +129,9 @@ function addImages(imgs, obj) {
     imgs.forEach(element => {
         let entryDiv = document.createElement('div');
         entryDiv.className = 'entry';
-        console.log(element.url);
+        // console.log(element.url);
         let img = new Image();
-        img.src = element;
+        img.src = element.url;
         img.dataset.index = obj.index;
 
         img.addEventListener('click', event => {
