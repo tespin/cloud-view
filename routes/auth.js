@@ -62,7 +62,7 @@ router.post('/save', (req, res, done) => {
 
 router.post('/delete', (req, res, done) => {
     const data = req.body;
-    response.json({
+    res.json({
         status: 'success',
         user: req.user.username,
         selected: data.selected
