@@ -27,7 +27,7 @@ document.getElementById('save').addEventListener('click', async (event) => {
     addImages(savedImage, indxObject);
 })
 
-document.getElementById('delete').addEventListener('click', event => {
+document.getElementById('delete').addEventListener('click', async (event) => {
     if (selected.length == 0) {
         let errorBox = document.getElementById('errorBox');
         errorBox.style.display = 'block';
