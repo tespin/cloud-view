@@ -120,7 +120,7 @@ async function saveImage(image) {
 
     const response = await fetch('save', options);
     const json = await response.json();
-
+    console.log(json);
     return [base64];
 }
 
