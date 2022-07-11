@@ -80,7 +80,7 @@ document.getElementById('deleteAll').addEventListener('click', async (event) => 
             'Content-Type': 'application/json'
         }
     };
-    const response = await fetch('delete', options);
+    const response = await fetch('deleteAll', options);
     const json = await response.json();
 
     window.location = json.redirect;
