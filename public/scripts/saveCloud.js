@@ -12,8 +12,9 @@ document.getElementById('save').addEventListener('click', async (event) => {
     }
     
     // getBase64Image(img, postBase64);
-    let currentSaved = await saveImage(img);
-    console.log(currentSaved[0]);
+    let imageArray = await saveImage(img);
+    fetchImages(imageArray);
+    // console.log(currentSaved[0]);
 });
 
 async function saveImage(image) {
@@ -38,8 +39,8 @@ async function saveImage(image) {
 
     const response = await fetch('save', options);
     const json = await response.json();
-    let images = json.user.saved;
-    return images;
+    let imageArray = json.user.saved;
+    return imageArray;
     // let size = images.length;
     // console.log(size);
     // let gallery = document.getElementById('gallery');
@@ -54,24 +55,9 @@ async function saveImage(image) {
     // gallery.append(entryDiv);
 }
 
-async function fetchImages() {
-    // console.log('posting:');
-    // console.log(dateUrl);
-    const options = {
-        method: 'POST', headers: {
-            'Content-Type': 'application/json'
-        },
-    };
-
-    const response = await fetch('clouds', options);
-    const json = await response.json();
-    // console.log(json.user);
-
-    let savedImages = json.user.saved;
-    let gallery = document.getElementById('gallery');
-
+function fetchImages(imgArray) {
     let index = 0;
-    savedImages.forEach(element => {
+    imgArray.forEach(element => {
         let entryDiv = document.createElement('div');
         entryDiv.className = 'entry';
 
@@ -83,6 +69,36 @@ async function fetchImages() {
         index++;
     });
 }
+
+// async function fetchImages() {
+//     // console.log('posting:');
+//     // console.log(dateUrl);
+//     const options = {
+//         method: 'POST', headers: {
+//             'Content-Type': 'application/json'
+//         },
+//     };
+
+//     const response = await fetch('clouds', options);
+//     const json = await response.json();
+//     // console.log(json.user);
+
+//     let savedImages = json.user.saved;
+//     let gallery = document.getElementById('gallery');
+
+//     let index = 0;
+//     savedImages.forEach(element => {
+//         let entryDiv = document.createElement('div');
+//         entryDiv.className = 'entry';
+
+//         let img = new Image();
+//         img.src = element;
+//         img.dataset.index = index;
+//         entryDiv.append(img);
+//         gallery.append(entryDiv);
+//         index++;
+//     });
+// }
 
 // function getBase64Image(img, cb) {
 //     let errorBox = document.getElementById('errorBox');
