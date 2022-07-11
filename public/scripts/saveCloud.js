@@ -13,7 +13,7 @@ document.getElementById('save').addEventListener('click', async (event) => {
     
     // getBase64Image(img, postBase64);
     let imageArray = await saveImage(img);
-    fetchImages(imageArray);
+    fetchImage(imageArray);
     // console.log(currentSaved[0]);
 });
 
@@ -55,19 +55,29 @@ async function saveImage(image) {
     // gallery.append(entryDiv);
 }
 
-function fetchImages(imgArray) {
-    let index = 0;
-    imgArray.forEach(element => {
-        let entryDiv = document.createElement('div');
-        entryDiv.className = 'entry';
+function fetchImage(imgArray) {
+    // let index = 0;
+    // imgArray.forEach(element => {
+    //     let entryDiv = document.createElement('div');
+    //     entryDiv.className = 'entry';
 
-        let img = new Image();
-        img.src = element;
-        img.dataset.index = index;
-        entryDiv.append(img);
-        gallery.append(entryDiv);
-        index++;
-    });
+    //     let img = new Image();
+    //     img.src = element;
+    //     img.dataset.index = index;
+    //     entryDiv.append(img);
+    //     gallery.append(entryDiv);
+    //     index++;
+    // });
+
+    let entryDiv = document.createElement('div');
+    entryDiv.className = 'entry';
+
+    let img = new Image();
+    img.src = images.at(-1);
+    img.dataset.index = imgArray.length-1;
+
+    entryDiv.append(img);
+    gallery.append(entryDiv);
 }
 
 // async function fetchImages() {
