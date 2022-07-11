@@ -27,6 +27,31 @@ document.getElementById('save').addEventListener('click', async (event) => {
     addImages(savedImage, indxObject);
 })
 
+document.getElementById('delete').addEventListener('click', event => {
+    if (selected.length == 0) {
+        let errorBox = document.getElementById('errorBox');
+        errorBox.style.display = 'block';
+        errorBox.innerText = "Please select images to delete.";
+
+        return console.log("Please select images to delete.");
+    }
+    // else {
+    //     errorBox.innertext = `${selected.length} images selected`;
+    // }
+
+    const data = {selected};
+    const options = {
+        method: 'POST', headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
+    const response = await fetch('delete', options);
+    const json = await response.json();
+
+    console.log(json);
+})
+
 async function fetchImages() {
     // console.log('posting:');
     // console.log(dateUrl);
@@ -116,30 +141,3 @@ function addImages(imgs, obj) {
         obj.index++;
     })
 }
-
-// function selectImages() {
-//     let imgs = document.querySelectorAll("div#gallery img");
-//     let toBeDeleted = [];
-//     imgs.forEach(img => {
-//         // img.remove();
-//         // let showBorder = false;
-//         img.addEventListener('click', event => {
-//             // showBorder != showBorder;
-//             // console.log(showBorder);
-//             // console.log(savedImages.length);
-//             let selected = event.target;
-//             if (selected.style.border == "") {
-//                 selected.style.border = "3px solid #005180";
-//                 toBeDeleted.push(selected.dataset.index);
-//                 console.log(`Image ${selected.dataset.index} selected`)
-//                 console.log(`Images to be deleted: ${toBeDeleted}`);
-//             } else {
-//                 selected.style.border = "";
-//                 let idx = toBeDeleted.indexOf(selected.dataset.index);
-//                 if (idx > -1) { toBeDeleted.splice(idx, 1); }
-//                 console.log(`Image ${selected.dataset.index} deselected`)
-//                 console.log(`Images to be deleted: ${toBeDeleted}`);
-//             }
-//         });
-//     });
-// }

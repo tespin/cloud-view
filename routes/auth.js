@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 // let crypto = require('crypto');
 // let db = require('../db');
 let User = require('../db');
+const { response } = require('../app');
 const ObjectID = require('mongodb').ObjectId;
 const router = express.Router();
 
@@ -60,8 +61,23 @@ router.post('/save', (req, res, done) => {
 });
 
 router.post('/delete', (req, res, done) => {
-
+    const data = req.body;
+    response.json({
+        status: 'success',
+        user: req.user.username,
+        selected: data.selected
+    });
 });
+
+// app.post('/api', (request, response) => {
+//     const data = request.body;
+//     response.json({
+//         status: 'success',
+//         latitude: data.lat,
+//         longitude: data.lon,
+//         api: process.env.API_KEY
+//     });
+// });
 
 router.post('/deleteAll', (req, res, done) => {
     const data = req.body;
