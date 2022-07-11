@@ -100,14 +100,14 @@ function addImages(imgs, obj) {
             if (current.style.border == "") {
                 current.style.border = "3px solid #005180";
                 selected.push(current.dataset.index);
-                console.log(`Image ${selected.dataset.index} selected`)
-                console.log(`Images to be deleted: ${toBeDeleted}`);
+                console.log(`Image ${current.dataset.index} selected`)
+                console.log(`Images to be deleted: ${selected}`);
             } else {
-                selected.style.border = "";
-                let idx = toBeDeleted.indexOf(selected.dataset.index);
-                if (idx > -1) { toBeDeleted.splice(idx, 1); }
-                console.log(`Image ${selected.dataset.index} deselected`)
-                console.log(`Images to be deleted: ${toBeDeleted}`);
+                current.style.border = "";
+                let idx = selected.indexOf(current.dataset.index);
+                if (idx > -1) { current.splice(idx, 1); }
+                console.log(`Image ${current.dataset.index} deselected`)
+                console.log(`Images to be deleted: ${selected}`);
             }
         })
 
