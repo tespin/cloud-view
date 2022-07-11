@@ -16,7 +16,7 @@ document.getElementById('save').addEventListener('click', async (event) => {
     console.log(currentSaved[0]);
 });
 
-function saveImage(image) {
+async function saveImage(image) {
     let errorBox = document.getElementById("errorBox");
     errorBox.style.display = "none";
 
