@@ -49,8 +49,21 @@ document.getElementById('delete').addEventListener('click', async (event) => {
     const response = await fetch('delete', options);
     const json = await response.json();
 
-    console.log(json.selected);
+    console.log(json.user);
 })
+
+// const data = {lat, lon};
+// const options = {
+//     method: 'POST', headers: {
+//         'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(data)
+// };
+// // fetch('/api', options).then(response => {
+// //     console.log(response);
+// // });
+// const response = await fetch('api', options);
+// const json = await response.json();
 
 async function fetchImages() {
     // console.log('posting:');
