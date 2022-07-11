@@ -67,9 +67,12 @@ router.post('/save', (req, res, done) => {
 router.post('/delete', (req, res, done) => {
     const data = req.body;
     User.findOneAndUpdate({ username: req.user.username},
-        { $pull: { saved: {$in: data.selected}}
-    }
-        )
+        { $pull: { saved: { _id: {$in: data.selected}}}},
+        { new: true },
+        (err, result) => {
+            if (err) return console.log(err);
+            res.redirect('/profile.html');
+        })
     // res.json({
     //     status: 'success',
     //     user: req.user.username,
