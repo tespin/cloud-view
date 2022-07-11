@@ -22,11 +22,11 @@
     border-radius: 10px; 
 }
 
-/* #gallery img:hover {
+#gallery img:hover {
     border: 3px solid #005180;
     cursor: pointer;
 } 
-*/
+
 
 #gallery p {
     margin: 4px 0 10px 0;
