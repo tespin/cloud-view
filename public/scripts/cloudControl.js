@@ -5,6 +5,7 @@ window.addEventListener('load', async (event) => {
     console.log('page loaded');
     
     let savedImages = await fetchImages();
+    console.log(savedImages);
     addImages(savedImages, indxObject);
 
 })
@@ -128,9 +129,9 @@ function addImages(imgs, obj) {
     imgs.forEach(element => {
         let entryDiv = document.createElement('div');
         entryDiv.className = 'entry';
-        console.log(element);
+        // console.log(element);
         let img = new Image();
-        img.src = element.url;
+        img.src = element;
         img.dataset.index = obj.index;
 
         img.addEventListener('click', event => {
