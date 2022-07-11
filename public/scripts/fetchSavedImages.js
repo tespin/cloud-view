@@ -38,7 +38,7 @@ async function fetchImages() {
     let savedImages = json.user.saved;
     let gallery = document.getElementById('gallery');
 
-    let index;
+    let index = 0;
     savedImages.forEach(element => {
         let entryDiv = document.createElement('div');
         entryDiv.className = 'entry';
