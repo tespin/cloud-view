@@ -126,7 +126,7 @@ async function saveImage(image) {
 
     console.log(b64, oid);
     // console.log({json.b64, json.oid});
-    return [base64];
+    return [{b64, oid}];
     // return [{json.b64, }]
 }
 
