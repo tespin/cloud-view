@@ -48,7 +48,7 @@ router.post('/save', (req, res, done) => {
     const data = req.body;
     const base64 = data.base64;
 
-    const id = new ObjectID();
+    const id = ObjectID();
     // console.log(`request made by ${req.user.username}`);
     User.findOneAndUpdate({ username: req.user.username},
         { $push: { saved: {base64, id} }},

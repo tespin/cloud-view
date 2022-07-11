@@ -13,7 +13,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     username: { type: String, required: true, unique: true},
     // password: { type: String, required: true },
-    saved: [{String, id: Schema.Types.ObjectId}]
+    saved: [{url: String, id: Schema.Types.ObjectId}]
 });
 
 userSchema.plugin(passportLocalMongoose);
