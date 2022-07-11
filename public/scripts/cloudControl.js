@@ -1,5 +1,6 @@
 let indxObject = { index: 0 };
 let selected = [];
+let indices = [];
 
 window.addEventListener('load', async (event) => {
     console.log('page loaded');
@@ -48,6 +49,11 @@ document.getElementById('delete').addEventListener('click', async (event) => {
         body: JSON.stringify(data)
     };
     const response = await fetch('delete', options);
+    // const json = await response.json();
+
+    // let deletedImages = json.user.saved;
+
+
     // const json = await response.json();
 
     // console.log(json.user);
@@ -146,6 +152,7 @@ function addImages(imgs, obj) {
             if (current.style.border == "") {
                 current.style.border = "3px solid #005180";
                 selected.push(imgId);
+                indices.push(current.dataset.index);
                 // console.log(`Image ${current.dataset.index} selected`)
                 console.log(`Image ${imgId} selected`)
                 console.log(`Images to be deleted: ${selected}`);
