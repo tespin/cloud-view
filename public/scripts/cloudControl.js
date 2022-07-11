@@ -121,12 +121,12 @@ async function saveImage(image) {
     const response = await fetch('save', options);
     const json = await response.json();
 
-    let b64 = json.b64;
+    let url = json.b64;
     let oid = json.oid;
 
-    console.log(b64, oid);
+    console.log(url, oid);
     // console.log({json.b64, json.oid});
-    return [{b64, oid}];
+    return [{url, oid}];
     // return [{json.b64, }]
 }
 
