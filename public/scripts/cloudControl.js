@@ -49,7 +49,7 @@ document.getElementById('delete').addEventListener('click', async (event) => {
     const response = await fetch('delete', options);
     const json = await response.json();
 
-    console.log(json);
+    console.log(json.selected);
 })
 
 async function fetchImages() {
