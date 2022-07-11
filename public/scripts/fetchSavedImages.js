@@ -43,7 +43,7 @@ async function fetchImages() {
 
         let img = new Image();
         img.src = element;
-        img.dataset.index = savedImages.length - 1;
+        img.dataset.index = savedImages.indexOf(element);
         entryDiv.append(img);
         gallery.append(entryDiv);
     });
