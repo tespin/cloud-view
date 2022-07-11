@@ -1,4 +1,4 @@
-document.getElementById('save').addEventListener('click', event => {
+document.getElementById('save').addEventListener('click', async (event) => {
     // if image is not undefined
 
     let img = document.getElementById("result");
@@ -12,10 +12,11 @@ document.getElementById('save').addEventListener('click', event => {
     }
     
     // getBase64Image(img, postBase64);
-    saveImage(img);
+    let currentSaved = await saveImage(img);
+    console.log(currentSaved[0]);
 });
 
-async function saveImage(image) {
+function saveImage(image) {
     let errorBox = document.getElementById("errorBox");
     errorBox.style.display = "none";
 
@@ -38,18 +39,49 @@ async function saveImage(image) {
     const response = await fetch('save', options);
     const json = await response.json();
     let images = json.user.saved;
+    return images;
     // let size = images.length;
     // console.log(size);
+    // let gallery = document.getElementById('gallery');
+
+    // let entryDiv = document.createElement('div');
+    // entryDiv.className = 'entry';
+
+    // let img = new Image();
+    // img.src = images.at(-1);
+
+    // entryDiv.append(img);
+    // gallery.append(entryDiv);
+}
+
+async function fetchImages() {
+    // console.log('posting:');
+    // console.log(dateUrl);
+    const options = {
+        method: 'POST', headers: {
+            'Content-Type': 'application/json'
+        },
+    };
+
+    const response = await fetch('clouds', options);
+    const json = await response.json();
+    // console.log(json.user);
+
+    let savedImages = json.user.saved;
     let gallery = document.getElementById('gallery');
 
-    let entryDiv = document.createElement('div');
-    entryDiv.className = 'entry';
+    let index = 0;
+    savedImages.forEach(element => {
+        let entryDiv = document.createElement('div');
+        entryDiv.className = 'entry';
 
-    let img = new Image();
-    img.src = images.at(-1);
-
-    entryDiv.append(img);
-    gallery.append(entryDiv);
+        let img = new Image();
+        img.src = element;
+        img.dataset.index = index;
+        entryDiv.append(img);
+        gallery.append(entryDiv);
+        index++;
+    });
 }
 
 // function getBase64Image(img, cb) {
