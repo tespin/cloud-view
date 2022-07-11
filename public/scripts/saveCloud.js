@@ -73,7 +73,7 @@ function fetchImage(imgArray) {
     entryDiv.className = 'entry';
 
     let img = new Image();
-    img.src = images.at(-1);
+    img.src = imgArray.at(-1);
     img.dataset.index = imgArray.length-1;
 
     entryDiv.append(img);
