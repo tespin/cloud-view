@@ -128,7 +128,7 @@ function addImages(imgs, obj) {
     imgs.forEach(element => {
         let entryDiv = document.createElement('div');
         entryDiv.className = 'entry';
-
+        console.log(element);
         let img = new Image();
         img.src = element.url;
         img.dataset.index = obj.index;
