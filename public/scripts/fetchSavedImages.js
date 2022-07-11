@@ -1,24 +1,24 @@
 window.addEventListener('load', (event) => {
     fetchImages().then( (res) => {
-         // console.log("gallery loaded");
-        let imgs = document.querySelectorAll("div#gallery img");
-        imgs.forEach(img => {
-            // img.remove();
-            // let showBorder = false;
-            img.addEventListener('click', event => {
-                // showBorder != showBorder;
-                // console.log(showBorder);
-                // console.log(savedImages.length);
-                let selected = event.target;
-                if (selected.style.border == "") {
-                    selected.style.border = "3px solid #005180";
-                    console.log(`Image ${selected.dataset.index} selected`)
-                } else {
-                    selected.style.border = "";
-                    console.log(`Image ${selected.dataset.index} deselected`)
-                }
-            });
-        });
+         console.log("gallery loaded");
+        // let imgs = document.querySelectorAll("div#gallery img");
+        // imgs.forEach(img => {
+        //     // img.remove();
+        //     // let showBorder = false;
+        //     img.addEventListener('click', event => {
+        //         // showBorder != showBorder;
+        //         // console.log(showBorder);
+        //         // console.log(savedImages.length);
+        //         let selected = event.target;
+        //         if (selected.style.border == "") {
+        //             selected.style.border = "3px solid #005180";
+        //             console.log(`Image ${selected.dataset.index} selected`)
+        //         } else {
+        //             selected.style.border = "";
+        //             console.log(`Image ${selected.dataset.index} deselected`)
+        //         }
+        //     });
+        // });
     });
 })
 
