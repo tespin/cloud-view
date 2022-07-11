@@ -18,7 +18,7 @@
     width: 100%;
     height: auto;
     object-fit: cover;
-    border: 2px solid transparent;
+    border: 3px solid transparent;
     border-radius: 10px; 
 }
 

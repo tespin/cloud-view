@@ -12,10 +12,10 @@ window.addEventListener('load', (event) => {
                 let selected = event.target;
                 if (selected.style.border == "") {
                     selected.style.border = "3px solid #005180";
-                    console.log(`Image ${img.dataset.index} selected`)
+                    console.log(`Image ${selected.dataset.index} selected`)
                 } else {
                     selected.style.border = "";
-                    console.log(`Image ${img.dataset.index} deselected`)
+                    console.log(`Image ${selected.dataset.index} deselected`)
                 }
             });
         });
