@@ -46,9 +46,12 @@ router.post('/signup', function(req, res) {
 
 router.post('/save', (req, res, done) => {
     const data = req.body;
+    const base64 = data.base64;
+
+    const id = ObjectId();
     // console.log(`request made by ${req.user.username}`);
     User.findOneAndUpdate({ username: req.user.username},
-        { $push: { saved: data.base64 }},
+        { $push: { saved: {base64, id} }},
         { new: true },
         (err, result) => {
             if (err) return console.log(err);
@@ -62,11 +65,15 @@ router.post('/save', (req, res, done) => {
 
 router.post('/delete', (req, res, done) => {
     const data = req.body;
-    res.json({
-        status: 'success',
-        user: req.user.username,
-        selected: data.selected
-    });
+    User.findOneAndUpdate({ username: req.user.username},
+        { $pull: { saved: {$in: data.selected}}
+    }
+        )
+    // res.json({
+    //     status: 'success',
+    //     user: req.user.username,
+    //     selected: data.selected
+    // });
 });
 
 // app.post('/api', (request, response) => {
