@@ -62,6 +62,39 @@ document.getElementById('delete').addEventListener('click', async (event) => {
     // console.log(json.user);
 })
 
+document.getElementById('deleteAll').addEventListener('click', async (event) => {
+    // if (selected.length == 0) {
+    //     let errorBox = document.getElementById('errorBox');
+    //     errorBox.style.display = 'block';
+    //     errorBox.innerText = "Please select images to delete.";
+
+    //     return console.log("Please select images to delete.");
+    // }
+    // // else {
+    // //     errorBox.innertext = `${selected.length} images selected`;
+    // // }
+
+    // const data = {selected};
+    // const options = {
+    //     method: 'POST', headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(data)
+    // };
+    const response = await fetch('delete');
+    const json = await response.json();
+
+    window.location = json.redirect;
+    // const json = await response.json();
+
+    // let deletedImages = json.user.saved;
+
+
+    // const json = await response.json();
+
+    // console.log(json.user);
+})
+
 // const data = {lat, lon};
 // const options = {
 //     method: 'POST', headers: {

@@ -93,7 +93,12 @@ router.post('/deleteAll', (req, res, done) => {
         { new: true},
         (err, result) => {
             if (err) return console.log(err);
-            res.redirect('/profile.html');
+            // res.redirect('/profile.html');
+            res.json({
+                status: 'success',
+                user: result,
+                redirect: '/profile.html'
+            });
         });
 });
 
