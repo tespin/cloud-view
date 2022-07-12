@@ -37,7 +37,6 @@
     margin: 14px 0 6px 0;
 }
 
-div form {
-    /* width: calc(50% - 20px); */
-    box-sizing: border-box;
+#welcome div {
+    margin: 2.4vh;
 }
