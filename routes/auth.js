@@ -125,6 +125,34 @@ router.post('/user', (req, res, done) => {
     }
 });
 
+router.post('/cotd', (req, res, done) => {
+    User.find( 
+        {}, 
+        { saved: 1 },
+        (err, result) => {
+            if (err) return console.log(err);
+            done(result);
+        }).toArray
+
+    // User.findOneAndUpdate({ username: req.user.username}, 
+    //     { $set: { saved: [] }},
+    //     { new: true},
+    //     (err, result) => {
+    //         if (err) return console.log(err);
+    //         // res.redirect('/profile.html');
+    //         res.json({
+    //             status: 'success',
+    //             user: result,
+    //             redirect: '/profile.html'
+    //         });
+    //     });
+    User.find( {},
+        {saved:1},
+    ).toArray((err, result) => {
+        if (err) return console.log(err);
+    })
+})
+
 router.use('/profile.html', ensureAuthenticated);
 
 // router.get('/profile.html', ensureAuthenticated, function(req, res, next) {
