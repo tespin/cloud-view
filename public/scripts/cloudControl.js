@@ -67,13 +67,15 @@ document.getElementById('delete').addEventListener('click', async (event) => {
 })
 
 document.getElementById('deleteAll').addEventListener('click', async (event) => {
-    if (selected.length === 0) {
-        let deleteErrorBox = document.getElementById('deleteErrorBox');
-        deleteErrorBox.style.display = 'block';
-        deleteErrorBox.innerText = "No images to delete.";
+    // if (selected.length == 0) {
+    //     let deleteErrorBox = document.getElementById('deleteErrorBox');
+    //     deleteErrorBox.style.display = 'block';
+    //     deleteErrorBox.innerText = "No images to delete.";
 
-        return console.log("No images to delete.");
-    }
+    //     return console.log("No images to delete.");
+    // }
+    let deleteErrorBox = document.getElementById('deleteErrorBox');
+    deleteErrorBox.style.display = 'none';
     // // else {
     // //     errorBox.innertext = `${selected.length} images selected`;
     // // }
