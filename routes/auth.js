@@ -113,6 +113,17 @@ router.post('/clouds', (req, res, done) => {
     });
 });
 
+router.post('/user', (req, res, done) => {
+    if (req.user === undefined) {
+        res.json({});
+    } else {
+        res.json ({
+            status: 'success',
+            user: req.user
+        });
+    }
+});
+
 router.use('/profile.html', ensureAuthenticated);
 
 // router.get('/profile.html', ensureAuthenticated, function(req, res, next) {

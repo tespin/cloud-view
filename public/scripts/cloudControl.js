@@ -9,6 +9,19 @@ window.addEventListener('load', async (event) => {
     console.log(savedImages);
     addImages(savedImages, indxObject);
 
+    const userOptions = {
+        method: 'POST', headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    let userBox = document.getElementById('usernameBox');
+    const username = await fetch('user', userOptions);
+    const json = await username.json();
+
+    userBox.innerText = json.user.username;
+
+
 })
 
 document.getElementById('save').addEventListener('click', async (event) => {
