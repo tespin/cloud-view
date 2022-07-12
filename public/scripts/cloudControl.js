@@ -31,6 +31,8 @@ document.getElementById('save').addEventListener('click', async (event) => {
 
         return console.log("Please obtain a valid image before saving.");
     }
+    let deleteErrorBox = document.getElementById('deleteErrorBox');
+    deleteErrorBox.style.display = 'none';
     
     // getBase64Image(img, postBase64);
     let savedImage = await saveImage(img);
@@ -65,13 +67,13 @@ document.getElementById('delete').addEventListener('click', async (event) => {
 })
 
 document.getElementById('deleteAll').addEventListener('click', async (event) => {
-    // if (selected.length == 0) {
-    //     let errorBox = document.getElementById('errorBox');
-    //     errorBox.style.display = 'block';
-    //     errorBox.innerText = "Please select images to delete.";
+    if (selected.length == 0) {
+        let errorBox = document.getElementById('errorBox');
+        errorBox.style.display = 'block';
+        errorBox.innerText = "No images to delete.";
 
-    //     return console.log("Please select images to delete.");
-    // }
+        return console.log("No images to delete.");
+    }
     // // else {
     // //     errorBox.innertext = `${selected.length} images selected`;
     // // }

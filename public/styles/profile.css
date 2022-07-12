@@ -1,3 +1,7 @@
+h2 {
+    margin: 2.7vh 0 0 0;
+}
+
 #gallery {
     display: flex;
     flex-direction: row;
