@@ -9,7 +9,7 @@ let base64 = "";
 
 document.getElementById('geolocate').addEventListener('click', event => {
     if ('geolocation'in navigator) {
-        console.log('geolocation available');
+        // console.log('geolocation available');
         navigator.geolocation.getCurrentPosition( async position => {
             lat = position.coords.latitude;
             lon = position.coords.longitude;
@@ -32,7 +32,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
             img.src = getUrl();
             img.onload = () => {
                 img.alt = "Street view image of the sky above current location";
-                console.log("loaded");
+                // console.log("loaded");
                 let responseContainer = document.getElementById("response");
                 responseContainer.style.display = "block";
                 // let canvas = document.createElement("canvas");
