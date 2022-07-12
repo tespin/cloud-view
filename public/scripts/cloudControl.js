@@ -148,6 +148,11 @@ function addImages(imgs, obj) {
         img.src = element.url;
         img.dataset.index = obj.index;
 
+        let d = new Date().toLocaleDateString('default', { month: 'long', day: 'numeric', year: 'numeric'});
+        let dateDiv document.createElement('div');
+        dateDiv.className = 'date';
+        dateDiv.innerText = d;
+
         img.addEventListener('click', event => {
             let current = event.target;
             if (current.style.border == "") {
@@ -167,6 +172,7 @@ function addImages(imgs, obj) {
         })
 
         entryDiv.append(img);
+        entryDiv.append(dateDiv);
         gallery.append(entryDiv);
         obj.index++;
     })
