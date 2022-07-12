@@ -6,7 +6,6 @@ window.addEventListener('load', async (event) => {
     console.log('page loaded');
     
     let savedImages = await fetchImages();
-    console.log(savedImages);
     addImages(savedImages, indxObject);
 
     const userOptions = {
@@ -25,8 +24,6 @@ window.addEventListener('load', async (event) => {
 })
 
 document.getElementById('save').addEventListener('click', async (event) => {
-    console.log('save button clicked');
-
     let img = document.getElementById("result");
 
     if (img.getAttribute('src') === '') {
@@ -44,7 +41,7 @@ document.getElementById('save').addEventListener('click', async (event) => {
 
 document.getElementById('delete').addEventListener('click', async (event) => {
     if (selected.length == 0) {
-        let errorBox = document.getElementById('errorBox');
+        let deleteErrorBox = document.getElementById('deleteErrorBox');
         errorBox.style.display = 'block';
         errorBox.innerText = "Please select images to delete.";
 
@@ -65,14 +62,6 @@ document.getElementById('delete').addEventListener('click', async (event) => {
     const json = await response.json();
 
     window.location = json.redirect;
-    // const json = await response.json();
-
-    // let deletedImages = json.user.saved;
-
-
-    // const json = await response.json();
-
-    // console.log(json.user);
 })
 
 document.getElementById('deleteAll').addEventListener('click', async (event) => {
@@ -97,32 +86,9 @@ document.getElementById('deleteAll').addEventListener('click', async (event) => 
     const json = await response.json();
 
     window.location = json.redirect;
-    // const json = await response.json();
-
-    // let deletedImages = json.user.saved;
-
-
-    // const json = await response.json();
-
-    // console.log(json.user);
 })
 
-// const data = {lat, lon};
-// const options = {
-//     method: 'POST', headers: {
-//         'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(data)
-// };
-// // fetch('/api', options).then(response => {
-// //     console.log(response);
-// // });
-// const response = await fetch('api', options);
-// const json = await response.json();
-
 async function fetchImages() {
-    // console.log('posting:');
-    // console.log(dateUrl);
     const options = {
         method: 'POST', headers: {
             'Content-Type': 'application/json'
@@ -131,24 +97,9 @@ async function fetchImages() {
 
     const response = await fetch('clouds', options);
     const json = await response.json();
-    // console.log(json.user);
-
+    
     let savedImages = json.user.saved;
     return savedImages;
-    // let gallery = document.getElementById('gallery');
-
-    // let index = 0;
-    // savedImages.forEach(element => {
-    //     let entryDiv = document.createElement('div');
-    //     entryDiv.className = 'entry';
-
-    //     let img = new Image();
-    //     img.src = element;
-    //     img.dataset.index = index;
-    //     entryDiv.append(img);
-    //     gallery.append(entryDiv);
-    //     index++;
-    // });
 }
 
 async function saveImage(image) {
@@ -177,8 +128,6 @@ async function saveImage(image) {
 
     let url = json.b64;
     let _id = json.oid;
-
-    console.log(url, _id);
     // console.log({json.b64, json.oid});
     return [{url, _id}];
     // return [{json.b64, }]
