@@ -13,7 +13,7 @@ window.addEventListener('load', async (event) => {
     // const json = await username.json();
 
     // userBox.innerText = json.user.username;
-    const userOptions = {
+    const options = {
         method: 'POST', headers: {
             'Content-Type': 'application/json'
         }
