@@ -35,10 +35,12 @@
 .container #errorBox {
     /* display: none;
     margin: 14px 0 6px 0; */
+    display: none;
     margin: 2.4vh;
 }
 
 .container #deleteErrorBox {
+    display: none;
     margin: 2.4vh;
 }
 
