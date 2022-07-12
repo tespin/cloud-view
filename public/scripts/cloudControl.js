@@ -149,7 +149,7 @@ function addImages(imgs, obj) {
         img.dataset.index = obj.index;
 
         let d = new Date().toLocaleDateString('default', { month: 'long', day: 'numeric', year: 'numeric'});
-        let dateDiv document.createElement('div');
+        let dateDiv = document.createElement('div');
         dateDiv.className = 'date';
         dateDiv.innerText = d;
 
