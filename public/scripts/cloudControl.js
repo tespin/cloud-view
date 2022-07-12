@@ -131,9 +131,9 @@ async function saveImage(image) {
     const json = await response.json();
 
     let url = json.b64;
-    let d = json.date;
+    let date = json.date;
     let _id = json.oid;
-    console.log(d);
+    console.log(date);
     // console.log({json.b64, json.oid});
     return [{url, date, _id}];
     // return [{json.b64, }]
