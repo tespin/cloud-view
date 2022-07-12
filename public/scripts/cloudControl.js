@@ -3,8 +3,6 @@ let selected = [];
 let indices = [];
 
 window.addEventListener('load', async (event) => {
-    console.log('page loaded');
-    
     let savedImages = await fetchImages();
     addImages(savedImages, indxObject);
 
@@ -29,7 +27,8 @@ document.getElementById('save').addEventListener('click', async (event) => {
         errorBox.style.display = 'block';
         errorBox.innerText = "Please obtain a valid image before saving.";
 
-        return console.log("Please obtain a valid image before saving.");
+        // return console.log("Please obtain a valid image before saving.");
+        return;
     }
     let deleteErrorBox = document.getElementById('deleteErrorBox');
     deleteErrorBox.style.display = 'none';
@@ -45,7 +44,8 @@ document.getElementById('delete').addEventListener('click', async (event) => {
         deleteErrorBox.style.display = 'block';
         deleteErrorBox.innerText = "Please select images to delete.";
 
-        return console.log("Please select images to delete.");
+        return;
+        // return console.log("Please select images to delete.");
     }
     deleteErrorBox.style.display = 'none';
 
@@ -155,14 +155,14 @@ function addImages(imgs, obj) {
                 selected.push(imgId);
                 indices.push(current.dataset.index);
                 // console.log(`Image ${current.dataset.index} selected`)
-                console.log(`Image ${imgId} selected`)
-                console.log(`Images to be deleted: ${selected}`);
+                // console.log(`Image ${imgId} selected`)
+                // console.log(`Images to be deleted: ${selected}`);
             } else {
                 current.style.border = "";
                 let idx = selected.indexOf(imgId);
                 if (idx > -1) { selected.splice(idx, 1); }
-                console.log(`Image ${imgId} deselected`)
-                console.log(`Images to be deleted: ${selected}`);
+                // console.log(`Image ${imgId} deselected`)
+                // console.log(`Images to be deleted: ${selected}`);
             }
         })
 
