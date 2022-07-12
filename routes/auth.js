@@ -47,17 +47,18 @@ router.post('/signup', function(req, res) {
 router.post('/save', (req, res, done) => {
     const data = req.body;
     const base64 = data.base64;
-
+    const localDate = new Date().toLocaleDateString('default', { month: 'long', day: 'numeric', year: 'numeric'});
     const id = ObjectID();
     // console.log(`request made by ${req.user.username}`);
     User.findOneAndUpdate({ username: req.user.username},
-        { $push: { saved: {url: base64, _id: id} }},
+        { $push: { saved: {url: base64, date: localDate, _id: id} }},
         { new: true },
         (err, result) => {
             if (err) return console.log(err);
             res.json({
                 status: 'success',
                 b64: base64,
+                date: localDate,
                 oid: id
             });
             // done(null, result);

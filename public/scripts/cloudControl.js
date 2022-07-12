@@ -119,9 +119,7 @@ async function saveImage(image) {
     ctx.drawImage(image, 0, 0);
     let base64 = canvas.toDataURL("image/png");
 
-    let date = new Date().toLocaleDateString('default', { month: 'long', day: 'numeric', year: 'numeric'});
-
-    const data = { base64, date };
+    const data = { base64 };
     const options = {
         method: 'POST', headers: {
             'Content-Type': 'application/json'
@@ -133,9 +131,11 @@ async function saveImage(image) {
     const json = await response.json();
 
     let url = json.b64;
+    let d = json.date;
     let _id = json.oid;
+    console.log(d);
     // console.log({json.b64, json.oid});
-    return [{url, _id}];
+    return [{url, date, _id}];
     // return [{json.b64, }]
 }
 
