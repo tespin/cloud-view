@@ -119,7 +119,9 @@ async function saveImage(image) {
     ctx.drawImage(image, 0, 0);
     let base64 = canvas.toDataURL("image/png");
 
-    const data = { base64 };
+    let date = new Date().toLocaleDateString('default', { month: 'long', day: 'numeric', year: 'numeric'});
+
+    const data = { base64, date };
     const options = {
         method: 'POST', headers: {
             'Content-Type': 'application/json'
@@ -148,10 +150,10 @@ function addImages(imgs, obj) {
         img.src = element.url;
         img.dataset.index = obj.index;
 
-        let d = new Date().toLocaleDateString('default', { month: 'long', day: 'numeric', year: 'numeric'});
-        let dateDiv = document.createElement('p');
-        dateDiv.className = 'date';
-        dateDiv.innerText = d;
+        // let d = new Date().toLocaleDateString('default', { month: 'long', day: 'numeric', year: 'numeric'});
+        // let dateDiv = document.createElement('p');
+        // dateDiv.className = 'date';
+        // dateDiv.innerText = d;
 
         img.addEventListener('click', event => {
             let current = event.target;
@@ -172,7 +174,6 @@ function addImages(imgs, obj) {
         })
 
         entryDiv.append(img);
-        entryDiv.append(dateDiv);
         gallery.append(entryDiv);
         obj.index++;
     })
