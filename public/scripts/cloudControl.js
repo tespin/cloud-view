@@ -67,8 +67,8 @@ document.getElementById('delete').addEventListener('click', async (event) => {
 })
 
 document.getElementById('deleteAll').addEventListener('click', async (event) => {
-    if (selected.length == 0) {
-        let deleteErrorBox = document.getElementById('errorBox');
+    if (selected.length === 0) {
+        let deleteErrorBox = document.getElementById('deleteErrorBox');
         deleteErrorBox.style.display = 'block';
         deleteErrorBox.innerText = "No images to delete.";
 
