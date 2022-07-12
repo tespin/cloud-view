@@ -19,8 +19,6 @@ window.addEventListener('load', async (event) => {
     const json = await username.json();
 
     userBox.innerText = json.user.username;
-
-
 })
 
 document.getElementById('save').addEventListener('click', async (event) => {
@@ -40,13 +38,15 @@ document.getElementById('save').addEventListener('click', async (event) => {
 })
 
 document.getElementById('delete').addEventListener('click', async (event) => {
+    let deleteErrorBox = document.getElementById('deleteErrorBox');
     if (selected.length == 0) {
-        let deleteErrorBox = document.getElementById('deleteErrorBox');
         deleteErrorBox.style.display = 'block';
         deleteErrorBox.innerText = "Please select images to delete.";
 
         return console.log("Please select images to delete.");
     }
+    deleteErrorBox.style.display = 'none';
+
     // else {
     //     errorBox.innertext = `${selected.length} images selected`;
     // }

@@ -36,12 +36,12 @@
     /* display: none;
     margin: 14px 0 6px 0; */
     display: none;
-    margin: 2.4vh;
+    margin: 2.4vh 0 0 0;
 }
 
 .container #deleteErrorBox {
     display: none;
-    margin: 2.4vh;
+    margin: 2.4vh 0 0 0;
 }
 
 #welcome div {
