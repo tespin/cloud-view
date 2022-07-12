@@ -1,5 +1,3 @@
-const { response } = require("../../app");
-
 window.addEventListener('load', async (event) => {
     // let savedImages = await fetchImages();
     // addImages(savedImages, indxObject);
