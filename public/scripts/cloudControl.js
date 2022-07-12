@@ -42,8 +42,8 @@ document.getElementById('save').addEventListener('click', async (event) => {
 document.getElementById('delete').addEventListener('click', async (event) => {
     if (selected.length == 0) {
         let deleteErrorBox = document.getElementById('deleteErrorBox');
-        errorBox.style.display = 'block';
-        errorBox.innerText = "Please select images to delete.";
+        deleteErrorBox.style.display = 'block';
+        deleteErrorBox.innerText = "Please select images to delete.";
 
         return console.log("Please select images to delete.");
     }
