@@ -20,5 +20,5 @@ window.addEventListener('load', async (event) => {
     };
     let allSavedImages = await fetch('cotd', options);
     const json = await allSavedImages.json();
-    console.log(json);
+    console.log(json.res);
 })
