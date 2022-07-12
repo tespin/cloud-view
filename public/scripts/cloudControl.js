@@ -133,7 +133,6 @@ async function saveImage(image) {
     let url = json.b64;
     let date = json.date;
     let _id = json.oid;
-    console.log(date);
     // console.log({json.b64, json.oid});
     return [{url, date, _id}];
     // return [{json.b64, }]
@@ -147,13 +146,14 @@ function addImages(imgs, obj) {
         // console.log(element.url);
         let img = new Image();
         let imgId = element._id;
+        let d = element.date;
         img.src = element.url;
         img.dataset.index = obj.index;
 
         // let d = new Date().toLocaleDateString('default', { month: 'long', day: 'numeric', year: 'numeric'});
-        // let dateDiv = document.createElement('p');
-        // dateDiv.className = 'date';
-        // dateDiv.innerText = d;
+        let dateDiv = document.createElement('p');
+        dateDiv.className = 'date';
+        dateDiv.innerText = d;
 
         img.addEventListener('click', event => {
             let current = event.target;
@@ -174,6 +174,7 @@ function addImages(imgs, obj) {
         })
 
         entryDiv.append(img);
+        entryDiv.append(dateDiv);
         gallery.append(entryDiv);
         obj.index++;
     })
