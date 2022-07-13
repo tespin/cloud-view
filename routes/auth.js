@@ -34,7 +34,8 @@ router.post('/signup', function(req, res, done) {
     User.register(new User({ username: req.body.username }), req.body.password, function (err, user) {
         if (err) {
             console.log(`There was an error signing up: ${err}`);
-            return done(null, false, { message: err.message});
+            res.send(err.message);
+            // return done(null, false, { message: err.message});
             // return res.redirect('/signup.html');
         }
         
