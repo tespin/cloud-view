@@ -128,7 +128,9 @@ router.post('/user', (req, res, done) => {
 router.post('/cotd', (req, res, done) => {
     User.find({},
         // { saved: 1}, // works, returns every document 
-        { saved: {$ne: null }},
+        { saved: 1 },
+        { "saved.0": { $exists: true }},
+        // { saved: {$ne: null }},
         // { saved: { '$size': 0 }},
         // { saved: { $exists: true}}, // unknown expression exists
         // { $elemMatch: { saved: { $exists: true }}},
