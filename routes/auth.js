@@ -127,7 +127,7 @@ router.post('/user', (req, res, done) => {
 
 router.post('/cotd', (req, res, done) => {
     User.find({},
-        { $expr: { $gt: [{ $size: req.user.saved}, 0]}},
+        { $expr: { $gt: [{ $size: "saved"}, 0]}},
         //{ saved: 1}, // works, returns every document 
         // {saved: { $size: 1}},
         // {"req.user.saved": 1},
