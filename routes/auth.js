@@ -30,11 +30,11 @@ router.post('/logout', function(req, res, next) {
     });
 });
 
-router.post('/signup', function(req, res) {
-    console.log(`attempting to register user: ${req.body.username}`);
+router.post('/signup', function(req, res, done) {
     User.register(new User({ username: req.body.username }), req.body.password, function (err, user) {
         if (err) {
             console.log(`There was an error signing up: ${err}`);
+            done(null, false, { message: err.message});
             return res.redirect('/signup.html');
         }
         

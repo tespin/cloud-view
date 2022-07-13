@@ -16,6 +16,14 @@ const userSchema = new Schema({
     saved: [{url: String, date: String, _id: Schema.Types.ObjectId}]
 });
 
-userSchema.plugin(passportLocalMongoose);
+const options = {
+    errorMessages: {
+        UserExistsError: 'Username already exists',
+        IncorrectUsernameError: 'There was an error with your username or password',
+        IncorrectPasswordError: 'There was an error with your username or password'
+    }
+};
+
+userSchema.plugin(passportLocalMongoose, options);
 
 module.exports = mongoose.model("User", userSchema);
