@@ -123,11 +123,11 @@ router.post('/user', (req, res, done) => {
             user: req.user
         });
     }
-});
+});""
 
 router.post('/cotd', (req, res, done) => {
     User.find({},
-        { saved: 1},
+        // { saved: 1},
          { saved:1, _id: 0 }, // cannot do exclusion on field hash in inclusino projection
         // { $match: { "saved.0": { $exists: true}}},
         // { saved: {$elemMatch: }}
