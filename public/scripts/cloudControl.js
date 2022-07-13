@@ -140,7 +140,7 @@ async function saveImage(image) {
 
 function addImages(imgs, obj) {
     let gallery = document.getElementById('gallery');
-    gallery.innerText = "";
+    // gallery.innerText = "";
 
     imgs.forEach(element => {
         let entryDiv = document.createElement('div');
