@@ -22,6 +22,15 @@ window.addEventListener('load', async (event) => {
     let allSavedImages = await fetch('cotd', options);
     const json = await allSavedImages.json();
     console.log(json.res);
+
+    // empty array to store all clouds
+    // iterate through every user
+        // go into each user's array of saved images
+            // push src to empty cloud array
+
+    // randomly pick one
+        // create new image and set its src to random selection
+
 })
 
 // app.post('/api', (request, response) => {

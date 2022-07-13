@@ -3,6 +3,12 @@ let selected = [];
 let indices = [];
 
 window.addEventListener('load', async (event) => {
+    let userBox = document.getElementById('usernameBox');
+    const username = await fetch('user', userOptions);
+    const json = await username.json();
+
+    userBox.innerText = json.user.username;
+    
     let savedImages = await fetchImages();
     addImages(savedImages, indxObject);
 
@@ -11,12 +17,6 @@ window.addEventListener('load', async (event) => {
             'Content-Type': 'application/json'
         }
     };
-
-    let userBox = document.getElementById('usernameBox');
-    const username = await fetch('user', userOptions);
-    const json = await username.json();
-
-    userBox.innerText = json.user.username;
 })
 
 document.getElementById('save').addEventListener('click', async (event) => {
@@ -140,6 +140,8 @@ async function saveImage(image) {
 
 function addImages(imgs, obj) {
     let gallery = document.getElementById('gallery');
+    gallery.innerText = "";
+
     imgs.forEach(element => {
         let entryDiv = document.createElement('div');
         entryDiv.className = 'entry';
