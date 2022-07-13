@@ -128,7 +128,8 @@ router.post('/user', (req, res, done) => {
 router.post('/cotd', (req, res, done) => {
     User.find({},
         //{ saved: 1}, // works, returns every document 
-        { saved: { $exists: true}},
+        // { saved: { $exists: true}}, // unknown expression exists
+        { $match: { saved: { $exists: true }}},
         // { saved:1, _id: 0 }, // cannot do exclusion on field hash in inclusino projection
         // { $match: { "saved.0": { $exists: true}}},
         // { saved: {$elemMatch: }}
