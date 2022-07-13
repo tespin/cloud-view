@@ -127,7 +127,7 @@ router.post('/user', (req, res, done) => {
 
 router.post('/cotd', (req, res, done) => {
     User.find({},
-        // { saved:1, _id: 0 },
+        { saved:1, _id: 0 },
         // { $match: { "saved.0": { $exists: true}}},
         // { saved: {$elemMatch: }}
         // { $match: { saved: {$elemMatch: { $exists:true }}}},
@@ -139,7 +139,7 @@ router.post('/cotd', (req, res, done) => {
         // { "saved.0": { $elemMatch: { $exists: true }}},
         // { $first: "$saved"},
         // { saved: { $not: { $size:0 }}},
-        { $elemMatch: { saved: { $not: { $size: 0 }}}},
+        // { $elemMatch: { saved: { $not: { $size: 0 }}}}, // field path names may not start with $
         (err, result) => {
             if (err) return console.log(err);
             res.json({
