@@ -41,6 +41,10 @@ h2 {
     margin: 2.4vh 0 2.4vh 0;
 }
 
+#deleteButtons {
+    margin-top: 1.2vh;
+}
+
 .container #errorBox {
     /* display: none;
     margin: 14px 0 6px 0; */
