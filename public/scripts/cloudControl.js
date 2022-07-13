@@ -3,6 +3,12 @@ let selected = [];
 let indices = [];
 
 window.addEventListener('load', async (event) => {
+    const userOptions = {
+        method: 'POST', headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
     let userBox = document.getElementById('usernameBox');
     const username = await fetch('user', userOptions);
     const json = await username.json();
@@ -11,12 +17,6 @@ window.addEventListener('load', async (event) => {
     
     let savedImages = await fetchImages();
     addImages(savedImages, indxObject);
-
-    const userOptions = {
-        method: 'POST', headers: {
-            'Content-Type': 'application/json'
-        }
-    };
 })
 
 document.getElementById('save').addEventListener('click', async (event) => {
