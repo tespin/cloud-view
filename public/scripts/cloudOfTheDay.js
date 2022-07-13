@@ -21,7 +21,10 @@ window.addEventListener('load', async (event) => {
     };
     let allSavedImages = await fetch('cotd', options);
     const json = await allSavedImages.json();
-    console.log(json.res);
+    // console.log(json.res);
+
+    // could also just push every submission of the day into an array
+    // and randomly pick from there
 
     // empty array to store all clouds
     // iterate through every user
