@@ -127,7 +127,8 @@ router.post('/user', (req, res, done) => {
 
 router.post('/cotd', (req, res, done) => {
     User.find({},
-        { saved:1, _id: 0 },
+        // { saved:1, _id: 0 },
+        { "saved.0": { '$exists': true}, _id:0 },
         (err, result) => {
             if (err) return console.log(err);
             res.json({
