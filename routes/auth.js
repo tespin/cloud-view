@@ -131,7 +131,8 @@ router.post('/cotd', (req, res, done) => {
         // { $match: { "saved.0": { $exists: true}}},
         // { saved: {$elemMatch: }}
         // { $match: { saved: {$elemMatch: { $exists:true }}}},
-        { saved: { $elemMatch: { $exists: true}}},
+        // { saved: { $elemMatch: { $exists: true}}},
+        { saved: { $elemMatch: { $not: { $size: 0 }}}},
         (err, result) => {
             if (err) return console.log(err);
             res.json({
