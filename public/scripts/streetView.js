@@ -13,13 +13,13 @@ document.getElementById('geolocate').addEventListener('click', event => {
         // console.log('geolocation available');
         navigator.geolocation.getCurrentPosition( async position => {
             let apiErrorBox = document.getElementById('apiErrorBox');
-        apiErrorBox.style.display = "block";
-        apiErrorBox.innerText = "Acquiring image ..."
+            apiErrorBox.style.display = "block";
+            apiErrorBox.innerText = "Acquiring image ..."
 
-            // lat = position.coords.latitude;
-            // lon = position.coords.longitude;
-            lat = 78.648401;
-            lon = 14.194336;
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+            // lat = 78.648401;
+            // lon = 14.194336;
             const data = {lat, lon};
             const options = {
                 method: 'POST', headers: {
@@ -32,7 +32,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
             // });
             const response = await fetch('api', options);
             const json = await response.json();
-            let key = json.api;
+            const key = json.api;
             apiKey = `&key=${key}`;
 
             const meta = await fetch(checkMetadata());
