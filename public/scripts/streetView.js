@@ -29,6 +29,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
             apiKey = `&key=${key}`;
 
             // const meta = await checkMetadata();
+            console.log(checkMetadata());
             const meta = await fetch(checkMetadata());
             console.log(meta);
 
