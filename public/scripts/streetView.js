@@ -16,8 +16,10 @@ document.getElementById('geolocate').addEventListener('click', event => {
         apiErrorBox.style.display = "block";
         apiErrorBox.innerText = "Acquiring image ..."
 
-            lat = position.coords.latitude;
-            lon = position.coords.longitude;
+            // lat = position.coords.latitude;
+            // lon = position.coords.longitude;
+            lat = 78.648401;
+            lon = 14.194336;
             const data = {lat, lon};
             const options = {
                 method: 'POST', headers: {
