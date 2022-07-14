@@ -53,7 +53,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
                 img.alt = "Street view image of the sky above current location";
                 // console.log("loaded");
                 const responseDiv = document.getElementById("response");
-                responseContainer.style.display = "block";
+                responseDiv.style.display = "block";
                 responseDiv.append(img);
                 // let canvas = document.createElement("canvas");
                 // canvas.width = img.width;
