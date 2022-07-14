@@ -47,6 +47,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
             let img = new Image();
             img.crossOrigin = "Anonymous";
             img.src = getUrl();
+            img.id = "result";
 
             img.onload = () => {
                 apiErrorBox.style.display = "none";
