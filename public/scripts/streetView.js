@@ -28,8 +28,8 @@ document.getElementById('geolocate').addEventListener('click', event => {
             let key = json.api;
             apiKey = `&key=${key}`;
 
-            const status = await checkMetadata();
-            console.log(status);
+            const meta = await checkMetadata();
+            console.log(meta.status);
 
             let img = document.getElementById("result");
             img.crossOrigin = "Anonymous";
