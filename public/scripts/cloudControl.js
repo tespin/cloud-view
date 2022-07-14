@@ -23,9 +23,9 @@ document.getElementById('save').addEventListener('click', async (event) => {
     const responseDiv = document.getElementById("response");
     // img.getAttribute('src') === ''
     if (!responseDiv.classList.contains("valid")) {
-        let errorBox = document.getElementById('errorBox');
-        errorBox.style.display = 'block';
-        errorBox.innerText = "Please obtain a valid image before saving.";
+        let apiErrorBox = document.getElementById('apiErrorBox');
+        apiErrorBox.style.display = 'block';
+        apiErrorBox.innerText = "Please obtain a valid image before saving.";
 
         // return console.log("Please obtain a valid image before saving.");
         return;
