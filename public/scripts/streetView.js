@@ -8,6 +8,10 @@ let apiKey = "";
 let base64 = "";
 
 document.getElementById('geolocate').addEventListener('click', event => {
+    let apiErrorBox = document.getElementById('apiErrorBox');
+    apiErrorBox.style.display = "block";
+    apiErrorBox.innerText = "Acquiring image ..."
+
     if ('geolocation'in navigator) {
         // console.log('geolocation available');
         navigator.geolocation.getCurrentPosition( async position => {
@@ -28,11 +32,45 @@ document.getElementById('geolocate').addEventListener('click', event => {
             let key = json.api;
             apiKey = `&key=${key}`;
 
-            // const meta = await checkMetadata();
-            console.log(checkMetadata());
             const meta = await fetch(checkMetadata());
             const metajson = await meta.json();
-            console.log(metajson);
+
+            let apiErrorBox = document.getElementById('apiErrorBox');
+            if (metajson.status == "ZERO_RESULTS") {
+                apiErrorBox.style.display = "block";
+                apiErrorBox.innerText = "Street View API could not find an image near your location.";
+            } else {
+                apiErrorBox.style.display = "none";
+
+                let img = document.getElementById("result");
+                img.crossOrigin = "Anonymous";
+                img.src = getUrl();
+                img.onload = () => {
+                    img.alt = "Street view image of the sky above current location";
+                    // console.log("loaded");
+                    let responseContainer = document.getElementById("response");
+                    responseContainer.style.display = "block";
+                    // let canvas = document.createElement("canvas");
+                    // canvas.width = img.width;
+                    // canvas.height = img.height;
+                    // let context = canvas.getContext("2d");
+                    // context.drawImage(img, 0, 0);
+                    // let imgContainer = document.getElementsByClassName("response")[0];
+                    // let imgContainer = document.getElementById("response");
+                    // imgContainer.style.display = "block";
+                }
+            }
+            // const meta = await checkMetadata();
+            // console.log(checkMetadata());
+            // try {
+            //     const meta = await fetch(checkMetadata());
+            //     const metajson = await meta.json();
+            // } catch (error) {
+            //     console.log(error);
+            // }
+            // console.log(metajson.status);
+
+            // if (metajson)
             // console.log(meta);
 
             // let img = document.getElementById("result");

@@ -17,7 +17,6 @@ body, html {
     padding: 10px 25px;
     margin: 10px 0px;
     width: calc(300px + 7.0vw);
-
     text-align: center;
 }
 
@@ -38,6 +37,11 @@ body, html {
     width: 100%;
     height: auto;
     margin: 10px 0;
+}
+
+#apiErrorBox {
+    display: none;
+    margin: 1.2vh 0 1.2vh 0;
 }
 
 h1 a {
