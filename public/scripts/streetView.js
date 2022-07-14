@@ -42,30 +42,27 @@ document.getElementById('geolocate').addEventListener('click', event => {
                 apiErrorBox.style.display = "block";
                 apiErrorBox.innerText = "Street View API could not find an image near your location.";
                 return console.log(metajson.status);
-            } else {
+            }
+
+            let img = new Image();
+            img.crossOrigin = "Anonymous";
+            img.src = getUrl();
+
+            img.onload = () => {
+                apiErrorBox.style.display = "none";
+                img.alt = "Street view image of the sky above current location";
+                // console.log("loaded");
                 const responseDiv = document.getElementById("response");
-
-                let img = new Image();
-                img.crossOrigin = "Anonymous";
-                img.src = getUrl();
-
-                img.onload = () => {
-                    apiErrorBox.style.display = "none";
-                    img.alt = "Street view image of the sky above current location";
-                    // console.log("loaded");
-                    let responseContainer = document.getElementById("response");
-                    responseContainer.style.display = "block";
-                    // let canvas = document.createElement("canvas");
-                    // canvas.width = img.width;
-                    // canvas.height = img.height;
-                    // let context = canvas.getContext("2d");
-                    // context.drawImage(img, 0, 0);
-                    // let imgContainer = document.getElementsByClassName("response")[0];
-                    // let imgContainer = document.getElementById("response");
-                    // imgContainer.style.display = "block";
-                }
-
+                responseContainer.style.display = "block";
                 responseDiv.append(img);
+                // let canvas = document.createElement("canvas");
+                // canvas.width = img.width;
+                // canvas.height = img.height;
+                // let context = canvas.getContext("2d");
+                // context.drawImage(img, 0, 0);
+                // let imgContainer = document.getElementsByClassName("response")[0];
+                // let imgContainer = document.getElementById("response");
+                // imgContainer.style.display = "block";
             }
             // const meta = await checkMetadata();
             // console.log(checkMetadata());
