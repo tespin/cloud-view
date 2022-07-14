@@ -20,9 +20,9 @@ window.addEventListener('load', async (event) => {
 })
 
 document.getElementById('save').addEventListener('click', async (event) => {
-    let img = document.getElementById("result");
-
-    if (img.getAttribute('src') === '') {
+    const responseDiv = document.getElementById("response");
+    // img.getAttribute('src') === ''
+    if (!responseDiv.classList.contains("valid")) {
         let errorBox = document.getElementById('errorBox');
         errorBox.style.display = 'block';
         errorBox.innerText = "Please obtain a valid image before saving.";

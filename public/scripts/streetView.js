@@ -16,10 +16,10 @@ document.getElementById('geolocate').addEventListener('click', event => {
             apiErrorBox.style.display = "block";
             apiErrorBox.innerText = "Acquiring image ..."
 
-            lat = position.coords.latitude;
-            lon = position.coords.longitude;
-            // lat = 78.648401;
-            // lon = 14.194336;
+            // lat = position.coords.latitude;
+            // lon = position.coords.longitude;
+            lat = 78.648401;
+            lon = 14.194336;
             const data = {lat, lon};
             const options = {
                 method: 'POST', headers: {
@@ -54,6 +54,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
                 img.alt = "Street view image of the sky above current location";
                 // console.log("loaded");
                 const responseDiv = document.getElementById("response");
+                responseDiv.classList.toggle("valid");
                 responseDiv.style.display = "block";
                 responseDiv.append(img);
                 // let canvas = document.createElement("canvas");
