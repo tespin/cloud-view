@@ -41,12 +41,14 @@ document.getElementById('geolocate').addEventListener('click', event => {
                 apiErrorBox.innerText = "Street View API could not find an image near your location.";
                 return console.log(metajson.status);
             } else {
-                apiErrorBox.style.display = "none";
+                const responseDiv = document.getElementById("response");
 
-                let img = document.getElementById("result");
+                let img = new Image();
                 img.crossOrigin = "Anonymous";
                 img.src = getUrl();
+
                 img.onload = () => {
+                    apiErrorBox.style.display = "none";
                     img.alt = "Street view image of the sky above current location";
                     // console.log("loaded");
                     let responseContainer = document.getElementById("response");
@@ -60,6 +62,8 @@ document.getElementById('geolocate').addEventListener('click', event => {
                     // let imgContainer = document.getElementById("response");
                     // imgContainer.style.display = "block";
                 }
+
+                responseDiv.append(img);
             }
             // const meta = await checkMetadata();
             // console.log(checkMetadata());
