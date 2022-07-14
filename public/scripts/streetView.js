@@ -30,7 +30,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
 
             // const meta = await checkMetadata();
             const meta = await fetch(checkMetadata());
-            console.log(meta.json());
+            console.log(meta);
 
             let img = document.getElementById("result");
             img.crossOrigin = "Anonymous";
