@@ -27,6 +27,10 @@ document.getElementById('geolocate').addEventListener('click', event => {
             const json = await response.json();
             let key = json.api;
             apiKey = `&key=${key}`;
+
+            const status = await checkMetadata();
+            console.log(status);
+
             let img = document.getElementById("result");
             img.crossOrigin = "Anonymous";
             img.src = getUrl();
@@ -49,6 +53,13 @@ document.getElementById('geolocate').addEventListener('click', event => {
         console.log('geolocation not available');
     }
 });
+
+async function checkMetadata() {
+    let loc = `&location=${lat},${lon}`;
+    let res = `${api}metadata${loc}${apiKey}`;
+
+    return res;
+}
 
 function getUrl() {
     let parentDiv = document.getElementsByClassName("container")[0];
