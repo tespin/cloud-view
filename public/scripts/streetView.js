@@ -29,29 +29,29 @@ document.getElementById('geolocate').addEventListener('click', event => {
             apiKey = `&key=${key}`;
 
             // const meta = await checkMetadata();
-            // console.log(checkMetadata());
+            console.log(checkMetadata());
             const meta = await fetch(checkMetadata());
             const metajson = await meta.json();
             console.log(metajson);
             // console.log(meta);
 
-            let img = document.getElementById("result");
-            img.crossOrigin = "Anonymous";
-            img.src = getUrl();
-            img.onload = () => {
-                img.alt = "Street view image of the sky above current location";
-                // console.log("loaded");
-                let responseContainer = document.getElementById("response");
-                responseContainer.style.display = "block";
-                // let canvas = document.createElement("canvas");
-                // canvas.width = img.width;
-                // canvas.height = img.height;
-                // let context = canvas.getContext("2d");
-                // context.drawImage(img, 0, 0);
-                // let imgContainer = document.getElementsByClassName("response")[0];
-                // let imgContainer = document.getElementById("response");
-                // imgContainer.style.display = "block";
-            }
+            // let img = document.getElementById("result");
+            // img.crossOrigin = "Anonymous";
+            // img.src = getUrl();
+            // img.onload = () => {
+            //     img.alt = "Street view image of the sky above current location";
+            //     // console.log("loaded");
+            //     let responseContainer = document.getElementById("response");
+            //     responseContainer.style.display = "block";
+            //     // let canvas = document.createElement("canvas");
+            //     // canvas.width = img.width;
+            //     // canvas.height = img.height;
+            //     // let context = canvas.getContext("2d");
+            //     // context.drawImage(img, 0, 0);
+            //     // let imgContainer = document.getElementsByClassName("response")[0];
+            //     // let imgContainer = document.getElementById("response");
+            //     // imgContainer.style.display = "block";
+            // }
         });
     } else {
         console.log('geolocation not available');
