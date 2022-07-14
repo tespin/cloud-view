@@ -8,13 +8,14 @@ let apiKey = "";
 let base64 = "";
 
 document.getElementById('geolocate').addEventListener('click', event => {
-    let apiErrorBox = document.getElementById('apiErrorBox');
-    apiErrorBox.style.display = "block";
-    apiErrorBox.innerText = "Acquiring image ..."
 
     if ('geolocation'in navigator) {
         // console.log('geolocation available');
         navigator.geolocation.getCurrentPosition( async position => {
+            let apiErrorBox = document.getElementById('apiErrorBox');
+        apiErrorBox.style.display = "block";
+        apiErrorBox.innerText = "Acquiring image ..."
+
             lat = position.coords.latitude;
             lon = position.coords.longitude;
             const data = {lat, lon};
@@ -35,10 +36,10 @@ document.getElementById('geolocate').addEventListener('click', event => {
             const meta = await fetch(checkMetadata());
             const metajson = await meta.json();
 
-            let apiErrorBox = document.getElementById('apiErrorBox');
             if (metajson.status == "ZERO_RESULTS") {
                 apiErrorBox.style.display = "block";
                 apiErrorBox.innerText = "Street View API could not find an image near your location.";
+                return console.log(metajson.status);
             } else {
                 apiErrorBox.style.display = "none";
 
