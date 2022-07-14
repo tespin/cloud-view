@@ -34,6 +34,7 @@ document.getElementById('save').addEventListener('click', async (event) => {
     deleteErrorBox.style.display = 'none';
     
     // getBase64Image(img, postBase64);
+    let img = document.getElementById("result");
     let savedImage = await saveImage(img);
     addImages(savedImage, indxObject);
 })
