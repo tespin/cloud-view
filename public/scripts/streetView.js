@@ -55,7 +55,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
 });
 
 async function checkMetadata() {
-    let loc = `&location=${lat},${lon}`;
+    let loc = `?location=${lat},${lon}`;
     let res = `${api}/metadata${loc}${apiKey}`;
 
     return res;
