@@ -25,6 +25,12 @@ body, html {
     height: 0;
 }
 
+.geolocate {
+    background-color: #00559a;
+    color: #FFF;
+    font-size: 16px;
+}
+
 #signup {
     display: inline;
 }
