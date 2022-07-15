@@ -25,7 +25,8 @@ body, html {
     height: 0;
 }
 
-.geolocate {
+
+#geolocate {
     background-color: #00559a;
     color: #FFF;
     font-size: 16px;
