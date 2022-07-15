@@ -16,7 +16,7 @@ body, html {
     border-radius: 25px;
     padding: 10px 25px;
     margin: 10px 0px;
-    width: calc(300px + 7.0vw);
+    width: calc(300px + 6.135vw);
     text-align: center;
 }
 
@@ -26,11 +26,11 @@ body, html {
 }
 
 
-#geolocate {
+/* #geolocate {
     background-color: #00559a;
     color: #FFF;
     font-size: 16px;
-}
+} */
 
 #signup {
     display: inline;
