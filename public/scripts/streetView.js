@@ -26,8 +26,8 @@ document.getElementById('geolocate').addEventListener('click', event => {
                 apiError.style.display = "block";
                 apiError.innerText = "An image could not be found at your current coordinates. Please move to a new location and try again.";
             } else if (meta_json.status == "OK") {
-                apiError.style.display = "none";
-                apiError.innerText = "";
+                const placeholder = document.getElementById('placeholder');
+                placeholder.remove();
 
                 const fov = 40;
                 const heading = "";
@@ -42,17 +42,17 @@ document.getElementById('geolocate').addEventListener('click', event => {
                 img.crossOrigin = "Anonymous";
                 img.id = "result";
                 img.src = getUrl(api, size, location_data, fov, heading, pitch, api_key);
+                img.onload = () => {
+                    apiError.style.display = "none";
+                    apiError.innerText = "";
 
+                    img.alt = "Street view image of the sky above current location.";
+                    responseDiv.append(img);
+                }
             } else {
                 apiError.style.display = "block";
                 apiError.innerText = "The request could not be completed. Please try again another time.";
             }
-
-            // if (metajson.status == "ZERO_RESULTS") {
-            //     apiErrorBox.style.display = "block";
-            //     apiErrorBox.innerText = "Street View API could not find an image near your location.";
-            //     return console.log(metajson.status);
-            // }
 
         })
     } else {
