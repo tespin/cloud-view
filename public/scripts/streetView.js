@@ -38,6 +38,6 @@ document.getElementById('geolocate').addEventListener('click', event => {
 
 function checkMetadata(api, loc, key) {
     const meta_url = `${api}/metadata?location=${loc.lat},${loc.lon}&key=${key}`;
-    
+    console.log(meta_url);
     return meta_url;
 }
