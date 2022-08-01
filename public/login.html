@@ -4,31 +4,37 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="keywords" content="art, code, software, street view, machine learning, natural language processing, tristan espinoza">
-    <link rel="stylesheet" type="text/css" href="/styles/style.css">
-    <link rel="stylesheet" type="text/css" href="/styles/login.css">
-    <title>☁️☁️☁️ Log In</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=WorkSans">
+    <title>Google Cloud View</title>
   </head>
   <body>
     <main>
-      <div id="content">
-        <div class="container">
-            <h1><a href="./index.html">Google Cloud View</a></h1>
+        <div id="parent">
+            <div id="container">
+                <div id="page-header">
+                    <h1><a href="./index.html">google cloud view</a></h1>
+                </div>
+                <div id="info">
+                    <p>Welcome back!</p>
+                </div>
+                <div id="signup-form">
+                    <h2>Log in</h2>
+                    <form action="/home.html" method="get">
+                        <section>
+                            <label for="username">Username</label>
+                            <input id="username" name="username" type="text" placeholder="" required>
+                        </section>
+                        <section>
+                            <label for="password">Password</label>
+                            <input id="current-password" name="password" type="password" placeholder="" required>
+                        </section>
+                        <button id="signup" type="submit">Log in</button>
+                    </form>
+                </div>
+                <div id="help">No account? <a href="/signup.html">Sign up</a></div>
+            </div>
         </div>
-        <div class="break"></div>
-        <div class="container">
-          <h2>Log In</h2>
-          <form action="/login/password" method="post">
-            <section>
-                <input id="username" name="username" type="text" placeholder="Username" required>
-            </section>
-            <section>
-                <input id="current-password" name="password" type="password" placeholder="Password" required>
-            </section>
-            <button type="submit">Sign in</button>
-        </form>
-          <p class="help">Haven't signed up yet? <a href="./signup.html">Sign up</a></p>
-      </div>
-      </div>
     </main>
   </body>
 </html>

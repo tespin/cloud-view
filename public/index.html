@@ -4,37 +4,32 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="keywords" content="art, code, software, street view, machine learning, natural language processing, tristan espinoza">
-    <link rel="stylesheet" type="text/css" href="/styles/style.css">
-    <script src="/scripts/streetView.js" type="module"></script>
-    <title>☁️☁️☁️</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=WorkSans">
+    <script src="/streetView.js" type="module"></script>
+    <title>Google Cloud View</title>
   </head>
   <body>
     <main>
-      <div id="content">
-        <div class="container">
-            <h1><a href="./index.html">Google Cloud View</a></h1>
-        </div>
-        <div class="break"></div>
-          <div class="container">
-            <div id="response"> 
-              <!-- <img src="" alt="" id="result"> -->
+        <div id="parent">
+            <div id="container">
+                <div id="page-header">
+                    <h1><a href="./index.html">google cloud view</a></h1>
+                    <div id="nav">
+                        <a href="./signup.html">Sign up</a>  
+                        <a href="./login.html">Log in</a>
+                    </div>
+                </div>
+                <div id="info">
+                    <p>Google Cloud View is a project that retrieves an image of the sky above your current location.</p>
+                </div>
+                <button id="geolocate">Request cloud</button>
+                <div id="apiError" class="errorBox inactive" ></div>
+                <div id="response">
+                    <img src="./images/stview.jpg">
+                </div>
             </div>
-            <div id="apiErrorBox"></div>
-            <button id="geolocate">Request cloud</button>
         </div>
-        <div class="break"></div>
-        <div class="container">
-            <h2>ABOUT</h2>
-            <p>Google Cloud View is a project by Tristan Espinoza that uses the Google Street View API to display an image of the sky above your current location.  </p>
-            <p>Visitors can request a Cloud View image by clicking the 'Request' button. This prompts the visitor for permission to use your current latitude and longitude. The request then returns a Street View image with the camera pointed upwards.</p>
-        </div>
-        <div class="break"></div>
-        <div class="container">
-          <h2>SIGN IN</h2>
-          <p>Sign up or sign in to save your cloud images for viewing at a later time.</p>
-          <p><a href="./signup.html">Sign up</a> / <a href="./login.html">Log in</a></p>
-      </div>
-      </div>
     </main>
   </body>
 </html>
