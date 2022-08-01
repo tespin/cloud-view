@@ -1,5 +1,5 @@
 document.getElementById('geolocate').addEventListener('click', event => {
-    const apiError = document.getElementById('apiError');
+    const apiInfo = document.getElementById('apiInfo');
 
     if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(async position => {
@@ -23,8 +23,8 @@ document.getElementById('geolocate').addEventListener('click', event => {
             const meta_json = await meta_response.json();
 
             if (meta_json.status == "ZERO_RESULTS") {
-                apiError.style.display = "block";
-                apiError.innerText = "An image could not be found at your current coordinates. Please move to a new location and try again.";
+                apiInfo.style.display = "block";
+                apiInfo.innerText = "An image could not be found at your current coordinates. Please move to a new location and try again.";
             } else if (meta_json.status == "OK") {
                 const result = document.getElementById('result');
                 result.style.visibility = "hidden";
@@ -40,8 +40,8 @@ document.getElementById('geolocate').addEventListener('click', event => {
 
                 result.src = getUrl(api, size, location_data, fov, heading, pitch, api_key);
                 result.onload = () => {
-                    apiError.style.display = "none";
-                    apiError.innerText = "";
+                    apiInfo.style.display = "none";
+                    apiInfo.innerText = "";
 
                     result.style.visibility = "visible";
 
@@ -51,14 +51,14 @@ document.getElementById('geolocate').addEventListener('click', event => {
                     }
                 }
             } else {
-                apiError.style.display = "block";
-                apiError.innerText = "The request could not be completed. Please try again another time.";
+                apiInfo.style.display = "block";
+                apiInfo.innerText = "The request could not be completed. Please try again another time.";
             }
 
         })
     } else {
-        apiError.style.display = "block";
-        apiError.innerText = "Please give the browser permission to use your location.";
+        apiInfo.style.display = "block";
+        apiInfo.innerText = "Please give the browser permission to use your location.";
     }
 })
 
