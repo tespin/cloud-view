@@ -1,121 +1,43 @@
-
-let lat, lon;
-let api = "https://maps.googleapis.com/maps/api/streetview";
-let fov = "&fov=40";
-let heading = "&heading=";
-let pitch = "&pitch=90";
-let apiKey = "";
+const api = "https://maps.googleapis.com/maps/api/streetview";
+const fov = "&fov=40";
+const heading = "&heading=";
+const pitch = "&pitch=90";
 let base64 = "";
 
 document.getElementById('geolocate').addEventListener('click', event => {
+    const apiError = document.getElementById('apiError');
 
-    if ('geolocation'in navigator) {
-        // console.log('geolocation available');
-        navigator.geolocation.getCurrentPosition( async position => {
-            let apiErrorBox = document.getElementById('apiErrorBox');
-            apiErrorBox.style.display = "block";
-            apiErrorBox.innerText = "Acquiring image ..."
+    if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(async position => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
 
-            // test for ZERO_RESULTS in api
-            // lat = 78.648401; 
-            // lon = 14.194336;
-
-            lat = position.coords.latitude;
-            lon = position.coords.longitude;
-            const data = {lat, lon};
+            const location_data = {lat, lon};
             const options = {
                 method: 'POST', headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(location_data)
             };
-            // fetch('/api', options).then(response => {
-            //     console.log(response);
-            // });
-            const response = await fetch('api', options);
-            const json = await response.json();
-            const key = json.api;
-            apiKey = `&key=${key}`;
 
-            const meta = await fetch(checkMetadata());
-            const metajson = await meta.json();
+            const api_response = await fetch('api', options);
+            const api_json = await api_response.json();
+            const api_key = `&key=${api_json.api}`;
 
-            if (metajson.status == "ZERO_RESULTS") {
-                apiErrorBox.style.display = "block";
-                apiErrorBox.innerText = "Street View API could not find an image near your location.";
-                return console.log(metajson.status);
-            }
+            const meta_response = await fetch(checkMetadata(api, location_data, api_key));
+            const meta_json = await meta_response.json();
 
-            let img = new Image();
-            img.crossOrigin = "Anonymous";
-            img.src = getUrl();
-            img.id = "result";
+            console.log(meta_json.status);
 
-            img.onload = () => {
-                apiErrorBox.style.display = "none";
-                img.alt = "Street view image of the sky above current location";
-                // console.log("loaded");
-                const responseDiv = document.getElementById("response");
-                responseDiv.classList.toggle("valid");
-                responseDiv.style.display = "block";
-                responseDiv.append(img);
-                // let canvas = document.createElement("canvas");
-                // canvas.width = img.width;
-                // canvas.height = img.height;
-                // let context = canvas.getContext("2d");
-                // context.drawImage(img, 0, 0);
-                // let imgContainer = document.getElementsByClassName("response")[0];
-                // let imgContainer = document.getElementById("response");
-                // imgContainer.style.display = "block";
-            }
-            // const meta = await checkMetadata();
-            // console.log(checkMetadata());
-            // try {
-            //     const meta = await fetch(checkMetadata());
-            //     const metajson = await meta.json();
-            // } catch (error) {
-            //     console.log(error);
-            // }
-            // console.log(metajson.status);
-
-            // if (metajson)
-            // console.log(meta);
-
-            // let img = document.getElementById("result");
-            // img.crossOrigin = "Anonymous";
-            // img.src = getUrl();
-            // img.onload = () => {
-            //     img.alt = "Street view image of the sky above current location";
-            //     // console.log("loaded");
-            //     let responseContainer = document.getElementById("response");
-            //     responseContainer.style.display = "block";
-            //     // let canvas = document.createElement("canvas");
-            //     // canvas.width = img.width;
-            //     // canvas.height = img.height;
-            //     // let context = canvas.getContext("2d");
-            //     // context.drawImage(img, 0, 0);
-            //     // let imgContainer = document.getElementsByClassName("response")[0];
-            //     // let imgContainer = document.getElementById("response");
-            //     // imgContainer.style.display = "block";
-            // }
-        });
+        })
     } else {
-        console.log('geolocation not available');
+        apiError.style.display = "block";
+        apiError.innerText = "Please give the browser permission to use your location.";
     }
-});
+})
 
-function checkMetadata() {
-    let loc = `?location=${lat},${lon}`;
-    let res = `${api}/metadata${loc}${apiKey}`;
-
-    return res;
-}
-
-function getUrl() {
-    let parentDiv = document.getElementsByClassName("container")[0];
-    let size = `size=${parentDiv.offsetWidth}x${parentDiv.offsetWidth}`;
-    let loc = `&location=${lat},${lon}`;
-    // let url = api + size + loc + fov + heading + pitch + apiKey;
-    let url =`${api}?${size}${loc}${fov}${heading}${pitch}${apiKey}`;
-    return url;
+function checkMetadata(api, loc, key) {
+    const meta_url = `${api}/metadata?location=${loc.lat},${loc.lon}&key=${key}`;
+    
+    return meta_url;
 }
