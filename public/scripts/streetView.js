@@ -22,7 +22,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
 
             const api_response = await fetch('api', options);
             const api_json = await api_response.json();
-            const api_key = `&key=${api_json.api}`;
+            const api_key = api_json.api;
 
             const meta_response = await fetch(checkMetadata(api, location_data, api_key));
             const meta_json = await meta_response.json();
