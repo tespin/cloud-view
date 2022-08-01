@@ -38,15 +38,17 @@ document.getElementById('geolocate').addEventListener('click', event => {
                 const h = responseDiv.offsetWidth;
                 const size = {w, h};
 
-                // const img = new Image();
-                // img.crossOrigin = "Anonymous";
-                // img.id = "result";
                 result.src = getUrl(api, size, location_data, fov, heading, pitch, api_key);
                 result.onload = () => {
                     apiError.style.display = "none";
                     apiError.innerText = "";
 
                     result.style.visibility = "visible";
+
+                    const saveButton = document.getElementById('save');
+                    if (saveButton) {
+                        saveButton.removeAttribute('disabled');
+                    }
                 }
             } else {
                 apiError.style.display = "block";

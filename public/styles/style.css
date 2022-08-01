@@ -189,18 +189,6 @@ section label {
 *
 */
 
-#container 
-
-/* .inactive {
-    opacity: 20%;
-    background: #000;
-}
-
-.inactive:hover {
-    cursor: default;
-    font-size: #FFF;
-} */
-
 #homeBtns {
     display: flex;
     flex-direction: row;
