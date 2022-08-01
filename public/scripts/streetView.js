@@ -14,6 +14,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
                 body: JSON.stringify(location_data)
             };
 
+            const api = "https://maps.googleapis.com/maps/api/streetview";
             const api_response = await fetch('api', options);
             const api_json = await api_response.json();
             const api_key = api_json.api;
@@ -28,8 +29,6 @@ document.getElementById('geolocate').addEventListener('click', event => {
                 apiError.style.display = "none";
                 apiError.innerText = "";
 
-
-                const api = "https://maps.googleapis.com/maps/api/streetview";
                 const fov = 40;
                 const heading = "";
                 const pitch = 90;
