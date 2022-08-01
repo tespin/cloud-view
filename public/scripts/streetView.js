@@ -33,9 +33,9 @@ document.getElementById('geolocate').addEventListener('click', event => {
                 const heading = "";
                 const pitch = 90;
 
-                const parentDiv = document.getElementsByClassName('container')[0];
-                const w = parentDiv.offsetWidth;
-                const h = parentDiv.offsetWidth;
+                const responseDiv = document.getElementById('response');
+                const w = responseDiv.offsetWidth;
+                const h = responseDiv.offsetWidth;
                 const size = {w, h};
 
                 const img = new Image();
@@ -67,7 +67,7 @@ function getMetadata(api, loc, key) {
 }
 
 function getUrl(api, size, loc, fov, heading, pitch, key) {
-    const url = `${api}?size=${size}&location=${loc.lat},${loc.lon}&fov=${fov}&heading=${heading}&pitch=${pitch}&key=${key}`;
+    const url = `${api}?size=${size.w}x${size.h}&location=${loc.lat},${loc.lon}&fov=${fov}&heading=${heading}&pitch=${pitch}&key=${key}`;
     console.log(url);
     return url;
 }
