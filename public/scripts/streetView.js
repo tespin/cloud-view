@@ -42,7 +42,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
                 const img = new Image();
                 img.crossOrigin = "Anonymous";
                 img.id = "result";
-                img.src = getUrl();
+                img.src = getUrl(api, size, location_data, fov, heading, pitch, api_key);
 
             } else {
                 apiError.style.display = "block";
