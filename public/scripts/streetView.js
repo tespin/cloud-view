@@ -1,9 +1,3 @@
-const api = "https://maps.googleapis.com/maps/api/streetview";
-const fov = "&fov=40";
-const heading = "&heading=";
-const pitch = "&pitch=90";
-let base64 = "";
-
 document.getElementById('geolocate').addEventListener('click', event => {
     const apiError = document.getElementById('apiError');
 
@@ -24,10 +18,42 @@ document.getElementById('geolocate').addEventListener('click', event => {
             const api_json = await api_response.json();
             const api_key = api_json.api;
 
-            const meta_response = await fetch(checkMetadata(api, location_data, api_key));
+            const meta_response = await fetch(getMetadata(api, location_data, api_key));
             const meta_json = await meta_response.json();
 
-            console.log(meta_json.status);
+            if (meta_json.status == "ZERO_RESULTS") {
+                apiError.style.display = "block";
+                apiError.innerText = "An image could not be found at your current coordinates. Please move to a new location and try again.";
+            } else if (meta_json.status == "OK") {
+                apiError.style.display = "none";
+                apiError.innerText = "";
+
+
+                const api = "https://maps.googleapis.com/maps/api/streetview";
+                const fov = 40;
+                const heading = "";
+                const pitch = 90;
+
+                const parentDiv = document.getElementsByClassName('container')[0];
+                const w = parentDiv.offsetWidth;
+                const h = parentDiv.offsetWidth;
+                const size = {w, h};
+
+                const img = new Image();
+                img.crossOrigin = "Anonymous";
+                img.id = "result";
+                img.src = getUrl();
+
+            } else {
+                apiError.style.display = "block";
+                apiError.innerText = "The request could not be completed. Please try again another time.";
+            }
+
+            // if (metajson.status == "ZERO_RESULTS") {
+            //     apiErrorBox.style.display = "block";
+            //     apiErrorBox.innerText = "Street View API could not find an image near your location.";
+            //     return console.log(metajson.status);
+            // }
 
         })
     } else {
@@ -36,8 +62,13 @@ document.getElementById('geolocate').addEventListener('click', event => {
     }
 })
 
-function checkMetadata(api, loc, key) {
+function getMetadata(api, loc, key) {
     const meta_url = `${api}/metadata?location=${loc.lat},${loc.lon}&key=${key}`;
-    console.log(meta_url);
     return meta_url;
+}
+
+function getUrl(api, size, loc, fov, heading, pitch, key) {
+    const url = `${api}?size=${size}&location=${loc.lat},${loc.lon}&fov=${fov}&heading=${heading}&pitch=${pitch}&key=${key}`;
+    console.log(url);
+    return url;
 }
