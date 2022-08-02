@@ -44,8 +44,8 @@ router.post('/signup', function(req, res, done) {
             // return res.redirect('/signup.html');
         }
         
-        passport.authenticate('local') (req, res, function(err, result) {
-            res.redirect('/profile.html');
+        passport.authenticate('local') (req, res, function() {
+            res.redirect('/home.html');
             // if (err) {
             //     console.log(err);
             // }
