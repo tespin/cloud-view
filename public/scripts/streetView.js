@@ -1,6 +1,4 @@
 document.getElementById('geolocate').addEventListener('click', event => {
-    const apiInfo = document.getElementById('apiInfo');
-
     if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(async position => {
             const lat = position.coords.latitude;
@@ -22,7 +20,10 @@ document.getElementById('geolocate').addEventListener('click', event => {
             const meta_response = await fetch(getMetadata(api, location_data, api_key));
             const meta_json = await meta_response.json();
 
+            const apiInfo = document.getElementById('apiInfo');
+            const result = document.getElementById('result');
             if (meta_json.status == "ZERO_RESULTS") {
+                result.alt = "";
                 apiInfo.style.display = "block";
                 apiInfo.innerText = "An image could not be found at your current coordinates. Please move to a new location and try again.";
             } else if (meta_json.status == "OK") {
