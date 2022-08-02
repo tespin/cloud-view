@@ -15,7 +15,7 @@ passport.serializeUser(User.serializeUser(() => { console.log('serialized'); }))
 passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'); }));
 
 router.post('/login/password', passport.authenticate('local', {
-    successRedirect: '/profile.html',
+    successRedirect: '/home.html',
     failureRedirect: '/login.html'
 }), function(req, res, next) {
         res.redirect('/profile.html');
