@@ -21,7 +21,7 @@ async function saveImage(image) {
         body: JSON.stringify(base64_data)
     };
 
-    const saved_response = await fetch('saved', options);
+    const saved_response = await fetch('save', options);
     const saved_json = await saved_response.json();
     
     // const data = {lat, lon};
