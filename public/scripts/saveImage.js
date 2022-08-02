@@ -1,8 +1,15 @@
-document.getElementById('save').addEventListener('click', async (event) => {
+const saveButton = document.getElementById('save');
+saveButton.addEventListener('click', async (event) => {
+    saveButton.classList.add('onhover');
     const img = document.getElementById('result');
-    // const savedImage = await saveImage(img);
     await (saveImage(img));
-})
+});
+
+// document.getElementById('save').addEventListener('click', async (event) => {
+//     const img = document.getElementById('result');
+//     // const savedImage = await saveImage(img);
+//     await (saveImage(img));
+// })
 
 async function saveImage(image) {
     const canvas = document.createElement('canvas');
@@ -43,6 +50,7 @@ async function saveImage(image) {
     };*/
 
     if (saved_json.status == "OK") {
+        saveButton.classList.remove('onhover');
         const apiInfo = document.getElementById('apiInfo');
         apiInfo.style.color = "#11A655";
         apiInfo.innerText = "Image successfully saved. Go to your Cloud Storage to view.";

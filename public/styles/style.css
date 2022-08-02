@@ -132,6 +132,11 @@ button:disabled {
     color: #FFF;
 }
 
+.onhover {
+    background-color: #FFF;
+    color: #000;
+}
+
 /* 
 *
 *       SIGN UP AND LOG IN 
