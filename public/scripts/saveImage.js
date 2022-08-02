@@ -18,7 +18,7 @@ async function saveImage(image) {
         method: 'POST', headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(basae64_data)
+        body: JSON.stringify(base64_data)
     };
 
     // const saved_response = fetch('saved', options);
