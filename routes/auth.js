@@ -9,7 +9,7 @@ const { response } = require('../app');
 const ObjectID = require('mongodb').ObjectId;
 const router = express.Router();
 
-passport.use(new LocalStrategy(User.authenticate()));
+passport.use(new LocalStrategy({passReqToCallback: true}, User.authenticate()));
 
 passport.serializeUser(User.serializeUser(() => { console.log('serialized'); }));
 passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'); }));
@@ -33,14 +33,14 @@ router.post('/logout', function(req, res, next) {
 router.post('/signup', function(req, res, done) {
     User.register(new User({ username: req.body.username }), req.body.password, function (err, user) {
         if (err) {
-            return console.log(`There was an error signing up: ${err}`);
+            // return console.log(`There was an error signing up: ${err}`);
             // res.json({
             //     status: 'failed',
             //     error: err.message
             // });
             // return done(new Error(err.message));
             // res.send(err.message);
-            // return done(null, false, { message: err.message});
+            return done(null, false, { message: err.message});
             // return res.redirect('/signup.html');
         }
         
