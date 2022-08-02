@@ -194,7 +194,7 @@ router.post('/cotd', (req, res, done) => {
     // })
 });
 
-router.use('/profile.html', ensureAuthenticated);
+router.use('/home.html', ensureAuthenticated);
 
 // router.get('/profile.html', ensureAuthenticated, function(req, res, next) {
 //     // let saved = User.findOne({ username: req.user.username});
