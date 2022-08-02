@@ -8,13 +8,20 @@ window.addEventListener('load', async (event) => {
     //         'Content-Type': 'application/json'
     //     }
     // };
-
-    await fetchImages();
+    const gallery = document.getElementById('gallery');
+    const placeholder = document.createElement('div');
+    const progress = document.createElement('p');
+    progress.innerText = 'Fetching images ...';
+    
+    placeholder.append(progress);
+    gallery.append(placeholder);
+    
+    await fetchImages(gallery, placeholder);
     // const savedImages = await fetchImages();
     // addImages(savedImages, index_object);
 })
 
-async function fetchImages() {
+async function fetchImages(gallery, placeholder) {
     const options = {
         method: 'POST', headers: {
             'Content-Type': 'application/json'
@@ -25,8 +32,8 @@ async function fetchImages() {
     const imgs_json = await imgs_response.json();
 
     const all_saved_imgs = imgs_json.user.saved;
-
-    const gallery = document.getElementById('gallery');
+    placeholder.style.display = "none";
+    // const gallery = document.getElementById('gallery');
     all_saved_imgs.forEach(element => {
         const entryDiv = document.createElement('div');
         entryDiv.classList.add('entry');
