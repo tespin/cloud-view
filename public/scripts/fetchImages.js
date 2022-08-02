@@ -21,7 +21,7 @@ async function fetchImages() {
         }
     };
 
-    const imgs_response = await fetch('cloud', options);
+    const imgs_response = await fetch('clouds', options);
     const imgs_json = await imgs_response.json();
 
     const all_saved_imgs = imgs_json.user.saved;
