@@ -35,7 +35,7 @@ async function fetchImages() {
         const img_id = element._id;
         const date = element.date;
         img.src = element.url;
-        img.dataset.index = obj.index;
+        // img.dataset.index = obj.index;
 
         const dateDiv = document.createElement('p');
         dateDiv.classList.add('date');
