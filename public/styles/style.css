@@ -199,6 +199,18 @@ section label {
     width: 49%;
 }
 
+#page-header #nav #logout {
+    border: none;
+    color: #000;
+    background-color: transparent;
+    font-weight: 500;
+    text-decoration: underline black solid 2px;
+}
+
+#page-header #nav #logout:hover {
+    
+}
+
 /* #homeBtns #save:hover {
 
 } */
