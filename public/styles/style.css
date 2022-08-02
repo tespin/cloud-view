@@ -207,8 +207,7 @@ section label {
     font-size: 1rem;
     width: 100%;
     height: auto;
-    /* margin: 0.3rem 0 0.3rem auto; */
-    align-self: start;
+    padding: 0;
 }
 
 #page-header #nav #logout:hover {
