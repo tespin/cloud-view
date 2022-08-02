@@ -21,11 +21,12 @@ async function saveImage(image) {
         body: JSON.stringify(base64_data)
     };
 
-    // const saved_response = fetch('saved', options);
-    // const saved_json = await (await saved_response).json();
+    const saved_response = fetch('saved', options);
+    const saved_json = await saved_response.json();
+    /* testing function saved function
     const saved_json = {
         status: 'OK'
-    };
+    };*/
 
     if (saved_json.status == "OK") {
         const apiInfo = document.getElementById('apiInfo');

@@ -61,7 +61,7 @@ router.post('/save', (req, res, done) => {
         (err, result) => {
             if (err) return console.log(err);
             res.json({
-                status: 'success',
+                status: 'OK',
                 b64: base64,
                 date: localDate,
                 oid: id
