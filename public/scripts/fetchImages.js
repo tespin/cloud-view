@@ -3,11 +3,12 @@ let selected = [];
 let indices = [];
 
 window.addEventListener('load', async (event) => {
-    // const userOptions = {
-    //     method: 'POST', headers: {
-    //         'Content-Type': 'application/json'
-    //     }
-    // };
+    await fetchImages();
+    // const savedImages = await fetchImages();
+    // addImages(savedImages, index_object);
+})
+
+async function fetchImages() {
     const gallery = document.getElementById('gallery');
     const placeholder = document.createElement('div');
     placeholder.id = 'placeholder';
@@ -16,13 +17,7 @@ window.addEventListener('load', async (event) => {
     
     placeholder.append(progress);
     gallery.append(placeholder);
-    
-    await fetchImages(gallery, placeholder);
-    // const savedImages = await fetchImages();
-    // addImages(savedImages, index_object);
-})
 
-async function fetchImages(gallery, placeholder) {
     const options = {
         method: 'POST', headers: {
             'Content-Type': 'application/json'
