@@ -246,7 +246,7 @@ section label {
 
 #gallery {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-between;
     gap: 0 0.7rem;
     margin-top: 0.25rem;
