@@ -10,13 +10,15 @@ window.addEventListener('load', async (event) => {
 
 async function fetchImages() {
     const gallery = document.getElementById('gallery');
+
+    const container = document.getElementById('container');
     const placeholder = document.createElement('div');
     placeholder.id = 'placeholder';
     const progress = document.createElement('p');
     progress.innerText = 'Fetching images ...';
     
     placeholder.append(progress);
-    gallery.append(placeholder);
+    container.append(placeholder);
 
     const options = {
         method: 'POST', headers: {
