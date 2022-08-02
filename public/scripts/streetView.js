@@ -29,7 +29,6 @@ document.getElementById('geolocate').addEventListener('click', event => {
                 apiInfo.style.display = "block";
                 apiInfo.innerText = "An image could not be found at your current coordinates. Please move to a new location and try again.";
             } else if (meta_json.status == "OK") {
-                const result = document.getElementById('result');
                 result.style.visibility = "hidden";
 
                 const fov = 40;
