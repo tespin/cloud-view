@@ -10,6 +10,7 @@ window.addEventListener('load', async (event) => {
     // };
     const gallery = document.getElementById('gallery');
     const placeholder = document.createElement('div');
+    placeholder.id = 'placeholder';
     const progress = document.createElement('p');
     progress.innerText = 'Fetching images ...';
     
