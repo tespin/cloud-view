@@ -1,8 +1,10 @@
 document.getElementById('geolocate').addEventListener('click', event => {
     if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(async position => {
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
+            // const lat = position.coords.latitude;
+            // const lon = position.coords.longitude;
+            const lat = 78.648401;
+            const lno = 14.194336;
 
             const location_data = {lat, lon};
             const options = {
@@ -70,6 +72,5 @@ function getMetadata(api, loc, key) {
 
 function getUrl(api, size, loc, fov, heading, pitch, key) {
     const url = `${api}?size=${size.w}x${size.h}&location=${loc.lat},${loc.lon}&fov=${fov}&heading=${heading}&pitch=${pitch}&key=${key}`;
-    console.log(url);
     return url;
 }
