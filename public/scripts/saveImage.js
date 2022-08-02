@@ -21,8 +21,22 @@ async function saveImage(image) {
         body: JSON.stringify(base64_data)
     };
 
-    const saved_response = fetch('saved', options);
+    const saved_response = await fetch('saved', options);
     const saved_json = await saved_response.json();
+    
+    // const data = {lat, lon};
+    //         const options = {
+    //             method: 'POST', headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify(data)
+    //         };
+    //         // fetch('/api', options).then(response => {
+    //         //     console.log(response);
+    //         // });
+    //         const response = await fetch('api', options);
+    //         const json = await response.json();
+
     /* testing function saved function
     const saved_json = {
         status: 'OK'
