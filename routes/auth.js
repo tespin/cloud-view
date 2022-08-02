@@ -9,16 +9,15 @@ const { response } = require('../app');
 const ObjectID = require('mongodb').ObjectId;
 const router = express.Router();
 
-passport.use(new LocalStrategy({passReqToCallback: true}, User.authenticate()));
+passport.use(new LocalStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser(() => { console.log('serialized'); }));
 passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'); }));
 
 router.post('/login/password', passport.authenticate('local', {
-    // successRedirect: '/home.html',
-    failureRedirect: '/login.html',
-    failureMessage: true
-}), function(req, res) {
+    successRedirect: '/home.html',
+    failureRedirect: '/login.html'
+}), function(req, res, next) {
         res.redirect('/home.html');
     }
 );
@@ -33,9 +32,7 @@ router.post('/logout', function(req, res, next) {
 router.post('/signup', function(req, res, done) {
     User.register(new User({ username: req.body.username }), req.body.password, function (err, user) {
         if (err) {
-            // return done(err);
-            return done(null, false, {message: err});
-            // return console.log(`There was an error signing up: ${err}`);
+            console.log(`There was an error signing up: ${err}`);
             // res.json({
             //     status: 'failed',
             //     error: err.message
@@ -43,14 +40,11 @@ router.post('/signup', function(req, res, done) {
             // return done(new Error(err.message));
             // res.send(err.message);
             // return done(null, false, { message: err.message});
-            // return res.redirect('/signup.html');
+            return res.redirect('/signup.html');
         }
         
         passport.authenticate('local') (req, res, function() {
-            res.redirect('/home.html');
-            // if (err) {
-            //     console.log(err);
-            // }
+            res.redirect('/profile.html');
         });
     });
 });
