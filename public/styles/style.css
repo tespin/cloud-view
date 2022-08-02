@@ -276,6 +276,10 @@ section label {
     cursor: pointer;
 } 
 
+#gallery #placeholder p {
+    font-size: 1rem;
+    margin: 0.9rem 0 0 0;
+}
 
 #gallery p {
     font-size: 0.85rem;
