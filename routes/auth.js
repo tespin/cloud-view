@@ -18,7 +18,7 @@ router.post('/login/password', passport.authenticate('local', {
     // successRedirect: '/home.html',
     failureRedirect: '/login.html',
     failureMessage: true
-}), function(req, res, next) {
+}), function(req, res) {
         res.redirect('/home.html');
     }
 );
@@ -33,7 +33,7 @@ router.post('/logout', function(req, res, next) {
 router.post('/signup', function(req, res, done) {
     User.register(new User({ username: req.body.username }), req.body.password, function (err, user) {
         if (err) {
-            console.log(`There was an error signing up: ${err}`);
+            return console.log(`There was an error signing up: ${err}`);
             // res.json({
             //     status: 'failed',
             //     error: err.message
@@ -41,11 +41,14 @@ router.post('/signup', function(req, res, done) {
             // return done(new Error(err.message));
             // res.send(err.message);
             // return done(null, false, { message: err.message});
-            return res.redirect('/signup.html');
+            // return res.redirect('/signup.html');
         }
         
-        passport.authenticate('local') (req, res, function() {
+        passport.authenticate('local') (req, res, function(err, result) {
             res.redirect('/profile.html');
+            // if (err) {
+            //     console.log(err);
+            // }
         });
     });
 });
