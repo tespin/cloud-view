@@ -31,6 +31,7 @@ async function saveImage(image) {
         const apiInfo = document.getElementById('apiInfo');
         apiInfo.style.color = "#11A655";
         apiInfo.innerText = "Image successfully saved. Go to your Cloud Storage to view.";
+        apiInfo.style.display = "block";
     }
 
     // const b64 = api_json.b64;
