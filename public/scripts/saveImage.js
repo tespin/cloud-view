@@ -1,7 +1,7 @@
 document.getElementById('save').addEventListener('click', async (event) => {
     const img = document.getElementById('result');
-    const savedImage = await saveImage(img);
-
+    // const savedImage = await saveImage(img);
+    await (saveImage(img));
 })
 
 async function saveImage(image) {
@@ -33,10 +33,10 @@ async function saveImage(image) {
         apiInfo.innerText = "Image successfully saved. Go to your Cloud Storage to view.";
     }
 
-    const b64 = api_json.b64;
-    const date = api_json.date;
-    const oid = api_json.oid;
+    // const b64 = api_json.b64;
+    // const date = api_json.date;
+    // const oid = api_json.oid;
 
-    return [{b64, date, oid}];
+    // return [{b64, date, oid}];
 }
 
