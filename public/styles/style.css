@@ -204,11 +204,11 @@ section label {
     color: #000;
     background-color: transparent;
     font-weight: 500;
-    text-decoration: underline black solid 2px;
+    font-size: 1rem;
 }
 
 #page-header #nav #logout:hover {
-    
+    text-decoration: underline black solid 2px;
 }
 
 /* #homeBtns #save:hover {
