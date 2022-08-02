@@ -186,6 +186,11 @@ section label {
 #help a {
     font-weight: 500;
     color: #000;
+    text-decoration: none;
+}
+
+#help a:hover {
+    text-decoration: underline black solid 2px;
 }
 
 /* 
