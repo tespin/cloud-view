@@ -63,7 +63,7 @@ async function fetchImages() {
                     let idx = selected.indexOf(img_id);
                     if (idx > -1) { selected.splice(idx, 1); }
                 }
-                event.stopPropagation();
+                // event.stopPropagation();
             });
 
             entryDiv.addEventListener('click', event => {
