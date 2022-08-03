@@ -47,6 +47,26 @@ async function fetchImages() {
             dateDiv.classList.add('date');
             dateDiv.innerText = date;
 
+            img.addEventListener('click', event => {
+                const current = event.target;
+                if (current.style.border == "") {
+                    current.style.border = "2px solid #005180";
+                    selected.push(img_id);
+                    // indices.push(current.dataset.index);
+                    // console.log(`Image ${current.dataset.index} selected`)
+                    // console.log(`Image ${imgId} selected`)
+                    // console.log(`Images to be deleted: ${selected}`);
+                } else {
+                    current.style.border = "none";
+                    let idx = selected.indexOf(img_id);
+                    if (idx > -1) { selected.splice(idx, 1); }
+                    // console.log(`Image ${imgId} deselected`)
+                    // console.log(`Images to be deleted: ${selected}`);
+                }
+
+                console.log(selected);
+            })
+
             // img.addEventListener('clickl', event => {
             //     const current = event.target;
             // })
