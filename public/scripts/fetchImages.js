@@ -52,13 +52,13 @@ async function fetchImages() {
             cbox.classList.add('check');
 
             cbox.addEventListener('click', event => {
-                const current_cbox = event.currentTarget;
-                if (current_cbox.checked == false) {
-                    current_cbox.checked = true;
+                // const current_cbox = event.currentTarget;
+                if (cbox.checked == false) {
+                    cbox.checked = true;
                     // current_img.classList.add('darken');
                     selected.push(img_id);
                 } else {
-                    current_cbox.checked = false;
+                    cbox.checked = false;
                     // current_img.classList.remove('darken');
                     let idx = selected.indexOf(img_id);
                     if (idx > -1) { selected.splice(idx, 1); }
