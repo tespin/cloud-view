@@ -334,3 +334,7 @@ input[type=checkbox]:checked:before {
 .entry:hover .check {
     opacity: 1;
 }
+
+.entry img.darken {
+    filter: brightness(70%);
+}
