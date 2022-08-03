@@ -53,21 +53,21 @@ async function fetchImages() {
 
             entryDiv.addEventListener('click', event => {
                 const current_cbox = event.currentTarget.querySelector('input');
-                const current_img = event.currentTarget.querySelector('img');
+                // const current_img = event.currentTarget.querySelector('img');
                 // const current_cbox = this.querySelector('input');
                 // const current_cbox = event.target.querySelector('input');
                 // const current_cbox = current.querySelector('input');
                 if (current_cbox.checked == false) {
                     current_cbox.checked = true;
-                    current_img.classList.add('darken');
+                    // current_img.classList.add('darken');
                     selected.push(img_id);
                 } else {
                     current_cbox.checked = false;
-                    current_img.classList.remove('darken');
+                    // current_img.classList.remove('darken');
                     let idx = selected.indexOf(img_id);
                     if (idx > -1) { selected.splice(idx, 1); }
                 }
-
+                event.stopPropagation();
                 console.log(selected);
             })
 
