@@ -49,7 +49,7 @@ async function fetchImages() {
 
             const cbox = document.createElement('input');
             cbox.type = 'checkbox';
-            cbox.classList.add = 'check';
+            cbox.classList.add('check');
 
             entryDiv.addEventListener('click', event => {
                 const current_cbox = event.target.querySelector('input');
@@ -92,9 +92,9 @@ async function fetchImages() {
             //     const current = event.target;
             // })
 
+            entryDiv.append(cbox);
             entryDiv.append(img);
             entryDiv.append(dateDiv);
-            entryDiv.append(cbox);
             gallery.append(entryDiv);
         })
     } else {
