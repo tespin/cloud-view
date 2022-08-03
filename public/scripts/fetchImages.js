@@ -59,10 +59,10 @@ async function fetchImages() {
                     selected.push(img_id);
                 } else {
                     current_cbox.checked = false;
-                    event.stopPropagation();
                     // current_img.classList.remove('darken');
                     let idx = selected.indexOf(img_id);
                     if (idx > -1) { selected.splice(idx, 1); }
+                    event.stopPropagation();
                 }
             });
 
