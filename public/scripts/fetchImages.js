@@ -47,25 +47,46 @@ async function fetchImages() {
             dateDiv.classList.add('date');
             dateDiv.innerText = date;
 
-            img.addEventListener('click', event => {
+            const cbox = document.createElement('input');
+            cbox.type = 'checkbox';
+            cbox.class = 'check';
+
+            entryDiv.addEventListener('click', event => {
                 const current = event.target;
-                if (current.style.border == "") {
-                    current.style.border = "2px solid #005180";
+                const current_cbox = current.querySelector('input');
+                if (current_cbox.checked == false) {
+                    current_cbox.checked = true;
                     selected.push(img_id);
-                    // indices.push(current.dataset.index);
-                    // console.log(`Image ${current.dataset.index} selected`)
-                    // console.log(`Image ${imgId} selected`)
-                    // console.log(`Images to be deleted: ${selected}`);
                 } else {
-                    current.style.border = "";
+                    current_cbox.checked = false;
                     let idx = selected.indexOf(img_id);
                     if (idx > -1) { selected.splice(idx, 1); }
-                    // console.log(`Image ${imgId} deselected`)
-                    // console.log(`Images to be deleted: ${selected}`);
                 }
 
                 console.log(selected);
             })
+
+
+
+            // img.addEventListener('click', event => {
+            //     const current = event.target;
+            //     if (current.style.border == "") {
+            //         current.style.border = "2px solid #005180";
+            //         selected.push(img_id);
+            //         // indices.push(current.dataset.index);
+            //         // console.log(`Image ${current.dataset.index} selected`)
+            //         // console.log(`Image ${imgId} selected`)
+            //         // console.log(`Images to be deleted: ${selected}`);
+            //     } else {
+            //         current.style.border = "";
+            //         let idx = selected.indexOf(img_id);
+            //         if (idx > -1) { selected.splice(idx, 1); }
+            //         // console.log(`Image ${imgId} deselected`)
+            //         // console.log(`Images to be deleted: ${selected}`);
+            //     }
+
+            //     console.log(selected);
+            // })
 
             // img.addEventListener('clickl', event => {
             //     const current = event.target;
@@ -73,6 +94,7 @@ async function fetchImages() {
 
             entryDiv.append(img);
             entryDiv.append(dateDiv);
+            entryDiv.append(cbox);
             gallery.append(entryDiv);
         })
     } else {
