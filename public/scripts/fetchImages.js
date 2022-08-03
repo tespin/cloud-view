@@ -51,20 +51,20 @@ async function fetchImages() {
             cbox.type = 'checkbox';
             cbox.classList.add('check');
 
-            cbox.addEventListener('click', event => {
-                // const current_cbox = event.currentTarget;
-                if (cbox.checked == false) {
-                    cbox.checked = true;
-                    // current_img.classList.add('darken');
-                    selected.push(img_id);
-                } else {
-                    cbox.checked = false;
-                    // current_img.classList.remove('darken');
-                    let idx = selected.indexOf(img_id);
-                    if (idx > -1) { selected.splice(idx, 1); }
-                }
-                // event.stopPropagation();
-            });
+            // cbox.addEventListener('click', event => {
+            //     // const current_cbox = event.currentTarget;
+            //     if (cbox.checked == false) {
+            //         cbox.checked = true;
+            //         // current_img.classList.add('darken');
+            //         selected.push(img_id);
+            //     } else {
+            //         cbox.checked = false;
+            //         // current_img.classList.remove('darken');
+            //         let idx = selected.indexOf(img_id);
+            //         if (idx > -1) { selected.splice(idx, 1); }
+            //     }
+            //     // event.stopPropagation();
+            // });
 
             entryDiv.addEventListener('click', event => {
                 const current_cbox = event.currentTarget.querySelector('input');
