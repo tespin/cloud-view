@@ -52,8 +52,6 @@ async function fetchImages() {
             cbox.classList.add('check');
 
             cbox.addEventListener('click', event => {
-                event.stopPropagation();
-
                 const current_cbox = event.currentTarget;
                 if (current_cbox.checked == false) {
                     current_cbox.checked = true;
@@ -65,6 +63,7 @@ async function fetchImages() {
                     let idx = selected.indexOf(img_id);
                     if (idx > -1) { selected.splice(idx, 1); }
                 }
+                event.stopPropagation();
             });
 
             entryDiv.addEventListener('click', event => {
