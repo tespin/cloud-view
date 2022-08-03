@@ -5,12 +5,6 @@ saveButton.addEventListener('click', async (event) => {
     await (saveImage(img));
 });
 
-// document.getElementById('save').addEventListener('click', async (event) => {
-//     const img = document.getElementById('result');
-//     // const savedImage = await saveImage(img);
-//     await (saveImage(img));
-// })
-
 async function saveImage(image) {
     const canvas = document.createElement('canvas');
     canvas.width = image.width;
@@ -31,24 +25,6 @@ async function saveImage(image) {
     const saved_response = await fetch('save', options);
     const saved_json = await saved_response.json();
     
-    // const data = {lat, lon};
-    //         const options = {
-    //             method: 'POST', headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify(data)
-    //         };
-    //         // fetch('/api', options).then(response => {
-    //         //     console.log(response);
-    //         // });
-    //         const response = await fetch('api', options);
-    //         const json = await response.json();
-
-    /* testing function saved function
-    const saved_json = {
-        status: 'OK'
-    };*/
-
     if (saved_json.status == "OK") {
         saveButton.classList.remove('onhover');
         const apiInfo = document.getElementById('apiInfo');
