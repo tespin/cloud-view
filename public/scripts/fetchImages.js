@@ -69,7 +69,7 @@ async function fetchImages() {
                 if (cbox.checked == false) {
                     selected.push(img_id);
                 } else {
-                    let idx = selected.index(img_id);
+                    let idx = selected.indexOf(img_id);
                     if (idx > -1) { selected.splice(idx, 1); }
                 }
 
