@@ -49,11 +49,11 @@ async function fetchImages() {
 
             const cbox = document.createElement('input');
             cbox.type = 'checkbox';
-            cbox.class = 'check';
+            cbox.classList.add = 'check';
 
             entryDiv.addEventListener('click', event => {
-                const current = event.target;
-                const current_cbox = current.querySelector('input');
+                const current_cbox = event.target.querySelector('input');
+                // const current_cbox = current.querySelector('input');
                 if (current_cbox.checked == false) {
                     current_cbox.checked = true;
                     selected.push(img_id);
