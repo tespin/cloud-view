@@ -58,11 +58,11 @@ async function fetchImages() {
                 // const current_cbox = event.target.querySelector('input');
                 // const current_cbox = current.querySelector('input');
                 if (current_cbox.checked == false) {
+                    event.stopPropagation();
                     current_cbox.checked = true;
                     // current_img.classList.add('darken');
                     selected.push(img_id);
                 } else {
-                    event.stopPropagation();
                     current_cbox.checked = false;
                     // current_img.classList.remove('darken');
                     let idx = selected.indexOf(img_id);
