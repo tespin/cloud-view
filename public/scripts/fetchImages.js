@@ -62,13 +62,13 @@ async function fetchImages() {
                     // current_img.classList.add('darken');
                     selected.push(img_id);
                 } else {
+                    event.stopPropagation();
                     current_cbox.checked = false;
                     // current_img.classList.remove('darken');
                     let idx = selected.indexOf(img_id);
                     if (idx > -1) { selected.splice(idx, 1); }
                 }
                 console.log(selected);
-                event.stopPropagation();
             });
 
 
