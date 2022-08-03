@@ -68,9 +68,13 @@ async function fetchImages() {
             cbox.addEventListener('click', event => {
                 if (cbox.checked == false) {
                     selected.push(img_id);
+                    console.log('added');
                 } else {
                     let idx = selected.indexOf(img_id);
-                    if (idx > -1) { selected.splice(idx, 1); }
+                    if (idx > -1) { 
+                        selected.splice(idx, 1); 
+                        console.log('removed');
+                    }
                 }
 
                 console.log(selected);
