@@ -57,13 +57,13 @@ async function fetchImages() {
                     let idx = selected.indexOf(img_id);
                     if (idx > -1) { 
                         selected.splice(idx, 1); 
-                        console.log('removed');
+                        // console.log('removed');
                     }
                 } else {
                     selected.push(img_id);
-                    console.log('added');
+                    // console.log('added');
                 }
-                console.log(selected);
+                // console.log(selected);
                 event.stopPropagation();
             });
 
@@ -77,7 +77,7 @@ async function fetchImages() {
                     let idx = selected.indexOf(img_id);
                     if (idx > -1) { selected.splice(idx, 1); }
                 }
-                console.log(selected);
+                // console.log(selected);
                 event.stopPropagation();
             });
 
