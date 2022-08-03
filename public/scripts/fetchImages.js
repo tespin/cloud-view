@@ -51,20 +51,6 @@ async function fetchImages() {
             cbox.type = 'checkbox';
             cbox.classList.add('check');
 
-            // cbox.addEventListener('click', event => {
-            //     // const current_cbox = event.currentTarget;
-            //     if (cbox.checked == false) {
-            //         cbox.checked = true;
-            //         // current_img.classList.add('darken');
-            //         selected.push(img_id);
-            //     } else {
-            //         cbox.checked = false;
-            //         // current_img.classList.remove('darken');
-            //         let idx = selected.indexOf(img_id);
-            //         if (idx > -1) { selected.splice(idx, 1); }
-            //     }
-            //     // event.stopPropagation();
-            // });
             cbox.addEventListener('click', event => {
                 const current_cbox = event.currentTarget;
                 if (current_cbox.checked == false) {
@@ -79,21 +65,15 @@ async function fetchImages() {
                 }
                 console.log(selected);
                 event.stopPropagation();
-            })
+            });
 
             entryDiv.addEventListener('click', event => {
                 const current_cbox = event.currentTarget.querySelector('input');
-                // const current_img = event.currentTarget.querySelector('img');
-                // const current_cbox = this.querySelector('input');
-                // const current_cbox = event.target.querySelector('input');
-                // const current_cbox = current.querySelector('input');
                 if (current_cbox.checked == false) {
                     current_cbox.checked = true;
-                    // current_img.classList.add('darken');
                     selected.push(img_id);
                 } else {
                     current_cbox.checked = false;
-                    // current_img.classList.remove('darken');
                     let idx = selected.indexOf(img_id);
                     if (idx > -1) { selected.splice(idx, 1); }
                 }
@@ -101,38 +81,12 @@ async function fetchImages() {
                 event.stopPropagation();
             });
 
-
-
-            // img.addEventListener('click', event => {
-            //     const current = event.target;
-            //     if (current.style.border == "") {
-            //         current.style.border = "2px solid #005180";
-            //         selected.push(img_id);
-            //         // indices.push(current.dataset.index);
-            //         // console.log(`Image ${current.dataset.index} selected`)
-            //         // console.log(`Image ${imgId} selected`)
-            //         // console.log(`Images to be deleted: ${selected}`);
-            //     } else {
-            //         current.style.border = "";
-            //         let idx = selected.indexOf(img_id);
-            //         if (idx > -1) { selected.splice(idx, 1); }
-            //         // console.log(`Image ${imgId} deselected`)
-            //         // console.log(`Images to be deleted: ${selected}`);
-            //     }
-
-            //     console.log(selected);
-            // })
-
-            // img.addEventListener('clickl', event => {
-            //     const current = event.target;
-            // })
-
             entryDiv.append(cbox);
             entryDiv.append(img);
             entryDiv.append(dateDiv);
             gallery.append(entryDiv);
         })
     } else {
-        progress.innerText = 'Your Cloud Storage is empty. Add to it on the Home page.';
+        progress.innerText = 'Your Cloud Storage is empty. Add to it by saving an image on the Home page.';
     }
 }
