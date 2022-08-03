@@ -78,7 +78,7 @@ async function fetchImages() {
                     }
                 }
                 console.log(selected);
-                // event.stopPropagation();
+                event.stopPropagation();
             })
 
             entryDiv.addEventListener('click', event => {
