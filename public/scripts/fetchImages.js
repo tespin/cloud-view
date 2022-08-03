@@ -52,7 +52,8 @@ async function fetchImages() {
             cbox.classList.add('check');
 
             entryDiv.addEventListener('click', event => {
-                const current_cbox = this.querySelector('input');
+                const current_cbox = event.currentTarget.querySelector('input');
+                // const current_cbox = this.querySelector('input');
                 // const current_cbox = event.target.querySelector('input');
                 // const current_cbox = current.querySelector('input');
                 if (current_cbox.checked == false) {
