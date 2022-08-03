@@ -83,7 +83,7 @@ async function fetchImages() {
                     if (idx > -1) { selected.splice(idx, 1); }
                 }
                 console.log(selected);
-                event.stopPropagation();
+                // event.stopPropagation();
             });
 
 
