@@ -51,6 +51,10 @@ async function fetchImages() {
             cbox.type = 'checkbox';
             cbox.classList.add('check');
 
+            cbox.addEventListener('click', event => {
+                event.stopPropagation();
+            })
+
             entryDiv.addEventListener('click', event => {
                 const current_cbox = event.currentTarget.querySelector('input');
                 // const current_img = event.currentTarget.querySelector('img');
@@ -58,7 +62,6 @@ async function fetchImages() {
                 // const current_cbox = event.target.querySelector('input');
                 // const current_cbox = current.querySelector('input');
                 if (current_cbox.checked == false) {
-                    event.stopPropagation();
                     current_cbox.checked = true;
                     // current_img.classList.add('darken');
                     selected.push(img_id);
