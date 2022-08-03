@@ -48,7 +48,7 @@ async function fetchImages() {
             dateDiv.innerText = date;
 
             img.addEventListener('click', event => {
-                let current = event.target;
+                const current = event.target;
                 if (current.style.border == "") {
                     current.style.border = "2px solid #005180";
                     selected.push(img_id);
@@ -57,7 +57,7 @@ async function fetchImages() {
                     // console.log(`Image ${imgId} selected`)
                     // console.log(`Images to be deleted: ${selected}`);
                 } else {
-                    current.style.border = "none";
+                    current.style.border = "";
                     let idx = selected.indexOf(img_id);
                     if (idx > -1) { selected.splice(idx, 1); }
                     // console.log(`Image ${imgId} deselected`)
