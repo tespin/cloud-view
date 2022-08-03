@@ -52,6 +52,7 @@ async function fetchImages() {
             cbox.classList.add('check');
 
             entryDiv.addEventListener('click', event => {
+                event.stopPropagation();
                 const current_cbox = event.currentTarget.querySelector('input');
                 // const current_img = event.currentTarget.querySelector('img');
                 // const current_cbox = this.querySelector('input');
@@ -67,7 +68,6 @@ async function fetchImages() {
                     let idx = selected.indexOf(img_id);
                     if (idx > -1) { selected.splice(idx, 1); }
                 }
-                event.stopPropagation();
                 console.log(selected);
             })
 
