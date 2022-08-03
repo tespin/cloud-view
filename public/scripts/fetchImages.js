@@ -67,6 +67,7 @@ async function fetchImages() {
             });
 
             entryDiv.addEventListener('click', event => {
+                event.stopPropagation();
                 const current_cbox = event.currentTarget.querySelector('input');
                 // const current_img = event.currentTarget.querySelector('img');
                 // const current_cbox = this.querySelector('input');
