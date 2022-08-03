@@ -66,7 +66,8 @@ async function fetchImages() {
             //     // event.stopPropagation();
             // });
             cbox.addEventListener('click', event => {
-                if (cbox.checked == false) {
+                const current_cbox = event.currentTarget;
+                if (current_cbox.checked == false) {
                     selected.push(img_id);
                     console.log('added');
                 } else {
