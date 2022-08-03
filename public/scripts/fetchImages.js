@@ -48,7 +48,7 @@ async function fetchImages() {
             dateDiv.innerText = date;
 
             img.addEventListener('click', event => {
-                const current = event.target;
+                let current = event.target;
                 if (current.style.border == "") {
                     current.style.border = "2px solid #005180";
                     selected.push(img_id);
