@@ -313,7 +313,7 @@ input[type=checkbox]::before {
     background-color: transparent;
     background-size: contain;
     border-radius: inherit;
-    box-shadow: inset 0 0 0 1px #CCD3D8;
+    /* box-shadow: inset 0 0 0 1px #CCD3D8; */
 }
 
 input[type=checkbox]:checked {
