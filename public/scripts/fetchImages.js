@@ -67,7 +67,6 @@ async function fetchImages() {
             });
 
             entryDiv.addEventListener('click', event => {
-                event.stopPropagation();
                 const current_cbox = event.currentTarget.querySelector('input');
                 // const current_img = event.currentTarget.querySelector('img');
                 // const current_cbox = this.querySelector('input');
@@ -84,6 +83,7 @@ async function fetchImages() {
                     if (idx > -1) { selected.splice(idx, 1); }
                 }
                 console.log(selected);
+                event.stopPropagation();
             });
 
 
