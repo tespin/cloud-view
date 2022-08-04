@@ -107,7 +107,7 @@ function enableButtons() {
         if (selected.length > 0) {
             delete_btn.disabled = 'false';
         } else {
-            download_btn.disabled = 'true';
+            delete_btn.disabled = 'true';
         }
     }
     // if (selected.length > 0) {
