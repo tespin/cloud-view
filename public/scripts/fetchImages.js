@@ -2,8 +2,9 @@ let index_object = { index: 0 };
 let selected = [];
 let indices = [];
 
+enableButtons();
+
 window.addEventListener('load', async (event) => {
-    enableButtons();
     await fetchImages();
     // const savedImages = await fetchImages();
     // addImages(savedImages, index_object);
