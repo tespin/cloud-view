@@ -8,6 +8,14 @@ window.addEventListener('load', async (event) => {
     // addImages(savedImages, index_object);
 })
 
+document.getElementById('download').addEventListener('click', async (event) => {
+    console.log('download button clicked');
+});
+
+document.getElementById('delete').addEventListener('click', async (event) => {
+    console.log('delete button clicked');
+});
+
 async function fetchImages() {
     const gallery = document.getElementById('gallery');
 
@@ -96,40 +104,18 @@ function enableButtons() {
     const download_btn = document.getElementById('download');
     const delete_btn = document.getElementById('delete');
     if (download_btn) {
-        console.log('found download button');
         if (selected.length > 0) {
-            console.log('enabling button');
             download_btn.removeAttribute('disabled');
-            // download_btn.disabled = 'false';
         } else {
-            console.log('disabling button');
             download_btn.setAttribute('disabled', '');
-            // download_btn.disabled = 'true';
         }
     }
 
     if (delete_btn) {
-        console.log('found delete button');
         if (selected.length > 0) {
             delete_btn.removeAttribute('disabled');
-            // delete_btn.disabled = 'false';
         } else {
             delete_btn.setAttribute('disabled', '');
-            // delete_btn.disabled = 'true';
         }
     }
-    // if (selected.length > 0) {
-    //     console.log('something selected');
-    //     if (download_btn) download_btn.disabled = 'false';
-    //     else {
-    //         download_btn.setAttribute('disabled', '');
-    //     }
-
-    //     if (delete_btn) delete_btn.removeAttribute('disabled');
-    //     else {
-    //         delete_btn.setAttribute('disabled', '');
-    //     }
-    // } else {
-    //     console.log('nothing selected');
-    // }
 }
