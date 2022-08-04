@@ -2,12 +2,14 @@ let index_object = { index: 0 };
 let selected = [];
 let indices = [];
 
-enableButtons();
-
 window.addEventListener('load', async (event) => {
     await fetchImages();
     // const savedImages = await fetchImages();
     // addImages(savedImages, index_object);
+})
+
+window.addEventListener('click', event => {
+    enableButtons();
 })
 
 async function fetchImages() {
