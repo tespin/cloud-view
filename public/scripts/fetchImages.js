@@ -8,10 +8,6 @@ window.addEventListener('load', async (event) => {
     // addImages(savedImages, index_object);
 })
 
-window.addEventListener('click', event => {
-    enableButtons();
-})
-
 async function fetchImages() {
     const gallery = document.getElementById('gallery');
 
@@ -68,6 +64,7 @@ async function fetchImages() {
                     // console.log('added');
                 }
                 // console.log(selected);
+                enableButtons();
                 event.stopPropagation();
             });
 
@@ -81,7 +78,7 @@ async function fetchImages() {
                     let idx = selected.indexOf(img_id);
                     if (idx > -1) { selected.splice(idx, 1); }
                 }
-                // console.log(selected);
+                enableButtons();
                 event.stopPropagation();
             });
 
