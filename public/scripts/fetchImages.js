@@ -99,19 +99,23 @@ function enableButtons() {
         console.log('found download button');
         if (selected.length > 0) {
             console.log('enabling button');
-            download_btn.disabled = 'false';
+            download_btn.removeAttribute('disabled');
+            // download_btn.disabled = 'false';
         } else {
             console.log('disabling button');
-            download_btn.disabled = 'true';
+            download_btn.setAttribute('disabled', '');
+            // download_btn.disabled = 'true';
         }
     }
 
     if (delete_btn) {
         console.log('found delete button');
         if (selected.length > 0) {
-            delete_btn.disabled = 'false';
+            delete_btn.removeAttribute('disabled');
+            // delete_btn.disabled = 'false';
         } else {
-            delete_btn.disabled = 'true';
+            delete_btn.setAttribute('disabled', '');
+            // delete_btn.disabled = 'true';
         }
     }
     // if (selected.length > 0) {
