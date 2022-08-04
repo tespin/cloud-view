@@ -95,19 +95,33 @@ async function fetchImages() {
 function enableButtons() {
     const download_btn = document.getElementById('download');
     const delete_btn = document.getElementById('delete');
-
-    if (selected.length > 0) {
-        console.log('something selected');
-        // if (download_btn) download_btn.removeAttribute('disabled');
-        // else {
-        //     download_btn.setAttribute('disabled', '');
-        // }
-
-        // if (delete_btn) delete_btn.removeAttribute('disabled');
-        // else {
-        //     delete_btn.setAttribute('disabled', '');
-        // }
-    } else {
-        console.log('nothing selected');
+    if (download_btn) {
+        if (selected.length > 0) {
+            download_btn.disabled = 'false';
+        } else {
+            download_btn.disabled = 'true';
+        }
     }
+
+    if (delete_btn) {
+        if (selected.length > 0) {
+            delete_btn.disabled = 'false';
+        } else {
+            download_btn.disabled = 'true';
+        }
+    }
+    // if (selected.length > 0) {
+    //     console.log('something selected');
+    //     if (download_btn) download_btn.disabled = 'false';
+    //     else {
+    //         download_btn.setAttribute('disabled', '');
+    //     }
+
+    //     if (delete_btn) delete_btn.removeAttribute('disabled');
+    //     else {
+    //         delete_btn.setAttribute('disabled', '');
+    //     }
+    // } else {
+    //     console.log('nothing selected');
+    // }
 }
