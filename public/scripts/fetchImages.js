@@ -98,14 +98,17 @@ function enableButtons() {
     const delete_btn = document.getElementById('delete');
 
     if (selected.length > 0) {
-        if (download_btn) download_btn.removeAttribute('disabled');
-        else {
-            download_btn.setAttribute('disabled', '');
-        }
+        console.log('something selected');
+        // if (download_btn) download_btn.removeAttribute('disabled');
+        // else {
+        //     download_btn.setAttribute('disabled', '');
+        // }
 
-        if (delete_btn) delete_btn.removeAttribute('disabled');
-        else {
-            delete_btn.setAttribute('disabled', '');
-        }
+        // if (delete_btn) delete_btn.removeAttribute('disabled');
+        // else {
+        //     delete_btn.setAttribute('disabled', '');
+        // }
+    } else {
+        console.log('nothing selected');
     }
 }
