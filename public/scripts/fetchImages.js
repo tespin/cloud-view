@@ -97,6 +97,7 @@ function enableButtons() {
     const delete_btn = document.getElementById('delete');
     if (download_btn) {
         console.log('found download button');
+        console.log(selected);
         if (selected.length > 0) {
             download_btn.disabled = 'false';
         } else {
