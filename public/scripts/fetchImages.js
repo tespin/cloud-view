@@ -3,6 +3,7 @@ let selected = [];
 let indices = [];
 
 window.addEventListener('load', async (event) => {
+    enableButtons();
     await fetchImages();
     // const savedImages = await fetchImages();
     // addImages(savedImages, index_object);
@@ -88,5 +89,22 @@ async function fetchImages() {
         })
     } else {
         progress.innerText = 'Your Cloud Storage is empty. Add to it by saving an image on the Home page.';
+    }
+}
+
+function enableButtons() {
+    const download_btn = document.getElementById('download');
+    const delete_btn = document.getElementById('delete');
+
+    if (selected.length > 0) {
+        if (download_btn) download_btn.removeAttribute('disabled');
+        else {
+            download_btn.setAttribute('disabled', '');
+        }
+
+        if (delete_btn) delete_btn.removeAttribute('disabled');
+        else {
+            delete_btn.setAttribute('disabled', '');
+        }
     }
 }
