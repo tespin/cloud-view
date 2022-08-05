@@ -80,7 +80,7 @@ router.post('/delete', (req, res, done) => {
             // res.redirect('/profile.html');
             res.json({
                 status: 'OK',
-                user: result
+                user: req.user
                 // redirect: '/profile.html'
             });
         });
