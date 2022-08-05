@@ -22,8 +22,9 @@ document.getElementById('delete').addEventListener('click', async (event) => {
         }
     })
 
-    const data = {selected};
-    console.log(data);
+    selected = [];
+    // const data = {selected};
+    // console.log(data);
     // const options = {
     //     method: 'POST', headers: {
     //         'Content-Type': 'application/json'
