@@ -127,13 +127,13 @@ button:hover {
 
 button:disabled {
     opacity: 20%;
-    background: #000;
+    background-color: #000;
     cursor: default;
     color: #FFF;
 }
 
 button:enabled {
-    transition: background 250ms;
+    transition: background-color 250ms;
 }
 
 .onhover {
