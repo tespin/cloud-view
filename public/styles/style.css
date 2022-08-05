@@ -130,6 +130,9 @@ button:disabled {
     background: #000;
     cursor: default;
     color: #FFF;
+}
+
+button:enabled {
     transition: background 250ms;
 }
 
