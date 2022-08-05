@@ -44,6 +44,7 @@ document.getElementById('delete').addEventListener('click', async (event) => {
     if (delete_json.status == 'OK') {
         const btnDiv = document.getElementById('storageBtns');
         const apiInfo = document.createElement('div');
+        btnDiv.after(apiInfo);
         apiInfo.id = 'apiInfo';
         apiInfo.innerText = 'Deleting images ..';
         const all_imgs = document.querySelectorAll('.entry img');
