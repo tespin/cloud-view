@@ -133,7 +133,7 @@ button:disabled {
 }
 
 button:enabled {
-    transition: background-color 250ms;
+    /* transition: background-color 250ms; */
 }
 
 .onhover {
