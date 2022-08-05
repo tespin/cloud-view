@@ -13,33 +13,42 @@ document.getElementById('download').addEventListener('click', async (event) => {
 });
 
 document.getElementById('delete').addEventListener('click', async (event) => {
-    const all_imgs = document.querySelectorAll('.entry img');
-    all_imgs.forEach(element => {
-        if (selected.includes(element.dataset.id)) {
-            const entry = element.closest('.entry');
-            entry.remove();
-            console.log(`element ${element.dataset.id} removed`);
-        }
-    })
+    // const all_imgs = document.querySelectorAll('.entry img');
+    // all_imgs.forEach(element => {
+    //     if (selected.includes(element.dataset.id)) {
+    //         const entry = element.closest('.entry');
+    //         entry.remove();
+    //         console.log(`element ${element.dataset.id} removed`);
+    //     }
+    // })
+
+    // selected = [];
+    // enableButtons();
+    
+    const data = {selected};
+    console.log(data);
+    const options = {
+        method: 'POST', headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
+    const delete_res = await fetch('delete', options);
+    const delete_json = await delete_res.json();
+
+    if (delete_json.status == 'OK') {
+        const all_imgs = document.querySelectorAll('.entry img');
+        all_imgs.forEach(element => {
+            if (selected.includes(element.dataset.id)) {
+                const entry = element.closest('.entry');
+                entry.remove();
+                console.log(`element ${element.dataset.id} removed`);
+            }
+        })
 
     selected = [];
     enableButtons();
-    console.log(selected);
-    // const data = {selected};
-    // console.log(data);
-    // const options = {
-    //     method: 'POST', headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(data)
-    // };
-    // const delete_res = await fetch('delete', options);
-    // const delete_json = await delete_res.json();
-
-    // if (delete_json.status == 'OK') {
-        
-
-    // }
+    }
 });
 
 async function fetchImages() {
