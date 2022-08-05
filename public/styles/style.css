@@ -130,6 +130,7 @@ button:disabled {
     background: #000;
     cursor: default;
     color: #FFF;
+    transition: background 250ms;
 }
 
 .onhover {
