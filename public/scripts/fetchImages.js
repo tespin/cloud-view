@@ -23,6 +23,7 @@ document.getElementById('delete').addEventListener('click', async (event) => {
     })
 
     selected = [];
+    console.log(selected);
     // const data = {selected};
     // console.log(data);
     // const options = {
