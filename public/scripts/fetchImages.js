@@ -16,7 +16,8 @@ document.getElementById('delete').addEventListener('click', async (event) => {
     const all_imgs = document.querySelectorAll('.entry img');
     all_imgs.forEach(element => {
         if (selected.includes(element.dataset.id)) {
-            element.remove();
+            const entry = element.closest('.entry');
+            entry.remove();
             console.log(`element ${element.dataset.id} removed`);
         }
     })
