@@ -23,6 +23,7 @@ document.getElementById('delete').addEventListener('click', async (event) => {
     })
 
     selected = [];
+    enableButtons();
     console.log(selected);
     // const data = {selected};
     // console.log(data);
