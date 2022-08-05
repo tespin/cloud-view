@@ -2,6 +2,9 @@ let index_object = { index: 0 };
 let selected = [];
 let indices = [];
 
+const download_btn = document.getElementById('download');
+const delete_btn = document.getElementById('delete');
+
 window.addEventListener('load', async (event) => {
     await fetchImages();
     // const savedImages = await fetchImages();
@@ -10,9 +13,11 @@ window.addEventListener('load', async (event) => {
 
 document.getElementById('download').addEventListener('click', async (event) => {
     console.log('download button clicked');
+    clearInfo();
 });
 
 document.getElementById('delete').addEventListener('click', async (event) => {
+    clearInfo();
     // const all_imgs = document.querySelectorAll('.entry img');
     // all_imgs.forEach(element => {
     //     if (selected.includes(element.dataset.id)) {
@@ -24,7 +29,7 @@ document.getElementById('delete').addEventListener('click', async (event) => {
 
     // selected = [];
     // enableButtons();
-    
+    delete_btn.classList.add('onhover');
     const data = {selected};
     console.log(data);
     const options = {
@@ -37,6 +42,10 @@ document.getElementById('delete').addEventListener('click', async (event) => {
     const delete_json = await delete_res.json();
 
     if (delete_json.status == 'OK') {
+        const btnDiv = document.getElementById('storageBtns');
+        const apiInfo = document.createElement('div');
+        apiInfo.id = 'apiInfo';
+        apiInfo.innerText = 'Deleting images ..';
         const all_imgs = document.querySelectorAll('.entry img');
         all_imgs.forEach(element => {
             if (selected.includes(element.dataset.id)) {
@@ -46,8 +55,10 @@ document.getElementById('delete').addEventListener('click', async (event) => {
             }
         })
 
-    selected = [];
-    enableButtons();
+        apiInfo.classList.add('success');
+        delete_btn.classList.remove('onhover');
+        selected = [];
+        enableButtons();
     }
 });
 
@@ -136,8 +147,7 @@ async function fetchImages() {
 }
 
 function enableButtons() {
-    const download_btn = document.getElementById('download');
-    const delete_btn = document.getElementById('delete');
+    clearInfo();
     if (download_btn) {
         if (selected.length > 0) {
             download_btn.removeAttribute('disabled');
@@ -153,4 +163,9 @@ function enableButtons() {
             delete_btn.setAttribute('disabled', '');
         }
     }
+}
+
+function clearInfo() {
+    const apiInfo = document.getElementById('apiInfo');
+    if (apiInfo) apiInfo.remove();
 }

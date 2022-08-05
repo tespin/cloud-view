@@ -228,6 +228,10 @@ section label {
     text-decoration: underline black solid 2px;
 }
 
+.success {
+    color: "#11A655";
+}
+
 /* #homeBtns #save:hover {
 
 } */
