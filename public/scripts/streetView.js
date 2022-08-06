@@ -7,8 +7,8 @@ document.getElementById('geolocate').addEventListener('click', event => {
     apiInfo.innerText = 'Requesting permission to use your location ...';
     btnDiv.after(apiInfo);
     if ('geolocation' in navigator) {
-        apiInfo.innerText = 'Finding clouds ...';
         navigator.geolocation.getCurrentPosition(async position => {
+            apiInfo.innerText = 'Finding clouds ...';
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
             
