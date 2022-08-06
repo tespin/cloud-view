@@ -33,7 +33,7 @@ document.getElementById('delete').addEventListener('click', async (event) => {
     const btnDiv = document.getElementById('storageBtns');
     const apiInfo = document.createElement('div');
     apiInfo.id = 'apiInfo';
-    apiInfo.classList.add = 'errorBox';
+    apiInfo.classList.add('errorBox');
     apiInfo.innerText = 'Deleting images ...';
     btnDiv.after(apiInfo);
     const data = {selected};
