@@ -149,7 +149,6 @@ async function fetchImages() {
 }
 
 function enableButtons() {
-    clearInfo();
     if (download_btn) {
         if (selected.length > 0) {
             download_btn.removeAttribute('disabled');
