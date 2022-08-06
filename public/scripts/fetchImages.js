@@ -18,17 +18,7 @@ document.getElementById('download').addEventListener('click', async (event) => {
 
 document.getElementById('delete').addEventListener('click', async (event) => {
     clearInfo();
-    // const all_imgs = document.querySelectorAll('.entry img');
-    // all_imgs.forEach(element => {
-    //     if (selected.includes(element.dataset.id)) {
-    //         const entry = element.closest('.entry');
-    //         entry.remove();
-    //         console.log(`element ${element.dataset.id} removed`);
-    //     }
-    // })
 
-    // selected = [];
-    // enableButtons();
     delete_btn.classList.add('onhover');
     const btnDiv = document.getElementById('storageBtns');
     const apiInfo = document.createElement('div');

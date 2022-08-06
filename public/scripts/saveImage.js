@@ -1,11 +1,19 @@
 const saveButton = document.getElementById('save');
 saveButton.addEventListener('click', async (event) => {
-    saveButton.classList.add('onhover');
-    const img = document.getElementById('result');
     await (saveImage(img));
 });
 
 async function saveImage(image) {
+    saveButton.classList.add('onhover');
+    const btnDiv = document.getElementById('homeBtns');
+    const apiInfo = document.createElement('div');
+    apiInfo.id = 'apiInfo';
+    apiInfo.classList.add('errorBox');
+    apiInfo.innerText = 'Saving image ...';
+    btnDiv.after(apiInfo);
+    
+    const img = document.getElementById('result');
+    
     const canvas = document.createElement('canvas');
     canvas.width = image.width;
     canvas.height = image.height;
@@ -26,11 +34,17 @@ async function saveImage(image) {
     const saved_json = await saved_response.json();
     
     if (saved_json.status == "OK") {
-        saveButton.classList.remove('onhover');
-        const apiInfo = document.getElementById('apiInfo');
-        apiInfo.style.color = "#11A655";
+        const all_imgs = document.querySelectorAll('.entry img');
+        all_imgs.forEach(element => {
+            if (selected.includes(element.dataset.id)) {
+                const entry = element.closest('.entry');
+                entry.remove();
+            }
+        })
+
+        apiInfo.classList.add('success');
         apiInfo.innerText = "Image successfully saved. Go to your Cloud Storage to view.";
-        apiInfo.style.display = "block";
+        saveButton.classList.remove('onhover');
     }
 
     // const b64 = api_json.b64;
