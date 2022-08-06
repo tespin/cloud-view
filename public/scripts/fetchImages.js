@@ -57,7 +57,7 @@ document.getElementById('delete').addEventListener('click', async (event) => {
         })
 
         apiInfo.classList.add('success');
-        apiInfo.innerText('Images successfully deleted.');
+        apiInfo.innerText = 'Images successfully deleted.';
         delete_btn.classList.remove('onhover');
         selected = [];
         enableButtons();
