@@ -75,76 +75,76 @@ async function fetchImages() {
     // placeholder.append(progress);
     // container.append(placeholder);
 
-    // const options = {
-    //     method: 'POST', headers: {
-    //         'Content-Type': 'application/json'
-    //     }
-    // };
+    const options = {
+        method: 'POST', headers: {
+            'Content-Type': 'application/json'
+        }
+    };
 
-    // const imgs_response = await fetch('clouds', options);
-    // const imgs_json = await imgs_response.json();
+    const imgs_response = await fetch('clouds', options);
+    const imgs_json = await imgs_response.json();
 
-    // const all_saved_imgs = imgs_json.user.saved;
-    // if (all_saved_imgs.length > 0) {
-    //     clearInfo();
-    //     // const gallery = document.getElementById('gallery');
-    //     all_saved_imgs.forEach(element => {
-    //         const entryDiv = document.createElement('div');
-    //         entryDiv.classList.add('entry');
+    const all_saved_imgs = imgs_json.user.saved;
+    if (all_saved_imgs.length > 0) {
+        clearInfo();
+        // const gallery = document.getElementById('gallery');
+        all_saved_imgs.forEach(element => {
+            const entryDiv = document.createElement('div');
+            entryDiv.classList.add('entry');
 
-    //         const img = new Image();
-    //         const img_id = element._id;
-    //         const date = element.date;
-    //         img.src = element.url;
-    //         img.dataset.id = element._id;
+            const img = new Image();
+            const img_id = element._id;
+            const date = element.date;
+            img.src = element.url;
+            img.dataset.id = element._id;
 
-    //         const dateDiv = document.createElement('p');
-    //         dateDiv.classList.add('date');
-    //         dateDiv.innerText = date;
+            const dateDiv = document.createElement('p');
+            dateDiv.classList.add('date');
+            dateDiv.innerText = date;
 
-    //         const cbox = document.createElement('input');
-    //         cbox.type = 'checkbox';
-    //         cbox.classList.add('check');
+            const cbox = document.createElement('input');
+            cbox.type = 'checkbox';
+            cbox.classList.add('check');
 
-    //         cbox.addEventListener('click', event => {
-    //             const current_cbox = event.currentTarget;
-    //             if (current_cbox.checked == false) {
-    //                 let idx = selected.indexOf(img_id);
-    //                 if (idx > -1) { 
-    //                     selected.splice(idx, 1); 
-    //                     // console.log('removed');
-    //                 }
-    //             } else {
-    //                 selected.push(img_id);
-    //                 // console.log('added');
-    //             }
-    //             // console.log(selected);
-    //             enableButtons();
-    //             event.stopPropagation();
-    //         });
+            cbox.addEventListener('click', event => {
+                const current_cbox = event.currentTarget;
+                if (current_cbox.checked == false) {
+                    let idx = selected.indexOf(img_id);
+                    if (idx > -1) { 
+                        selected.splice(idx, 1); 
+                        // console.log('removed');
+                    }
+                } else {
+                    selected.push(img_id);
+                    // console.log('added');
+                }
+                // console.log(selected);
+                enableButtons();
+                event.stopPropagation();
+            });
 
-    //         entryDiv.addEventListener('click', event => {
-    //             const current_cbox = event.currentTarget.querySelector('input');
-    //             if (current_cbox.checked == false) {
-    //                 current_cbox.checked = true;
-    //                 selected.push(img_id);
-    //             } else {
-    //                 current_cbox.checked = false;
-    //                 let idx = selected.indexOf(img_id);
-    //                 if (idx > -1) { selected.splice(idx, 1); }
-    //             }
-    //             enableButtons();
-    //             event.stopPropagation();
-    //         });
+            entryDiv.addEventListener('click', event => {
+                const current_cbox = event.currentTarget.querySelector('input');
+                if (current_cbox.checked == false) {
+                    current_cbox.checked = true;
+                    selected.push(img_id);
+                } else {
+                    current_cbox.checked = false;
+                    let idx = selected.indexOf(img_id);
+                    if (idx > -1) { selected.splice(idx, 1); }
+                }
+                enableButtons();
+                event.stopPropagation();
+            });
 
-    //         entryDiv.append(cbox);
-    //         entryDiv.append(img);
-    //         entryDiv.append(dateDiv);
-    //         gallery.append(entryDiv);
-    //     })
-    // } else {
-    //     apiInfo.innerText = 'Your Cloud Storage is empty. Add to it by saving an image on the Home page.';
-    // }
+            entryDiv.append(cbox);
+            entryDiv.append(img);
+            entryDiv.append(dateDiv);
+            gallery.append(entryDiv);
+        })
+    } else {
+        apiInfo.innerText = 'Your Cloud Storage is empty. Add to it by saving an image on the Home page.';
+    }
 }
 
 function enableButtons() {
