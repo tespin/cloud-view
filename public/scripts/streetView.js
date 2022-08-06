@@ -1,4 +1,11 @@
 document.getElementById('geolocate').addEventListener('click', event => {
+    clearInfo();
+    const btnDiv = document.getElementById('homeBtns');
+    const apiInfo = document.createElement('div');
+    apiInfo.id = 'apiInfo';
+    apiInfo.classList.add('errorBox');
+    apiInfo.innerText = 'Requesting permission to use your location ...';
+    btnDiv.after(apiInfo);
     if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(async position => {
             const lat = position.coords.latitude;
@@ -25,15 +32,16 @@ document.getElementById('geolocate').addEventListener('click', event => {
             const meta_response = await fetch(getMetadata(api, location_data, api_key));
             const meta_json = await meta_response.json();
 
-            const btnDiv = document.getElementById('homeBtns');
-            const apiInfo = document.createElement('div');
-            apiInfo.id = 'apiInfo';
-            apiInfo.classList.add('errorBox');
+            // const btnDiv = document.getElementById('homeBtns');
+            // const apiInfo = document.createElement('div');
+            // apiInfo.id = 'apiInfo';
+            // apiInfo.classList.add('errorBox');
             apiInfo.innerText = 'Finding clouds ...';
-            btnDiv.after(apiInfo);
+            // btnDiv.after(apiInfo);
             const result = document.getElementById('result');
             if (meta_json.status == "ZERO_RESULTS") {
                 result.alt = "";
+                apiInfo.classList.add('error');
                 apiInfo.innerText = "An cloud view could not be found at your current coordinates. Please move to a new location and try again.";
             } else if (meta_json.status == "OK") {
                 result.style.visibility = "hidden";
@@ -61,11 +69,13 @@ document.getElementById('geolocate').addEventListener('click', event => {
                     }
                 }
             } else {
+                apiInfo.classList.add('error');
                 apiInfo.innerText = "The request could not be completed. Please try again another time.";
             }
 
         })
     } else {
+        apiInfo.classList.add('error');
         apiInfo.innerText = "Please give the browser permission to use your location.";
     }
 })
@@ -78,4 +88,9 @@ function getMetadata(api, loc, key) {
 function getUrl(api, size, loc, fov, heading, pitch, key) {
     const url = `${api}?size=${size.w}x${size.h}&location=${loc.lat},${loc.lon}&fov=${fov}&heading=${heading}&pitch=${pitch}&key=${key}`;
     return url;
+}
+
+function clearInfo() {
+    const apiInfo = document.getElementById('apiInfo');
+    if (apiInfo) apiInfo.remove();
 }

@@ -90,6 +90,13 @@ body, html {
     margin: 0.5rem 0 0 0;
     font-size: 0.85rem;
     letter-spacing: 0.02rem;
+}
+
+.success {
+    color: #11A655;
+}
+
+.error {
     color: #FF0000;
 }
 
@@ -225,10 +232,6 @@ section label {
 
 #page-header #nav #logout:hover {
     text-decoration: underline black solid 2px;
-}
-
-.success {
-    color: #11A655;
 }
 
 /* #homeBtns #save:hover {
