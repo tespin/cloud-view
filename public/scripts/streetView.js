@@ -9,13 +9,12 @@ document.getElementById('geolocate').addEventListener('click', event => {
     if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(async position => {
             apiInfo.innerText = 'Finding clouds ...';
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
+            // const lat = position.coords.latitude;
+            // const lon = position.coords.longitude;
             
-            /* test for zero_results
+            /* test for zero_results */
             const lat = 78.648401;
             const lon = 14.194336;
-            */
 
             const location_data = {lat, lon};
             const options = {

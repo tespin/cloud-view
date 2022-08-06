@@ -1,5 +1,6 @@
 const saveButton = document.getElementById('save');
 saveButton.addEventListener('click', async (event) => {
+    const img = document.getElementById('result');
     await (saveImage(img));
 });
 
