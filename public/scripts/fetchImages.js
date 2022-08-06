@@ -25,7 +25,8 @@ document.getElementById('download').addEventListener('click', async (event) => {
     const all_imgs = document.querySelectorAll('.entry img');
     all_imgs.forEach(element => {
         if (selected.includes(element.dataset.id)) {
-            element.download = `cloud_${element.dataset.id.splice(-4)}`;
+            const fn = element.dataset.id.splice(-4);
+            element.download = `cloud_${fn}`;
             element.click();
         }
     })
