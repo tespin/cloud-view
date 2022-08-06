@@ -25,12 +25,16 @@ document.getElementById('geolocate').addEventListener('click', event => {
             const meta_response = await fetch(getMetadata(api, location_data, api_key));
             const meta_json = await meta_response.json();
 
-            const apiInfo = document.getElementById('apiInfo');
+            const btnDiv = document.getElementById('homeBtns');
+            const apiInfo = document.createElement('div');
+            apiInfo.id = 'apiInfo';
+            apiInfo.classList.add('errorBox');
+            apiInfo.innerText = 'Finding clouds ...';
+            btnDiv.after(apiInfo);
             const result = document.getElementById('result');
             if (meta_json.status == "ZERO_RESULTS") {
                 result.alt = "";
-                apiInfo.style.display = "block";
-                apiInfo.innerText = "An image could not be found at your current coordinates. Please move to a new location and try again.";
+                apiInfo.innerText = "An cloud view could not be found at your current coordinates. Please move to a new location and try again.";
             } else if (meta_json.status == "OK") {
                 result.style.visibility = "hidden";
 
@@ -45,8 +49,9 @@ document.getElementById('geolocate').addEventListener('click', event => {
 
                 result.src = getUrl(api, size, location_data, fov, heading, pitch, api_key);
                 result.onload = () => {
-                    apiInfo.style.display = "none";
-                    apiInfo.innerText = "";
+                    // apiInfo.style.display = "none";
+                    // apiInfo.innerText = "";
+                    apiInfo.remove();
 
                     result.style.visibility = "visible";
 
@@ -56,13 +61,11 @@ document.getElementById('geolocate').addEventListener('click', event => {
                     }
                 }
             } else {
-                apiInfo.style.display = "block";
                 apiInfo.innerText = "The request could not be completed. Please try again another time.";
             }
 
         })
     } else {
-        apiInfo.style.display = "block";
         apiInfo.innerText = "Please give the browser permission to use your location.";
     }
 })
