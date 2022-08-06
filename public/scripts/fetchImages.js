@@ -86,7 +86,7 @@ async function fetchImages() {
 
     const all_saved_imgs = imgs_json.user.saved;
     if (all_saved_imgs.length > 0) {
-        placeholder.style.display = 'none';
+        clearInfo();
         // const gallery = document.getElementById('gallery');
         all_saved_imgs.forEach(element => {
             const entryDiv = document.createElement('div');
