@@ -5,6 +5,7 @@ saveButton.addEventListener('click', async (event) => {
 });
 
 async function saveImage(image) {
+    clearInfo();
     saveButton.classList.add('onhover');
     const btnDiv = document.getElementById('homeBtns');
     const apiInfo = document.createElement('div');
@@ -55,3 +56,7 @@ async function saveImage(image) {
     // return [{b64, date, oid}];
 }
 
+function clearInfo() {
+    const apiInfo = document.getElementById('apiInfo');
+    if (apiInfo) apiInfo.remove();
+}
