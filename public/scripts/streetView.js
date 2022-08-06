@@ -9,12 +9,12 @@ document.getElementById('geolocate').addEventListener('click', event => {
     if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(async position => {
             apiInfo.innerText = 'Finding clouds ...';
-            // const lat = position.coords.latitude;
-            // const lon = position.coords.longitude;
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
             
             /* test for zero_results */
-            const lat = 78.648401;
-            const lon = 14.194336;
+            // const lat = 78.648401;
+            // const lon = 14.194336;
 
             const location_data = {lat, lon};
             const options = {
@@ -41,7 +41,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
             if (meta_json.status == "ZERO_RESULTS") {
                 result.alt = "";
                 apiInfo.classList.add('error');
-                apiInfo.innerText = "An cloud view could not be found at your current coordinates. Please move to a new location and try again.";
+                apiInfo.innerText = "A Cloud View could not be found at your current coordinates. Please move to a new location and try again.";
             } else if (meta_json.status == "OK") {
                 result.style.visibility = "hidden";
 
