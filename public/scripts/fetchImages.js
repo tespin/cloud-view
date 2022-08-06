@@ -12,8 +12,29 @@ window.addEventListener('load', async (event) => {
 })
 
 document.getElementById('download').addEventListener('click', async (event) => {
-    console.log('download button clicked');
     clearInfo();
+
+    download_btn.classList.add('onhover');
+    const btnDiv = document.getElementById('storageBtns');
+    const apiInfo = document.createElement('div');
+    apiInfo.id = 'apiInfo';
+    apiInfo.classList.add('errorBox');
+    apiInfo.innerText = 'Downloading images ...';
+    btnDiv.after(apiInfo);
+    
+    const all_imgs = document.querySelectorAll('.entry img');
+    all_imgs.forEach(element => {
+        if (selected.includes(element.dataset.id)) {
+            element.download = `cloud_${element.dataset.id.splice(-4)}`;
+            element.click();
+        }
+    })
+    // const options = {
+    //     method: 'POST', headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(data)
+    // };
 });
 
 document.getElementById('delete').addEventListener('click', async (event) => {
@@ -27,7 +48,6 @@ document.getElementById('delete').addEventListener('click', async (event) => {
     apiInfo.innerText = 'Deleting images ...';
     btnDiv.after(apiInfo);
     const data = {selected};
-    console.log(data);
     const options = {
         method: 'POST', headers: {
             'Content-Type': 'application/json'
