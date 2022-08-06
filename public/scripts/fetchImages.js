@@ -26,9 +26,9 @@ document.getElementById('download').addEventListener('click', async (event) => {
     all_imgs.forEach(element => {
         if (selected.includes(element.dataset.id)) {
             const oid = element.dataset.id;
-            const fn = oid.splice(-4);
-            element.download = `cloud_${fn}`;
-            element.click();
+            console.log(typeof(oid));
+            // element.download = `cloud_${fn}`;
+            // element.click();
         }
     })
     // const options = {
