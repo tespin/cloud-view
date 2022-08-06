@@ -30,6 +30,10 @@ document.getElementById('delete').addEventListener('click', async (event) => {
     // selected = [];
     // enableButtons();
     delete_btn.classList.add('onhover');
+    const btnDiv = document.getElementById('storageBtns');
+    const apiInfo = document.createElement('div');
+    apiInfo.id = 'apiInfo';
+    apiInfo.innerText = 'Deleting images ...';
     const data = {selected};
     console.log(data);
     const options = {
@@ -42,10 +46,6 @@ document.getElementById('delete').addEventListener('click', async (event) => {
     const delete_json = await delete_res.json();
 
     if (delete_json.status == 'OK') {
-        const btnDiv = document.getElementById('storageBtns');
-        const apiInfo = document.createElement('div');
-        apiInfo.id = 'apiInfo';
-        apiInfo.innerText = 'Deleting images ..';
         btnDiv.after(apiInfo);
         const all_imgs = document.querySelectorAll('.entry img');
         all_imgs.forEach(element => {
@@ -57,6 +57,7 @@ document.getElementById('delete').addEventListener('click', async (event) => {
         })
 
         apiInfo.classList.add('success');
+        apiInfo.innerText('Images successfully deleted.');
         delete_btn.classList.remove('onhover');
         selected = [];
         enableButtons();
