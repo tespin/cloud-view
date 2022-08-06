@@ -34,6 +34,7 @@ document.getElementById('delete').addEventListener('click', async (event) => {
     const apiInfo = document.createElement('div');
     apiInfo.id = 'apiInfo';
     apiInfo.innerText = 'Deleting images ...';
+    btnDiv.after(apiInfo);
     const data = {selected};
     console.log(data);
     const options = {
@@ -46,7 +47,6 @@ document.getElementById('delete').addEventListener('click', async (event) => {
     const delete_json = await delete_res.json();
 
     if (delete_json.status == 'OK') {
-        btnDiv.after(apiInfo);
         const all_imgs = document.querySelectorAll('.entry img');
         all_imgs.forEach(element => {
             if (selected.includes(element.dataset.id)) {
