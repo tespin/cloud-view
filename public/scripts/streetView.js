@@ -7,6 +7,7 @@ document.getElementById('geolocate').addEventListener('click', event => {
     apiInfo.innerText = 'Requesting permission to use your location ...';
     btnDiv.after(apiInfo);
     if ('geolocation' in navigator) {
+        apiInfo.innerText = 'Finding clouds ...';
         navigator.geolocation.getCurrentPosition(async position => {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
@@ -36,7 +37,6 @@ document.getElementById('geolocate').addEventListener('click', event => {
             // const apiInfo = document.createElement('div');
             // apiInfo.id = 'apiInfo';
             // apiInfo.classList.add('errorBox');
-            apiInfo.innerText = 'Finding clouds ...';
             // btnDiv.after(apiInfo);
             const result = document.getElementById('result');
             if (meta_json.status == "ZERO_RESULTS") {
