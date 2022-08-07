@@ -22,13 +22,24 @@ document.getElementById('download').addEventListener('click', async (event) => {
     apiInfo.innerText = 'Downloading images ...';
     btnDiv.after(apiInfo);
     
+    // const options = {
+    //     method: 'POST', headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(data)
+    // };
+
     const all_imgs = document.querySelectorAll('.entry img');
     all_imgs.forEach(element => {
         if (selected.includes(element.dataset.id)) {
+            const download_url = URL.createObjectURL(element.src);
             const oid = element.dataset.id;
             const fn = oid.slice(-4);
-            element.download = `cloud_${fn}`;
-            element.click();
+
+            const linkElement = document.createElement('a');
+            linkElement.href = download_url;
+            linkElement.download = `cloud_${fn}`;
+            linkElement.click();
         }
     })
     // const options = {
