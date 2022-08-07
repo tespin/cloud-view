@@ -32,7 +32,8 @@ document.getElementById('download').addEventListener('click', async (event) => {
     const all_imgs = document.querySelectorAll('.entry img');
     all_imgs.forEach(element => {
         if (selected.includes(element.dataset.id)) {
-            const download_url = URL.createObjectURL(element.url);
+            const blob = element.url.blob();
+            const download_url = URL.createObjectURL(blob);
             const oid = element.dataset.id;
             const fn = oid.slice(-4);
 
