@@ -25,7 +25,8 @@ body, html {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 96px;
+    /* margin-top: 96px; */
+    margin-top: 5rem;
 
     /* width: 320px; */
     width: calc(320px + 6.485vw);
