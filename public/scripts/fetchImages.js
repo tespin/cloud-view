@@ -21,13 +21,6 @@ document.getElementById('download').addEventListener('click', async (event) => {
     apiInfo.classList.add('errorBox');
     apiInfo.innerText = 'Downloading images ...';
     btnDiv.after(apiInfo);
-    
-    // const options = {
-    //     method: 'POST', headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(data)
-    // };
 
     const all_imgs = document.querySelectorAll('.entry img');
     all_imgs.forEach(async element => {
@@ -57,12 +50,6 @@ document.getElementById('download').addEventListener('click', async (event) => {
             apiInfo.innerText = 'There was an error with the selected image(s). Please reload the page.';
         }
     })
-    // const options = {
-    //     method: 'POST', headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(data)
-    // };
 });
 
 document.getElementById('delete').addEventListener('click', async (event) => {
@@ -105,11 +92,6 @@ document.getElementById('delete').addEventListener('click', async (event) => {
 
 async function fetchImages() {
     const gallery = document.getElementById('gallery');
-
-    // const container = document.getElementById('container');
-    // const placeholder = document.createElement('div');
-    // placeholder.id = 'placeholder';
-    // const progress = document.createElement('p');
     
     const btnDiv = document.getElementById('storageBtns');
     const apiInfo = document.createElement('div');
@@ -117,11 +99,6 @@ async function fetchImages() {
     apiInfo.classList.add('errorBox');
     apiInfo.innerText = 'Fetching images ...';
     btnDiv.after(apiInfo);
-
-    // progress.innerText = 'Fetching images ...';
-    
-    // placeholder.append(progress);
-    // container.append(placeholder);
 
     const options = {
         method: 'POST', headers: {
