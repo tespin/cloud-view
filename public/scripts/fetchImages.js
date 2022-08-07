@@ -15,12 +15,12 @@ document.getElementById('download').addEventListener('click', async (event) => {
     clearInfo();
 
     download_btn.classList.add('onhover');
-    const btnDiv = document.getElementById('storageBtns');
-    const apiInfo = document.createElement('div');
-    apiInfo.id = 'apiInfo';
-    apiInfo.classList.add('errorBox');
-    apiInfo.innerText = 'Downloading images ...';
-    btnDiv.after(apiInfo);
+    // const btnDiv = document.getElementById('storageBtns');
+    // const apiInfo = document.createElement('div');
+    // apiInfo.id = 'apiInfo';
+    // apiInfo.classList.add('errorBox');
+    // apiInfo.innerText = 'Downloading images ...';
+    // btnDiv.after(apiInfo);
 
     const all_imgs = document.querySelectorAll('.entry img');
     all_imgs.forEach(async element => {
@@ -39,12 +39,19 @@ document.getElementById('download').addEventListener('click', async (event) => {
             linkElement.download = `cloud_${fn}`;
             linkElement.click();
 
+            
             clearInfo();
             // delete_btn.classList.remove('onhover');
             // selected = [];
             // enableButtons();
             // apiInfo.classList.add('success');
             // apiInfo.innerText = 'Images successfully downloaded.';
+        }
+    })
+    const all_cboxes = document.querySelectorAll('.entry input');
+    all_cboxes.forEach(element => {
+        if (element.checked == true) {
+            element.checked = false;
         }
     })
     download_btn.classList.remove('onhover');
