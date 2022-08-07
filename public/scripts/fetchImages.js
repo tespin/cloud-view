@@ -32,15 +32,17 @@ document.getElementById('download').addEventListener('click', async (event) => {
     const all_imgs = document.querySelectorAll('.entry img');
     all_imgs.forEach(element => {
         if (selected.includes(element.dataset.id)) {
-            const blob = element.src.blob();
-            const download_url = URL.createObjectURL(blob);
-            const oid = element.dataset.id;
-            const fn = oid.slice(-4);
+            console.log(element.src);
+            console.log(element.url);
+            // const blob = element.src.blob();
+            // const download_url = URL.createObjectURL(blob);
+            // const oid = element.dataset.id;
+            // const fn = oid.slice(-4);
 
-            const linkElement = document.createElement('a');
-            linkElement.href = download_url;
-            linkElement.download = `cloud_${fn}`;
-            linkElement.click();
+            // const linkElement = document.createElement('a');
+            // linkElement.href = download_url;
+            // linkElement.download = `cloud_${fn}`;
+            // linkElement.click();
         }
     })
     // const options = {
