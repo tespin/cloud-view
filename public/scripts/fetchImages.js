@@ -40,9 +40,9 @@ document.getElementById('download').addEventListener('click', async (event) => {
             linkElement.click();
 
             clearInfo();
-            delete_btn.classList.remove('onhover');
-            selected = [];
-            enableButtons();
+            // delete_btn.classList.remove('onhover');
+            // selected = [];
+            // enableButtons();
             // apiInfo.classList.add('success');
             // apiInfo.innerText = 'Images successfully downloaded.';
         } else {
@@ -50,6 +50,9 @@ document.getElementById('download').addEventListener('click', async (event) => {
             apiInfo.innerText = 'There was an error with the selected image(s). Please reload the page.';
         }
     })
+    download_btn.classList.remove('onhover');
+    selected = [];
+    enableButtons();
 });
 
 document.getElementById('delete').addEventListener('click', async (event) => {
