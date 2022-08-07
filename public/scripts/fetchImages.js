@@ -45,9 +45,6 @@ document.getElementById('download').addEventListener('click', async (event) => {
             // enableButtons();
             // apiInfo.classList.add('success');
             // apiInfo.innerText = 'Images successfully downloaded.';
-        } else {
-            apiInfo.classList.add('error');
-            apiInfo.innerText = 'There was an error with the selected image(s). Please reload the page.';
         }
     })
     download_btn.classList.remove('onhover');
