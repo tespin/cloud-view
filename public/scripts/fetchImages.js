@@ -30,7 +30,7 @@ document.getElementById('download').addEventListener('click', async (event) => {
     // };
 
     const all_imgs = document.querySelectorAll('.entry img');
-    all_imgs.forEach(element => {
+    all_imgs.forEach(async element => {
         if (selected.includes(element.dataset.id)) {
             const base64 = await fetch(element.src);
             const blob = await base64.blob();
