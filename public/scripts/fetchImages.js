@@ -45,6 +45,13 @@ document.getElementById('download').addEventListener('click', async (event) => {
             linkElement.href = download_url;
             linkElement.download = `cloud_${fn}`;
             linkElement.click();
+
+            clearInfo();
+            // apiInfo.classList.add('success');
+            // apiInfo.innerText = 'Images successfully downloaded.';
+        } else {
+            apiInfo.classList.add('error');
+            apiInfo.innerText = 'There was an error with the selected image(s). Please reload the page.';
         }
     })
     // const options = {
