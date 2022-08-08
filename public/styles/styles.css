@@ -25,14 +25,11 @@ body, html {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    /* margin-top: 96px; */
-    margin-top: 5rem;
-
     /* width: 320px; */
     width: calc(320px + 6.485vw);
     background: #FFF;
     border-radius: 15px;
-    padding: 24px;
+    padding: 1.5rem;
     box-shadow: 0 6px 16px -16px;
 }
 
@@ -40,7 +37,6 @@ body, html {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
     width: 100%;
     height: auto;
 }
@@ -63,15 +59,6 @@ body, html {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    width: 33%;
-    margin: 0.3rem 0 0.3rem auto;
-    /* border: 2px solid black; */
-}
-
-#nav a {
-    /* border: 1px solid black; */
-    /* margin-left: 0.8rem; */
-    /* padding-left: 0.8rem; */
 }
 
 #nav a:hover {
@@ -83,14 +70,11 @@ body, html {
 }
 
 #info p {
-    /* margin-top: 0.5rem; */
-    margin: 0.60rem 0 1.5rem 0;
+
 }
 
 .errorBox {
     margin: 0.5rem 0 0 0;
-    font-size: 0.85rem;
-    letter-spacing: 0.02rem;
 }
 
 .success {
@@ -102,7 +86,7 @@ body, html {
 }
 
 #response {
-    margin-top: 10px;
+    margin-top: 0.9rem;
 }
 
 #response img {
@@ -113,7 +97,6 @@ body, html {
 
 button {
     font-family: 'Work Sans', sans-serif;
-    font-size: 0.9rem;
     color: red;
     width: 100%;
     height: 2.25rem;
@@ -354,5 +337,36 @@ input[type=checkbox]:checked:before {
 }
 
 @media only screen and (min-width: 450px) {
-    
+    /* 
+    *
+    *       BASE
+    *
+    */
+
+    #container {
+        margin-top: 5rem;
+    }
+
+    #page-header h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    #nav {
+        width: 33%;
+        margin: 0.3rem 0 0.3rem auto;
+    }
+
+    #info p {
+        margin: 0.60rem 0 1.5rem 0;
+    }
+
+    .errorBox {
+        font-size: 0.85rem;
+        letter-spacing: 0.02rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
 }
