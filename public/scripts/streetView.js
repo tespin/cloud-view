@@ -1,3 +1,7 @@
+window.addEventListener('resize', event {
+    console.log(window.innerWidth);
+})
+
 document.getElementById('geolocate').addEventListener('click', event => {
     clearInfo();
     const btnDiv = document.getElementById('homeBtns');
