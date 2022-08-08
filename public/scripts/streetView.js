@@ -1,4 +1,4 @@
-window.addEventListener('resize', event {
+window.addEventListener('resize', event => {
     console.log(window.innerWidth);
 })
 
