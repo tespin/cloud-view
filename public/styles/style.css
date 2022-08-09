@@ -40,7 +40,7 @@ body, html {
 }
 
 #page-header h1 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 600;
     margin: 0;
 }
@@ -52,7 +52,7 @@ body, html {
 }
 
 #page-header #nav {
-    font-size: 1rem;
+    font-size: 0.9rem;
     /* padding: 3px auto; */
     display: flex;
     justify-content: space-between;
