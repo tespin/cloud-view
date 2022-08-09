@@ -68,7 +68,7 @@ body, html {
 }
 
 #info p {
-
+    font-size: 0.75rem;
 }
 
 .errorBox {
