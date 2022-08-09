@@ -4,6 +4,7 @@ geoBtn.addEventListener('click', event => {
     const geoBtn = document.getElementById('geolocate');
     const apiInfo = document.createElement('div');
     apiInfo.id = 'apiInfo';
+    apiInfo.classList.add('errorBox');
     apiInfo.innerText = 'Requesting permission to use your location ...';
     geoBtn.after(apiInfo);
     if ('geolocation' in navigator) {
