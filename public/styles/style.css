@@ -68,7 +68,7 @@ body, html {
 }
 
 #info p {
-    font-size: 0.75rem;
+    font-size: 1rem;
 }
 
 .errorBox {
@@ -333,9 +333,24 @@ input[type=checkbox]:checked:before {
     *       BASE
     *
     */
+    
+    /* 
+    #container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: calc(320px + 6.485vw);
+        background: #FFF;
+        border-radius: 15px;
+        padding: 1.5rem;
+        box-shadow: 0 6px 16px -16px;
+    } */
 
     #container {
         margin-top: 5rem;
+        width: 100%;
+        height: auto;
     }
 
     #page-header h1 {
