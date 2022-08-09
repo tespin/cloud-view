@@ -52,8 +52,6 @@ geoBtn.addEventListener('click', event => {
 
                 result.src = getUrl(api, size, location_data, fov, heading, pitch, api_key);
                 result.onload = () => {
-                    // apiInfo.style.display = "none";
-                    // apiInfo.innerText = "";
                     apiInfo.remove();
 
                     result.style.visibility = "visible";
