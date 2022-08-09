@@ -24,7 +24,8 @@ body, html {
     flex-wrap: wrap;
     justify-content: center;
     /* width: 320px; */
-    width: calc(320px + 6.485vw);
+    width: 100%;
+    height: auto;
     background: #FFF;
     border-radius: 15px;
     padding: 1.5rem;
@@ -91,6 +92,10 @@ body, html {
     width: 100%;
     height: auto;
     display: block;
+}
+
+#homeBtns #geolocate {
+    width: 100%;
 }
 
 button {
@@ -349,8 +354,7 @@ input[type=checkbox]:checked:before {
 
     #container {
         margin-top: 5rem;
-        width: 100%;
-        height: auto;
+        width: calc(320px + 6.485vw);
     }
 
     #page-header h1 {
