@@ -4,8 +4,6 @@
 *
 */
 
-@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/hk-grotesk.min.css");
-
 html {
     height: 100%;
     background: linear-gradient(360deg, rgba(253,253,253,1) 0%, rgba(127,191,219,1) 100%) no-repeat;
