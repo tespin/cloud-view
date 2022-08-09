@@ -1,12 +1,12 @@
 const geoBtn = document.getElementById('geolocate');
 geoBtn.addEventListener('click', event => {
     clearInfo();
-    const geoBtn = document.getElementById('geolocate');
+    const btnDiv = document.getElementById('homeBtns')
     const apiInfo = document.createElement('div');
     apiInfo.id = 'apiInfo';
     apiInfo.classList.add('errorBox');
     apiInfo.innerText = 'Requesting permission to use your location ...';
-    geoBtn.after(apiInfo);
+    btnDiv.after(apiInfo);
     if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(async position => {
             apiInfo.innerText = 'Finding clouds ...';
@@ -32,13 +32,8 @@ geoBtn.addEventListener('click', event => {
 
             const meta_response = await fetch(getMetadata(api, location_data, api_key));
             const meta_json = await meta_response.json();
-
-            // const btnDiv = document.getElementById('homeBtns');
-            // const apiInfo = document.createElement('div');
-            // apiInfo.id = 'apiInfo';
-            // apiInfo.classList.add('errorBox');
-            // btnDiv.after(apiInfo);
             const result = document.getElementById('result');
+
             if (meta_json.status == "ZERO_RESULTS") {
                 result.alt = "";
                 apiInfo.classList.add('error');
