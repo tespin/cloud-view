@@ -1,15 +1,11 @@
-window.addEventListener('resize', event => {
-    console.log(window.innerWidth);
-})
-
-document.getElementById('geolocate').addEventListener('click', event => {
+const geoBtn = document.getElementById('geolocate');
+geoBtn.addEventListener('click', event => {
     clearInfo();
-    const btnDiv = document.getElementById('homeBtns');
+    const geoBtn = document.getElementById('geolocate');
     const apiInfo = document.createElement('div');
     apiInfo.id = 'apiInfo';
-    apiInfo.classList.add('errorBox');
     apiInfo.innerText = 'Requesting permission to use your location ...';
-    btnDiv.after(apiInfo);
+    geoBtn.after(apiInfo);
     if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(async position => {
             apiInfo.innerText = 'Finding clouds ...';
