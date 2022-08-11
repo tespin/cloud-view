@@ -24,8 +24,8 @@ body, html {
     flex-wrap: wrap;
     justify-content: center;
     /* width: 320px; */
-    width: 100%;
-    height: auto;
+    width: 100vw;
+    height: 100vh;
     background: #FFF;
     border-radius: 15px;
     padding: 1rem;
