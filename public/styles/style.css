@@ -28,7 +28,7 @@ body, html {
     height: auto;
     background: #FFF;
     border-radius: 15px;
-    padding: 1.5rem;
+    padding: 1rem;
     box-shadow: 0 6px 16px -16px;
 }
 
@@ -332,7 +332,7 @@ input[type=checkbox]:checked:before {
     opacity: 1;
 }
 
-@media only screen and (min-width: 450px) {
+@media only screen and (min-width: 480px) {
     /* 
     *
     *       BASE
@@ -355,6 +355,8 @@ input[type=checkbox]:checked:before {
     #container {
         margin-top: 5rem;
         width: calc(320px + 6.485vw);
+        border-radius: 15px;
+        padding: 1.5rem;
     }
 
     #page-header h1 {
