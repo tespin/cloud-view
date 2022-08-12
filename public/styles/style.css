@@ -6,7 +6,7 @@
 
 html {
     height: 100%;
-    background: linear-gradient(360deg, rgba(253,253,253,1) 0%, rgba(127,191,219,1) 100%) no-repeat;
+    background: linear-gradient(360deg, rgba(253,253,253,1) 15%, rgba(127,191,219,1) 100%) no-repeat;
 }
 
 body, html {
