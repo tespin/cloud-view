@@ -24,6 +24,8 @@ body, html {
     flex-wrap: wrap;
     justify-content: flex-start;
     /* width: 320px; */
+    background: #FFF;
+    border-radius: 5px;
     width: 100%;
     height: auto;
     padding: 1rem;
@@ -108,7 +110,7 @@ button {
     letter-spacing: 0.02em;
     /* background-color: transparent; */
     border: 2px solid #000;
-    /* border-radius: 15px; */
+    border-radius: 15px;
     /* color: #000; */
     background-color: #000;
     color: #FFF;
@@ -381,6 +383,7 @@ input[type=checkbox]:checked:before {
 
     button {
         font-size: 1rem;
+        border-radius: 0;
     }
 
     /* 
