@@ -51,19 +51,23 @@ body, html {
     text-decoration: none;
 }
 
-#page-header #nav {
+#page-header nav {
     font-size: 0.9rem;
     /* padding: 3px auto; */
-    display: flex;
+    display: none;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
-#nav {
+#page-header nav .active {
+    display:flex;
+}
+
+nav {
     margin: 0.25rem 0 0.25rem 0;
 }
 
-#nav a:hover {
+nav a:hover {
     text-decoration: underline black solid 2px;
 }
 
@@ -209,7 +213,7 @@ section label {
     width: 49%;
 }
 
-#page-header #nav #logout {
+#page-header nav #logout {
     border: none;
     color: #000;
     background-color: transparent;
@@ -219,7 +223,7 @@ section label {
     padding: 0;
 }
 
-#page-header #nav #logout:hover {
+#page-header nav #logout:hover {
     text-decoration: underline black solid 2px;
 }
 
@@ -367,8 +371,9 @@ input[type=checkbox]:checked:before {
         font-weight: 600;
     }
 
-    #nav {
+    #page-header nav {
         width: 33%;
+        display: flex;
         margin: 0.3rem 0 0.3rem auto;
     }
 
@@ -406,7 +411,7 @@ input[type=checkbox]:checked:before {
     *
     */
 
-    #page-header #nav #logout {
+    #page-header nav #logout {
         font-size: 1rem;
     }
 
