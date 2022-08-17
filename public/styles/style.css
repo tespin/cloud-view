@@ -48,6 +48,11 @@ body, html {
     margin: 0;
 }
 
+#page-header h1 a {
+    color: #000;
+    text-decoration: none;
+}
+
 #page-header .menu {
     font-size: 1rem;
     /* padding: 3px auto; */
@@ -59,6 +64,7 @@ body, html {
     flex-wrap: wrap;
     top: 0rem;
     right: 0rem;
+    height: 100%;
     overflow: hidden;
 }
 
@@ -383,7 +389,7 @@ input[type=checkbox]:checked:before {
     opacity: 1;
 }
 
-@media only screen and (min-width: 1080px) {
+@media only screen and (min-width: 450px) {
     /* 
     *
     *       BASE
