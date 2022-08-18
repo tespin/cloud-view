@@ -286,6 +286,7 @@ section label {
     width: 100%;
     height: auto;
     padding: 0;
+    opacity: 100%;
 }
 
 /* #page-header nav #logout:hover {
