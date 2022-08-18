@@ -31,6 +31,7 @@ body, html {
     padding: 1rem;
     position: relative;
     overflow: hidden;
+    padding: 0;
 }
 
 #page-header {
