@@ -278,8 +278,9 @@ section label {
 }
 
 #page-header nav #logout {
+    font-size: 1.1rem;
     border: none;
-    /* color: #000; */
+    color: #000;
     background-color: transparent;
     font-weight: 500;
     width: 100%;
