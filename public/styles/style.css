@@ -446,7 +446,7 @@ input[type=checkbox]:checked:before {
         height: auto;
         display: block;
         position: static;
-
+        z-index: 10;
     }
 
     #page-header nav {
