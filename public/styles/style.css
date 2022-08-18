@@ -185,17 +185,17 @@ button {
     color: #FFF;
     cursor: pointer;   
 }
-/*
-button:hover {
-    background-color: #FFF;
-    color: #000;
-}
 
 button:disabled {
     opacity: 20%;
     background-color: #000;
     cursor: default;
     color: #FFF;
+}
+/*
+button:hover {
+    background-color: #FFF;
+    color: #000;
 }
 
 button:enabled {
