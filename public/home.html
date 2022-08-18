@@ -17,12 +17,18 @@
             <div id="container">
                 <div id="page-header">
                     <h1><a href="./home.html">welcome</a></h1>
-                    <div id="nav">
-                        <a href="./storage.html">Storage</a>  
-                        <form action="/logout" method="post">
-                          <button type="submit" id="logout">Log out</button>
-                        </form>
-                        <!-- <a href="./index.html">Log out</a> -->
+                    <button id="menu-toggle" aria-expanded="false" aria-controls="menu-slide">Menu</button>
+                    <div class="menu">
+                        <nav aria-label="home menu">
+                            <ul>
+                            <li><a href="./storage.html">Storage</a></li>
+                            <li>
+                              <form action="/logout" method="post">
+                                <button type="submit" id="logout">Log out</button>
+                              </form>
+                          </li>
+                          </ul>
+                        </nav>
                     </div>
                 </div>
                 <div id="info">
