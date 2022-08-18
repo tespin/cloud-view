@@ -495,7 +495,7 @@ input[type=checkbox]:checked:before {
 
     button {
         /* font-size: 1rem; */
-        border-radius: 0;
+        /* border-radius: 0; */
     }
 
     /* 
@@ -517,6 +517,10 @@ input[type=checkbox]:checked:before {
     *       HOME 
     *
     */
+
+    #page-header .home.menu {
+        width: 40%;
+    }
 
     #page-header nav #logout {
         font-size: 1.1rem;
