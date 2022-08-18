@@ -102,16 +102,19 @@ body, html {
 } */
 
 #page-header nav {
-    margin: 2.5rem 1.25rem;
     /* position: fixed;
     overflow: hidden; */
-    height: 100%;
-    text-align: right;
+    width: 100%;
+    height: auto;
+    margin-top: 3rem;
     /* z-index: 10; */
 }
 
 #page-header nav ul {
+    text-align: right;
     list-style-type: none;
+    margin-right: 1.5rem;
+    /* padding: 0; */
 }
 
 #page-header nav a {
@@ -389,7 +392,7 @@ input[type=checkbox]:checked:before {
     opacity: 1;
 }
 
-@media only screen and (min-width: 450px) {
+@media only screen and (min-width: 500px) {
     /* 
     *
     *       BASE
@@ -421,23 +424,48 @@ input[type=checkbox]:checked:before {
         font-weight: 600;
     }
 
-    #page-header nav {
-        width: 33%;
-        display: flex;
-        flex-direction: column;
-        margin: 0.3rem 0 0.3rem auto;
-    }
-
     #page-header #menu-toggle {
         display: none;
     }
 
     #page-header .menu {
-        display: none;
+        width: 30%;
+        height: auto;
+        display: block;
+        position: static;
+
+    }
+
+    #page-header nav {
+        margin-top: 0.3rem;
+        /* display: flex;
+        justify-content: space-between; */
+        /* flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 0.3rem 0 0.3rem auto;
+        width: 100%;
+        height: auto;*/
+    }
+
+    #page-header nav ul {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        text-align: left;
+        margin: 0;
+        padding: 0;
+    }
+
+    #page-header nav ul li {
+    }
+
+    #page-header nav a {
+        color: #000;
     }
 
     #page-header .menu.active {
-        display: none;
+        background-color: transparent;
     }
 
     #info p {
