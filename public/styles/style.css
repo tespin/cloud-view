@@ -31,7 +31,6 @@ body, html {
     padding: 1rem;
     position: relative;
     overflow: hidden;
-    padding: 0;
 }
 
 #page-header {
@@ -96,6 +95,7 @@ body, html {
     border: 0;
     font-size: 1rem;
     text-align: right;
+    padding: 0;
 }
 
 #page-header #menu-toggle.menu-open {
