@@ -135,10 +135,6 @@ body, html {
     text-decoration: none;
 }
 
-#page-header nav a:hover {
-    text-decoration: underline white solid 2px;
-}
-
 #info {
     font-size: 1rem;
 }
@@ -258,9 +254,9 @@ section label {
     text-decoration: none;
 }
 
-#help a:hover {
+/* #help a:hover {
     text-decoration: underline black solid 2px;
-}
+} */
 
 /* 
 *
@@ -402,8 +398,14 @@ input[type=checkbox]:checked:before {
     margin: 0.25rem 0 0 0.25rem;
 }
 
-.entry:hover .check {
-    opacity: 1;
+@media (hover: hover) {
+    #page-header nav a:hover {
+        text-decoration: underline white solid 2px;
+    }
+
+    .entry:hover .check {
+        opacity: 1;
+    }
 }
 
 @media only screen and (min-width: 500px) {
