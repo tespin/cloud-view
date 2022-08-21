@@ -14,9 +14,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser(() => { console.log('serialized'); }));
 passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'); }));
 
-router.post('/login/password', passport.authenticate('local', {
-    successRedirect: '/home.html',
-    failureRedirect: '/login.html'
+router.post('/login/password', passport.authenticate('local', (err) => {
+    // successRedirect: '/home.html',
+    // failureRedirect: '/login.html'
+    if (err) { return done(new Error(err.message));}
 }), function(req, res, next) {
         res.redirect('/home.html');
     }
