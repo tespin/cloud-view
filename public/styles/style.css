@@ -135,6 +135,12 @@ body, html {
     text-decoration: none;
 }
 
+.errorBox {
+    font-size: 0.85rem;
+    letter-spacing: 0.02rem;
+    margin: 0.5rem 0 0 0;
+}
+
 #info {
     font-size: 1rem;
 }
