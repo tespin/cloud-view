@@ -28,7 +28,7 @@ router.post('/login/password', passport.authenticate('local', {failWithError: tr
             res.json({
                 status: 'FAILED',
                 error: err,
-                message: messages.slice(-1);
+                message: messages.slice(-1)
             });
         }
     }
