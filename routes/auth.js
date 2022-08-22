@@ -19,7 +19,7 @@ router.post('/login/password', passport.authenticate('local', {
     failureRedirect: '/login.html',
     failureMessage: true,
 }), function (req, res) {
-    res.redirect('home.html');
+    res.redirect('/home.html');
     // console.log(req.session.messages);
 });
 
