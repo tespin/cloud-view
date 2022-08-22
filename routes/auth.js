@@ -21,13 +21,14 @@ router.post('/login/password', passport.authenticate('local', {failWithError: tr
     }, 
     function(err, req, res, next) {
         // handle error
+        const messages = req.session.messages;
         if (err) {
             console.log(err);
             console.log(req.session.messages)
             res.json({
                 status: 'FAILED',
                 error: err,
-                message: req.session.messages
+                message: messages.slice(-1);
             });
         }
     }
