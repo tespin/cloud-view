@@ -14,6 +14,14 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser(() => { console.log('serialized'); }));
 passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'); }));
 
+router.post('/login/password', passport.authenticate('local', {
+    successRedirect: '/home.html',
+    failureRedirect: '/login.html',
+    failureMessage: true
+}), function (req, res) {
+    res.redirect('home.html');
+});
+
 // router.post('/login/password', passport.authenticate('local', {
 //     successRedirect: '/home.html',
 //     failureRedirect: '/login.html'
@@ -22,14 +30,14 @@ passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'
 //     }
 // );
 
-router.post('/login/password', function(req, res, next) {
-    passport.authenticate('local', function(err, user, info) {
-        if (err) return next(new Error(err.message));
-        if (!user) return next(new Error(err.message));
-    }), function(req, res, next) {
-        res.redirect('home.html');
-    }
-})
+// router.post('/login/password', function(req, res, next) {
+//     passport.authenticate('local', function(err, user, info) {
+//         if (err) return next(new Error(err.message));
+//         if (!user) return next(new Error(err.message));
+//     }), function(req, res, next) {
+//         res.redirect('home.html');
+//     }
+// })
 
 router.post('/logout', function(req, res, next) {
     req.logout(function(err) {
