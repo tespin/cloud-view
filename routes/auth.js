@@ -14,14 +14,29 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser(() => { console.log('serialized'); }));
 passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'); }));
 
-router.post('/login/password', passport.authenticate('local', {
-    // successRedirect: '/home.html',
-    failureRedirect: '/login.html',
-    failureMessage: true,
-}), function (req, res) {
-    res.redirect('/home.html');
-    // console.log(req.session.messages);
-});
+router.post('/login/password', passport.authenticate('local', {failWithError: true}),
+    function(req, res, next) {
+        // handle success
+        res.redirect('/home.html');
+    }, 
+    function(err, req, res, next) {
+        // handle error
+        res.json({
+                status: 'FAILED',
+                error: err.message
+        });
+    }
+
+)
+
+// router.post('/login/password', passport.authenticate('local', {
+//     // successRedirect: '/home.html',
+//     failureRedirect: '/login.html',
+//     failureMessage: true,
+// }), function (req, res) {
+//     res.redirect('/home.html');
+//     // console.log(req.session.messages);
+// });
 
 // router.post('/login/password', passport.authenticate('local', {
 //     successRedirect: '/home.html',
