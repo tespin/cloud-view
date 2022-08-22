@@ -15,11 +15,12 @@ passport.serializeUser(User.serializeUser(() => { console.log('serialized'); }))
 passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'); }));
 
 router.post('/login/password', passport.authenticate('local', {
-    successRedirect: '/home.html',
+    // successRedirect: '/home.html',
     failureRedirect: '/login.html',
-    failureMessage: true
+    failureMessage: true,
 }), function (req, res) {
-    console.log(req.session.messages);
+    res.redirect('home.html');
+    // console.log(req.session.messages);
 });
 
 // router.post('/login/password', passport.authenticate('local', {
