@@ -14,7 +14,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser(() => { console.log('serialized'); }));
 passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'); }));
 
-router.post('/login/password', passport.authenticate('local', {failWithError: true}),
+router.post('/login/password', passport.authenticate('local', {failWithError: true, failureMessage: true}),
     function(req, res, next) {
         // handle success
         res.redirect('/home.html');
@@ -23,9 +23,11 @@ router.post('/login/password', passport.authenticate('local', {failWithError: tr
         // handle error
         if (err) {
             console.log(err);
+            console.log(req.session.messages)
             res.json({
                 status: 'FAILED',
-                error: err
+                error: err,
+                message: req.session.messages
             });
         }
     }
