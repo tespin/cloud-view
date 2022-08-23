@@ -18,9 +18,9 @@ const userSchema = new Schema({
 
 const options = {
     errorMessages: {
-        UserExistsError: 'Username already exists',
-        IncorrectUsernameError: 'There was an error with your username or password',
-        IncorrectPasswordError: 'There was an error with your username or password'
+        UserExistsError: 'Username already exists. Please try another username.',
+        IncorrectUsernameError: 'Please provide a valid email address and password.',
+        IncorrectPasswordError: 'Please provide a valid email address and password.'
     }
 };
 
