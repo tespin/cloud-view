@@ -1,6 +1,7 @@
 const form = document.getElementById('submit');
+const formData = new FormData(form);
+const data = Object.fromEntries(formData);
 form.addEventListener('submit', async (event) => {
-    const data = new FormData(form);
     const options = {
         method: 'POST', headers: {
             'Content-Type': 'application/jason'
