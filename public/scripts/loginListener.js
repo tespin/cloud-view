@@ -1,5 +1,5 @@
 const form = document.getElementById('submit');
-form.addEventListener('submit', event => {
+form.addEventListener('submit', async (event) => {
     const data = new FormData(form);
     const options = {
         method: 'POST', headers: {
