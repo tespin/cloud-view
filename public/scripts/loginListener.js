@@ -7,9 +7,10 @@ form.addEventListener('submit', async (event) => {
         },
         body: JSON.stringify(data)
     };
-    const response = await fetch('signup', options);
-    const json = await response.json();
-    console.log(json);
+    console.log(data);
+    // const response = await fetch('signup', options);
+    // const json = await response.json();
+    // console.log(json);
 })
 
 // const data = {selected};
