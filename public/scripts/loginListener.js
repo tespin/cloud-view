@@ -7,7 +7,7 @@ form.addEventListener('submit', event => {
         },
         body: JSON.stringify(data)
     };
-    const response = await fetch('delete', options);
+    const response = await fetch('signup', options);
     const json = await response.json();
     console.log(json);
 })
