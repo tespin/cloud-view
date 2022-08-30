@@ -25,12 +25,12 @@ router.post('/login/password', passport.authenticate('local', {failWithError: tr
         const msg = messages.slice(-1);
         if (err) {
             console.log(err);
-            console.log(req.session.messages)
+            console.log(messages)
             console.log(msg);
             res.json({
                 status: 'FAILED',
                 error: err,
-                message: msg
+                message: messages
             });
         }
     }
@@ -75,7 +75,7 @@ router.post('/signup', function(req, res, done) {
         if (err) {
             console.log(`There was an error signing up: ${err}`);
             res.json({
-                status: 'failed',
+                status: 'FAILED',
                 error: err.message
             });
             // return done(new Error(err.message));
