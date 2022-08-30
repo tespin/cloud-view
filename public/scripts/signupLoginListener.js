@@ -1,5 +1,5 @@
 window.addEventListener('load', async (event) => {
-    await fetchImages();
+    await fetchErrors();
     // const savedImages = await fetchImages();
     // addImages(savedImages, index_object);
 })
