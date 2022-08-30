@@ -77,7 +77,8 @@ router.post('/signup', function(req, res, done) {
             console.log(`There was an error signing up: ${err}`);
             res.json({
                 status: 'FAILED',
-                error: err.message
+                error: err.message,
+                message: req.session.messages
             });
             // return done(new Error(err.message));
             // res.send(err.message);
