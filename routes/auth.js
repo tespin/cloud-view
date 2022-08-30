@@ -157,18 +157,17 @@ router.post('/clouds', (req, res, done) => {
 
 router.post('/signupLoginErrors', (req, res, done) => {
     const messages = req.session.messages;
-    console.log(typeof(messages));
-    // if (messages.length == 0) {
-    //     res.json({
-    //         status: 'FAILED'
-    //     });
-    // } else {
-    //     const msg = messages.slice(-1);
-    //     res.json({
-    //         status: 'SUCCESS',
-    //         message: msg
-    //     });
-    // }
+    if (!messages || messages.length == 0) {
+        res.json({
+            status: 'FAILED'
+        });
+    } else {
+        const msg = messages.slice(-1);
+        res.json({
+            status: 'SUCCESS',
+            message: msg
+        });
+    }
 })
 
 router.post('/user', (req, res, done) => {
