@@ -17,7 +17,7 @@ passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'
 router.post('/login/password', passport.authenticate('local', {failWithError: true, failureMessage: true}),
     function(req, res, next) {
         // handle success
-        req.session.essages = [];
+        req.session.messages = [];
         res.redirect('/home.html');
     }, 
     function(err, req, res, next) {
@@ -154,6 +154,21 @@ router.post('/clouds', (req, res, done) => {
         });
     });
 });
+
+router.post('/signupLoginErrors', (req, res, done) => {
+    const messages = req.session.messages;
+    if (messages.length == 0) {
+        res.json({
+            status: 'FAILED'
+        });
+    } else {
+        const msg = messages.slice(-1);
+        res.json({
+            status: 'SUCCESS',
+            message: msg
+        });
+    }
+})
 
 router.post('/user', (req, res, done) => {
     if (req.user === undefined) {
