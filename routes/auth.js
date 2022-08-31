@@ -17,8 +17,12 @@ passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'
 router.post('/login/password', passport.authenticate('local', {failWithError: true, failureMessage: true}),
     function(req, res, next) {
         // handle success
-        req.session.messages = [];
-        res.redirect('/home.html');
+        // req.session.messages = [];
+        // res.redirect('/home.html');
+        res.json({
+            status: 'SUCCESS',
+            redirect:'/home.html'
+        });
     }, 
     function(err, req, res, next) {
         // handle error
