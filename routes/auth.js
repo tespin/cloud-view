@@ -18,11 +18,11 @@ router.post('/login/password', passport.authenticate('local', {failWithError: tr
     function(req, res, next) {
         // handle success
         // req.session.messages = [];
-        // res.redirect('/home.html');
-        res.json({
-            status: 'SUCCESS',
-            redirect:'/home.html'
-        });
+        res.redirect('/home.html');
+        // res.json({
+        //     status: 'SUCCESS',
+        //     redirect:'/home.html'
+        // });
     }, 
     function(err, req, res, next) {
         // handle error
