@@ -29,6 +29,8 @@ router.post('/login/password', passport.authenticate('local', {failWithError: tr
         const messages = req.session.messages;
         const msg = messages.slice(-1);
         console.log(typeof(msg));
+        console.log(typeof(messages));
+        console.log(messages);
         if (err) {
             // console.log(req.flash('info', msg));
             res.redirect('/login.html');
