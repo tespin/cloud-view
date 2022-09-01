@@ -32,8 +32,8 @@ router.post('/login/password', passport.authenticate('local', {failWithError: tr
         console.log(typeof(messages));
         console.log(messages);
         if (err) {
-            // console.log(req.flash('info', msg));
-            res.redirect('/login.html');
+            console.log(req.flash('info', msg));
+            // res.redirect('/login.html');
             // console.log(err);
             // console.log(messages)
             // console.log(msg);
