@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
+const flash = require('connect-flash');
 const passport = require('passport');
 let MongoDBStore = require('connect-mongodb-session')(session);
 
@@ -34,6 +35,7 @@ app.use(session({
     }
 }));
 app.use(passport.authenticate('session'));
+app.use(flash());
 app.use('/', authRouter);
 app.use(express.static(path.join(__dirname, 'public')));
 
