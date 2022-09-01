@@ -5,9 +5,9 @@
 // })
 
 const loginForm = document.getElementById('login');
-loginForm.addEventListener('submit') {
+loginForm.addEventListener('submit', event =>  {
     console.log('submitted');
-}
+})
 
 async function fetchErrors() {
     const options = {
