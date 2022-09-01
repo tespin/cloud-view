@@ -1,8 +1,13 @@
-window.addEventListener('load', async (event) => {
-    await fetchErrors();
-    // const savedImages = await fetchImages();
-    // addImages(savedImages, index_object);
-})
+// window.addEventListener('load', async (event) => {
+//     await fetchErrors();
+//     // const savedImages = await fetchImages();
+//     // addImages(savedImages, index_object);
+// })
+
+const loginForm = document.getElementById('login');
+loginForm.addEventListener('submit') {
+    console.log('submitted');
+}
 
 async function fetchErrors() {
     const options = {

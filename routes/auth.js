@@ -18,30 +18,29 @@ router.post('/login/password', passport.authenticate('local', {failWithError: tr
     function(req, res, next) {
         // handle success
         // req.session.messages = [];
-        res.redirect('/home.html');
-        // res.json({
-        //     status: 'SUCCESS',
-        //     redirect:'/home.html'
-        // });
+        res.json({
+            status: 'SUCCESS',
+            redirect:'/home.html'
+        });
     }, 
     function(err, req, res, next) {
         // handle error
         const messages = req.session.messages;
         const msg = messages.slice(-1);
-        console.log(typeof(msg));
-        console.log(typeof(messages));
-        console.log(messages);
+        // console.log(typeof(msg));
+        // console.log(typeof(messages));
+        // console.log(messages);
         if (err) {
-            console.log(req.flash('info', msg));
-            // res.redirect('/login.html');
+            // console.log(req.flash('info', msg));
+            res.redirect('/login.html');
             // console.log(err);
             // console.log(messages)
             // console.log(msg);
-            // res.json({
-            //     status: 'FAILED',
-            //     error: err,
-            //     message: messages
-            // });
+            res.json({
+                status: 'FAILED',
+                error: err,
+                message: msg
+            });
         }
     }
 
