@@ -7,6 +7,7 @@
 const loginForm = document.getElementById('login');
 loginForm.addEventListener('submit', event =>  {
     console.log('submitted');
+    event.preventDefault();
 })
 
 async function fetchErrors() {
