@@ -18,7 +18,7 @@ async function fetchErrors() {
     // };
 
     const errs_response = await fetch('login/password');
-    const errs_json = await errs_response.json();
+    // const errs_json = await errs_response.json();
 
-    console.log(errs_json);
+    console.log(errs_response);
 }
