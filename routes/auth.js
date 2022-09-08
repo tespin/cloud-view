@@ -14,46 +14,46 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser(() => { console.log('serialized'); }));
 passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'); }));
 
-router.post('/login/password', passport.authenticate('local', {failWithError: true, failureMessage: true}),
-    function(req, res, next) {
-        // handle success
-        // req.session.messages = [];
-        res.json({
-            status: 'SUCCESS',
-            redirect:'/home.html'
-        });
-    }, 
-    function(err, req, res, next) {
-        // handle error
-        const messages = req.session.messages;
-        const msg = messages.slice(-1);
-        // console.log(typeof(msg));
-        // console.log(typeof(messages));
-        // console.log(messages);
-        if (err) {
-            // console.log(req.flash('info', msg));
-            res.redirect('/login.html');
-            // console.log(err);
-            // console.log(messages)
-            // console.log(msg);
-            res.json({
-                status: 'FAILED',
-                error: err,
-                message: msg
-            });
-        }
-    }
+// router.post('/login/password', passport.authenticate('local', {failWithError: true, failureMessage: true}),
+//     function(req, res, next) {
+//         // handle success
+//         // req.session.messages = [];
+//         // res.json({
+//         //     status: 'SUCCESS',
+//         //     redirect:'/home.html'
+//         // });
+//     }, 
+//     function(err, req, res, next) {
+//         // handle error
+//         const messages = req.session.messages;
+//         const msg = messages.slice(-1);
+//         // console.log(typeof(msg));
+//         // console.log(typeof(messages));
+//         // console.log(messages);
+//         if (err) {
+//             // console.log(req.flash('info', msg));
+//             res.redirect('/login.html');
+//             // console.log(err);
+//             // console.log(messages)
+//             // console.log(msg);
+//             // res.json({
+//             //     status: 'FAILED',
+//             //     error: err,
+//             //     message: msg
+//             // });
+//         }
+//     }
 
-)
+// )
 
-// router.post('/login/password', passport.authenticate('local', {
-//     // successRedirect: '/home.html',
-//     failureRedirect: '/login.html',
-//     failureMessage: true,
-// }), function (req, res) {
-//     res.redirect('/home.html');
-//     // console.log(req.session.messages);
-// });
+router.post('/login/password', passport.authenticate('local', {
+    successRedirect: '/home.html',
+    failureRedirect: '/login.html',
+    failureMessage: true,
+}), function (req, res) {
+    // res.redirect('/home.html');
+    // console.log(req.session.messages);
+});
 
 // router.post('/login/password', passport.authenticate('local', {
 //     successRedirect: '/home.html',
@@ -168,12 +168,13 @@ router.post('/signupLoginErrors', (req, res, done) => {
     const messages = req.session.messages;
     if (!messages || messages.length == 0) {
         res.json({
-            status: 'FAILED'
+            status: 'SUCCESS',
+            redirect: ''
         });
     } else {
         const msg = messages.slice(-1);
         res.json({
-            status: 'SUCCESS',
+            status: 'FAILED',
             message: msg
         });
     }
