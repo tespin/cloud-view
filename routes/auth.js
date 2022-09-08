@@ -82,14 +82,13 @@ router.post('/logout', function(req, res, next) {
 router.post('/signup', function(req, res, done) {
     User.register(new User({ username: req.body.username }), req.body.password, function (err, user) {
         if (err) {
-            return done(err);
+            // return done(err);
             // console.log(`There was an error signing up: ${err}`);
             // req.session.messages.push(err.message);
-            // res.json({
-            //     status: 'FAILED',
-            //     error: err.message,
-            //     message: req.session.messages
-            // });
+            res.json({
+                status: 'FAILED',
+                error: err.message,
+            });
 
             // return done(new Error(err.message));
             // res.send(err.message);
@@ -99,10 +98,14 @@ router.post('/signup', function(req, res, done) {
         
         passport.authenticate('local') (req, res, function() {
             res.redirect('/home.html');
-        }), (req, res, err) => {
-            return console.log(req.session.messages);
-            // console.log(err);
-        };
+        })
+
+        // passport.authenticate('local') (req, res, function() {
+        //     res.redirect('/home.html');
+        // }), (req, res, err) => {
+        //     return console.log(req.session.messages);
+        //     // console.log(err);
+        // };
     });
 });
 
