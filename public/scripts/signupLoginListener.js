@@ -11,13 +11,13 @@ loginForm.addEventListener('submit', event =>  {
 })
 
 async function fetchErrors() {
-    const options = {
-        method: 'POST', headers: {
-            'Content-Type': 'application/json'
-        }
-    };
+    // const options = {
+    //     method: 'POST', headers: {
+    //         'Content-Type': 'application/json'
+    //     }
+    // };
 
-    const errs_response = await fetch('login/password', options);
+    const errs_response = await fetch('login/password');
     const errs_json = await errs_response.json();
 
     console.log(errs_json);
