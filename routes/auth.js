@@ -83,7 +83,7 @@ router.post('/signup', function(req, res, done) {
     User.register(new User({ username: req.body.username }), req.body.password, function (err, user) {
         if (err) {
             console.log(`There was an error signing up: ${err}`);
-            req.session.messages.$push(err.message);
+            req.session.messages.push(err.message);
             res.json({
                 status: 'FAILED',
                 error: err.message,
