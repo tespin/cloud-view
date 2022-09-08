@@ -14,6 +14,18 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser(() => { console.log('serialized'); }));
 passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'); }));
 
+router.post('/login/password', passport.authenticate('local', { failWithError: true, failureMessage: true}),
+    function(req, res, next) {
+        res.redirect('/home.html');
+    },
+    function (err, req, res, next) {
+        res.json({
+            status: 'FAILED',
+
+        })
+    }
+)
+
 // router.post('/login/password', passport.authenticate('local', {failWithError: true, failureMessage: true}),
 //     function(req, res, next) {
 //         // handle success
@@ -46,31 +58,14 @@ passport.deserializeUser(User.deserializeUser(() => { console.log('deserialized'
 
 // )
 
-router.post('/login/password', passport.authenticate('local', {
-    successRedirect: '/home.html',
-    failureRedirect: '/login.html',
-    failureMessage: true,
-}), function (req, res) {
-    // res.redirect('/home.html');
-    // console.log(req.session.messages);
-});
-
 // router.post('/login/password', passport.authenticate('local', {
 //     successRedirect: '/home.html',
-//     failureRedirect: '/login.html'
-// }), function(req, res, next) {
-//         res.redirect('/home.html');
-//     }
-// );
-
-// router.post('/login/password', function(req, res, next) {
-//     passport.authenticate('local', function(err, user, info) {
-//         if (err) return next(new Error(err.message));
-//         if (!user) return next(new Error(err.message));
-//     }), function(req, res, next) {
-//         res.redirect('home.html');
-//     }
-// })
+//     failureRedirect: '/login.html',
+//     failureMessage: true,
+// }), function (req, res) {
+//     // res.redirect('/home.html');
+//     // console.log(req.session.messages);
+// });
 
 router.post('/logout', function(req, res, next) {
     req.logout(function(err) {
@@ -82,18 +77,11 @@ router.post('/logout', function(req, res, next) {
 router.post('/signup', function(req, res, done) {
     User.register(new User({ username: req.body.username }), req.body.password, function (err, user) {
         if (err) {
-            // return done(err);
-            // console.log(`There was an error signing up: ${err}`);
-            // req.session.messages.push(err.message);
+            // res.redirect('/signup.html')
             res.json({
                 status: 'FAILED',
                 error: err.message,
             });
-
-            // return done(new Error(err.message));
-            // res.send(err.message);
-            // return done(null, false, { message: err.message});
-            // return res.redirect('/signup.html');
         }
         
         passport.authenticate('local') (req, res, function() {
@@ -205,34 +193,6 @@ router.post('/user', (req, res, done) => {
 
 router.post('/cotd', (req, res, done) => {
     User.find({"saved.0": { "$exists": true }},
-        
-        //{ saved: 1}, // works, returns every document 
-        // {saved: { $size: 1}},
-        // {"req.user.saved": 1},
-        // { $size: { saved: { $not: 0}}},
-        // {"saved.0" : {"$exists": true}},
-        // { $exists: true, $not: { $size: 1 }},
-        // { $elemMatch: { saved: { $exists: true, $not: { $size: 1}}}},
-        // { saved: { "saved.0": { "$exists": true}}},
-        // { "$match": { "saved.0": { "$exists": true }}},
-        // { $match: { "saved.0": { $exists: true }}},
-        // { saved: {$ne: null }},
-        // { saved: { '$size': 0 }},
-        // { saved: { $exists: true}}, // unknown expression exists
-        // { $elemMatch: { saved: { $exists: true }}},
-        // { saved:1, _id: 0 }, // cannot do exclusion on field hash in inclusino projection
-        // { $match: { "saved.0": { $exists: true}}},
-        // { saved: {$elemMatch: }}
-        // { $match: { saved: {$elemMatch: { $exists:true }}}},
-        // { saved: { $elemMatch: { $exists: true}}},
-        // { saved: { $elemMatch: { $not: { $size: 0 }}}},
-        // { saved: { $match: { $exists: true }}},
-        // { saved: { $elemMatch: { $exists: true, $not: { $size: 0}}}},
-        // { saved: { $exists: true, $ne: [] }},
-        // { "saved.0": { $elemMatch: { $exists: true }}},
-        // { $first: "$saved"},
-        // { saved: { $not: { $size:0 }}},
-        // { $elemMatch: { saved: { $not: { $size: 0 }}}}, // field path names may not start with $
         (err, result) => {
             if (err) return console.log(err);
             res.json({
