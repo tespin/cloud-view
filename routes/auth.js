@@ -169,7 +169,7 @@ router.post('/signupLoginErrors', (req, res, done) => {
     if (!messages || messages.length == 0) {
         res.json({
             status: 'SUCCESS',
-            redirect: ''
+            message: 'No errors'
         });
     } else {
         const msg = messages.slice(-1);
