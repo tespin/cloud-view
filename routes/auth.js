@@ -19,10 +19,12 @@ router.post('/login/password', passport.authenticate('local', { failWithError: t
         res.redirect('/home.html');
     },
     function (err, req, res, next) {
+        const messages = req.session.messages;
+        const msg = messages.splice(-1)[0];
         res.json({
             status: 'FAILED',
-
-        })
+            error: msg
+        });
     }
 )
 
