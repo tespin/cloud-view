@@ -1,6 +1,6 @@
 window.addEventListener('load', async (event) => {
     await fetchErrors();
-    event.preventDefault();
+    // event.preventDefault();
     // const savedImages = await fetchImages();
     // addImages(savedImages, index_object);
 })
