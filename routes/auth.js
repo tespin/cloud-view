@@ -173,7 +173,7 @@ router.post('/signupLoginErrors', (req, res, done) => {
             message: 'No errors'
         });
     } else {
-        const msg = messages.slice(-1);
+        const msg = messages.slice(-1)[0];
         res.json({
             status: 'FAILED',
             message: msg,
