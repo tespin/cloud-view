@@ -100,8 +100,8 @@ router.post('/signup', function(req, res, done) {
         passport.authenticate('local') (req, res, function() {
             res.redirect('/home.html');
         }), (req, res, err) => {
-            console.log(req.session.messages);
-            console.log(err);
+            return console.log(req.session.messages);
+            // console.log(err);
         };
     });
 });
