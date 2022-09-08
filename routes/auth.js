@@ -166,7 +166,8 @@ router.post('/clouds', (req, res, done) => {
 
 router.post('/signupLoginErrors', (req, res, done) => {
     const messages = req.session.messages;
-    console.log(typeof(messages));
+    console.log(typeof messages);
+    console.log(req.session.messages);
     if (!messages || messages.length == 0) {
         res.json({
             status: 'SUCCESS',
