@@ -184,14 +184,16 @@ router.post('/signupLoginErrors', (req, res, done) => {
 
 router.post('/user', (req, res, done) => {
     if (req.user === undefined) {
-        res.json({});
+        res.json({
+            status: 'FAILED',
+        });
     } else {
         res.json ({
-            status: 'success',
+            status: 'SUCCESS',
             user: req.user
         });
     }
-});""
+});
 
 router.post('/cotd', (req, res, done) => {
     User.find({"saved.0": { "$exists": true }},

@@ -1,5 +1,5 @@
 window.addEventListener('load', async (event) => {
-    await fetchErrors();
+    await fetchUser();
     // event.preventDefault();
     // const savedImages = await fetchImages();
     // addImages(savedImages, index_object);
@@ -11,15 +11,19 @@ window.addEventListener('load', async (event) => {
 //     event.preventDefault();
 // })
 
-async function fetchErrors() {
+async function fetchUser() {
     const options = {
         method: 'POST', headers: {
             'Content-Type': 'application/json'
         },
     };
 
-    const errs_response = await fetch('signupLoginErrors', options);
-    const errs_json = await errs_response.json();
+    const user_response = await fetch('user', options);
+    const user_json = await user_response.json();
 
-    console.log(errs_json);
+    console.log(user_json);
+
+    if (user_json == 'SUCCESS') {
+        
+    }
 }
