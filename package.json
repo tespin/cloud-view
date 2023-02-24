@@ -1,36 +1,23 @@
 {
   "name": "google-cloud-view",
-  "version": "1.0.0",
-  "description": "Google Cloud View app by Tristan Espinoza.",
-  "main": "app.js",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "keywords": [
-    "google",
-    "cloud",
-    "street",
-    "view",
-    "p5.js"
-  ],
-  "author": "Tristan Espinoza",
-  "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.0.1",
-    "better-sqlite3": "^7.5.3",
-    "better-sqlite3-session-store": "^0.0.3",
-    "connect-flash": "^0.1.1",
-    "connect-mongodb-session": "^3.1.1",
-    "connect-sqlite3": "^0.9.13",
-    "express": "^4.18.1",
-    "express-session": "^1.17.3",
-    "mkdirp": "^1.0.4",
-    "mongodb": "^4.7.0",
-    "mongoose": "^6.4.1",
-    "passport": "^0.6.0",
-    "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^7.1.2",
-    "sqlite3": "^5.0.8"
+    "@next/font": "13.2.1",
+    "@types/node": "18.14.1",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "eslint": "8.34.0",
+    "eslint-config-next": "13.2.1",
+    "next": "13.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "4.9.5"
   }
 }
