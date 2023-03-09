@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from '@next/font/google'
+import { Inter } from "next/font/google"
 
 import Container from '@/components/UI/Container';
 import TopNavigation from '@/components/TopNavigation';
