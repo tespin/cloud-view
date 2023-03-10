@@ -16,11 +16,13 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Container>
-        <TopNavigation/>
-          <main>
-              <h1>Your personal cloud storage solution.</h1>
-          </main>
+      <Container className='xs:flex-col xs:justify-center xs:items-center xs:w-full'>
+        <Container className='xs:flex-col xs:justify-center xs:items-center xs:w-4/12'>
+          <TopNavigation/>
+            <main>
+                <h1 className='xs:mt-12 xs:text-center xs:text-6xl'>Your personal cloud storage solution.</h1>
+            </main>
+        </Container>
       </Container>
     </>
   )

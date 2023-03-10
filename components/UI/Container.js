@@ -1,7 +1,7 @@
 const Container = (props) => {
     return (
         <>
-            <div className="xs:flex xs:flex-col xs:justify-center xs:items-center xs:w-full">
+            <div className={`xs:flex ${props.className}`}>
                 {props.children}
             </div>
         </>
