@@ -18,23 +18,32 @@ const TopNavigation = (props) => {
                         <button><HamburgerMenuIcon aria-hidden/></button>
                     </Dialog.Trigger>
                     <Dialog.Portal>
-                        <Dialog.Overlay className='xs:fixed xs:inset-0 backdrop-blur-sm xs:bg-black/20'/>
-                        <Dialog.Content className='xs:fixed xs:bg-white top-4 right-4 p-4 w-full max-w-xs'>
+                        <Dialog.Overlay className='xs:fixed xs:inset-0 backdrop-blur-sm xs:bg-black/20 animate-overlayShow'/>
+                        <Dialog.Content className='xs:fixed xs:bg-white xs:rounded-lg top-4 right-4 p-4 w-full max-w-xs animate-contentShow'>
                             <NavigationMenu.Root>
-                                <NavigationMenu.List className='flex flex-col'>
+                                <NavigationMenu.List className='xs:flex xs:flex-col xs:space-y-4'>
                                     <NavigationMenu.Item>
-                                        <NavigationMenu.Trigger className='flex flex-row items-center'>
-                                            About <CaretDownIcon aria-hidden />
+                                        {/* <NavigationMenu.Trigger className='xs:flex xs:flex-row xs:items-center data-[state=open]:rotate-180 transition ease-in-out duration-200'>
+                                            About <CaretDownIcon className='ml-1' aria-hidden />
+                                        </NavigationMenu.Trigger> */}
+                                        <NavigationMenu.Trigger className='group xs:flex xs:flex-row xs:items-center'>
+                                            About <CaretDownIcon className='ml-1 group-data-[state=open]:-rotate-180 transition ease-in-out duration-200' aria-hidden />
                                         </NavigationMenu.Trigger>
+                                        <NavigationMenu.Content>
+                                        Cloud View is a project that plays on the idea of “cloud storage”. It allows visitors to obtain an image of the sky above them that they can save to their profile. All saved images can be downloaded at any time. The project was made in 2022 and rebuilt in 2023. It was made by Tristan Espinoza.
+                                        </NavigationMenu.Content>
                                     </NavigationMenu.Item>
 
                                     <NavigationMenu.Item>
-                                        <NavigationMenu.Trigger className='flex flex-row items-center'>
-                                            Privacy <CaretDownIcon aria-hidden />
+                                        <NavigationMenu.Trigger className='group xs:flex xs:flex-row xs:items-center'>
+                                            Privacy <CaretDownIcon className='ml-1 group-data-[state=open]:-rotate-180 transition ease-in-out duration-200' aria-hidden />
                                         </NavigationMenu.Trigger>
+                                        <NavigationMenu.Content className=''>
+                                        Location data is used when initially requesting images but is not kept or stored afterwards. This project will not add you to any list or sell / share your information.
+                                        </NavigationMenu.Content>
                                     </NavigationMenu.Item>
 
-                                    <NavigationMenu.Item className='flex flex-row items-center'>
+                                    <NavigationMenu.Item className='xs:flex xs:flex-row xs:items-center'>
                                             Storage
                                     </NavigationMenu.Item>
 
