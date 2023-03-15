@@ -17,7 +17,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container className='xs:flex-col xs:justify-center xs:items-center xs:w-full'>
-        <Container className='xs:flex-col xs:justify-center xs:items-center xs:m-4'>
+        <Container className='xs:flex-col xs:justify-center xs:items-center xs:max-w-md xs:m-4'>
           <TopNavigation/>
             <main>
                 <h1 className='xs:mt-12 xs:text-center xs:text-4xl'>Your personal cloud storage solution.</h1>

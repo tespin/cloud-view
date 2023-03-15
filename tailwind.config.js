@@ -15,6 +15,16 @@ module.exports = {
       ...defaultTheme.screens
     },
     extend: {
+      colors: {
+        base: {
+          darkMd: '#212939',
+          md: '#65686E',
+          semiMd: '#A9ADB5',
+          light: '#D9D8DE',
+          spLight: '#F0F2F5',
+          DEFAULT: '#101622'
+        }
+      },
       keyframes: {
         fadeIn: {
           'from': { opacity: '0'},
@@ -37,13 +47,20 @@ module.exports = {
           'to': { transform: 'translateY(0)'}
         },
         downTop: {
-          'from': { transform: 'translate(-50%, -50%)'},
-          'to': { transform: 'translate(-50%, -48%)'}
+          'from': { transform: 'translateY(0)'},
+          'to': { transform: 'translateY(-1rem)'}
+        },
+        aboutHeight: {
+          'from': { maxHeight: '0'},
+          'to': { maxHeight: '64rem'}
         }
       },
       animation: {
-        'contentShow': 'fadeIn 0.2s ease-in, growSm 0.2s ease-in, topDown 0.2s ease-in',
-        'overlayShow': 'fadeIn 0.2s ease-in'
+        'contentShow': 'fadeIn 0.15s ease-in, growSm 0.15s ease-in, topDown 0.15s ease-in',
+        'contentHide': 'fadeOut 0.15s ease-in, shrinkSm 0.15s ease-in, downTop 0.15s ease-in',
+        'overlayShow': 'fadeIn 0.15s ease-in',
+        'overlayHide': 'fadeOut 0.15s ease-in',
+        'aboutShow': 'aboutHeight 0.12s ease-in'
       }
     },
   },
