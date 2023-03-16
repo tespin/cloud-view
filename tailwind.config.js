@@ -58,8 +58,8 @@ module.exports = {
       animation: {
         'contentShow': 'fadeIn 0.15s ease-in, growSm 0.15s ease-in, topDown 0.15s ease-in',
         'contentHide': 'fadeOut 0.15s ease-in, shrinkSm 0.15s ease-in, downTop 0.15s ease-in',
-        'overlayShow': 'fadeIn 0.15s ease-in',
-        'overlayHide': 'fadeOut 0.15s ease-in',
+        'overlayShow': 'fadeIn 0.12s ease-in',
+        'overlayHide': 'fadeOut 0.12s ease-in',
         'aboutShow': 'aboutHeight 0.12s ease-in'
       }
     },

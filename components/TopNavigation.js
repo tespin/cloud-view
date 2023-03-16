@@ -3,13 +3,11 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as Form from '@radix-ui/react-form';
 import Container from './UI/Container';
-import Menu from './Menu';
 import { HamburgerMenuIcon, CaretUpIcon, CaretDownIcon, Cross2Icon } from '@radix-ui/react-icons';
 import { useState } from 'react';
 
 const TopNavigation = (props) => {
     const [open, setOpen] = useState(false);
-    const [aboutOpen, setAboutOpen] = useState(false);
 
     return (
         <>
@@ -22,7 +20,7 @@ const TopNavigation = (props) => {
                         </button>
                     </Dialog.Trigger>
                     <Dialog.Portal>
-                        <Dialog.Overlay className={`xs:fixed xs:inset-0 backdrop-blur-sm xs:bg-black/20 ${open ? 'animate-overlayShow' : 'animate-overlayHide'}`}/>
+                        <Dialog.Overlay className={`xs:fixed xs:inset-0 backdrop-blur-sm xs:bg-base/20 ${open ? 'animate-overlayShow' : 'animate-overlayHide'}`}/>
                         <Dialog.Content className={`xs:fixed xs:bg-white xs:rounded-lg top-4 right-4 p-4 w-full max-w-xs ${open ? 'animate-contentShow' : 'animate-contentHide'}`}>
                             <NavigationMenu.Root className='xs:flex xs:flex-col'>
                                 <NavigationMenu.List className='xs:flex xs:flex-col xs:space-y-4'>
