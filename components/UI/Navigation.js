@@ -1,42 +1,27 @@
 import React from 'react';
+import Link from 'next/link';
 import * as NavPrimitive from '@radix-ui/react-navigation-menu';
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
-import { CaretDownIcon } from '@radix-ui/react-icons';
 
-const Navigation = () => {
+const Navigation = (props) => {
     return (
         <>
             <NavPrimitive.Root className='xs:flex xs:flex-col'>
                 <NavPrimitive.List className='xs:flex xs:flex-col xs:space-y-4'>
-                    <NavPrimitive.Item>
-                        <NavPrimitive.Trigger className='group' asChild>
-                            <button className='xs:flex xs:flex-row xs:items-center max-w-sm'>
-                                About <CaretDownIcon className='ml-1 group-data-[state=open]:-rotate-180 transition ease-in-out duration-200' aria-hidden />
-                            </button>
-                        </NavPrimitive.Trigger>
-                        <NavPrimitive.Content className='xs:mt-2 xs:text-base-md xs:flex xs:flex-col xs:space-y-4'>
-                            <p>Cloud View is a project that plays on the idea of “cloud storage”. It allows visitors to obtain an image of the sky above them that they can save to their profile.</p> 
-                            <p>All saved images can be downloaded at any time. The project was made in 2022 and rebuilt in 2023.</p> 
-                            <p>It was made by Tristan Espinoza.</p>
-                        </NavPrimitive.Content>
-                    </NavPrimitive.Item>
-
-                    <NavPrimitive.Item>
-                        <NavPrimitive.Trigger className='group' asChild>
-                            <button className='xs:flex xs:flex-row xs:items-center'>
-                                Privacy <CaretDownIcon className='ml-1 group-data-[state=open]:-rotate-180 transition ease-in-out duration-200' aria-hidden />
-                            </button>
-                        </NavPrimitive.Trigger>
-                        <NavPrimitive.Content className='xs:mt-2 xs:text-base-md'>
-                            <p>Location data is used when initially requesting images but is not kept or stored afterwards. This project will not add you to any list or sell / share your information.</p>
-                        </NavPrimitive.Content>
-                    </NavPrimitive.Item>
-                    
-                    <NavPrimitive.Item className='xs:flex xs:flex-row xs:items-center'>
-                            Storage
-                    </NavPrimitive.Item>
-                </NavPrimitive.List>
-              
+                    {props.items
+                        .map((item) => {
+                            return (
+                                <NavPrimitive.Item key={item.id}>
+                                    <Link href={`${item.label.toLowerCase()}`} passHref legacyBehavior>
+                                        <NavPrimitive.Link>
+                                            {item.label}
+                                        </NavPrimitive.Link>
+                                    </Link>
+                                </NavPrimitive.Item>
+                            );
+                        })
+                    }
+                </NavPrimitive.List>              
                 <SeparatorPrimitive.Root className='xs:w-full xs:h-[1px] xs:bg-base-light mt-4'/>
                 <div className='xs:flex xs:flex-col xs:space-y-4 xs:mt-6'>
                     <button className='xs:border-2 xs:border-transparent xs:bg-base xs:hover:bg-base-darkMd xs:text-white xs:py-3 xs:rounded-md'>Sign up for free</button>

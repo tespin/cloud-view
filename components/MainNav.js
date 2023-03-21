@@ -1,18 +1,35 @@
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import * as Form from '@radix-ui/react-form';
+import React from 'react';
+import nodeCrypto from 'crypto';
 import Container from './UI/Container';
 import Dialog from './UI/Dialog';
 import Navigation from './UI/Navigation';
-import { HamburgerMenuIcon, CaretUpIcon, CaretDownIcon, Cross2Icon } from '@radix-ui/react-icons';
+import { useState, useEffect } from 'react';
 
 const MainNav = (props) => {
+    const [items, setItems] = useState([]);
+
+    const generateItems = () => {
+        const labels = ['About', 'Privacy', 'Storage'];
+
+        const generated = labels.map((item) => ({
+            id: typeof window !== 'undefined'
+                ? window.crypto.randomUUID()
+                : nodeCrypto.randomUUID(),
+            label: item
+        }));
+        setItems(generated);
+    }
+
+    useEffect(() => {
+        generateItems();
+    }, []);
+
     return (
         <>
             <Container className='xs:flex-row xs:justify-between xs:w-full'>
                 <p>Cloud View</p>
                 <Dialog>
-                    <Navigation />
+                    <Navigation items={items} />
                 </Dialog>
             </Container>
         </>
