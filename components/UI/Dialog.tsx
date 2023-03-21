@@ -23,7 +23,7 @@ const Dialog = (props) => {
                     }} className={`xs:fixed xs:bg-white xs:rounded-lg top-4 right-4 p-4 w-full max-w-xs ${open ? 'animate-contentShow' : 'animate-contentHide'}`}>
                         {props.children}
                         <DialogPrimitive.Close ref={dialogCloseButton} asChild>
-                            <button className='flex justify-center items-center xs:hover:text-base-semiMd absolute w-6 h-6 top-4 right-4'>
+                            <button className='xs:flex xs:justify-center xs:items-center xs:hover:text-base-semiMd absolute w-6 h-6 top-4 right-4'>
                                 <Cross2Icon />
                             </button>
                         </DialogPrimitive.Close>
