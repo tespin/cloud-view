@@ -13,7 +13,7 @@ const AboutPage = () => {
                         <div className='xs:flex xs:flex-col xs:space-y-4 xs:mt-4 xs:text-base-md'>
                             <p>Cloud View is a project that plays on the idea of “cloud storage”.</p>
                             <p>It allows visitors to obtain an image of the sky above them that they can save to their profile. All saved images can be downloaded at any time.</p>
-                            <p>The project was made in 2022 and rebuilt in 2023. It was made by.</p>
+                            <p>The project was made in 2022 and rebuilt in 2023. It was made by Tristan Espinoza.</p>
                         </div>
                     </main>
                 </Container>
