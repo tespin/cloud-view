@@ -13,7 +13,7 @@ const Navigation = (props) => {
                             return (
                                 <NavPrimitive.Item key={item.id}>
                                     <Link href={`${item.label.toLowerCase()}`} passHref legacyBehavior>
-                                        <NavPrimitive.Link>
+                                        <NavPrimitive.Link className='xs:hover:text-base-semiMd'>
                                             {item.label}
                                         </NavPrimitive.Link>
                                     </Link>
