@@ -52,5 +52,6 @@ const Navigation = forwardRef<HTMLAnchorElement, NavProps>(({ items }, ref) => {
     </>
   );
 });
+Navigation.displayName = 'Navigation';
 
 export default Navigation;
