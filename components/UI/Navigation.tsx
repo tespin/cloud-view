@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { forwardRef } from 'react';
 import Link from 'next/link';
 import * as NavPrimitive from '@radix-ui/react-navigation-menu';
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
@@ -10,23 +10,28 @@ interface NavProps {
   }[];
 }
 
-const Navigation = ({ items }: NavProps) => {
-  const navItemRef = useRef<HTMLAnchorElement>(null);
+const Navigation = forwardRef<HTMLAnchorElement, NavProps>(({ items }, ref) => {
+  //   const navItemRef = useRef<HTMLAnchorElement>(null);
 
   return (
     <>
       <NavPrimitive.Root className="xs:flex xs:flex-col">
         <NavPrimitive.List className="xs:flex xs:flex-col xs:space-y-4">
-          {items.map((item) => {
+          {items.map((item, index) => {
             return (
-              <NavPrimitive.Item key={item.id}>
+              <NavPrimitive.Item
+                key={item.id}
+                className="xs:focus:outline-none focus:ring"
+              >
                 <Link
                   href={`${item.label.toLowerCase()}`}
-                  ref={navItemRef}
                   passHref
                   legacyBehavior
                 >
-                  <NavPrimitive.Link className="xs:hover:text-base-semiMd">
+                  <NavPrimitive.Link
+                    ref={index === 0 ? ref : null}
+                    className="xs:hover:text-base-semiMd"
+                  >
                     {item.label}
                   </NavPrimitive.Link>
                 </Link>
@@ -46,6 +51,7 @@ const Navigation = ({ items }: NavProps) => {
       </NavPrimitive.Root>
     </>
   );
-};
+});
+Navigation.displayName = 'Navigation';
 
 export default Navigation;
