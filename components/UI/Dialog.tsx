@@ -1,20 +1,14 @@
-import React, { Children } from 'react';
+import React, { Children, cloneElement } from 'react';
 import { useState, useRef } from 'react';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { HamburgerMenuIcon, Cross2Icon } from '@radix-ui/react-icons';
-import Navigation from './Navigation';
-import { JsxElement } from 'typescript';
 
 interface DialogProps {
   className?: string;
-  children?: React.ReactNode;
-  items: {
-    id: string;
-    label: string;
-  }[];
+  children: React.ReactElement;
 }
 
-const Dialog = ({ className, children, items }: DialogProps) => {
+const Dialog = ({ className, children }: DialogProps) => {
   const [open, setOpen] = useState<boolean>(false);
   const dialogCloseButton = useRef<HTMLButtonElement>(null);
   const anchorElementRef = useRef<HTMLAnchorElement>(null);
@@ -43,7 +37,7 @@ const Dialog = ({ className, children, items }: DialogProps) => {
               open ? 'animate-contentShow' : 'animate-contentHide'
             }`}
           >
-            <Navigation items={items} ref={anchorElementRef} />
+            {React.cloneElement(children, { ref: anchorElementRef })}
             <DialogPrimitive.Close ref={dialogCloseButton} asChild>
               <button className="xs:flex xs:justify-center xs:items-center xs:hover:text-base-semiMd absolute w-6 h-6 top-4 right-4">
                 <Cross2Icon />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import nodeCrypto from 'crypto';
@@ -12,7 +12,6 @@ interface MainNavProps {}
 
 const MainNav = ({}: MainNavProps) => {
   const [items, setItems] = useState<{ id: string; label: string }[]>([]);
-  const anchorElementRef = useRef<HTMLAnchorElement>(null);
 
   const generateItems = () => {
     const labels = ['About', 'Privacy', 'Storage'];
@@ -38,13 +37,13 @@ const MainNav = ({}: MainNavProps) => {
         <Link href="/" className="xs:text-xl">
           Cloud View
         </Link>
-        <Dialog items={items} />
-        {/* <MobileNav items={items} /> */}
-        {/* <Dialog items={items} /> */}
+        <Dialog>
+          <Navigation items={items}></Navigation>
+        </Dialog>
         {/* <Dialog
-          renderNav={() => {
-            return <Navigation items={items} ref={anchorElementRef} />;
-          }}
+          renderNav={(ref: React.Ref<HTMLAnchorElement>) => (
+            <Navigation items={items} ref={ref} />
+          )}
         ></Dialog> */}
       </Container>
       <SeparatorPrimitive.Root className="xs:w-full xs:h-[1px] xs:bg-base-light mt-4" />
