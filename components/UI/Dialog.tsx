@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { Children } from 'react';
 import { useState, useRef } from 'react';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { HamburgerMenuIcon, Cross2Icon } from '@radix-ui/react-icons';
+import Navigation from './Navigation';
+import { JsxElement } from 'typescript';
 
 interface DialogProps {
   className?: string;
   children?: React.ReactNode;
+  items: {
+    id: string;
+    label: string;
+  }[];
 }
 
-const Dialog = ({ className, children }: DialogProps) => {
+const Dialog = ({ className, children, items }: DialogProps) => {
   const [open, setOpen] = useState<boolean>(false);
   const dialogCloseButton = useRef<HTMLButtonElement>(null);
+  const anchorElementRef = useRef<HTMLAnchorElement>(null);
 
   return (
     <>
@@ -28,14 +35,15 @@ const Dialog = ({ className, children }: DialogProps) => {
           />
           <DialogPrimitive.Content
             onOpenAutoFocus={(event) => {
-              dialogCloseButton.current?.focus();
+              //   dialogCloseButton.current?.focus();
+              anchorElementRef.current?.focus();
               event.preventDefault();
             }}
             className={`xs:fixed xs:bg-white xs:rounded-lg top-4 right-4 p-4 w-full max-w-xs ${
               open ? 'animate-contentShow' : 'animate-contentHide'
             }`}
           >
-            {children}
+            <Navigation items={items} ref={anchorElementRef} />
             <DialogPrimitive.Close ref={dialogCloseButton} asChild>
               <button className="xs:flex xs:justify-center xs:items-center xs:hover:text-base-semiMd absolute w-6 h-6 top-4 right-4">
                 <Cross2Icon />
