@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import Container from '@/components/UI/Container';
 
 const SignupPage = () => {
@@ -10,9 +11,9 @@ const SignupPage = () => {
             <h2>Sign up for Cloud View</h2>
             <div>
               <div>
-                <a href='/'>
-                  <span>Sign up</span>
-                </a>
+                <Link href='/'>
+                  <span>Continue</span>
+                </Link>
               </div>
             </div>
           </main>
