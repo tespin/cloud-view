@@ -1,11 +1,10 @@
-import React, { RefObject } from 'react';
-import { useState, useEffect, useRef } from 'react';
+import React from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import nodeCrypto from 'crypto';
 import Container from './UI/Container';
 import Dialog from './UI/Dialog';
 import Navigation from './UI/Navigation';
-// import MobileNav from './MobileNav';
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
 
 interface MainNavProps {}

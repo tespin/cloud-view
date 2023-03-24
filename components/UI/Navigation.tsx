@@ -11,8 +11,6 @@ interface NavProps {
 }
 
 const Navigation = forwardRef<HTMLAnchorElement, NavProps>(({ items }, ref) => {
-  //   const navItemRef = useRef<HTMLAnchorElement>(null);
-
   return (
     <>
       <NavPrimitive.Root className="xs:flex xs:flex-col">
