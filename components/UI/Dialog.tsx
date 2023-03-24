@@ -17,7 +17,7 @@ const Dialog = ({ className, children }: DialogProps) => {
     <>
       <DialogPrimitive.Root open={open} onOpenChange={setOpen}>
         <DialogPrimitive.Trigger asChild>
-          <button className="xs:hover:text-base-semiMd">
+          <button className='xs:hover:text-base-semiMd xs:focus:outline-none xs:focus:ring'>
             <HamburgerMenuIcon aria-hidden />
           </button>
         </DialogPrimitive.Trigger>
@@ -39,7 +39,7 @@ const Dialog = ({ className, children }: DialogProps) => {
           >
             {React.cloneElement(children, { ref: anchorElementRef })}
             <DialogPrimitive.Close ref={dialogCloseButton} asChild>
-              <button className="xs:flex xs:justify-center xs:items-center xs:hover:text-base-semiMd absolute w-6 h-6 top-4 right-4">
+              <button className='xs:flex xs:justify-center xs:items-center xs:focus:outline-none xs:focus:ring xs:hover:text-base-semiMd absolute w-6 h-6 top-4 right-4'>
                 <Cross2Icon />
               </button>
             </DialogPrimitive.Close>

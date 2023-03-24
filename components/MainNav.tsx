@@ -32,8 +32,8 @@ const MainNav = ({}: MainNavProps) => {
 
   return (
     <>
-      <Container className="xs:flex-row xs:justify-between xs:w-full">
-        <Link href="/" className="xs:text-xl">
+      <Container className='xs:flex-row xs:justify-between xs:w-full'>
+        <Link href='/' className='xs:text-xl'>
           Cloud View
         </Link>
         <Dialog>
@@ -45,7 +45,7 @@ const MainNav = ({}: MainNavProps) => {
           )}
         ></Dialog> */}
       </Container>
-      <SeparatorPrimitive.Root className="xs:w-full xs:h-[1px] xs:bg-base-light mt-4" />
+      <SeparatorPrimitive.Root className='xs:w-full xs:h-[1px] xs:bg-base-light mt-4' />
     </>
   );
 };

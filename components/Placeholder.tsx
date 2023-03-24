@@ -11,7 +11,7 @@ const Placeholder = ({ className }: PlaceholderProps) => {
       <Container
         className={`xs:justify-center xs:items-center xs:w-96 xs:h-96 xs:rounded-md xs:border-dashed xs:border-black xs:border-[1px] ${className}`}
       >
-        <button className="xs:bg-base xs:hover:bg-base-darkMd xs:text-white xs:py-3 xs:px-6 xs:rounded-md">
+        <button className='xs:bg-base xs:hover:bg-base-darkMd xs:focus:outline-none xs:focus:ring xs:text-white xs:py-3 xs:px-6 xs:rounded-md'>
           Request a cloud
         </button>
       </Container>
