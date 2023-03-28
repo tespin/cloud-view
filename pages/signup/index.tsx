@@ -14,42 +14,40 @@ const SignupPage = () => {
             <h2 className='xs:text-3xl xs:text-center xs:mt-9'>
               Sign up for Cloud View
             </h2>
-            <FormPrimitive.Root>
-              <div className='xs:flex xs:flex-col xs:w-96 xs:mt-4 xs:text-base-md'>
-                <FormPrimitive.Field name='username'>
-                  <FormPrimitive.Label>Username</FormPrimitive.Label>
-                  <FormPrimitive.Message match='valueMissing'>
-                    Username
-                  </FormPrimitive.Message>
-                  <FormPrimitive.Control asChild>
-                    <input
-                      className='xs:w-full xs:border-2 xs:border-base xs:py-3 xs:rounded-md'
-                      type='username'
-                      required
-                    />
-                  </FormPrimitive.Control>
-                </FormPrimitive.Field>
-                <FormPrimitive.Field className='xs:mt-4' name='password'>
-                  <FormPrimitive.Label>Password</FormPrimitive.Label>
-                  <FormPrimitive.Message match='valueMissing'>
-                    Password
-                  </FormPrimitive.Message>
-                  <FormPrimitive.Control asChild>
-                    <input
-                      className='xs:w-full xs:border-2 xs:border-base xs:py-3 xs:rounded-md'
-                      type='password'
-                      required
-                    />
-                  </FormPrimitive.Control>
-                </FormPrimitive.Field>
-                <FormPrimitive.Submit asChild>
-                  <button className='xs:w-full xs:border-2 xs:border-transparent xs:bg-base xs:hover:bg-base-darkMd xs:text-white xs:mt-8 xs:py-3 xs:rounded-md'>
-                    Continue
-                  </button>
-                </FormPrimitive.Submit>
-              </div>
+            <FormPrimitive.Root className='xs:flex xs:flex-col xs:w-96 xs:mt-12 xs:text-base-md'>
+              <FormPrimitive.Field name='username'>
+                <FormPrimitive.Label>Username</FormPrimitive.Label>
+                <FormPrimitive.Message match='valueMissing'>
+                  Username
+                </FormPrimitive.Message>
+                <FormPrimitive.Control asChild>
+                  <input
+                    className='xs:w-full xs:border-2 xs:border-base xs:mt-1 xs:p-3 xs:rounded-md'
+                    type='username'
+                    required
+                  />
+                </FormPrimitive.Control>
+              </FormPrimitive.Field>
+              <FormPrimitive.Field className='xs:mt-4' name='password'>
+                <FormPrimitive.Label>Password</FormPrimitive.Label>
+                <FormPrimitive.Message match='valueMissing'>
+                  Password
+                </FormPrimitive.Message>
+                <FormPrimitive.Control asChild>
+                  <input
+                    className='xs:w-full xs:border-2 xs:border-base xs:mt-1 xs:p-3 xs:rounded-md'
+                    type='password'
+                    required
+                  />
+                </FormPrimitive.Control>
+              </FormPrimitive.Field>
+              <FormPrimitive.Submit asChild>
+                <button className='xs:w-full xs:border-2 xs:border-transparent xs:bg-base xs:hover:bg-base-darkMd xs:text-white xs:mt-8 xs:py-3 xs:rounded-md'>
+                  Create account
+                </button>
+              </FormPrimitive.Submit>
             </FormPrimitive.Root>
-            <p className='xs:text-base-md xs:mt-6'>
+            <p className='xs:text-base-md xs:mt-2'>
               Already have an account?{' '}
               <Link href='/login'>
                 <span className='xs:text-base xs:font-bold'>Log in</span>
