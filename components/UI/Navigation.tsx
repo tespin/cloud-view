@@ -36,22 +36,22 @@ const Navigation = forwardRef<HTMLAnchorElement, NavProps>(({ items }, ref) => {
           <SeparatorPrimitive.Root className='xs:w-full xs:h-[1px] xs:bg-base-light mt-4' />
           <div className='xs:flex xs:flex-col xs:space-y-4 xs:mt-6'>
             <NavPrimitive.Item>
-              <div className='xs:flex xs:justify-center xs:cursor-pointer xs:focus-within:outline-none xs:focus-within:ring xs:border-2 xs:border-transparent xs:bg-base xs:hover:bg-base-darkMd xs:text-white xs:py-3 xs:rounded-md'>
-                <Link href='/signup' passHref legacyBehavior>
-                  <NavPrimitive.Link className='xs:focus:outline-none'>
+              <Link href='/signup' passHref legacyBehavior>
+                <NavPrimitive.Link className='xs:focus:outline-none'>
+                  <div className='xs:flex xs:justify-center xs:cursor-pointer xs:focus-within:outline-none xs:focus-within:ring xs:border-2 xs:border-transparent xs:bg-base xs:hover:bg-base-darkMd xs:text-white xs:py-3 xs:rounded-md'>
                     <span>Sign up for free</span>
-                  </NavPrimitive.Link>
-                </Link>
-              </div>
+                  </div>
+                </NavPrimitive.Link>
+              </Link>
             </NavPrimitive.Item>
             <NavPrimitive.Item>
-              <div className='xs:flex xs:justify-center xs:cursor-pointer xs:focus-within:outline-none xs:focus-within:ring xs:border-2 xs:border-base xs:py-3 xs:rounded-md xs:hover:bg-base-spLight'>
-                <Link href='/login' passHref legacyBehavior>
-                  <NavPrimitive.Link className='xs:focus:outline-none'>
+              <Link href='/login' passHref legacyBehavior>
+                <NavPrimitive.Link className='xs:focus:outline-none'>
+                  <div className='xs:flex xs:justify-center xs:cursor-pointer xs:focus-within:outline-none xs:focus-within:ring xs:border-2 xs:border-base xs:py-3 xs:rounded-md xs:hover:bg-base-spLight'>
                     <span>Log in</span>
-                  </NavPrimitive.Link>
-                </Link>
-              </div>
+                  </div>
+                </NavPrimitive.Link>
+              </Link>
             </NavPrimitive.Item>
           </div>
         </NavPrimitive.List>
