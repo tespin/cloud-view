@@ -20,7 +20,7 @@ module.exports = {
       colors: {
         base: {
           darkMd: '#212939',
-          md: '#65686E',
+          md: '#84878B',
           semiMd: '#A9ADB5',
           light: '#D9D8DE',
           spLight: '#F0F2F5',

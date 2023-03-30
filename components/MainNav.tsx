@@ -7,9 +7,11 @@ import Dialog from './UI/Dialog';
 import Navigation from './UI/Navigation';
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
 
-interface MainNavProps {}
+interface MainNavProps {
+  url?: string;
+}
 
-const MainNav = ({}: MainNavProps) => {
+const MainNav = ({ url = '/' }: MainNavProps) => {
   const [items, setItems] = useState<{ id: string; label: string }[]>([]);
 
   const generateItems = () => {
@@ -33,7 +35,7 @@ const MainNav = ({}: MainNavProps) => {
   return (
     <>
       <Container className='xs:flex-row xs:justify-between xs:w-full'>
-        <Link href='/' className='xs:text-xl'>
+        <Link href={url} className='xs:text-xl'>
           Cloud View
         </Link>
         <Dialog>
