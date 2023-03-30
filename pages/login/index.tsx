@@ -3,6 +3,7 @@ import Link from 'next/link';
 import * as FormPrimitive from '@radix-ui/react-form';
 import Container from '@/components/UI/Container';
 import MainNav from '@/components/MainNav';
+import Form from '@/components/Form';
 
 const LoginPage = () => {
   return (
@@ -14,39 +15,7 @@ const LoginPage = () => {
             <h2 className='xs:text-3xl xs:text-center xs:mt-9'>
               Log in to Cloud View
             </h2>
-            <FormPrimitive.Root className='xs:flex xs:flex-col xs:w-96 xs:mt-12 xs:text-base-md'>
-              <FormPrimitive.Field name='username'>
-                <FormPrimitive.Label>Username</FormPrimitive.Label>
-                <FormPrimitive.Message match='valueMissing'>
-                  Username
-                </FormPrimitive.Message>
-                <FormPrimitive.Control asChild>
-                  <input
-                    className='xs:w-full xs:border-2 xs:border-base xs:mt-1 xs:p-3 xs:rounded-md'
-                    type='username'
-                    required
-                  />
-                </FormPrimitive.Control>
-              </FormPrimitive.Field>
-              <FormPrimitive.Field className='xs:mt-4' name='password'>
-                <FormPrimitive.Label>Password</FormPrimitive.Label>
-                <FormPrimitive.Message match='valueMissing'>
-                  Password
-                </FormPrimitive.Message>
-                <FormPrimitive.Control asChild>
-                  <input
-                    className='xs:w-full xs:border-2 xs:border-base xs:mt-1 xs:p-3 xs:rounded-md'
-                    type='password'
-                    required
-                  />
-                </FormPrimitive.Control>
-              </FormPrimitive.Field>
-              <FormPrimitive.Submit asChild>
-                <button className='xs:w-full xs:border-2 xs:border-transparent xs:bg-base xs:hover:bg-base-darkMd xs:text-white xs:mt-8 xs:py-3 xs:rounded-md'>
-                  Continue
-                </button>
-              </FormPrimitive.Submit>
-            </FormPrimitive.Root>
+            <Form category='LOGIN' />
             <p className='xs:text-base-md xs:mt-2'>
               No account?{' '}
               <Link href='/signup'>
