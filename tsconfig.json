@@ -19,6 +19,19 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "components/Placeholder.js",
+    "components/MainNav.js",
+    "components/UI/Navigation.js",
+    "components/UI/Dialog.js",
+    "components/UI/Container.js",
+    "components/MainNav.js",
+    "components/UI/Navigation.js",
+    "components/UI/Dialog.js",
+    "components/UI/Container.js"
+  ],
   "exclude": ["node_modules"]
 }
