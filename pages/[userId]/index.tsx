@@ -8,14 +8,14 @@ const HomePage = () => {
   const [authenticated, setAuthenticated] = useState<boolean>(true);
 
   const router = useRouter();
-  const { userId } = router.query;
+  const { userId } = router.query as { userId: string | undefined };
 
   return (
     <>
       {authenticated ? (
         <Container className='xs:flex-col xs:justify-center xs:items-center xs:w-full'>
           <Container className='xs:flex-col xs:justify-center xs:w-96 xs:max-w-sm xs:my-4 xs:mx-8'>
-            <MainNav url='/storage' />
+            <MainNav url={userId} />
             <main>
               <h1 className='xs:mt-12 xs:text-left xs:text-4xl'>
                 Welcome {userId}
