@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
+import nodeCrypto from 'crypto';
 import Image, { StaticImageData } from 'next/image';
 import img from '@/public/cloud_3542.png';
 import Container from '@/components/UI/Container';
@@ -9,12 +10,28 @@ import Placeholder from '@/components/Placeholder';
 const HomePage = () => {
   const [authenticated, setAuthenticated] = useState<boolean>(true);
   const [cloudImg, setCloudImg] = useState<StaticImageData>();
+  const [images, setImages] = useState<{ url: string; id: string }[]>([
+    { url: '', id: '' },
+  ]);
 
   const router = useRouter();
   const { userId } = router.query as { userId: string | undefined };
 
   const imageHandler = () => {
     setCloudImg(img);
+  };
+
+  const saveImageHandler = () => {
+    const nextImage = {
+      url: '',
+      id:
+        typeof window !== 'undefined'
+          ? window.crypto.randomUUID()
+          : nodeCrypto.randomUUID(),
+    };
+
+    const nextImages = [...images, nextImage];
+    setImages(nextImages);
   };
 
   return (
@@ -51,7 +68,7 @@ const HomePage = () => {
                 </button>
                 <button
                   className=' xs:w-full xs:mt-4 xs:hover:bg-base-spLight xs:focus:outline-none xs:focus:ring xs:border-base xs:border-2 xs:py-3 xs:px-6 xs:rounded-md'
-                  onClick={imageHandler}
+                  onClick={saveImageHandler}
                 >
                   Request a new cloud
                 </button>
