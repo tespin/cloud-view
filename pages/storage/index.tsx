@@ -23,7 +23,7 @@ const StoragePage = () => {
                   <button className='xs:bg-base xs:text-white xs:px-6 xs:py-2 xs:rounded-md xs:hover:bg-base-darkMd'>
                     Select
                   </button>
-                  <ImageGallery />
+                  {/* <ImageGallery /> */}
                 </Container>
               </>
             ) : (
