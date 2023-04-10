@@ -9,8 +9,8 @@ import ImageGallery from '@/components/ImageGallery';
 
 const StoragePage = () => {
   const [authenticated, setAuthenticated] = useState<boolean>(true);
-  const [images, setImages] = useState<{ url: string; id: string }[]>([
-    { url: '', id: '' },
+  const [images, setImages] = useState<{ src: string; id: string }[]>([
+    { src: '', id: '' },
   ]);
 
   const getImages = () => {
@@ -18,7 +18,7 @@ const StoragePage = () => {
 
     for (let i = 0; i < 15; i++) {
       const nextImage = {
-        url: 'https://picsum.photos/384',
+        src: 'https://picsum.photos/384',
         id:
           typeof window !== 'undefined'
             ? window.crypto.randomUUID()
@@ -34,12 +34,6 @@ const StoragePage = () => {
   useEffect(() => {
     getImages();
   }, []);
-
-  // const links = [
-  //   { url: '', id: '' },
-  //   { url: '', id: '' },
-  //   { url: '', id: '' },
-  // ];
 
   return (
     <>
