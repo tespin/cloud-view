@@ -1,13 +1,45 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Container from '@/components/UI/Container';
 import Image, { StaticImageData } from 'next/image';
 import img from '@/public/cloud_3542.png';
+import nodeCrypto from 'crypto';
 import MainNav from '@/components/MainNav';
 import ImageGallery from '@/components/ImageGallery';
 
 const StoragePage = () => {
   const [authenticated, setAuthenticated] = useState<boolean>(true);
+  const [images, setImages] = useState<{ url: string; id: string }[]>([
+    { url: '', id: '' },
+  ]);
+
+  const getImages = () => {
+    const nextImages = [];
+
+    for (let i = 0; i < 15; i++) {
+      const nextImage = {
+        url: 'https://picsum.photos/384',
+        id:
+          typeof window !== 'undefined'
+            ? window.crypto.randomUUID()
+            : nodeCrypto.randomUUID(),
+      };
+
+      nextImages.push(nextImage);
+    }
+
+    setImages(nextImages);
+  };
+
+  useEffect(() => {
+    getImages();
+  }, []);
+
+  // const links = [
+  //   { url: '', id: '' },
+  //   { url: '', id: '' },
+  //   { url: '', id: '' },
+  // ];
 
   return (
     <>
@@ -18,12 +50,14 @@ const StoragePage = () => {
             {/* <h2 className='xs:text-3xl xs:mt-9'>Storage</h2> */}
             {authenticated ? (
               <>
-                <Container className='xs:flex-row xs:justify-between xs:items-end xs:w-full xs:mt-12'>
-                  <h2 className='xs:text-left xs:text-4xl'>Storage</h2>
-                  <button className='xs:bg-base xs:text-white xs:px-6 xs:py-2 xs:rounded-md xs:hover:bg-base-darkMd'>
-                    Select
-                  </button>
-                  <ImageGallery />
+                <Container className='xs:flex-col xs:w-full xs:mt-12'>
+                  <Container className='xs:flex-row xs:justify-between xs:items-end'>
+                    <h2 className='xs:text-left xs:text-4xl'>Storage</h2>
+                    <button className='xs:bg-base xs:text-white xs:px-6 xs:py-2 xs:rounded-md xs:hover:bg-base-darkMd'>
+                      Select
+                    </button>
+                  </Container>
+                  <ImageGallery links={images} />
                 </Container>
               </>
             ) : (
