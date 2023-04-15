@@ -9,9 +9,9 @@ import ImageGallery from '@/components/ImageGallery';
 
 const StoragePage = () => {
   const [authenticated, setAuthenticated] = useState<boolean>(true);
-  const [images, setImages] = useState<{ src: string; id: string }[]>([
-    { src: '', id: '' },
-  ]);
+  const [images, setImages] = useState<
+    { src: string; id: string; date: string }[]
+  >([{ src: '', id: '', date: '' }]);
 
   const getImages = () => {
     const nextImages = [];
@@ -23,6 +23,7 @@ const StoragePage = () => {
           typeof window !== 'undefined'
             ? window.crypto.randomUUID()
             : nodeCrypto.randomUUID(),
+        date: 'February 23, 2023',
       };
 
       nextImages.push(nextImage);
@@ -47,7 +48,7 @@ const StoragePage = () => {
                 <Container className='xs:flex-col xs:w-full xs:mt-12'>
                   <Container className='xs:flex-row xs:justify-between xs:items-end'>
                     <h2 className='xs:text-left xs:text-4xl'>Storage</h2>
-                    <button className='xs:bg-base xs:text-white xs:px-6 xs:py-2 xs:rounded-md xs:hover:bg-base-darkMd'>
+                    <button className='xs:bg-base xs:text-white xs:px-6 xs:py-2 xs:focus:outline-none xs:focus:ring xs:rounded-md xs:hover:bg-base-darkMd'>
                       Select
                     </button>
                   </Container>
