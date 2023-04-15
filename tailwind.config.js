@@ -47,6 +47,14 @@ module.exports = {
           from: { transform: 'scale(1)' },
           to: { transform: 'scale(0.96)' },
         },
+        growMd: {
+          from: { transform: 'scale(0.87)' },
+          to: { transform: 'scale(1)' },
+        },
+        shrinkMd: {
+          from: { transform: 'scale(1)' },
+          to: { transform: 'scale(0.87)' },
+        },
         topDown: {
           from: { transform: 'translateY(-1rem)' },
           to: { transform: 'translateY(0)' },
@@ -68,6 +76,8 @@ module.exports = {
         overlayShow: 'fadeIn 0.12s ease-in',
         overlayHide: 'fadeOut 0.12s ease-in',
         aboutShow: 'aboutHeight 0.12s ease-in',
+        lightBoxShow: 'fadeIn 0.10s ease-in, growMd 0.10s ease-in',
+        lightBoxHide: 'fadeOut 0.10s ease-in, shrinkMd 0.10s ease-in',
       },
     },
   },

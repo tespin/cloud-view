@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { ArrowLeftIcon } from '@radix-ui/react-icons';
@@ -8,9 +8,11 @@ interface ImageModalProps {
 }
 
 const ImageModal = ({ link }: ImageModalProps) => {
+  const [open, setOpen] = useState<boolean>(false);
+
   return (
     <>
-      <DialogPrimitive.Root>
+      <DialogPrimitive.Root open={open} onOpenChange={setOpen}>
         <DialogPrimitive.Trigger asChild>
           <button className='xs:focus:outline-none xs:focus:ring xs:rounded-lg'>
             <Image
@@ -24,7 +26,9 @@ const ImageModal = ({ link }: ImageModalProps) => {
         </DialogPrimitive.Trigger>
         <DialogPrimitive.Portal>
           <DialogPrimitive.Overlay
-            className={`xs:fixed xs:inset-0 backdrop-blur-sm xs:bg-base/20`}
+            className={`xs:fixed xs:inset-0 backdrop-blur-sm xs:bg-base/60 ${
+              open ? 'animate-overlayShow' : 'animate-overlayHide'
+            }`}
           />
           <DialogPrimitive.Content className='xs:fixed xs:inset-0 xs:mx-auto xs:flex xs:flex-col xs:justify-center xs:items-center xs:w-full xs:h-auto xs:max-w-xs'>
             <div className='xs:flex xs:flex-row xs:w-full xs:justify-between'>
@@ -40,7 +44,10 @@ const ImageModal = ({ link }: ImageModalProps) => {
               alt='cloud photo'
               width={0}
               height={0}
-              className='xs:mt-1 xs:rounded-lg xs:w-full xs:h-auto'
+              className={`xs:mt-1 xs:rounded-lg xs:w-full xs:h-auto ${
+                open ? 'animate-lightBoxShow' : 'animate-lightBoxHide'
+              }
+            `}
             />
           </DialogPrimitive.Content>
         </DialogPrimitive.Portal>
