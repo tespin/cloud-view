@@ -78,6 +78,10 @@ module.exports = {
         aboutShow: 'aboutHeight 0.12s ease-in',
         lightBoxShow: 'fadeIn 0.10s ease-in, growMd 0.10s ease-in',
         lightBoxHide: 'fadeOut 0.10s ease-in, shrinkMd 0.10s ease-in',
+        selectButtonsShow:
+          'fadeIn 0.15s ease-in, growSm 0.15s ease-in, downTop 0.15s ease-in',
+        selectButtonsHide:
+          'fadeOut 0.15s ease-in, shrinkSm 0.15s ease-in topDown 0.15s ease-in',
       },
     },
   },

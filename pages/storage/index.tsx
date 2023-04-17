@@ -19,7 +19,7 @@ const StoragePage = () => {
   const getImages = () => {
     const nextImages = [];
 
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 5; i++) {
       const nextImage = {
         src: 'https://picsum.photos/384',
         id:
@@ -45,8 +45,8 @@ const StoragePage = () => {
 
   return (
     <>
-      <Container className='xs:flex-col xs:justify-center xs:items-center xs:w-full'>
-        <Container className='xs:flex-col xs:justify-center xs:items-center xs:xs:w-full xs:my-4 xs:mx-8'>
+      <Container className='xs:flex-col xs:justify-center xs:items-center xs:w-full xs:overflow-auto'>
+        <Container className='xs:flex-col xs:justify-center xs:items-center xs:xs:w-full xs:max-w-sm xs:my-4 xs:mx-8'>
           <MainNav />
           <main className='xs:w-full'>
             {/* <h2 className='xs:text-3xl xs:mt-9'>Storage</h2> */}
@@ -62,15 +62,17 @@ const StoragePage = () => {
                       {selecting ? 'Cancel' : 'Select'}
                     </button>
                   </Container>
-                  <ImageGallery links={images} />
+                  <ImageGallery links={images} isSelecting={selecting} />
                 </Container>
                 {selecting && (
-                  <div className='xs:fixed xs:m-6 xs:bottom-4 xs:right-4'>
+                  <div
+                    className={`xs:flex xs:flex-row xs:justify-between xs:w-36 xs:fixed xs:m-6 xs:bottom-4 xs:right-4`}
+                  >
                     <button>
                       <DownloadIcon className='xs:w-10 xs:h-10' />
                     </button>
                     <button>
-                      <TrashIcon className='xs:w-10 xs:h-10 xs:ml-10' />
+                      <TrashIcon className='xs:w-10 xs:h-10' />
                     </button>
                   </div>
                 )}
