@@ -9,7 +9,7 @@ const LoginPage = () => {
   return (
     <>
       <Container className='xs:flex-col xs:justify-center xs:items-center xs:w-full'>
-        <Container className='xs:flex-col xs:justify-center xs:items-center xs:w-96 xs:max-w-sm xs:my-4 xs:mx-8'>
+        <Container className='xs:flex-col xs:justify-center xs:items-center xs:w-full xs:max-w-sm xs:my-4 xs:mx-8'>
           <MainNav />
           <main>
             <h2 className='xs:text-3xl xs:text-center xs:mt-9'>
