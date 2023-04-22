@@ -11,7 +11,6 @@ import ImageGallery from '@/components/ImageGallery';
 
 const StoragePage = () => {
   const [authenticated, setAuthenticated] = useState<boolean>(true);
-  const [selecting, setSelecting] = useState<boolean>(false);
   const [images, setImages] = useState<
     { src: string; id: string; date: string }[]
   >([{ src: '', id: '', date: '' }]);
@@ -27,6 +26,7 @@ const StoragePage = () => {
             ? window.crypto.randomUUID()
             : nodeCrypto.randomUUID(),
         date: 'February 23, 2023',
+        open: false,
       };
 
       nextImages.push(nextImage);
@@ -35,8 +35,15 @@ const StoragePage = () => {
     setImages(nextImages);
   };
 
-  const selectingHandler = () => {
-    setSelecting((selecting) => !selecting);
+  const deleteHandler = (id: string) => {
+    console.log(images);
+    const newImages = images.filter((img) => {
+      return img.id !== id;
+    });
+
+    console.log(newImages);
+
+    setImages(newImages);
   };
 
   useEffect(() => {
@@ -55,27 +62,15 @@ const StoragePage = () => {
                 <Container className='xs:flex-col xs:w-full xs:mt-12'>
                   <Container className='xs:flex-row xs:justify-between xs:items-end'>
                     <h2 className='xs:text-left xs:text-4xl'>Storage</h2>
-                    <button
+                    {/* <button
                       onClick={selectingHandler}
                       className='xs:bg-base xs:text-white xs:px-6 xs:py-2 xs:focus:outline-none xs:focus:ring xs:rounded-md xs:hover:bg-base-darkMd'
                     >
                       {selecting ? 'Cancel' : 'Select'}
-                    </button>
+                    </button> */}
                   </Container>
-                  <ImageGallery links={images} isSelecting={selecting} />
+                  <ImageGallery links={images} onDelete={deleteHandler} />
                 </Container>
-                {selecting && (
-                  <div
-                    className={`xs:flex xs:flex-row xs:justify-between xs:w-36 xs:fixed xs:m-6 xs:bottom-4 xs:right-4`}
-                  >
-                    <button>
-                      <DownloadIcon className='xs:w-10 xs:h-10' />
-                    </button>
-                    <button>
-                      <TrashIcon className='xs:w-10 xs:h-10' />
-                    </button>
-                  </div>
-                )}
               </>
             ) : (
               <>
