@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import { Inter } from 'next/font/google';
+import { Geo, Inter } from 'next/font/google';
 import cloudImg from '@/public/cloud_3542.png';
 import Container from '@/components/UI/Container';
 import MainNav from '@/components/MainNav';
 import Placeholder from '@/components/Placeholder';
+import Geolocate from '@/components/Geolocate';
 
-const inter = Inter({ subsets: ['latin'] });
+// const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
@@ -42,6 +43,7 @@ export default function Home() {
               >
                 Request a new cloud
               </button>
+              <Geolocate />
             </div>
           ) : (
             <Placeholder className='xs:mt-8'>
