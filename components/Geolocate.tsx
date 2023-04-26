@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import useSWR from 'swr';
 
 const Geolocate = () => {
-  const [lat, setLat] = useState<number | null>(null);
-  const [long, setLong] = useState<number | null>(null);
+  // const fetcher = (url: string) => fetch(url).then((res) => res.json());
+  // const { data, error, mutate } = useSWR('https://maps.googleapis.com/maps/api/streetview/metadata?location=${coords.lat},${coords.long}&key=${process.env.API_KEY}', fetcher);
   const [coords, setCoords] = useState<{
     lat: number | null;
     long: number | null;
-  }>({ lat: null, long: null });
+  }>({ lat: 0, long: 0 });
   const [status, setStatus] = useState<string | null>('');
   const [cloudImg, setCloudImg] = useState<string | null>(null);
 
@@ -30,7 +31,15 @@ const Geolocate = () => {
     }
   };
 
-  const getCloudImage = async (coords: { lat: number; long: number }) => {
+  const getCloudImage = async () => {
+    // const res = await fetch(
+    //   `https://maps.googleapis.com/maps/api/streetview/metadata?location=${coords.lat},${coords.long}&key=${process.env.NEXT_PUBLIC_API_KEY}`
+    // );
+    // let json = res.json();
+    // console.log(json);
+    // console.log(process.env.NEXT_PUBLIC_API_KEY);
+    // console.log(json);
+    // console.log(coords);
     const res = await fetch('/api/stview', {
       method: 'POST',
       headers: {
@@ -39,9 +48,18 @@ const Geolocate = () => {
       body: JSON.stringify({ location: coords }),
     });
 
-    let cloudImg = await res.json();
-    setCloudImg(cloudImg);
+    let metadata = await res.json();
+    console.log(metadata);
+
+    // let metadata = await res.json();
+    // console.log(metadata);
+    // let cloudImg = await res.json();
+    // setCloudImg(cloudImg);
   };
+
+  useEffect(() => {
+    getCloudImage();
+  }, [coords]);
 
   return (
     <>
