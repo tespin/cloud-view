@@ -5,7 +5,6 @@ import { Geo, Inter } from 'next/font/google';
 import cloudImg from '@/public/cloud_3542.png';
 import Container from '@/components/UI/Container';
 import MainNav from '@/components/MainNav';
-import Placeholder from '@/components/Placeholder';
 import Geolocate from '@/components/Geolocate';
 
 // const inter = Inter({ subsets: ['latin'] });
@@ -34,27 +33,10 @@ export default function Home() {
               Your personal cloud storage solution.
             </h1>
           </main>
-          {imageLoaded ? (
-            <div className={`xs:mt-8`}>
-              <Image src={cloudImg} alt='cloud photo' />
-              <button
-                className=' xs:w-full xs:mt-4 xs:bg-base xs:hover:bg-base-darkMd xs:focus:outline-none xs:focus:ring xs:text-white xs:py-3 xs:px-6 xs:rounded-md'
-                onClick={imageHandler}
-              >
-                Request a new cloud
-              </button>
-              <Geolocate />
-            </div>
-          ) : (
-            <Placeholder className='xs:mt-8'>
-              <button
-                className='xs:bg-base xs:hover:bg-base-darkMd xs:focus:outline-none xs:focus:ring xs:text-white xs:py-3 xs:px-6 xs:rounded-md'
-                onClick={imageHandler}
-              >
-                Request a cloud
-              </button>
-            </Placeholder>
-          )}
+          <Geolocate
+            className='xs:bg-base xs:hover:bg-base-darkMd xs:focus:outline-none xs:focus:ring xs:text-white xs:py-3 xs:px-6 xs:rounded-md'
+            label='Request a cloud'
+          />
         </Container>
       </Container>
     </>

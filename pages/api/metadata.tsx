@@ -20,14 +20,12 @@ interface Data {
 const handler = async (req: ExtendedNextAPIRequest, res: NextApiResponse) => {
   const coords = req.body.location;
   const api = 'https://maps.googleapis.com/maps/api/streetview';
-  const size = { w: 400, h: 400 };
-  const fov = 40;
-  const heading = '';
-  const pitch = 90;
+  const url = `${api}/metadata?location=${coords.lat},${coords.long}&key=${process.env.API_KEY}`;
 
-  let result = `${api}?size=${size.w}x${size.h}&location=${coords.lat},${coords.long}&fov=${fov}&heading=${heading}&pitch=${pitch}&key=${process.env.API_KEY}`;
+  const meta = await fetch(url);
+  const metaJson = await meta.json();
 
-  res.status(200).json(result);
+  res.status(200).json(metaJson);
 };
 
 export default handler;
