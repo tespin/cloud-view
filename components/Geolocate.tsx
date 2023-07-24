@@ -97,29 +97,35 @@ const Geolocate = ({ className, label }: GeoProps) => {
 
   return (
     <>
-      {/* <Container
-        className={`${
-          !cloudImg
-            ? 'xs:justify-center xs:items-center xs:w-96 xs:h-96 xs:rounded-md xs:border-dashed xs:border-black xs:border-[1px]'
-            : ''
-        } xs:mt-8 `}
-      > */}
-      {/* {cloudImg && (
-          <Image
-            src={cloudImg}
-            alt='cloud photo'
-            width={400}
-            height={400}
-            className=''
-          />
-        )} */}
       <Container
         className={`${
           !cloudImg
             ? 'xs:justify-center xs:items-center xs:w-96 xs:h-96 xs:rounded-md xs:border-dashed xs:border-black xs:border-[1px]'
             : ''
+        } xs:mt-8 `}
+      >
+      {cloudImg && (
+        <Image
+        src={cloudImg}
+        alt='cloud photo'
+        width={400}
+        height={400}
+        className=''
+        />
+        )}
+        <button
+          className={`${className} ${cloudImg ? 'xs:mt-4' : ''}`}
+          onClick={getLocation}
+        >
+          {label}
+        </button>
+      </Container>
+      {/* <Container
+        className={`${
+          !cloudImg
+            ? 'xs:justify-center xs:items-center xs:w-96 xs:h-96 xs:rounded-md xs:border-dashed xs:border-black xs:border-[1px]'
+            : ''
         } xs:flex-col xs:mt-8`}
-        // className={`${cloudImg ? 'mt-8`' : 'mt-4'}`}
       >
         {cloudImg && (
           <Image
@@ -136,8 +142,7 @@ const Geolocate = ({ className, label }: GeoProps) => {
         >
           {label}
         </button>
-      </Container>
-      {/* </Container> */}
+      </Container> */}
     </>
   );
 };
