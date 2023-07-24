@@ -2,17 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Container from './UI/Container';
 
-// interface Data {
-//   copyright: string;
-//   date: string;
-//   location: {
-//     lat: number;
-//     lng: number;
-//   };
-//   pano_id: string;
-//   status: string;
-// }
-
 interface GeoProps {
   className?: string;
   label: string;
